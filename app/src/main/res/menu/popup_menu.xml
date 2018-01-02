@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/edit_reorder"
+        android:icon="@drawable/edit_reorder_icon"
+        android:title="@string/edit_reorder"
+        />
+
+
+
+	<item
+        android:id="@+id/button_settings"
+        android:icon="@drawable/button_settings_icon"
+        android:title="@string/button_settings"
+        android:actionLayout="@layout/button_popup_menu"
+        app:showAsAction="always"/>
+
+
+</menu>

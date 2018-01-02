@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/kwik_button_item"
+    android:background="@drawable/gradient_bg"
+    android:gravity="start"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <LinearLayout android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/transparent"
+        android:layout_marginEnd="5dip"
+        >
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/my_buttons_item_button_image_view"
+            android:layout_width="70dip"
+            android:layout_height="70dip"
+            android:src="@drawable/loader"
+            android:background="@android:color/transparent"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/backLayout"
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:layout_alignParentStart="true"
+                  android:background="@android:color/transparent"
+                  android:layout_marginEnd="5dip"
+                  android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/back_image_view"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:paddingTop="5dp"
+            android:paddingStart="5dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/blue_x"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/progress_layout"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentStart="true"
+                  android:background="@android:color/transparent"
+                  android:layout_marginEnd="5dip"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/progress_image_view"
+            android:layout_width="70dip"
+            android:layout_height="70dip"
+            android:background="@android:color/transparent"
+            android:src="@drawable/kwik_order_spinner0001"/>
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/push_to_order_layout"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentStart="true"
+                  android:background="@android:color/transparent"
+                  android:layout_marginEnd="5dip"
+                  android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/push_to_order_textView"
+            android:layout_width="68dip"
+            android:layout_height="68dip"
+            android:paddingBottom="22dp"
+            android:background="@android:color/transparent"
+            android:text="PUSH\nTO ORDER"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/kwik_me_white"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/products_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:textColor="#343434"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:layout_marginTop="1dip"
+        android:layout_toEndOf="@+id/thumbnail"
+        android:layout_marginStart="2dp"
+        android:text="products description  ..."
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/quantity_and_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/products_description"
+        android:layout_marginTop="1dip"
+        android:layout_toEndOf="@+id/thumbnail"
+        android:layout_marginStart="2dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/kwik_me_blue_back_ground"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:text="Quantity: 3" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/kwik_me_orange"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="25$"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/popupmenu_place"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/title"
+        android:gravity="end"
+        android:layout_marginEnd="5dip"
+        android:layout_marginTop="10dp"
+        />
+
+
+    <ImageView
+        android:id="@+id/three_dots_image_view"
+        android:layout_width="40dp"
+        android:layout_height="70dp"
+        android:src="@drawable/gear"
+        android:paddingTop="10dp"
+        android:paddingBottom="40dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="10dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/button_settings_tap_to_setup_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tap_to_setup_your_tap"
+        android:textColor="@color/kwik_me_orange"
+        android:layout_below="@+id/title"
+        android:layout_toEndOf="@+id/thumbnail"/>
+
+
+    <LinearLayout
+        android:id="@+id/one_digital_order_LinearLayout"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/thumbnail"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/brand_title_reorder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Brand title - "
+            android:textColor="@color/kwik_me_blue_back_ground"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/reorder_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:text="product 1, 4 products size 3 \nproduct 2 includes ...."/>
+
+        <TextView
+            android:id="@+id/see_full_reorder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:drawablePadding="5dp"
+            android:layout_gravity="center_horizontal"
+            android:drawableStart="@drawable/summary_icon"
+            android:text="@string/see_full_reorder_summary"
+            android:textColor="@color/kwik_me_blue_back_ground"/>
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom">
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/sub_total_label_textView"
+                    android:text="Subtotal:"
+                    android:textColor="@color/kwik_me_blue_back_ground"
+
+                    />
+                <TextView
+                    android:id="@+id/sub_total_value_textView"
+                    android:layout_weight="1"
+                    android:gravity="right"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/estimated_sale_tax_label_textView"
+                    android:text="Estimated Sale Tax:"
+                    android:textColor="@color/kwik_me_blue_back_ground"
+
+                    />
+
+                <TextView
+                    android:id="@+id/estimated_sale_tax_value_textView"
+                    android:layout_weight="1"
+                    android:gravity="right"/>
+            </TableRow>
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/estimated_shipping_label_textView"
+                    android:text="Estimated Shipping:"
+                    android:textColor="@color/kwik_me_blue_back_ground"
+
+                    />
+
+                <TextView
+                    android:id="@+id/estimated_shipping_value_textView"
+                    android:layout_weight="1"
+                    android:gravity="right"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+
+                <View
+                    android:layout_weight="1"
+                    android:layout_height="2dp"
+                    android:background="#eeeeee"/>
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/total_label_textView"
+                    android:text="Total:"
+                    style="@android:style/TextAppearance.Medium"
+                    android:textColor="@color/kwik_me_blue_back_ground"
+                    />
+
+                <TextView
+                    android:id="@+id/total_value_textView"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="right"/>
+            </TableRow>
+
+
+            <TableRow
+                android:id="@+id/tableRow6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dip" >
+
+                <TextView
+                    android:id="@+id/pricing_may_very_textView"
+                    android:layout_weight="1"
+                    android:text="Pricing may very "
+                    android:textColor="@color/kwik_me_blue_back_ground"
+                    android:gravity="right"/>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="project name"
+        android:textColor="@color/kwik_me_blue_back_ground"
+        android:typeface="sans"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/three_dots_image_view"
+        android:layout_toEndOf="@+id/thumbnail"/>
+
+</RelativeLayout>

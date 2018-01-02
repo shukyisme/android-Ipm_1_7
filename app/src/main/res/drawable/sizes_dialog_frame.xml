@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+       <item>
+        <shape>
+            <solid android:color="@color/kwik_me_smart_network_fragment_frame_shadow_first_layer" />
+            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp"/>
+             <corners android:radius="30dp" /> 
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="@color/kwik_me_smart_network_fragment_frame_shadow_second_layer" />
+             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp"/>
+             <corners android:radius="30dp" /> 
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="@color/kwik_me_smart_network_fragment_frame_shadow_third_layer" />
+            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp"/>
+            <corners android:radius="30dp" /> 
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="@color/kwik_me_smart_network_fragment_frame_shadow_fourth_layer" />
+            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp"/>
+            <corners android:radius="30dp" />  
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <solid android:color="@color/kwik_me_smart_network_fragment_frame_shadow_fifth_layer" />
+            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp"/>
+            <corners android:radius="30dp" /> 
+        </shape>
+    </item>
+
+    
+    <item android:right="1dp" android:left="1dp" android:top="1dp" android:bottom="1dp">
+	     <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+	     <solid android:color="@color/kwik_me_white" />
+	     <corners android:radius="30dp" />  
+		</shape> 
+    </item>
+    
+    <item  android:left ="12dp" android:right ="12dp" android:top="12dp" android:bottom="12dp" >
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+       	<solid android:color="#00000000"></solid>
+        <corners android:radius="30dp" /> 
+        <stroke
+            android:width="2dp"
+            android:color="@color/kwik_me_orange"
+            android:dashWidth="10dp"
+            android:dashGap="6dp"/>
+        </shape>
+    </item>
+
+</layer-list>

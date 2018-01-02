@@ -1,0 +1,38 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+    <dimen name="activity_vertical_margin">10dp</dimen>
+    <dimen name="fab_margin">14dp</dimen>
+
+    <!-- Start activity -->
+    <dimen name="start_activity_logo_margin_top">10dp</dimen>
+    <dimen name="start_activity_animation_margin_top">69dp</dimen>
+    <dimen name="start_activity_buttons_margin_top">58dp</dimen>
+    <dimen name="start_activity_animation_dimen">250dp</dimen>
+
+    <!-- Action Bar -->
+    <dimen name="action_bar_title_text_size">16sp</dimen>
+    <dimen name="action_bar_arrow_text_size">13sp</dimen>
+    <dimen name="action_bar_arrow_icon_padding">5dp</dimen>
+
+    <!-- Signup Activity -->
+    <dimen name="sign_up_activity_comment_text_size">15sp</dimen>
+    <dimen name="sign_up_activity_comment_margin_top">4dp</dimen>
+    <dimen name="sign_up_activity_phone_input_layout_margin_top">10dp</dimen>
+
+    <!-- Log in Activity -->
+    <dimen name="log_in_activity_comment_margin_top">4dp</dimen>
+    <dimen name="log_in_activity_comment_text_size">15sp</dimen>
+
+    <!-- Network Password Activity -->
+    <dimen name="network_password_activity_comment_margin_top">26dp</dimen>
+
+    <!-- Button to Ap Activity -->
+    <dimen name="button_to_ap_activity_animation_dimen">205dp</dimen>
+    <dimen name="button_to_ap_activity_animation_margin_top">75dp</dimen>
+
+    <!-- Button Settings Activity -->
+    <dimen name="address_tab_height">110dp</dimen>
+    <dimen name="address_item_height">60dp</dimen>
+
+</resources>

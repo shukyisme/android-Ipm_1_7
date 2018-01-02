@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/wifi_teach_dialog_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/wifi_settings_manual_mode_header"
+        android:textColor="@color/kwik_me_blue_text_color"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"/>
+
+
+    <TextView
+        android:id="@+id/smartNetworkDialogSubTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/wifi_settings_manual_mode_instructions"
+        android:textColor="@color/kwik_me_error_message_black_text"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/smartNetworkDialogimageView"
+        android:layout_width="300dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/samsung_phone" />
+
+
+        <Button
+            android:id="@+id/smartNetworkDialogNextButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/start_button_selector"
+            android:onClick="goToSettings"
+            android:text="@string/wifi_settings"
+            android:textSize="20sp"
+            android:textColor="@color/kwik_me_text_white"/>
+
+
+</LinearLayout>

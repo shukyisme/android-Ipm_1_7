@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/kwik_me_screen_background_color"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="me.kwik.square.ClientOverviewActivity">
+
+    <RelativeLayout
+        android:id="@+id/client_overview_activity_overview_RelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/clients_screen_cards_backgrounds"
+        android:elevation="2dp">
+
+        <LinearLayout
+            android:id="@+id/client_overview_activity_overview_header_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:textColor="@color/kwik_me_white"
+                android:textSize="20sp"
+                android:text="Client's Overview"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/overview_icon"
+                android:gravity="center_vertical|start" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:textColor="@color/kwik_me_white"
+                android:textSize="20sp"
+                android:text="Total Traps: (7)"
+                android:gravity="center_vertical|end"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/client_overview_activity_overview_header_LinearLayout"
+            android:gravity="center"
+            android:text="3 Trap Alerts"
+            android:textSize="22sp"
+            android:textColor="#8C9496"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/client_overview_activity_traps_RelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/clients_screen_clients_card_background"
+        android:layout_below="@+id/client_overview_activity_overview_RelativeLayout"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        android:elevation="2dp">
+
+        <LinearLayout
+            android:id="@+id/client_overview_activity_clients_list_header_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
+
+            <TextView
+                android:id="@+id/client_overview_activity_clients_list_header_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="@color/kwik_me_white"
+                android:textSize="20sp"
+                android:text="Client's Traps: (16)"
+                android:drawablePadding="5dp"
+                android:drawableStart="@drawable/traps"
+                android:gravity="center_vertical|start" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/client_overview_activity_traps_ListView"
+            android:layout_below="@+id/client_overview_activity_clients_list_header_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:divider="#E0E0E0"
+            android:fadeScrollbars="false"
+            android:dividerHeight="0.75dp"
+            >
+
+        </ListView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/client_overview_activity_traps_RelativeLayout"
+        android:gravity="center_horizontal">
+        <ImageButton
+            android:id="@+id/fab"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="bottom|center"
+            android:background="@android:color/transparent"
+            android:src="@drawable/add_trap" />
+    </RelativeLayout>
+</RelativeLayout>

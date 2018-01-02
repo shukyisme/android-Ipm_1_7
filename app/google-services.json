@@ -1,0 +1,64 @@
+{
+  "project_info": {
+    "project_number": "600463616213",
+    "project_id": "kwik-84532"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600463616213:android:9549e36a8863e601",
+        "android_client_info": {
+          "package_name": "me.kwik.ipm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlLcMBpaKZFAfW7pg0uwgd8b8-60UOHKE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-76994365-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600463616213:android:b52f9df9971b2d3a",
+        "android_client_info": {
+          "package_name": "me.kwik.ipm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlLcMBpaKZFAfW7pg0uwgd8b8-60UOHKE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

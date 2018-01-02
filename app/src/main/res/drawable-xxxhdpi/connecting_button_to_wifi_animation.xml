@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+    android:id="@+id/connecting_button_to_wifi_animation_list"
+    android:oneshot="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/button_to_ap_animation_frame2" android:duration="330" />
+    <item android:drawable="@drawable/button_to_ap_animation_frame3" android:duration="330" />
+
+</animation-list>

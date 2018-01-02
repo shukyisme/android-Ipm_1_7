@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="me.kwik.square.GoodJobActivity"
+    android:orientation="vertical"
+    android:background="@color/kwik_me_gray_back_ground">
+
+
+    <RelativeLayout
+        android:id="@+id/content_layout"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/good_job_ImageView"
+            android:layout_width="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="250dp"
+            android:src="@drawable/ipm_good_job_logo"/>
+        <TextView
+            android:id="@+id/good_job_TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/kwik_me_blue_text_color"
+            android:text="@string/good_job_activity_good_job"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/good_job_ImageView"/>
+
+        <TextView
+            android:id="@+id/good_job_the_button_connected_textView"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textColor="@color/kwik_me_blue_text_color"
+            android:textSize="20sp"
+            android:text="@string/good_job_activity_the_button_is_successfully_connected"
+            android:layout_below="@id/good_job_TextView"/>
+
+        <TextView
+            android:id="@+id/good_job_serial_number_label_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/kwik_me_blue_text_color"
+            android:layout_below="@+id/good_job_the_button_connected_textView"
+            android:text="@string/good_job_activity_button_serial_number"/>
+        <TextView
+            android:id="@+id/good_job_serial_number_TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="@color/kwik_me_gray_comments"
+            android:layout_below="@+id/good_job_serial_number_label_textView"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/good_job_activity_start_button"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/start_button_selector"
+        android:text="@string/good_job_activity_finish_button"
+        android:textSize="24sp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:onClick="orderSetUpClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

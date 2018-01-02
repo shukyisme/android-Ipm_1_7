@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.kwik.square.ButtonToApActivity"
+    android:background="@color/kwik_me_gray_back_ground">
+
+    <TextView
+        android:id="@+id/button_to_ap_activity_title"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/button_to_ap_activity_press_6_seconds"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textSize="22sp"
+        android:textColor="@color/kwik_me_blue_text_color"
+        android:gravity="center_horizontal"
+        />
+
+
+
+    <FrameLayout
+        android:id="@+id/button_to_ap_animation_frame_layout"
+        android:layout_width="@dimen/start_activity_animation_dimen"
+        android:layout_height="@dimen/start_activity_animation_dimen"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/button_to_ap_activity_title"
+        android:layout_centerHorizontal="true">
+
+        <VideoView
+            android:id="@+id/video_player_view"
+            android:layout_width="@dimen/start_activity_animation_dimen"
+            android:layout_height="@dimen/start_activity_animation_dimen"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            />
+        <FrameLayout
+            android:id="@+id/placeholder"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/button_to_ap_animation_frame1">
+        </FrameLayout>
+    </FrameLayout>
+
+
+    <Button
+        android:id="@+id/button_to_ap_activity_start_button"
+        android:layout_width="match_parent"
+        android:layout_marginTop="150dp"
+        android:layout_height="45dp"
+        android:background="@drawable/start_button_selector"
+        android:text="@string/base_activity_next"
+        android:textSize="24sp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="startClicked"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/button_to_ap_activity_looking_for_button_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Looking for your button, this may take few seconds"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/button_to_ap_activity_connecting_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_height="220dp"
+            android:layout_width="200dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_centerInParent="true"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/custom_progressbar_drawable"
+                    android:secondaryProgress="0" />
+
+
+                <TextView
+                    android:id="@+id/txtProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/progressBar"
+                    android:layout_centerInParent="true"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/button_to_ap_activity_connecting_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textColor="@color/kwik_me_text_white"
+                android:text="@string/button_to_ap_activity_connecting_your_button"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

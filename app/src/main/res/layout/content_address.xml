@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_address"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/kwik_me_white"
+    tools:context="me.kwik.square.AddressActivity"
+    tools:showIn="@layout/activity_address">
+
+    <!-- Add Address -->
+    <RelativeLayout
+        android:id="@+id/add_address_RelativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.1"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:gravity="center_vertical"
+        android:onClick="addAddress"
+        android:orientation="horizontal"
+        android:padding="5dip">
+
+        <ImageView
+            android:id="@+id/add_network_icon_image_view"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/address_icon"
+            android:paddingTop="3dp"/>
+
+        <TextView
+            android:text="Tab to add an address - required"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_address_sub_title_TextView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="#A1AEBA"
+            android:textSize="16sp"
+            android:layout_toEndOf="@+id/add_network_icon_image_view"
+            android:layout_below="@+id/addAddressTitle"
+            android:layout_alignStart="@+id/addAddressTitle"/>
+
+
+        <TextView
+            android:id="@+id/addAddressTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:gravity="center_vertical"
+            android:text="Add address"
+            android:textColor="#747474"
+            android:textSize="18sp"
+            android:layout_alignTop="@+id/add_network_icon_image_view"
+            android:layout_toEndOf="@+id/add_network_icon_image_view"/>
+
+        <ProgressBar
+            android:id="@+id/google_map_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"/>
+
+
+    </RelativeLayout>
+
+    <!-- Street number -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dip">
+
+        <TextView
+            android:id="@+id/street_number_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/street_number_icon_image_view"
+            android:gravity="center_vertical"
+            android:text="Street number"
+            android:textColor="#747474"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/street_number_icon_image_view"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/home"
+            android:paddingTop="3dp"/>
+
+        <EditText
+            android:id="@+id/street_number_EditText"
+            android:hint="Tap to add - optional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:inputType="text"
+            android:background="@android:color/transparent"
+            android:layout_below="@+id/street_number_text_view"
+            android:layout_alignStart="@+id/street_number_text_view"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:textColor="#A1AEBA"
+            android:textColorHint="#A1AEBA"
+            />
+
+    </RelativeLayout>
+
+
+    <!-- Apartment number  -->
+    <RelativeLayout
+        android:id="@+id/paymentMethodRelativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:clickable="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dip">
+
+        <EditText
+            android:hint="Tap to add - optional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/apartment_number_EditText"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:inputType="text"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:textColor="#A1AEBA"
+            android:layout_below="@+id/textView4"
+            android:layout_toEndOf="@+id/payment_icon_image_view"
+            android:layout_alignStart="@+id/textView4"
+            android:textColorHint="#A1AEBA"/>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:gravity="center_vertical"
+            android:text="Apartment number"
+            android:textColor="#747474"
+            android:textSize="18sp"
+            android:layout_toEndOf="@+id/payment_icon_image_view"/>
+
+        <ImageView
+            android:id="@+id/payment_icon_image_view"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/flat"
+            android:layout_alignTop="@+id/textView4"
+            android:layout_alignParentStart="true"
+            android:paddingTop="3dp"/>
+    </RelativeLayout>
+
+    <!-- Entrance number -->
+    <RelativeLayout
+        android:id="@+id/timeSlotsRelativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dip">
+
+        <TextView
+            android:id="@+id/preferred_time_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/clock_icon_image_view"
+            android:gravity="center_vertical"
+            android:text="Entrance number"
+            android:textColor="#747474"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/clock_icon_image_view"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/home"
+            android:paddingTop="3dp"/>
+
+        <EditText
+            android:hint="Tap to add - optional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_below="@+id/preferred_time_text_view"
+            android:layout_alignStart="@+id/preferred_time_text_view"
+            android:layout_marginTop="8dp"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColor="#A1AEBA"
+            android:textColorHint="#A1AEBA"
+            android:id="@+id/entrance_number_EditText"/>
+
+    </RelativeLayout>
+
+    <!-- Additional settings -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dip">
+
+    <TextView
+        android:id="@+id/additional_settings_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/additional_settings_icon_image_view"
+        android:gravity="center_vertical"
+        android:text="Additional settings"
+        android:textColor="#747474"
+        android:textSize="18sp"/>
+
+    <ImageView
+        android:id="@+id/additional_settings_icon_image_view"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="14dp"
+        android:src="@drawable/additional_settings"
+        android:paddingTop="3dp"/>
+
+    <CheckBox
+        android:id="@+id/leave_by_the_door_CheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Leave by the door"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/additional_settings_text_view"
+        android:layout_alignStart="@+id/additional_settings_text_view"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textColor="#A1AEBA"
+        android:textColorHint="#A1AEBA"
+        />
+    </RelativeLayout>
+
+    <!-- Add a note  -->
+    <RelativeLayout
+        android:id="@+id/addANoteRelativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.4"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:clickable="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dip">
+
+        <EditText
+            android:id="@+id/add_a_note_EditText"
+            android:hint="Tap to add - optional"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:minLines="1"
+            android:maxLength="100"
+            android:lines="3"
+            android:maxLines="3"
+            android:inputType="textMultiLine"
+            android:scrollHorizontally="false"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            android:textSize="16sp"
+            android:textColor="#A1AEBA"
+            android:gravity="top|start"
+            android:layout_below="@+id/add_a_note_textView"
+            android:layout_toEndOf="@+id/add_a_note_image_view"
+            android:layout_alignStart="@+id/add_a_note_textView"
+            android:textColorHint="#A1AEBA"/>
+
+        <TextView
+            android:id="@+id/add_a_note_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:gravity="center_vertical"
+            android:text="Add a note"
+            android:textColor="#747474"
+            android:textSize="18sp"
+            android:layout_toEndOf="@+id/add_a_note_image_view"/>
+
+        <ImageView
+            android:id="@+id/add_a_note_image_view"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/additional_data_icon"
+            android:layout_alignTop="@+id/add_a_note_textView"
+            android:layout_alignParentStart="true"
+            android:paddingTop="3dp"/>
+    </RelativeLayout>
+    <!-- Save/finish button -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:paddingTop="30dp"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_gravity="end">
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/kwik_me_orange"
+            android:text="SAVE"
+            android:gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="18sp"
+            android:onClick="next"
+            android:layout_alignParentBottom="true"/>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="me.kwik.square.StartActivity"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/video_player_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/splash__logo"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            />
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"
+        />
+
+    <Button
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft = "25dp"
+        android:id="@+id/start_activity_sign_up_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:background="@drawable/start_button_selector"
+        android:text="@string/start_activity_sign_up"
+        android:textSize="24sp"
+        android:onClick="signupClicked"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        />
+    <TextView
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:id="@+id/start_activity_alredy_registered_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:padding="5dp"
+        android:text="@string/start_activity_already_registered"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:onClick="loginClicked"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        />
+
+    <TextView
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:id="@+id/start_activity_terms_and_conditions_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:text=""
+        android:onClick="termsAndConditions"
+        android:textStyle="normal"
+        android:textSize="12sp"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"/>
+
+
+</LinearLayout>

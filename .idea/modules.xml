@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/IPM1_7_x.iml" filepath="$PROJECT_DIR$/IPM1_7_x.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/facebook-android-sdk-4.11.0/facebook-android-sdk-4.11.0.iml" filepath="$PROJECT_DIR$/facebook-android-sdk-4.11.0/facebook-android-sdk-4.11.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kwik_sdk/kwik_sdk.iml" filepath="$PROJECT_DIR$/kwik_sdk/kwik_sdk.iml" />
+    </modules>
+  </component>
+</project>

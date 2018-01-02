@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/kwik_me_dark_blue">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/base_activity_action_bar_prev_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:paddingStart="15dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:background="@color/kwik_me_dark_blue"
+            android:drawableLeft="@drawable/back"
+            android:textSize="20sp"
+            android:gravity="center"
+            />
+        <ProgressBar
+            android:id="@+id/base_activity_action_bar_prev_progress_bar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/base_activity_action_bar_title"
+        android:layout_weight="1.99"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/action_bar_title_text_size"
+        android:text="fdafa fda fdafdaf fdaf fa fdafaf fdaf d afa fadfafda fdaf fdad"
+        android:maxLines="2"
+        android:gravity="center"
+        android:textColor="@color/kwik_me_text_white"
+        />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/base_activity_action_bar_next_progress_bar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/base_activity_action_bar_right_logo"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/header_right_logo"
+            android:layout_marginEnd="12dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

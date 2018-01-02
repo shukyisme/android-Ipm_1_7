@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <!-- Trap name and site -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="0.78"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/trap_item_site_name_TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dinning Room"
+            android:textColor="#B5BBC5"
+            android:gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/trap_item_name_TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trap: #2"
+            android:textSize="18sp"
+            android:textColor="#256BA7"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <!-- Button image, battery image, SN -->
+    <LinearLayout
+    android:layout_width="0dp"
+    android:layout_weight="0.22"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/trap_item_low_battery_ImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/battery_low"
+                android:layout_marginEnd="5dp"/>
+            <ImageView
+                android:id="@+id/trap_item_image_ImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/kwik_orange"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/trap_item_sn_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="SN: 105809"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

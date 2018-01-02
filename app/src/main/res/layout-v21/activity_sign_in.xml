@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2">
+
+
+<LinearLayout
+    android:id="@+id/activity_sign_in"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="me.kwik.square.ipm.kwiksquare.SignInActivity"
+    android:orientation="vertical"
+    android:background="@color/kwik_me_white"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal">
+
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="match_parent"
+        android:layout_height="73.75dp"
+        android:src="@drawable/rectangle_18"
+        android:layout_marginTop="78dp"
+        android:layout_gravity="center"
+        android:scaleType="center"
+        android:layout_alignParentTop="true"
+        />
+
+    <TextView
+        android:id="@+id/text_view_17BC10B16746497A8CE1A57258A1A0F6"
+        style="@style/text_view_17BC10B16746497A8CE1A57258A1A0F6_style"
+        android:layout_width="match_parent"
+        android:layout_marginTop="47dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Sign in to your account"
+        android:layout_below="@+id/login_logo"
+        android:layout_alignParentStart="true" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="6"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="me.kwik.square.ipm.kwiksquare.SignInActivity"
+        android:orientation="vertical"
+        android:background="@color/kwik_me_white"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal">
+
+    <EditText
+        android:id="@+id/signin_user_name_edit_text"
+        android:layout_below="@+id/text_view_17BC10B16746497A8CE1A57258A1A0F6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="21dp"
+        android:hint="User name"
+        android:maxLines="1"
+        android:inputType="textEmailAddress"
+        android:drawablePadding="10dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/rectangle_2_vd"
+        android:drawableLeft="@drawable/rectangle_5"
+
+        />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"/>
+
+    <EditText
+        android:id="@+id/signin_password_edit_text"
+        android:layout_below="@id/signin_user_name_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="10dp"
+        android:maxLines="1"
+        android:inputType="text"
+        android:hint="Password"
+        android:background="@drawable/rectangle_2_vd"
+        android:drawableLeft="@drawable/rectangle_4"
+
+        />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"/>
+
+        <Button
+            android:id="@+id/sigin_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_vd"
+            android:text="Sign in"
+            android:gravity="center"
+            android:textColor="@color/kwik_me_white"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

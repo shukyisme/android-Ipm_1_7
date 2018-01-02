@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.kwik.square">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".Application"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:resizeableActivity="false"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <!-- Updating this will cause a database upgrade -->
+        <meta-data
+            android:name="Rush_db_version"
+            android:value="2" />
+
+        <!-- Database name -->
+        <meta-data
+            android:name="Rush_db_name"
+            android:value="rush.db" />
+
+        <!--
+        Setting this to true will cause a migration to happen every launch,
+        this is very handy during development although could cause data loss
+        -->
+        <meta-data
+            android:name="Rush_debug"
+            android:value="false" />
+
+        <!--
+        Setting this to true mean that tables will only be created of classes that
+        extend RushObject and are annotated with @RushTableAnnotation
+        -->
+        <meta-data
+            android:name="Rush_requires_table_annotation"
+            android:value="false" />
+
+        <!-- Turning on logging can be done by settings this value to true -->
+        <meta-data
+            android:name="Rush_log"
+            android:value="false" />
+        <meta-data
+            android:name="Rush_classes_package"
+            android:value="me.kwik.me" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAlLcMBpaKZFAfW7pg0uwgd8b8-60UOHKE" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <service android:name=".FireService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity xmlns:android="http://schemas.android.com/apk/res/android"
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="kwik.me.app"
+                    android:pathPrefix="/buttons"
+                    android:scheme="kwik" />
+                <data
+                    android:host="www.kwik.me.app"
+                    android:pathPrefix="/buttons"
+                    android:scheme="kwik" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="me.kwik.me" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StartActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".BaseActivity" />
+        <activity
+            android:name=".SignupActivity"
+            android:windowSoftInputMode="stateVisible" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".VerifyPhoneActivity"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name=".NetworkPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ButtonToApActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".GoodJobActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectProductActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PersonalDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AllSetUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReorderSettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DeliveryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".UpdatePersonalDetailsActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".WebviewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PaymentWebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProductsWebviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SetupActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ClientsActivity"
+            android:label="@string/my_buttons_activity_main_label"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".MyKwikButtonsActivity" />
+        </activity>
+        <activity
+            android:name=".ButtonSettingsActivity"
+            android:label="@string/title_activity_button_settings"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddressActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".WiFiSelectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddSerialNumberManuallyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".IpmLoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ClientOverviewActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddNewTrapActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".TrapDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateClientActivity"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>

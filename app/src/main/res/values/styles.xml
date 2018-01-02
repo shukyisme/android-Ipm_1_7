@@ -1,0 +1,95 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:buttonStyle">@style/KwikButtonsStyle</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:editTextStyle">@style/KwikEditTextStyle</item>
+        <item name="android:listDivider">@color/kwik_me_menu_item_text_color_50_alpha</item>
+        <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+
+    <style name="KwikMeDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/rounded_corners_white</item>
+        <item name="android:textColor">@color/kwik_me_blue_text_color</item>
+        <item name="colorAccent">@color/kwik_me_orange</item>
+        <item name="android:textColorPrimary">@color/kwik_me_black</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+    </style>
+
+    <style name="PauseDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@style/PauseDialogAnimation</item>
+    </style>
+
+    <style name="PauseDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="KwikButtonsStyle" parent="android:style/Widget.Button">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/kwik_me_button_text_color</item>
+        <item name="android:background">@color/kwik_me_button_background_color</item>
+
+    </style>
+
+    <style name="KwikEditTextStyle" parent="android:style/Widget.EditText">
+        <item name="android:lines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColorPrimary">@color/kwik_me_black</item>
+        <item name="android:textColorSecondary">@color/kwik_me_menu_item_text_color</item>
+        <item name="android:textColor">@color/kwik_me_white</item>
+    </style>
+
+
+    <declare-styleable name="SympliTextView">
+        <attr name="fontPath" format="string" />
+
+        <!-- Inner shadow settings. -->
+        <attr name="innerShadowColor" format="color" />
+        <attr name="innerShadowDx" format="dimension" />
+        <attr name="innerShadowDy" format="dimension" />
+        <attr name="innerShadowRadius" format="dimension" />
+
+        <!-- Outer shadow settings. -->
+        <attr name="outerShadowColor" format="color" />
+        <attr name="outerShadowDx" format="dimension" />
+        <attr name="outerShadowDy" format="dimension" />
+        <attr name="outerShadowRadius" format="dimension" />
+    </declare-styleable>
+
+    <style name="text_view_17BC10B16746497A8CE1A57258A1A0F6_style" parent="android:Widget.TextView">
+        <item name="fontPath">fonts/${FONT_FILE}</item>
+        <item name="android:textColor">@color/color_609f5e</item>
+        <item name="android:textSize">@dimen/text_view_17BC10B16746497A8CE1A57258A1A0F6_size</item>
+        <item name="android:textStyle">normal</item>
+
+    </style>
+
+    <style name="statusBarStyle" parent="@android:style/Theme.DeviceDefault.Light">
+        <item name="android:statusBarColor">@color/manatee_2</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>

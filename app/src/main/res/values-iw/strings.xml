@@ -1,0 +1,293 @@
+<resources>
+    <string name="app_name">IPM Square</string>
+    <string name="action_settings">Settings</string>
+    <string name="need_help">צריכים עזרה?</string>
+    <string name="cancel">ביטול</string>
+    <string name="oops">אופס!</string>
+    <string name="name">שם</string>
+    <string name="phone">טלפון</string>
+    <string name="finish">סיים</string>
+    <string name="no">לא</string>
+    <string name="yes">כן</string>
+    <string name="english">English</string>
+    <string name="hebrew">עברית</string>
+    <string name="russian">русский</string>
+    <string name="french">français</string>
+    <string name="japanese">日本語</string>
+    <string name="portuguese">Português</string>
+
+    <string name="title_activity_add_serial_number_manualy">AddSerialNumberManualyActivity</string>
+
+    <!-- Application -->
+    <string name="kwik_me_locale_id_key">kwik_me_locale_id_key</string>
+    <string name="kwik_me_first_button_in_the_app">kwik_me_first_button_in_the_app</string>
+
+    <!-- Base Activity -->
+    <string name="base_activity_back">חזור</string>
+    <string name="base_activity_next">המשך</string>
+
+
+    <!-- Start Activity -->
+    <string name="start_activity_sign_up">הירשם/י</string>
+    <string name="start_activity_terms_and_conditions">&lt;font color=#a1a1a1&gt; על ידי רישום לאפליקציה הינך מסכים/ה&lt;//font&gt;&lt;b&gt; לתנאי השימוש &lt;//b&gt;</string>
+    <string name="start_activity_sign_up_with_facebook">הירשם/י עם פייסבוק</string>
+    <string name="start_activity_already_registered">משתמש רשום?&lt;//font&gt;&lt;b&gt; התחבר/י&lt;//b&gt;</string>
+    <string name="sign_up_with_facebook_not_supported_yet">רישום דרך פייסבוק לא נתמך בינתיים</string>
+
+    <!-- Signup Activity -->
+    <string name="signup_activity_sign_up">הירשם/י</string>
+    <string name="sign_up_activity_title">הרשמה</string>
+    <string name="sign_up_activity_phone_hint">טלפון</string>
+    <string name="sign_up_activity_name_hint">שם</string>
+    <string name="sign_up_activity_name_is_empty">נא להכניס שם</string>
+    <string name="sign_up_activity_login">התחבר</string>
+    <string name="sign_up_activity_change">שנה</string>
+    <string name="sign_up_activity_invalid_email">כתובת מייל לא תקינה</string>
+    <string name="phone_is_empty">נא להכניס מספר טלפון</string>
+    <string name="last_name_is_empty">נא להכניס שם משפחה</string>
+    <string name="email_is_empty">נא להכניס כתובת מייל</string>
+
+    <!-- Login Activity -->
+    <string name="log_in_activity_title">כניסה למערכת</string>
+    <string name="log_in_activity_log_in_button_label">כניסה</string>
+    <string name="log_in_activity_phone_hint">טלפון</string>
+    <string name="log_in_activity_phone_number_edit_text_invalid_error">טעות במספר</string>
+
+
+    <!-- Verify phone activity -->
+    <string name="verify_phone_activity_enter_the_code_we_sent_to">הכנס/י את הקוד ששלחנו ל</string>
+    <string name="verify_phone_activity_resend_sms">שלח SMS חדש</string>
+    <string name="verify_phone_activity_change_phone_number">שנה מספר טלפון</string>
+    <string name="verify_phone_activity_title">אימות SMS</string>
+    <string name="verify_phone_activity_please_enter_the_code">לא הוכנס קוד</string>
+
+    <!-- Network Password Activity -->
+    <string name="network_password_activity_title">חיבור לרשת אלחוטית</string>
+    <string name="network_password_enter_password_hint">הכנס/י סיסמא</string>
+    <string name="network_password_activity_hide">הסתר</string>
+    <string name="network_password_activity_show">הצג</string>
+    <string name="network_password_activity_open_wifi_settings">לך להגדרת רשת</string>
+    <string name="network_password_activity_continue">המשך</string>
+    <string name="network_password_activity_no_wifi_error_message">נראה שאין רשתות WiFi פעילות בסביבה, נא לוודא כי הטלפון מחובר לרשת ה- WiFi הביתי ולנסות שוב</string>
+    <string name="network_password_activity_wifi_5_g_error">נראה שרשת ה WiFi שלך היא 5GHz. נא להתחבר לרשת 2.4GHz</string>
+    <string name="network_password_activity_enter_password_error_message">יש להזין סיסמא</string>
+    <string name="network_password_activity_enter_password_tip">הכניסו את פרטי רשת ה- WiFi הביתי \n שלכם, עבור המלכודת</string>
+    <string name="network_password_activity_help_message">אנא וודא/י שזו רשת בתדר 2.4GHz</string>
+    <string name="network_password_save_password">שמור סיסמא</string>
+    <string name="your_gps_seems_to_be_disabled">נראה כי שירותי המיקום כבויים, אנא הפעילו את שירותי המיקום</string>
+    <string name="password_is_empty">לא הוקלדה סיסמא</string>
+    <string name="continue_without_password">המשך ללא סיסמא</string>
+    <string name="type_a_password">הזנת סיסמא</string>
+    <string name="change_network">התחברות לרשת אחרת</string>
+
+
+    <!-- Button to Ap Activity -->
+    <string name="button_to_ap_activity_title">חיבור לרשת אלחוטית</string>
+    <string name="button_to_ap_activity_go_to_settings">המשך</string>
+    <string name="button_to_ap_activity_press_6_seconds">לחץ על הכפתור האמצעי בחיישן שמחובר למלכודת עד שהחיישן ישמיע קול והאור יהבהב</string>
+    <string name="button_to_ap_activity_press_start">כשישמע צליל והאורות יתחילו להבהב, לחצו \"המשך\"</string>
+    <string name="button_to_ap_activity_teach_fail_message">נראה שהמלכודת לא הצליחה לתקשר או שפרטי הרשת היו שגויים. אנא וודא/י שה-WiFi עובד, הסיסמא נכונה ונסה/י שוב</string>
+    <string name="button_to_ap_activity_almost_there">כמעט סיימנו...</string>
+    <string name="button_to_ap_activity_connecting_to_server">מתחבר לשרת</string>
+    <string name="button_to_ap_activity_connecting_your_button">מתחבר ל kwik...</string>
+    <string name="button_to_ap_activity_connecting_button_to_user">משייך כפתור למשתמש...</string>
+    <string name="button_to_ap_activity_go_to_manual_title">התחברות לכפתור</string>
+    <string name="button_to_ap_activity_go_to_manual_message">להמשך: \n 1- נא ללחוץ על כפתור הגדרות רשת למטה\n 2- התחבר לרשת kwik_button\n 3- חזור לאפלקציה</string>
+
+
+    <!-- My Buttons Activity -->
+    <string name="my_buttons_activity_exit_dialog_title">יציאה</string>
+    <string name="my_buttons_activity_exit_dialog_message">לצאת מהאפליקציה?</string>
+    <string name="my_buttons_activity_serial_number">מספר כפתור :</string>
+    <string name="address">כתובת</string>
+
+
+    <!-- Reorder Settings Activity -->
+    <string name="reorder_settings_activity_screen_title">סיכום הזמנה</string>
+    <string name="reorder_settings_activity_list_title">המוצרים שבחרתם</string>
+    <string name="edit">עדכן</string>
+    <string name="reorder_settings_activity_add_new_product">הוסף חדש</string>
+    <string name="reorder_settings_activity_current_wifi">הרשת הנוכחית: </string>
+    <string name="reorder_settings_activity_total_price">מחיר כולל :</string>
+    <string name="reorder_settings_activity_send_to_kwik">הוסף רשת</string>
+    <string name="reorder_settings_activity_general">כללי</string>
+    <string name="quantity"> כמות:</string>
+    <string name="price"> מחיר:</string>
+
+    <!-- Good Job Activity -->
+    <string name="good_job_activity_good_job">מעולה!</string>
+    <string name="good_job_activity_the_button_is_successfully_connected">המלכודת חוברה בהצלחה</string>
+    <string name="good_job_activity_button_serial_number">מספר מלכודת: </string>
+    <string name="good_job_activity_now">הכפתור התחבר לרשת בהצלחה\nויעבוד על רשת זו בלבד</string>
+    <string name="good_job_activity_kwik_order"> המשך לבחירת מוצרים</string>
+
+    <!-- Select Products Activity -->
+    <string name="select_products_activity_title">בחירת מוצר</string>
+    <string name="select_products_activity_choose">הרכיבו הזמנתכם</string>
+    <string name="select_products_activity_no_productd_choosen">לא נבחרו מוצרים,אנא בחר/י מוצר</string>
+    <string name="select_products_activity_minimum_price_prefix">"מינימום הזמנה הוא "</string>
+    <string name="select_products_activity_minimum_price_suffix">, אנא הוסף/י מוצרים.</string>
+    <string name="select_products_activity_edit_title">עדכון הזמנה</string>
+    <string name="select_products_activity_update_popup">&lt;b&gt;עדכן/י &lt;//b&gt;את המוצרים בהזמנה הנוכחית. ולחץ/י על \"הזמן\" בחלקו העליון של המסך</string>
+    <string name="order">הזמן</string>
+    <string name="select_products_activity_save_changes">שמור שינויים להזמנות הבאות בכפתור.</string>
+
+
+
+    <!-- My Buttons Activity -->
+    <string name="my_buttons_nav_menu_send_feedback">שליחת משוב</string>
+    <string name="my_buttons_activity_nav_menu_communicate">להיות בקשר</string>
+    <string name="my_buttons_activity_nav_menu_settings">הגדרות</string>
+    <string name="my_buttons_activity_nav_menu_order_history">היסטוריית הזמנות</string>
+    <string name="my_buttons_activity_nav_menu_personal_details">הגדרות אישיות</string>
+    <string name="my_buttons_activity_nav_menu_my_buttons">המלכודות שלי</string>
+    <string name="my_buttons_activity_main_label">המלכודות שלי</string>
+    <string name="my_buttons_nav_not_supported_yet_message"> עדיין לא נתמך</string>
+    <string name="my_buttons_activity_settings_select_language">בחר שפה</string>
+    <string name="my_buttons_activity_nav_menu_settings_dialog_title">פרטים אישיים</string>
+    <string name="my_buttons_activity_click_to_add_button">לחץ/י כאן להוספת כפתור</string>
+    <string name="my_buttons_feedback_header">משוב מאת </string>
+    <string name="select_email_client">מאזו תוכנה לשלוח את המייל?</string>
+    <string name="my_buttons_activity_add_wifi_network">הוסף רשת</string>
+    <string name="my_buttons_activity_click_to_edit_button">לחץ על הלוגו לעריכת ההזמנה הקבועה</string>
+    <string name="log_out">התנתק/י</string>
+    <string name="remove_kwik_button">הסרה</string>
+    <string name="remove_kwik_button_message">האם אתה בטוח שברצונך להסיר מלכודת זו?</string>
+    <string name="entrance">כניסה</string>
+    <string name="apartment">דירה</string>
+    <string name="change_address">שינוי כתובת</string>
+
+    <!-- Personal Details Activity -->
+    <string name="personal_details_activity_title">פרטים אישיים</string>
+
+    <!-- Delivery Activity -->
+    <string name="delivery_activity_title">פרטי משלוח</string>
+    <string name="delivery_activity_time_slots_title">זמני משלוח מועדפים</string>
+    <string name="delivery_activity_left_by_door_check_box">ניתן להשאיר את המשלוח ליד הדלת</string>
+    <string name="delivery_activity_delivery_notes_edit_text">הערות</string>
+    <string name="delivery_activity_address_edit_text">כתובת משלוח</string>
+
+    <!-- All Set Up Activity -->
+    <string name="all_set_up_activity_title">סיימנו</string>
+    <string name="all_set_up_activity_you_are_all_set_up">סיימנו!</string>
+    <string name="all_set_up_activity_click">מעכשיו לחיצה על הכפתור תזמין את המוצרים שבחרת</string>
+    <string name="all_set_up_activity_you_can_always">שימ/י לב שניתן לערוך/לבטל את ההזמנה ב- סמס שיישלח אליך לאחר הלחיצה</string>
+    <string name="all_set_up_activity_done">סיום</string>
+
+
+    <!-- SmartNetwork dialog  -->
+    <string name="smart_network_dialog_title">Smart network switch</string>
+    <string name="smart_network_dialog_sub_title">נא לבטל את הסימון בהגדרת Smart network switch במסך הגדרות WiFi של המכשיר ולחזור לאפלקציה</string>
+    <string name="wifi_settings">הגדרות WiFi</string>
+    <string name="wifi_settings_manual_mode_instructions"> 1. כנסו להגדרות Wi-Fi בעזרת הכפתור למטה\n\n 2. תתחברו לרשת האלחוטית שמסתימת בשם:  button_xxxxxx  \n\n 3. חזרו לאפליקצייה </string>
+
+
+    <!-- Update Personal Details Activity -->
+    <string name="update_personal_details_title">עדכן פרטים אישיים</string>
+    <string name="update_personal_details_activity_email_hint">דואר אלקטרוני</string>
+    <string name="update_personal_details_activity_buttons_hint">כפתורים</string>
+    <string name="addresses">כתובות</string>
+    <string name="save">שמור</string>
+
+    <!-- WebView Activity -->
+    <string name="please_select_address">נא לבחור כתובת:</string>
+    <string name="button_not_registered_click_here_to_register_this_button">הכפתור לא רשום, לחץ כאן לרישום</string>
+    <string name="default_address">משויך לכפתור</string>
+    <string name="register_later">לא עכשיו, המשך</string>
+    <string name="please_enter_country_code">נא להכניס קידומת</string>
+    <string name="log_in_activity_country_code_hint">מדינה</string>
+    <string name="title_activity_one_button">OneButtonActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- One Button Activtiy -->
+    <string name="on_button_activity_title">לחץ על הלוגו לעריכת ההזמנה הקבועה </string>
+    <string name="payment_method">כרטיס אשראי</string>
+    <string name="setup_activity_title">התקנה</string>
+    <string name="setup_activity_please_turn_up">אנא הגבירו את עוצמת השמע בטלפון על-מנת שנוכל להדריך אתכם בתהליך ההתקנה</string>
+    <string name="setup_activity_increase_volume_comment">הגבירו את עוצמת השמע על מנת להמשיך</string>
+    <string name="sign_up_activity_lase_name_hint">שם משפחה</string>
+    <string name="sign_up_activity_email_hint">דואר אלקטרוני</string>
+    <string name="signup_activity_easy_text_view">הרשמה מהירה</string>
+    <string name="setup_activity_great_your_volume_is_set">כל הכבוד! עוצמת השמע שלכם מכוונת</string>
+    <string name="button_to_ap_activity_welcome_back">ברוכים השבים! האם שמעתם את צליל ההצלחה?</string>
+    <string name="unknown_error">שגיאה לא-ידועה</string>
+
+    <string name="edit_reorder">עריכת הזמנה</string>
+    <string name="button_settings">הגדרות כפתור</string>
+    <string name="my_kwik_buttons_activity_nav_menu_change_language">הגדרות שפה</string>
+    <string name="clients_activity_title">המלכודות שלי</string>
+    <string name="button_settings_activity_main_label">הגדרות מלכדת</string>
+    <!-- My Kwik Buttons Activity -->
+    <string name="my_kwik_buttons_nav_menu_send_feedback">Send FeedBack</string>
+    <string name="my_kwik_buttons_activity_nav_menu_communicate">להיות בקשר</string>
+    <string name="my_kwik_buttons_activity_nav_menu_order_history">Order History</string>
+    <string name="my_kwik_buttons_activity_nav_menu_personal_details">Personal Details</string>
+    <string name="title_activity_button_settings">ButtonSettingsActivity</string>
+    <string name="add_wi_fi_network">הוספת רשת WiFi חדשה</string>
+    <string name="sereal_number">מ\'ס: </string>
+    <string name="reorder_address">כתובת משלוח</string>
+    <string name="preferred_time_for_deliveries">זמן מועדף להגעת המשלוח</string>
+    <string name="additional_data">הגדרות נוספות</string>
+    <string name="delete_button">מחיקת מלכודת</string>
+    <string name="long_press_to_delete_the_button">לחיצה ארוכה למחיקה</string>
+    <string name="ask_for_storage_permission_message">על מנת להמשיך להשתמש באפליקציה תצטרך לאפשר גישה לקבצים ולמדיה\n אנו מחויבים לספק את החוויה הטובה ביותר והמהירה ביותר ללקוחות שלנו ולכן אנו זקוקים לאישור שלך כדי להמשיך. אנא לחץ על אפשר במסך הבא</string>
+    <string name="kwik_continue">המשך</string>
+    <string name="wifi_settings_manual_mode_android_7_instructions">1. היכנסו להגדרות הרשת האלחוטית שלכם במכשיר הנייד \n\n 2. תתחברו לרשת האלחוטית שמסתימת בשם: button_xxxxxx      \n\n 3. לאחר ההתחברות לחצו על ההתראה בחלקו העליון של המסך אשר מתריאה שאין גישה לאינטרנט ובחרו \"כן\" על מנת להישאר מחוברים לרשת של הכפתור</string>
+    <string name="wifi_settings_manual_mode_android_7_instructions_1">4. לאחר ההתחברות חיזרו לכאן להמשך התהליך...</string>
+    <string name="wifi_settings_manual_mode_header">עכשיו בואו נחבר את המלכודת לרשת האלחוטית</string>
+    <string name="update_order_message">עדכן את רשימת המוצרים שאתה רוצה להזמין ואז לחץ על  “עדכן הזמנה” בחלקו התחתון של מסך זה</string>
+    <string name="modify_order">עדכן הזמנה</string>
+    <string name="modifying">מעדכן הזמנה...</string>
+    <string name="see_full_reorder_summary">See full reorder summary</string>
+    <string name="reorder_summary">" - Reorder summary"</string>
+    <string name="kwik_order">Kwik order</string>
+
+    <!-- Wifi selection activity -->
+    <string name="wifi_selection_activity_title">בחירת שיטת חיבור</string>
+    <string name="wifi_selection_activity_question">
+האם יש לך ראוטר ייעודי או שאתה רוצה להשתמש ברשת המקומית של הלקוח?</string>
+
+    <!-- Add Serial number manually activity -->
+    <string name="add_serial_manually_activity_title">לחבר את המלכודת</string>
+    <string name="add_serial_manually_enter_number_request"> כדי לחבר את המלכודת הזינו את המספר הסידורי הממוקם בחלק האחורי של המלכודת</string>
+    <string name="add_serial_manually_activity_open_dialog_button">הזן את המספר הסידורי</string>
+    <string name="enter_serial_number_dialog_edit_text_hint">הקלד כאן את המספר הסידורי</string>
+    <string name="enter_serial_number_dialog_title">הזן את המספר הסידורי</string>
+    <string name="enter_serial_number_dialog_submit_button">אשר</string>
+    <string name="enter_serial_number_dialog_error_header">שגיאה</string>
+    <string name="enter_serial_number_error_length_error">אורך המספר הסידורי צריך להיות 7 תווים</string>
+    <string name="enter_serial_number_error_numbers_only_error">המספר הסידורי מכיל מספרים בלבד</string>
+    <string name="enter_serial_number_error_cancel_button">בטל</string>
+
+    <!-- Good job activity -->
+    <string name="good_job_activity_title">מלכודת מחוברת</string>
+    <string name="good_job_activity_finish_button">המשך ההתקנה</string>
+
+    <!-- IPM Login Activity -->
+    <string name="ipm_login_activity_title">פרטים נוספים</string>
+    <string name="ipm_login_activity_client_name">שם הלקוח</string>
+    <string name="ipm_login_activity_site">אתר</string>
+    <string name="ipm_login_activity_search">חפוש</string>
+    <string name="ipm_login_activity_coordinator">מתאם</string>
+    <string name="ipm_login_activity_trap_name">שם מלכודת</string>
+    <string name="ipm_login_activity_trap_description">תיאור מלכודת</string>
+    <string name="ipm_login_activity_error_enter_name">אנא בחר שם הלקוח</string>
+    <string name="ipm_login_activity_trap_name_error">שם מלכודת הוא שדה חובה</string>
+    <string name="ipm_login_activity_site_error">אנא בחר שם האתר</string>
+    <string name="ipm_login_activity_coordinator_error">אנא בחר מתאם</string>
+    <string name="ipm_login_activity_error_get_ipm_clients">Failed to get to IPM square clients list, please make sure you are registered with your system administrator and then try again</string>
+
+
+
+    <string name="button_settings_activity_edit_name_dialog">הכנס שם חדש</string>
+    <string name="button_settings_activity_description_dialog">הכנס תיאור חדש</string>
+    <string name="login_activity_phone_number_is_empty">מספר טלפון ריק</string>
+    <string name="connected_notification_message">לחצו כאן כדי לחזור לאפלקציית IPM Square</string>
+    <string name="tap_to_setup_your_tap">לחצו כאן על מנת לסיים את תהליך ההתקנה</string>
+    <string name="no_actions">לא מוגדר</string>
+    <string name="please_click_the_square_s_button_once_to_activate_the_trap">לחצו על הכפתור האמצעי של המלכודת פעם אחת על מנת להפעיל אותה</string>
+    <string name="i_have_client_wifi_network">יש ברשותי רשת WiFi של הלקוח</string>
+    <string name="i_have_a_dedicated_router">יש ברשותי נתב ייעודי</string>
+
+</resources>

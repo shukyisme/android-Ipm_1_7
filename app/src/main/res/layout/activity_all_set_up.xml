@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="me.kwik.square.AllSetUpActivity"
+    android:background="@color/kwik_me_screen_background_color">
+
+    <TextView
+        android:id="@+id/all_set_up_activity_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/kwik_me_text_color_when_background_white"
+        android:drawablePadding="8dp"
+        android:layout_gravity="center_horizontal"/>
+
+
+    <TextView
+        android:id="@+id/all_set_up_activity_click_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/all_set_up_activity_click"
+        android:textStyle="bold"
+        android:layout_below="@+id/all_set_up_activity_title_text_view"
+        android:textSize="15sp"
+        android:textColor="@color/kwik_me_text_color_when_background_white"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"/>
+
+
+    <VideoView
+        android:id="@+id/video_player_view"
+        android:layout_marginTop="50dp"
+        android:layout_width="205dp"
+        android:layout_height="205dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/all_set_up_you_can_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/all_set_up_activity_you_can_always"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="@color/kwik_me_text_color_when_background_white"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

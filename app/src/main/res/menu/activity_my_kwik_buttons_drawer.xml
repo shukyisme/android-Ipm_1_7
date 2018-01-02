@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_personal_details"
+            android:icon="@drawable/personal_details_drawer_icon"
+            android:title="@string/my_buttons_activity_nav_menu_personal_details" />
+        <item
+            android:id="@+id/nav_order_history"
+            android:icon="@drawable/order_history_drawer_icon"
+            android:title="@string/my_buttons_activity_nav_menu_order_history"
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_change_language"
+            android:icon="@drawable/language_drawer_icon"
+            android:title="@string/my_kwik_buttons_activity_nav_menu_change_language"/>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="@string/my_buttons_activity_nav_menu_communicate">
+            <menu>
+                <item
+                    android:id="@+id/nav_send"
+                    android:icon="@drawable/send_feedback_drawer_icon"
+                    android:title="@string/my_buttons_nav_menu_send_feedback" />
+                <item
+                    android:id="@+id/nav_need_help"
+                    android:icon="@drawable/help_drawer_icon"
+                    android:title="@string/need_help" />
+            </menu>
+        </item>
+    </group>
+    <group  android:checkableBehavior="single"
+
+        >
+
+    </group>
+    <group
+        android:checkableBehavior="single"
+           >
+        <item
+            android:title="" />
+        <item
+            android:title="" />
+        <item
+            android:title="" />
+    </group>
+
+    <group android:id="@+id/logout_group"
+           android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout_drawer_icon"
+                    android:title="@string/log_out" />
+    </group>
+
+</menu>

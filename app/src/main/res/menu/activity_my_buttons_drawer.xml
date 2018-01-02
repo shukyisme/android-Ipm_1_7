@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/my_button_activity_side_menu_main_group">
+        <item
+            android:id="@+id/nav_my_button"
+            android:icon="@drawable/my_buttons__button_icon"
+            android:title="@string/my_buttons_activity_nav_menu_my_buttons" />
+        <item
+            android:id="@+id/nav_personal_details"
+            android:icon="@drawable/my_buttons__personal_details"
+            android:title="@string/my_buttons_activity_nav_menu_personal_details" />
+        <item
+            android:id="@+id/nav_order_history"
+            android:icon="@drawable/my_buttons__history_icon"
+            android:title="@string/my_buttons_activity_nav_menu_order_history" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/my_buttons_activity_nav_menu_settings" />
+    </group>
+
+    <group android:checkableBehavior="single">
+    <item android:title="@string/my_buttons_activity_nav_menu_communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/my_buttons_nav_menu_send_feedback" />
+            <item
+                android:id="@+id/nav_need_help"
+                android:icon="@drawable/my_buttons__need_help"
+                android:title="@string/need_help" />
+        </menu>
+    </item>
+    </group>
+    <group android:checkableBehavior="single">
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout"
+                android:title="@string/log_out" />
+        </menu>
+    </item>
+    </group>
+
+</menu>

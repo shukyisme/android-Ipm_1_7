@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    
+    <TextView
+        android:id="@+id/smartNetworkDialogTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/smart_network_dialog_title"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/smartNetworkDialogSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/smart_network_dialog_sub_title"
+        android:textSize="20sp" />
+    
+    <Button
+        android:id="@+id/smartNetworkDialogNextButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/kwik_me_button_background_color"
+        android:includeFontPadding="true"
+        android:text="@string/wifi_settings"
+        android:textColor="@color/kwik_me_text_white"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/smartNetworkDialogimageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/smart_network" />
+</LinearLayout>

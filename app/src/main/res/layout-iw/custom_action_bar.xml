@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/kwik_me_dark_blue">
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="start|bottom"
+        android:layout_gravity="bottom">
+    <TextView
+        android:id="@+id/base_activity_action_bar_prev_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/base_activity_back"
+        android:background="@color/kwik_me_dark_blue"
+        android:textColor="@color/kwik_me_white"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:drawableRight="@drawable/arrow_next"
+        android:drawablePadding="@dimen/action_bar_arrow_icon_padding"
+        android:layout_marginBottom="2dp"
+        android:textSize="@dimen/action_bar_arrow_text_size"
+        android:textStyle="bold"
+        />
+        <ProgressBar
+            android:id="@+id/base_activity_action_bar_prev_progress_bar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/base_activity_action_bar_title"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/action_bar_title_text_size"
+        android:text=""
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:textColor="@color/kwik_me_text_white"
+        />
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/base_activity_action_bar_next_progress_bar"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/base_activity_action_bar_right_logo"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/header_right_logo"
+            android:layout_marginEnd="12dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>

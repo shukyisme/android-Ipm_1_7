@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_trap_details2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="me.kwik.square.TrapDetailsActivity">
+
+    <RelativeLayout
+        android:id="@+id/trap_details_activity_RelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/trap_details_background"
+        android:elevation="2dp">
+
+        <!-- header -->
+        <LinearLayout
+            android:id="@+id/trap_details_activity_header_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|start"
+                android:text="Trap details"
+                android:textColor="@color/kwik_me_white"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:layout_weight="1"
+                    android:background="#FFB5BBC5"
+                    android:elevation="0dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/slice" />
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:layout_weight="0.8"
+                    android:background="#FFB5BBC5"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/delete" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="540dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="42dp" />
+
+        <!-- Image, name -->
+        <LinearLayout
+            android:id="@+id/trap_details_activity_image_and_description_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:src="@drawable/kwik_orange" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/trap_details_activity_name_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:text="ttttttt" />
+
+                    <EditText
+                        android:id="@+id/trap_details_activity_name_EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@drawable/rectangle_2_vd"
+                        android:hint="Enter description"
+                        android:paddingStart="2dp"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/trap_details_activity_finish_editing_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="end"
+                    android:onClick="finishEditingClick"
+                    android:text="Finish Editing"
+                    android:textColor="#FF256BA7"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/trap_details_activity_edit_ImageButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/kwik_me_white"
+                android:onClick="editClicked"
+                android:paddingEnd="15dp"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/clients1" />
+        </LinearLayout>
+
+        <!-- Separator -->
+        <View
+            android:id="@+id/separator1"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/trap_details_activity_image_and_description_LinearLayout"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="#FFC4D0D5" />
+
+        <!-- Status -->
+        <LinearLayout
+            android:id="@+id/trap_details_activity_status_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator1"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Status: "
+                android:textColor="#FFB5BBC5"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Trap alert"
+                android:textColor="#FFF62C44"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+        <!-- Separator -->
+        <View
+            android:id="@+id/separator2"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/trap_details_activity_status_LinearLayout"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="#FFC4D0D5" />
+        <!-- Alert time -->
+        <LinearLayout
+            android:id="@+id/trap_details_activity_alert_time_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator2"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Alert Time: "
+                android:textColor="#FFB5BBC5"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Sep 23, 2017 5pm"
+                android:textColor="#4A4A4A"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+        <!-- Separator -->
+        <View
+            android:id="@+id/separator3"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/trap_details_activity_alert_time_LinearLayout"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="#FFC4D0D5" />
+        <!-- Last communication -->
+        <LinearLayout
+            android:id="@+id/trap_details_activity_Last_communication_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator3"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Last communication: "
+                android:textColor="#FFB5BBC5"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="16:23 hours ago"
+                android:textColor="#4A4A4A"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+        <!-- Separator -->
+        <View
+            android:id="@+id/separator4"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/trap_details_activity_Last_communication_LinearLayout"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="#FFC4D0D5" />
+        <!-- Battery level -->
+        <LinearLayout
+            android:id="@+id/trap_details_activity_Battery_Level_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator4"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Battery level: "
+                android:textColor="#FFB5BBC5"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Good"
+                android:textColor="#4A4A4A"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+        <!-- Separator -->
+        <View
+            android:id="@+id/separator5"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/trap_details_activity_Battery_Level_LinearLayout"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="#FFC4D0D5" />
+        <!-- Setup date -->
+        <LinearLayout
+            android:id="@+id/trap_details_activity_setup_date_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator5"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Setup date: "
+                android:textColor="#FFB5BBC5"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="Sep 7, 2017"
+                android:textColor="#4A4A4A"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+        <!-- Separator -->
+        <View
+            android:id="@+id/separator6"
+            android:layout_width="match_parent"
+            android:layout_height="0.25dp"
+            android:layout_below="@+id/trap_details_activity_setup_date_LinearLayout"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="#FFC4D0D5" />
+        <!-- Description -->
+        <LinearLayout
+            android:id="@+id/trap_details_activity_description_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/separator6"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/separator6"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="Description: "
+                    android:textColor="#FFB5BBC5"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/trap_details_activity_description_edit_ImageButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/kwik_me_white"
+                    android:onClick="editDescriptionClicked"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/clients1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/trap_details_activity_edit_description_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:text="ttttttt" />
+
+                    <EditText
+                        android:id="@+id/trap_details_activity_edit_description_EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="@drawable/rectangle_2_vd"
+                        android:hint="Enter description"
+                        android:paddingStart="2dp"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/trap_details_activity_description_finish_editing_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="10dp"
+                    android:gravity="end"
+                    android:onClick="finishEditingDescriptionClick"
+                    android:text="Finish Editing"
+                    android:textColor="#FF256BA7"
+                    android:visibility="invisible" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

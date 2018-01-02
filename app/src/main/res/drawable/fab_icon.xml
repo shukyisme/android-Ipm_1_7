@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@drawable/add_new_button_plus" android:left="30dp" android:right="170dp" android:top="50dp" android:bottom="50dp"/>
+    <item android:drawable="@drawable/add_new_button_no_plus" android:left="100dp" />
+</layer-list>
