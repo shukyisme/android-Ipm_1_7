@@ -73,13 +73,13 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="21dp"
-        android:hint="User name"
+        android:hint="Email"
         android:maxLines="1"
         android:inputType="textEmailAddress"
         android:drawablePadding="10dp"
         android:paddingStart="10dp"
         android:background="@drawable/rectangle_2_vd"
-        android:drawableLeft="@drawable/rectangle_5"
+        android:drawableLeft="@drawable/email_v2"
 
         />
         <View
@@ -100,7 +100,7 @@
         android:inputType="text"
         android:hint="Password"
         android:background="@drawable/rectangle_2_vd"
-        android:drawableLeft="@drawable/rectangle_4"
+        android:drawableLeft="@drawable/password"
 
         />
         <View

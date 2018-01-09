@@ -74,14 +74,23 @@
         </LinearLayout>
 
 
-
-        <VideoView
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/video_player_view"
-            android:layout_width="@dimen/good_job_video"
-            android:layout_height="@dimen/good_job_video"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
+            android:src="@drawable/great_job"
+            android:background="@android:color/transparent"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentEnd="true" />
+        <!--/>-->
+        <!--<VideoView-->
+            <!--android:id="@+id/video_player_view"-->
+            <!--android:layout_width="@dimen/good_job_video"-->
+            <!--android:layout_height="@dimen/good_job_video"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerHorizontal="true" />-->
 
     </RelativeLayout>
 

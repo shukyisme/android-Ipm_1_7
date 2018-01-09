@@ -65,27 +65,6 @@ public class GoodJobActivity extends BaseActivity {
         mActionBarTitle.setText(R.string.good_job_activity_title);
         mApp = (Application) getApplication();
 
-        video_player_view = (VideoView) findViewById(R.id.video_player_view);
-        media_Controller = new MediaController(this);
-        dm = new DisplayMetrics();
-        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int height = dm.heightPixels;
-        int width = dm.widthPixels;
-        video_player_view.setMinimumWidth(width);
-        video_player_view.setMinimumHeight(height);
-        video_player_view.setMediaController(media_Controller);
-        media_Controller.setVisibility(View.GONE);
-        video_player_view.setVideoPath("android.resource://" + getPackageName() + "/"
-                + R.raw.comp_1_3);
-        video_player_view.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-                video_player_view.start();
-
-            }
-        });
-
         Utils.playAudioFile(this, "great_job",0,5);
 
         try {

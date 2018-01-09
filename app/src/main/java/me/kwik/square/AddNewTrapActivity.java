@@ -234,7 +234,6 @@ public class AddNewTrapActivity extends BaseActivity {
 //            return;
 //        }
 //
-//
 //        Intent i = new Intent(AddNewTrapActivity.this,WiFiSelectionActivity.class);
 //        startActivity(i);
     }

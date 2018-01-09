@@ -29,7 +29,7 @@
   <color name="kwik_me_blue_text_color">#2a6ea9</color>
   <color name="kwik_me_error_dialog_back_ground">#256ba7</color>
   <color name="kwik_me_blue_back_ground">#256ba7</color>
-  <color name="kwik_me_gray_back_ground">#eeeeee</color>
+  <color name="kwik_me_gray_back_ground">#ffffff</color>
   <color name="kwik_me_menu_item_text_color">#6d6d6d</color>
   <color name="kwik_me_menu_item_text_color_50_alpha">#f2f2f2</color>
   <color name="kwik_me_menu_group_item_text_color">#6d6d6d6d</color>
