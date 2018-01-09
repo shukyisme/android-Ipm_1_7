@@ -435,6 +435,16 @@ public final class Application extends android.app.Application {
         return mClients;
     }
 
+    public IpmClient getClient(String id){
+
+        for(IpmClient c:mClients){
+            if(c.getId().trim().equals(id.trim())){
+                return c;
+            }
+        }
+        return null;
+    }
+
     public void setmClients(List<IpmClient> mClients) {
         this.mClients = mClients;
     }

@@ -39,14 +39,14 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/create_client_activity_name_EditText"
+                    android:id="@+id/create_client_activity_client_name_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_2_vd"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/client_name"
                     android:hint="Client name"
-                    android:paddingStart="2dp" />
+                    android:paddingStart="10dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -74,14 +74,14 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/site_autoCompleteTextView"
+                    android:id="@+id/create_client_activity_client_email_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_2_vd"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/email_v2"
                     android:hint="E-mail"
-                    android:paddingStart="2dp" />
+                    android:paddingStart="10dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -116,7 +116,7 @@
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/client_address"
                     android:hint="Client address "
-                    android:paddingStart="2dp" />
+                    android:paddingStart="10dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -152,7 +152,7 @@
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/contact_person"
                     android:hint="Contact Person "
-                    android:paddingStart="2dp" />
+                    android:paddingStart="10dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -188,7 +188,7 @@
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/phone_number"
                     android:hint="Phone number "
-                    android:paddingStart="2dp" />
+                    android:paddingStart="10dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -223,7 +223,7 @@
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/rectangle_4"
                     android:hint="Enter description"
-                    android:paddingStart="2dp" />
+                    android:paddingStart="10dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -257,7 +257,6 @@
                 android:layout_marginLeft="9dp"
                 android:layout_marginRight="9dp"
                 android:background="@drawable/start_button_selector"
-                android:onClick="onCreateClientClick"
                 android:text="Create Client"
                 android:textSize="24sp" />
         </LinearLayout>

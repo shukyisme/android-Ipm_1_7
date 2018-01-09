@@ -95,7 +95,7 @@
     <!-- My Buttons Activity -->
     <string name="my_buttons_activity_exit_dialog_title">Closing</string>
     <string name="my_buttons_activity_exit_dialog_message">Are you sure you want to exit?</string>
-    <string name="my_buttons_activity_serial_number">Square serial Number :</string>
+    <string name="my_buttons_activity_serial_number">Square id Number :</string>
     <string name="my_buttons_activity_click_to_add_button">Press to add a trap</string>
     <string name="my_buttons_nav_menu_send_feedback">Send FeedBack</string>
     <string name="my_buttons_activity_nav_menu_communicate">Communicate</string>
@@ -143,8 +143,8 @@
 
     <!-- Good Job Activity -->
     <string name="good_job_activity_good_job">Great Job!</string>
-    <string name="good_job_activity_the_button_is_successfully_connected">The Trap is Successfully Connected.</string>
-    <string name="good_job_activity_button_serial_number">Trap serial number:</string>
+    <string name="good_job_activity_the_button_is_successfully_connected">Now all you need to do is\nto activate the trap by\npressing the trap button\nand make sure you get a\nconfirmation message to\nyour phone.</string>
+    <string name="good_job_activity_button_serial_number">Serial number:</string>
     <string name="good_job_activity_now">The Trap is now connected to network successfully and will operate on this network only</string>
     <string name="good_job_activity_kwik_order">Next</string>
 
@@ -239,9 +239,9 @@
     <string name="wifi_selection_activity_title">Wi-Fi Selection</string>
     <string name="wifi_selection_activity_question">Do you have a dedicated\nrouter device, or do you use the\nclient WiFi network?</string>
     <string name="add_serial_manually_activity_title">Connect the trap</string>
-    <string name="add_serial_manually_enter_number_request">In order to connect the trap, Please enter the square serial number located on the back of the square</string>
-    <string name="add_serial_manually_activity_open_dialog_button">Enter serial number</string>
-    <string name="enter_serial_number_dialog_edit_text_hint">Type here the serial number</string>
+    <string name="add_serial_manually_enter_number_request">In order to connect the trap, Please enter the square id number located on the back of the square</string>
+    <string name="add_serial_manually_activity_open_dialog_button">Enter id number</string>
+    <string name="enter_serial_number_dialog_edit_text_hint">Type here the id number</string>
     <string name="enter_serial_number_dialog_title">Enter Square number</string>
     <string name="enter_serial_number_dialog_submit_button">SUBMIT</string>
     <string name="enter_serial_number_dialog_error_header">Serial Number Error</string>
@@ -276,6 +276,7 @@
     <string name="i_have_client_wifi_network">I have client wifi network</string>
     <string name="i_have_a_dedicated_router">I have a dedicated router</string>
     <string name="title_activity_trap_details">TrapDetailsActivity</string>
+    <string name="need_help_"><u>Need help?</u></string>
 
 
 </resources>

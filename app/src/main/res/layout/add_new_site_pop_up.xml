@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add a new site"
+        android:paddingTop="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/lapislazuli"
+        android:textSize="22sp"
+        android:padding="10dp"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add a new site to:"
+        android:textColor="@color/lavendergray"
+        android:textSize="18sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:id="@+id/new_site_pop_up_client_name_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="McDonald's Turnpike"
+        android:textColor="@color/outerspace"
+        android:textSize="20sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Site name:"
+        android:textColor="@color/lavendergray"
+        android:textSize="18sp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"/>
+
+    <EditText
+        android:id="@+id/new_site_pop_up_site_name_EditText"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/rectangle_2_vd"
+        android:layout_margin="10dp"
+        android:hint="Enter the name of the site"
+        android:paddingStart="2dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginBottom="20dp">
+        <TextView
+            android:id="@+id/new_site_pop_up_cancel_TextView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="CANCEL"
+            android:textColor="@color/pumpkin"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/new_site_pop_up_add_new_TextView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:layout_height="wrap_content"
+            android:text="ADD NEW SITE"
+            android:textStyle="bold"
+            android:textColor="@color/pumpkin"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

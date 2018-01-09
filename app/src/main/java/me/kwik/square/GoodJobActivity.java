@@ -4,14 +4,18 @@ import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.google.android.gms.analytics.HitBuilders;
 
@@ -32,6 +36,8 @@ import me.kwik.utils.Logger;
 import me.kwk.utils.DownloadImageTask;
 import me.kwk.utils.Utils;
 
+import static me.kwik.square.R.id.video_player_view;
+
 public class GoodJobActivity extends BaseActivity {
 
     private final String TAG = GoodJobActivity.class.getSimpleName();
@@ -43,6 +49,9 @@ public class GoodJobActivity extends BaseActivity {
     private KwikProject mKwikProject;
     private KwikButtonDevice mKwikButton;
     private TextView mSerialNumberTextView;
+    private VideoView video_player_view;
+    private MediaController media_Controller;
+    private DisplayMetrics dm;
 
 
     @Override
@@ -55,6 +64,27 @@ public class GoodJobActivity extends BaseActivity {
 
         mActionBarTitle.setText(R.string.good_job_activity_title);
         mApp = (Application) getApplication();
+
+        video_player_view = (VideoView) findViewById(R.id.video_player_view);
+        media_Controller = new MediaController(this);
+        dm = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int height = dm.heightPixels;
+        int width = dm.widthPixels;
+        video_player_view.setMinimumWidth(width);
+        video_player_view.setMinimumHeight(height);
+        video_player_view.setMediaController(media_Controller);
+        media_Controller.setVisibility(View.GONE);
+        video_player_view.setVideoPath("android.resource://" + getPackageName() + "/"
+                + R.raw.comp_1_3);
+        video_player_view.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+                video_player_view.start();
+
+            }
+        });
 
         Utils.playAudioFile(this, "great_job",0,5);
 
@@ -71,7 +101,7 @@ public class GoodJobActivity extends BaseActivity {
 
         try {
             mKwikDeviceButtonId = getIntent().getStringExtra("buttonId");
-            mSerialNumberTextView.setText(mKwikDeviceButtonId);
+            mSerialNumberTextView.setText("Serial number: " + mKwikDeviceButtonId);
         } catch (NullPointerException e) {
             Logger.e(TAG, "%s", e.getMessage());
         }

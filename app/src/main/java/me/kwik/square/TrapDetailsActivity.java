@@ -6,8 +6,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.kwik.bl.KwikDevice;
+import me.kwik.bl.KwikMe;
+import me.kwik.bl.KwikServerError;
+import me.kwik.listeners.GetKwikDevicesListener;
+import me.kwik.utils.Logger;
+import me.kwk.utils.Utils;
 
 public class TrapDetailsActivity extends BaseActivity {
 
@@ -41,6 +49,9 @@ public class TrapDetailsActivity extends BaseActivity {
     private static int NAME_STATUS = EDITED_STATUS;
     private static int DESCRIPTION_STATUS = EDITED_STATUS;
 
+    private String mSerial;
+    private KwikDevice mTrap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +61,44 @@ public class TrapDetailsActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSerial = getIntent().getStringExtra("serial_number");
+        //TODO: remove comment after fixing the api
+//        if(mSerial == null){
+//            showOneButtonErrorDialog("","UnKnown error, Please go back and try again");
+//            return;
+//        }
+        showProgressBar();
+        KwikMe.getKwikDevices(mSerial,null, null, new GetKwikDevicesListener() {
+            @Override
+            public void getKwikDevicesListenerDone(List<KwikDevice> buttons) {
+                hideProgressBar();
+                mTrap = buttons.get(0);
+                if (buttons == null || buttons.size() == 0) {
+                    showOneButtonErrorDialog("","Button was not found");
+                    //Utils.playAudioFile( ClientOverviewActivity.this, "add_first_button", 0, 5 );
+                    return;
+                }
+                update();
+            }
+
+            @Override
+            public void getKwikDevicesListenerError(KwikServerError error) {
+                hideProgressBar();
+                showOneButtonErrorDialog("",error.getMessage());
+            }
+        });
+    }
+
+    private void update() {
+        mNameEditText.setText(mTrap.getName());
+        mNameTextView.setText(mTrap.getName());
+
+//        Logger.e("EEEEEE",mTrap.getName());
+
+    }
 
     public void editClicked(View view) {
         if(NAME_STATUS == EDITED_STATUS){

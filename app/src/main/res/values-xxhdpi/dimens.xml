@@ -34,5 +34,6 @@
     <!-- Button Settings Activity -->
     <dimen name="address_tab_height">110dp</dimen>
     <dimen name="address_item_height">60dp</dimen>
+    <dimen name="good_job_video">250dp</dimen>
 
 </resources>

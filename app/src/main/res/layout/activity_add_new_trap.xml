@@ -9,7 +9,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:paddingTop="@dimen/activity_vertical_margin"
@@ -41,6 +40,8 @@
                     android:drawablePadding="5dp"
                     android:drawableStart="@drawable/add_client"
                     android:gravity="end"
+                    android:paddingTop="10dp"
+                    android:paddingStart="10dp"
                     android:onClick="createNewClientClick"
                     android:text="New client"
                     android:textColor="#FF256BA7" />
@@ -95,13 +96,16 @@
                     android:text="@string/ipm_login_activity_site" />
 
                 <TextView
+                    android:id="@+id/add_new_trap_activity_new_site_TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
-                    android:drawableStart="@drawable/add_client"
+                    android:drawableStart="@drawable/add_client1"
                     android:gravity="end"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
                     android:text="New site"
-                    android:textColor="#FF256BA7" />
+                    android:textColor="@color/silver" />
             </LinearLayout>
 
             <LinearLayout
@@ -114,12 +118,12 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="2dp"
                     android:gravity="center_vertical"
-                    android:text="*"
+                    android:text=""
                     android:textColor="#FFF62C44"
                     android:textSize="20sp" />
 
                 <AutoCompleteTextView
-                    android:id="@+id/site_autoCompleteTextView"
+                    android:id="@+id/add_new_trap_activity_new_site_AutoCompleteTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_2_vd"
@@ -175,7 +179,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/trap_name_editText"
+                    android:id="@+id/add_new_trap_activity_trap_name_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_2_vd"
@@ -267,7 +271,7 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/log_in_activity_next_button"
+                android:id="@+id/add_new_trap_activity_next_Button"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginLeft="9dp"
@@ -276,6 +280,23 @@
                 android:onClick="onNextClick"
                 android:text="@string/base_activity_next"
                 android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/need_help_"
+                android:textColor="#B1B4B9"
+                android:textSize="18sp"
+                android:padding="5dp"
+                />
         </LinearLayout>
 
     </RelativeLayout>

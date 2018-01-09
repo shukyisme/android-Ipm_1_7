@@ -105,32 +105,7 @@ public class ClientsActivity extends BaseActivity
         setSupportActionBar( toolbar );
         ButterKnife.bind(this);
 
-        showProgressBar();
-        KwikMe.getClients(null, new GetClientsListener() {
-            @Override
-            public void getClientsDone(GetClientsResponse res) {
 
-                List<IpmClient> clients = new ArrayList<>();
-
-                for(IpmClient client: res.getClients()){
-                    clients.add(new IpmClient(client.getName()));
-                }
-
-                mclientsHeaderTextView.setText("Active clients: (" + res.getClients().size() + ")");
-                mClientsAdapter = new ClientsArrayAdapter(ClientsActivity.this,clients );
-
-                // Assign adapter to ListView
-                mClientsList.setAdapter(mClientsAdapter);
-                hideProgressBar();
-            }
-
-            @Override
-            public void getClientsError(KwikServerError error) {
-                hideProgressBar();
-                showOneButtonErrorDialog("",error.getMessage());
-
-            }
-        });
 
         handleIntent(getIntent());
 
@@ -187,10 +162,41 @@ public class ClientsActivity extends BaseActivity
         customNavigationView( navigationView );
     }
 
+    public void  addNewTrapClick(View v){
+        if (Utils.checkVolumeLevel( ClientsActivity.this ) != null) {
+            return;
+        }
+        Intent i = new Intent( ClientsActivity.this, AddNewTrapActivity.class );
+        i.putExtra( "sender", ClientsActivity.class.getSimpleName() );
+        i.putExtra("name", mApp.getUser().getFirstName());
+        startActivity( i );
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        updateList();
+        showProgressBar();
+        KwikMe.getClients(null, new GetClientsListener() {
+            @Override
+            public void getClientsDone(GetClientsResponse res) {
+                mApp.setmClients(res.getClients());
+
+                mclientsHeaderTextView.setText("Active clients: (" + res.getClients().size() + ")");
+                mClientsAdapter = new ClientsArrayAdapter(ClientsActivity.this,res.getClients() );
+
+                // Assign adapter to ListView
+                mClientsList.setAdapter(mClientsAdapter);
+                hideProgressBar();
+            }
+
+            @Override
+            public void getClientsError(KwikServerError error) {
+                hideProgressBar();
+                showOneButtonErrorDialog("",error.getMessage());
+
+            }
+        });
+        //updateList();
     }
 
     @Override
@@ -457,87 +463,89 @@ public class ClientsActivity extends BaseActivity
 
         String googleAnalyticsUserAction = "Side menu click ";
         if (id == R.id.nav_personal_details) {
-            Intent i = new Intent( this, UpdatePersonalDetailsActivity.class );
-            startActivity( i );
+            selectedOption = "Personal Details";
+            //Intent i = new Intent( this, UpdatePersonalDetailsActivity.class );
+            //startActivity( i );
         } else if (id == R.id.nav_order_history) {
             googleAnalyticsUserAction += "Order History";
             selectedOption = getString( R.string.my_buttons_activity_nav_menu_order_history );
 
         } else if (id == R.id.nav_change_language) {
             googleAnalyticsUserAction += "Change Language";
-            AlertDialog.Builder adb;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                adb = new AlertDialog.Builder( this, android.R.style.Theme_Material_Light_Dialog_Alert );
-            } else {
-                adb = new AlertDialog.Builder( this );
-            }
-            CharSequence items[] = new CharSequence[]{getString( R.string.english ), getString( R.string.hebrew )};//, getString( R.string.russian ), getString( R.string.french ), getString( R.string.japanese ), getString( R.string.portuguese )};
-            int selected = 0;
-            if (KwikMe.LOCAL.equals( "he_IL" )) {
-                selected = 1;
-            } else if (KwikMe.LOCAL.equals( "ru_RU" )) {
-                selected = 2;
-            } else if (KwikMe.LOCAL.equals( "fr_FR" )) {
-                selected = 3;
-            } else if (KwikMe.LOCAL.equals( "ja_JP" )) {
-                selected = 4;
-            } else if (KwikMe.LOCAL.equals( "pt_BR" )) {
-                selected = 5;
-            }
-
-            adb.setSingleChoiceItems( items, selected, new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface d, int n) {
-                    mApp.setPref( Application.PrefType.LOCALE, String.valueOf( n ) );
-                    if (n == 5) {
-                        Utils.setLocale( getApplicationContext(), "pt" );
-                        KwikMe.LOCAL = "pt_BR";
-                    } else if (n == 4) {
-                        Utils.setLocale( getApplicationContext(), "ja" );
-                        KwikMe.LOCAL = "ja_JP";
-                    } else if (n == 3) {
-                        Utils.setLocale( getApplicationContext(), "fr" );
-                        KwikMe.LOCAL = "fr_FR";
-                    } else if (n == 2) {
-                        Utils.setLocale( getApplicationContext(), "ru" );
-                        KwikMe.LOCAL = "ru_RU";
-                    } else if (n == 1) {
-                        Utils.setLocale( getApplicationContext(), "iw" );
-                        KwikMe.LOCAL = "he_IL";
-                    } else if (n == 0) {
-                        Utils.setLocale( getApplicationContext(), "en" );
-                        KwikMe.LOCAL = "en_US";
-                    }
-
-                    //Update the server
-                    if (mApp.getUser() != null) {
-                        mApp.getUser().setLocale( KwikMe.LOCAL );
-                        KwikMe.updateKwikUser( mApp.getUser(), new UpdateKwikUserListener() {
-                            @Override
-                            public void updateKwikUserDone(KwikUser user) {
-
-
-                            }
-
-                            @Override
-                            public void updateKwikUserError(KwikServerError error) {
-                                showOneButtonErrorDialog( getString( R.string.oops ), error.getMessage() );
-                            }
-                        } );
-                    }
-                }
-
-            } );
-            adb.setNegativeButton( android.R.string.cancel, null );
-            adb.setPositiveButton( android.R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    recreate();
-                }
-            } );
-            adb.setTitle( R.string.my_buttons_activity_settings_select_language );
-            adb.show();
+            selectedOption = "Change Language";
+//            AlertDialog.Builder adb;
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                adb = new AlertDialog.Builder( this, android.R.style.Theme_Material_Light_Dialog_Alert );
+//            } else {
+//                adb = new AlertDialog.Builder( this );
+//            }
+//            CharSequence items[] = new CharSequence[]{getString( R.string.english ), getString( R.string.hebrew )};//, getString( R.string.russian ), getString( R.string.french ), getString( R.string.japanese ), getString( R.string.portuguese )};
+//            int selected = 0;
+//            if (KwikMe.LOCAL.equals( "he_IL" )) {
+//                selected = 1;
+//            } else if (KwikMe.LOCAL.equals( "ru_RU" )) {
+//                selected = 2;
+//            } else if (KwikMe.LOCAL.equals( "fr_FR" )) {
+//                selected = 3;
+//            } else if (KwikMe.LOCAL.equals( "ja_JP" )) {
+//                selected = 4;
+//            } else if (KwikMe.LOCAL.equals( "pt_BR" )) {
+//                selected = 5;
+//            }
+//
+//            adb.setSingleChoiceItems( items, selected, new DialogInterface.OnClickListener() {
+//
+//                @Override
+//                public void onClick(DialogInterface d, int n) {
+//                    mApp.setPref( Application.PrefType.LOCALE, String.valueOf( n ) );
+//                    if (n == 5) {
+//                        Utils.setLocale( getApplicationContext(), "pt" );
+//                        KwikMe.LOCAL = "pt_BR";
+//                    } else if (n == 4) {
+//                        Utils.setLocale( getApplicationContext(), "ja" );
+//                        KwikMe.LOCAL = "ja_JP";
+//                    } else if (n == 3) {
+//                        Utils.setLocale( getApplicationContext(), "fr" );
+//                        KwikMe.LOCAL = "fr_FR";
+//                    } else if (n == 2) {
+//                        Utils.setLocale( getApplicationContext(), "ru" );
+//                        KwikMe.LOCAL = "ru_RU";
+//                    } else if (n == 1) {
+//                        Utils.setLocale( getApplicationContext(), "iw" );
+//                        KwikMe.LOCAL = "he_IL";
+//                    } else if (n == 0) {
+//                        Utils.setLocale( getApplicationContext(), "en" );
+//                        KwikMe.LOCAL = "en_US";
+//                    }
+//
+//                    //Update the server
+//                    if (mApp.getUser() != null) {
+//                        mApp.getUser().setLocale( KwikMe.LOCAL );
+//                        KwikMe.updateKwikUser( mApp.getUser(), new UpdateKwikUserListener() {
+//                            @Override
+//                            public void updateKwikUserDone(KwikUser user) {
+//
+//
+//                            }
+//
+//                            @Override
+//                            public void updateKwikUserError(KwikServerError error) {
+//                                showOneButtonErrorDialog( getString( R.string.oops ), error.getMessage() );
+//                            }
+//                        } );
+//                    }
+//                }
+//
+//            } );
+//            adb.setNegativeButton( android.R.string.cancel, null );
+//            adb.setPositiveButton( android.R.string.yes, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    recreate();
+//                }
+//            } );
+//            adb.setTitle( R.string.my_buttons_activity_settings_select_language );
+//            adb.show();
 
         } else if (id == R.id.nav_send) {
             googleAnalyticsUserAction += "Feedback";
@@ -545,7 +553,8 @@ public class ClientsActivity extends BaseActivity
 
         } else if (id == R.id.nav_need_help) {
             googleAnalyticsUserAction += "Need Help";
-            Utils.showHelp( this );
+           // Utils.showHelp( this );
+            selectedOption = "Need help";
         } else if (id == R.id.nav_logout) {
             AlertDialog.Builder builder;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -952,7 +961,7 @@ public class ClientsActivity extends BaseActivity
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(ClientsActivity.this,ClientOverviewActivity.class);
-                    i.putExtra("client",values.get(position).getName());
+                    i.putExtra("client",values.get(position).getId());
                     startActivity(i);
                 }
             });

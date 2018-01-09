@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,15 +18,30 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.kwik.bl.KwikDevice;
+import me.kwik.bl.KwikMe;
+import me.kwik.bl.KwikServerError;
+import me.kwik.listeners.GetKwikDevicesListener;
 import me.kwik.utils.Logger;
+import me.kwk.utils.Utils;
 
 public class ClientOverviewActivity extends BaseActivity {
 
     @BindView(R.id.client_overview_activity_traps_ListView)
     ListView mTrapsList;
 
-    private String TAG = this.getClass().getSimpleName();
-    private TrapsArrayAdapter mTrapsAdapter;
+    @BindView(R.id.client_overview_activity_add_new_trap_LinearLayout)
+    LinearLayout mAddNewTrapLinearLayout;
+
+    @BindView(R.id.fab)
+    ImageButton mFab;
+
+    private Application             mApp;
+    private String                  mClientName;
+    private TrapsArrayAdapter       mTrapsAdapter;
+    private String                  mClientId;
+    private View.OnClickListener    mOnAddNewTrapClick;
+    private String                  TAG = this.getClass().getSimpleName();
+    private List<KwikDevice>        mTraps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +49,34 @@ public class ClientOverviewActivity extends BaseActivity {
         setContentView(R.layout.activity_client_overview);
         ButterKnife.bind(this);
 
-        mActionBarTitle.setText(getIntent().getStringExtra("client"));
+        mApp = (Application)getApplication();
 
-        mTrapsAdapter = new TrapsArrayAdapter(ClientOverviewActivity.this,null );
+        mClientId = getIntent().getStringExtra("client");
+        mClientName = mApp.getClient(mClientId).getName();
 
-        // Assign adapter to ListView
-        mTrapsList.setAdapter(mTrapsAdapter);
+        mActionBarTitle.setText(mClientName);
+
+
+
+        mOnAddNewTrapClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent( ClientOverviewActivity.this, AddNewTrapActivity.class );
+                i.putExtra( "sender", ClientOverviewActivity.class.getSimpleName() );
+                i.putExtra("name", mApp.getUser().getFirstName());
+                i.putExtra("client",mClientId);
+                startActivity( i );
+            }
+        };
+
+        mAddNewTrapLinearLayout.setOnClickListener( mOnAddNewTrapClick);
+        mFab.setOnClickListener(mOnAddNewTrapClick);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateList();
     }
 
     public class TrapsArrayAdapter extends ArrayAdapter<KwikDevice> {
@@ -56,21 +95,45 @@ public class ClientOverviewActivity extends BaseActivity {
                     .getSystemService( Context.LAYOUT_INFLATER_SERVICE );
             final View rowView = inflater.inflate( R.layout.traps_list_item, parent, false );
             TextView trapName = (TextView)rowView.findViewById(R.id.trap_item_name_TextView);
+            TextView siteName = (TextView)rowView.findViewById(R.id.trap_item_site_name_TextView);
+            TextView trapSerialNumber = (TextView)rowView.findViewById(R.id.trap_item_sn_TextView);
             ImageView trapImageView = (ImageView)rowView.findViewById(R.id.trap_item_image_ImageView);
             ImageView lowBatteryImageView = (ImageView)rowView.findViewById(R.id.trap_item_low_battery_ImageView);
-            if(position == 2){
-                trapImageView.setImageDrawable(getResources().getDrawable(R.drawable.ipm_button_ready_icon));
-                lowBatteryImageView.setVisibility(View.INVISIBLE);
+            trapName.setText(values.get(position).getName());
+            siteName.setText(values.get(position).getSiteName());
+
+            try {
+                trapSerialNumber.setText(values.get(position).getId());
+            }catch (NullPointerException e){
+                e.printStackTrace();
             }
 
-            if(position == 1){
-                lowBatteryImageView.setVisibility(View.INVISIBLE);
+            try {
+                if (!values.get(position).getStatus().equals("alert")) {
+                    trapImageView.setImageDrawable(getResources().getDrawable(R.drawable.ipm_button_ready_icon));
+                }
+            }catch (NullPointerException e){
+                e.printStackTrace();
             }
+
+            if(values.get(position).getBatteryStatus() != null && values.get(position).getBatteryStatus().equals("Good")){
+                lowBatteryImageView.setVisibility(View.INVISIBLE);
+            }else{
+                lowBatteryImageView.setVisibility(View.VISIBLE);
+            }
+
+            if(values.get(position).getBattery() > 5){
+                lowBatteryImageView.setVisibility(View.INVISIBLE);
+            }else{
+                lowBatteryImageView.setVisibility(View.VISIBLE);
+            }
+
 
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(ClientOverviewActivity.this,TrapDetailsActivity.class);
+                    i.putExtra("serial_number",values.get(position).getId());
                     startActivity(i);
                 }
             });
@@ -79,7 +142,30 @@ public class ClientOverviewActivity extends BaseActivity {
 
         @Override
         public int getCount() {
-            return 5;
+            return  this.values.size();
         }
+    }
+
+    private void updateList() {
+        showProgressBar();
+        KwikMe.getKwikDevices(null,null, null, new GetKwikDevicesListener() {
+            @Override
+            public void getKwikDevicesListenerDone(List<KwikDevice> buttons) {
+                hideProgressBar();
+                mTraps = buttons;
+                if (buttons == null || buttons.size() == 0) {
+                    Utils.playAudioFile( ClientOverviewActivity.this, "add_first_button", 0, 5 );
+                    return;
+                }
+                mTrapsAdapter = new TrapsArrayAdapter(ClientOverviewActivity.this,mTraps );
+                mTrapsList.setAdapter(mTrapsAdapter);
+            }
+
+            @Override
+            public void getKwikDevicesListenerError(KwikServerError error) {
+                hideProgressBar();
+                showOneButtonErrorDialog("",error.getMessage());
+            }
+        });
     }
 }
