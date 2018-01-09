@@ -9,4 +9,6 @@
     <dimen name="design_navigation_icon_size">18dp</dimen>
     <dimen name="design_navigation_icon_padding">18dp</dimen>
     <dimen name="text_view_17BC10B16746497A8CE1A57258A1A0F6_size">25.0sp</dimen>
+    <dimen name="client_details_labels_text_size">16sp</dimen>
+    <dimen name="client_details_values_text_size">18sp</dimen>
 </resources>

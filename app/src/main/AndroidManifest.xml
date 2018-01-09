@@ -202,10 +202,14 @@
         <activity
             android:name=".AddNewTrapActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".TrapDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CreateClientActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".TrapDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateClientActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ClientDetailsActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:id="@+id/activity_ipm_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="me.kwik.square.IpmLoginActivity">
+
+        <LinearLayout
+            android:id="@+id/client_details_activity_client_name_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ipm_login_activity_client_name"
+                android:textColor="@color/manatee"
+                android:textSize="@dimen/client_details_labels_text_size"
+                android:drawableStart="@drawable/client_name"
+                android:drawablePadding="10dp"/>
+            <TextView
+                android:id="@+id/client_details_activity_client_name_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/outerspace"
+                android:textSize="@dimen/client_details_values_text_size"
+                android:paddingTop="10dp"
+                android:layout_marginStart="20dp"
+                android:text="McDonald's Turnpike"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/client_details_activity_client_email_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/client_details_activity_client_name_layout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E-mail"
+                android:textSize="@dimen/client_details_labels_text_size"
+                android:textColor="@color/manatee"
+                android:drawableStart="@drawable/email_v2"
+                android:drawablePadding="10dp"/>
+            <TextView
+                android:id="@+id/client_details_activity_client_email_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/outerspace"
+                android:paddingTop="10dp"
+                android:layout_marginStart="20dp"
+                android:text="McDonald_Turnpike@gmail.com"
+                android:textSize="@dimen/client_details_values_text_size"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/client_details_activity_address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/client_details_activity_client_email_layout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Client address"
+                android:textSize="@dimen/client_details_labels_text_size"
+                android:textColor="@color/manatee"
+                android:drawableStart="@drawable/rectangle_51"
+                android:drawablePadding="10dp"/>
+            <TextView
+                android:id="@+id/client_details_activity_address_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/outerspace"
+                android:text="Turnpike BLVD 54241, Los-angles"
+                android:textSize="@dimen/client_details_values_text_size"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/client_details_activity_contact_person_LinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/client_details_activity_address_layout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/manatee"
+                android:text="Contact person"
+                android:textSize="@dimen/client_details_labels_text_size"
+                android:drawableStart="@drawable/contact_person"
+                android:drawablePadding="10dp"/>
+            <TextView
+                android:id="@+id/client_details_activity_contact_person_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/outerspace"
+                android:text="Jhon snow"
+                android:textSize="@dimen/client_details_values_text_size"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/client_details_activity_phone_number_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/client_details_activity_contact_person_LinearLayout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone number"
+                android:textColor="@color/manatee"
+                android:textSize="@dimen/client_details_labels_text_size"
+                android:drawableStart="@drawable/phone_number"
+                android:drawablePadding="10dp"/>
+            <TextView
+                android:id="@+id/client_details_activity_phone_number_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/outerspace"
+                android:text="050-73978245"
+                android:textSize="@dimen/client_details_values_text_size"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/client_details_activity_description_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/client_details_activity_phone_number_layout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textColor="@color/manatee"
+                android:textSize="@dimen/client_details_labels_text_size"
+                android:drawableStart="@drawable/rectangle_4"
+                android:drawablePadding="10dp"/>
+            <TextView
+                android:id="@+id/client_details_activity_description_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/outerspace"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim."
+                android:layout_marginStart="20dp"
+                android:textSize="@dimen/client_details_values_text_size"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

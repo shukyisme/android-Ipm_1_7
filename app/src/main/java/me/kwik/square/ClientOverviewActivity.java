@@ -35,6 +35,9 @@ public class ClientOverviewActivity extends BaseActivity {
     @BindView(R.id.fab)
     ImageButton mFab;
 
+    @BindView(R.id.client_overview_activity_client_details_three_dots_TextView)
+    TextView mClientDetailsThreeDotsTextView;
+
     private Application             mApp;
     private String                  mClientName;
     private TrapsArrayAdapter       mTrapsAdapter;
@@ -71,6 +74,15 @@ public class ClientOverviewActivity extends BaseActivity {
 
         mAddNewTrapLinearLayout.setOnClickListener( mOnAddNewTrapClick);
         mFab.setOnClickListener(mOnAddNewTrapClick);
+
+        mClientDetailsThreeDotsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ClientOverviewActivity.this,ClientDetailsActivity.class);
+                i.putExtra("client",mClientId);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
