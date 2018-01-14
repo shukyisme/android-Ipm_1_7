@@ -49,6 +49,55 @@ public class CreateClientActivity extends BaseActivity {
         mApp = (Application) getApplication();
         mActionBarTitle.setText("Create New Client");
 
+        mPhoneNumberEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mPhoneNumber = s.toString().trim();
+            }
+        });
+        mDescriptionEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mDescription = s.toString().trim();
+            }
+        });
+        mContactPersonEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mContactPerson = s.toString().trim();
+            }
+        });
+
         mClientNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -98,8 +147,10 @@ public class CreateClientActivity extends BaseActivity {
                     @Override
                     public void createNewClientDone(IpmClient client) {
                         hideProgressBar();
+                        mApp.getmClients().add(client);
                         Intent returnIntent = new Intent();
                         returnIntent.putExtra("result",client.getId());
+                        returnIntent.putExtra("name",mClientNameString);
                         setResult(Activity.RESULT_OK,returnIntent);
                         finish();
                     }

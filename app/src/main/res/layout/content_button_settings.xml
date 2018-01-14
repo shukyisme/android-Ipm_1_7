@@ -37,7 +37,7 @@
                 android:paddingTop="15dp"
                 android:layout_width="102dp"
                 android:layout_height="134dp"
-                android:src="@drawable/spinner"/>
+                android:src="@drawable/spinner_gif"/>
 
         </LinearLayout>
 

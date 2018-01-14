@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
 import me.kwik.data.IpmClient;
@@ -32,6 +33,7 @@ import me.kwik.rest.responses.GetClientsResponse;
 
 public class AddNewTrapActivity extends BaseActivity {
 
+    private final String TAG = this.getClass().getSimpleName();
     @BindView(R.id.client_name_AutoCompleteTextView)
     AutoCompleteTextView mClientNameAutoCompleteTextView;
 
@@ -146,6 +148,13 @@ public class AddNewTrapActivity extends BaseActivity {
             }
         });
 
+        mSiteAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mSelectedSite = (IpmClientSite)mSiteAutoCompleteTextView.getAdapter().getItem(position);
+            }
+        });
+
 
         mAddNewSiteTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,22 +229,26 @@ public class AddNewTrapActivity extends BaseActivity {
     }
 
     public void onNextClick(View v){
-        Intent i = new Intent(AddNewTrapActivity.this, GoodJobActivity.class);
-        i.putExtra("buttonId","1050766");
+        if(mSelectedClient == null){
+            mClientNameAutoCompleteTextView.setError("Select client");
+            return;
+        }
+
+        if(mTrapNameString == null || mTrapNameString.trim().length() == 0){
+            mTrapNameEditText.setError("Trap name is mandatory");
+            return;
+        }
+
+        KwikDevice button = new KwikDevice();
+        button.setClient(mSelectedClient.getId());
+        button.setSite(mSelectedSite.getId());
+        button.setName(mTrapNameString);
+
+
+
+        Intent i = new Intent(AddNewTrapActivity.this,WiFiSelectionActivity.class);
+        i.putExtra("button",button);
         startActivity(i);
-        finish();
-//        if(mSelectedClient == null){
-//            mClientNameAutoCompleteTextView.setError("Select client");
-//            return;
-//        }
-//
-//        if(mTrapNameString == null || mTrapNameString.trim().length() == 0){
-//            mTrapNameEditText.setError("Trap name is mandatory");
-//            return;
-//        }
-//
-//        Intent i = new Intent(AddNewTrapActivity.this,WiFiSelectionActivity.class);
-//        startActivity(i);
     }
 
     public void createNewClientClick(View view) {
@@ -249,7 +262,9 @@ public class AddNewTrapActivity extends BaseActivity {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 String result=data.getStringExtra("result");
-                mClientNameAutoCompleteTextView.setText(result);
+                mSelectedClient = mApp.getClient(result);
+                String name=data.getStringExtra("name");
+                mClientNameAutoCompleteTextView.setText(name);
                 mClientNameAutoCompleteTextView.dismissDropDown();
                 changeAddNewSiteTextView(true);
             }

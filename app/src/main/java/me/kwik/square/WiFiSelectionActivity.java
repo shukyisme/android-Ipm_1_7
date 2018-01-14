@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import me.kwik.bl.KwikDevice;
+import me.kwik.utils.Logger;
 import me.kwk.utils.Utils;
 
 public class WiFiSelectionActivity extends BaseActivity {
 
     String mName = null;
+    String TAG = this.getClass().getSimpleName();
+    KwikDevice mButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +23,10 @@ public class WiFiSelectionActivity extends BaseActivity {
         }catch (NullPointerException e){
             e.printStackTrace();
         }
+
+        Intent i = getIntent();
+        mButton = (KwikDevice) i.getParcelableExtra("button");
+
     }
 
     @Override
@@ -30,12 +38,14 @@ public class WiFiSelectionActivity extends BaseActivity {
     public void yesClicked(View yesButton){
         Intent i = new Intent(WiFiSelectionActivity.this, AddSerialNumberManuallyActivity.class);
         i.putExtra("name", mName);
+        i.putExtra("button",mButton);
         startActivity(i);
     }
 
     public void noClicked(View noButton){
         Intent i = new Intent(WiFiSelectionActivity.this, NetworkPasswordActivity.class);
         i.putExtra("name", mName);
+        i.putExtra("button",mButton);
         startActivity(i);
 
     }

@@ -9,17 +9,20 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
 import me.kwik.data.KwikButtonDevice;
 import me.kwik.data.KwikProject;
 import me.kwik.listeners.AttachUserListener;
+import me.kwik.listeners.CreateClientButtonListener;
 import me.kwik.listeners.GetProjectListener;
 import me.kwk.utils.Utils;
 
 public class AddSerialNumberManuallyActivity extends BaseActivity {
 
     private Application mApp;
+    private KwikDevice mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,9 @@ public class AddSerialNumberManuallyActivity extends BaseActivity {
 
         mActionBarTitle.setText(R.string.add_serial_manually_activity_title);
         mApp = (Application)getApplication();
+
+        Intent i = getIntent();
+        mButton = (KwikDevice) i.getParcelableExtra("button");
     }
 
     @Override
@@ -63,55 +69,20 @@ public class AddSerialNumberManuallyActivity extends BaseActivity {
                     return;
                 }
 
-                KwikButtonDevice button = new KwikButtonDevice();
-                button.setId(serialNumber);
-                button.setUser(KwikMe.USER_ID);
+                mButton.setId(serialNumber);
+                mButton.setSerial(serialNumber);
 
-                KwikMe.attachUser(button, new AttachUserListener() {
+                KwikMe.createClientButton(mButton.getClient(), mButton, new CreateClientButtonListener() {
                     @Override
-                    public void attachUserDone(KwikButtonDevice button) {
-                        final KwikButtonDevice finalButton = button;
-                        if(mApp.getButtons() == null){
-                            mApp.setButtons(new ArrayList<KwikButtonDevice>() );
-                        }
-                        if(mApp.getButton(serialNumber) == null) {
-
-                            mApp.getButtons().add(button);
-                        }else{
-                            mApp.updateButton(serialNumber,button);
-                        }
-                        KwikMe.getProject(button.getProject(), new GetProjectListener() {
-                            @Override
-                            public void getProjectDone(KwikProject project) {
-                                mApp.addProject(project);
-                                Intent i = new Intent(AddSerialNumberManuallyActivity.this, GoodJobActivity.class);
-                                i.putExtra("buttonId",serialNumber);
-                                startActivity(i);
-                                finish();
-                            }
-
-                            @Override
-                            public void getProjectError(KwikServerError error) {
-
-                                showTwoButtonErrorDialog( getString( R.string.oops ), error.getMessage(), getString( android.R.string.ok ), "",
-                                        new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                AddSerialNumberManuallyActivity.this.finish();
-                                            }
-                                        },null);
-                            }
-                        });
+                    public void createClientButtonListenerDone(KwikDevice device) {
+                        Intent i = new Intent(AddSerialNumberManuallyActivity.this, GoodJobActivity.class);
+                        i.putExtra("buttonId",serialNumber);
+                        startActivity(i);
+                        finish();
                     }
                     @Override
-                    public void attachUserError(KwikServerError error) {
-                        showTwoButtonErrorDialog( getString( R.string.oops ), error.getMessage(), getString( android.R.string.ok ), "",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        AddSerialNumberManuallyActivity.this.finish();
-                                    }
-                                },null);
+                    public void createClientButtonListenerError(KwikServerError error) {
+                        showOneButtonErrorDialog("",error.getMessage());
                     }
                 });
 

@@ -98,50 +98,6 @@ public class GoodJobActivity extends BaseActivity {
 
     }
 
-    private void getProductCatalog(final String buttonId, final View orderButton) {
-        KwikMe.getProductCatalogWithListener(buttonId, null, null, null, new GetProductCatalogListener() {
-            @Override
-            public void getProductCatalogDone(List<KwikProduct> products) {
-                //Download products images
-                mApp.getDefaultTracker().send(new HitBuilders.EventBuilder()
-                        .setCategory(mApp.GOOGLE_ANALYTICS_CATEGORY_SERVER_ACTION)
-                        .setAction("response")
-                        .setLabel("Get product catalog")
-                        .setValue(0)
-                        .build());
-                mKwikProject.setProducts(products);
-                mProgressBar.setVisibility(View.GONE);
-                for (KwikProduct product : products) {
-
-                    ImageView v = new ImageView(GoodJobActivity.this);
-                    if (product.getImages() != null) {
-                        new DownloadImageTask(v).execute(product.getImages().get(MobileDevice.DENSITY));
-                    } else {
-                        new DownloadImageTask(v).execute("");
-                    }
-                }
-
-              //  if (mKwikProject.isHasAddress()) {
-              //      getUserAfterRegister(orderButton);
-              //  } else {
-                    goToNextPage(mKwikDeviceButtonId);
-              //  }
-            }
-
-            @Override
-            public void getProductCatalogError(KwikServerError error) {
-                mProgressBar.setVisibility(View.GONE);
-                mApp.getDefaultTracker().send(new HitBuilders.EventBuilder()
-                        .setCategory(mApp.GOOGLE_ANALYTICS_CATEGORY_SERVER_ACTION)
-                        .setAction("response")
-                        .setLabel("Get product catalog")
-                        .setValue(1)
-                        .build());
-                showOneButtonErrorDialog(getString(R.string.oops), error.getMessage());
-                mNextImageView.setClickable(true);
-            }
-        });
-    }
 
     @Override
     protected void onPause() {
@@ -151,124 +107,124 @@ public class GoodJobActivity extends BaseActivity {
 
     public void orderSetUpClick(final View orderButton) {
         orderButton.setClickable(false);
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        ObjectAnimator animation = ObjectAnimator.ofInt (progressBar, "progress", 0, 500);
-        animation.setDuration (5000); //in milliseconds
-        animation.setInterpolator (new DecelerateInterpolator());
-        animation.start ();
-        if (mSender == null || !mSender.equals(ButtonSettingsActivity.class.getSimpleName())) {
-
-            if (mKwikProject != null && mKwikProject.getClient() != null && mKwikProject.getClient().getType().equals( KwikApplicationClient.WEB_APPLICATION )) {
-                String newUserUrl = mKwikProject.getClient().getNewUserUrl();
-                String redirectUrl = mKwikProject.getClient().getRedirectUrl();
-                if (newUserUrl != null && redirectUrl != null) {
-                    Intent i = new Intent( GoodJobActivity.this, ProductsWebviewActivity.class );
-                    i.putExtra( ProductsWebviewActivity.LOADING_URL, newUserUrl );
-                    i.putExtra( ProductsWebviewActivity.LOGIN_REDIRECT_URI, redirectUrl );
-                    i.putExtra( "buttonId", mKwikButton.getId() );
-                    i.putExtra( "sender", ClientsActivity.class.getSimpleName() );
-                    startActivity( i );
-                    finish();
-                    return;
-                } else {
-                    //showOneButtonErrorDialog( getString( R.string.oops ), getString( R.string.unknown_error ) );
-                    finish();
-                }
-            }
-        }
-
-        Intent i = null;
-        if (mKwikButton != null && mKwikButton.getStatus() != null && mKwikButton.getStatus().equals(KwikButtonDevice.STATUS_REGISTERED)) {
-            if (mKwikButton.getUser().equals(KwikMe.USER_ID)) {
-                i = new Intent(GoodJobActivity.this, ClientsActivity.class);
-                i.putExtra("sender", GoodJobActivity.class.getSimpleName());
-                startActivity(i);
-                finish();
-            } else {
-                hideProgressBar();
-                showOneButtonErrorDialog(getString(R.string.oops), "This button is registered to another user");
-                orderButton.setClickable(true);
-                return;
-            }
-
-        }
-
-        if (mKwikButton != null && mKwikButton.getStatus() != null && mKwikButton.getStatus().equals(KwikButtonDevice.STATUS_REGISTERED)) {
-            i = new Intent(GoodJobActivity.this, ButtonSettingsActivity.class);
-            i.putExtra("sender", LoginActivity.class.getSimpleName());
-            i.putExtra("buttonId", mKwikButton.getId());
-            startActivity(i);
-            GoodJobActivity.this.finish();
-        } else {
-            if (mKwikProject!= null && mKwikProject.getLoginUri() != null) {
-                i = new Intent(GoodJobActivity.this, IpmLoginActivity.class);
-                i.putExtra(WebviewActivity.LOADING_URL, mKwikProject.getLoginUri());
-                i.putExtra(WebviewActivity.LOGIN_REDIRECT_URI, mKwikProject.getLoginRedirectUri());
-                i.putExtra(WebviewActivity.PAGE_TITLE, "Register");
-                i.putExtra("sender", LoginActivity.class.getSimpleName());
-                i.putExtra("buttonId", mKwikButton.getId());
-                i.putExtra("Authorization",false);
-                startActivity(i);
-                GoodJobActivity.this.finish();
-            } else if(mKwikButton != null && mKwikButton.getStatus().equals(KwikButtonDevice.STATUS_ATTACHED)){
-
-                if (mKwikProject != null && mKwikProject.getClient() != null && mKwikProject.getClient().getType().equals( KwikApplicationClient.WEB_APPLICATION )) {
-                    String newUserUrl = mKwikProject.getClient().getNewUserUrl();
-                    String redirectUrl = mKwikProject.getClient().getRedirectUrl();
-                    if (newUserUrl != null && redirectUrl != null) {
-                        i = new Intent( GoodJobActivity.this, ProductsWebviewActivity.class );
-                        i.putExtra( ProductsWebviewActivity.LOADING_URL, newUserUrl );
-                        i.putExtra( ProductsWebviewActivity.LOGIN_REDIRECT_URI, redirectUrl );
-                        i.putExtra( "buttonId", mKwikButton.getId() );
-                        i.putExtra( "sender", ClientsActivity.class.getSimpleName() );
-                        startActivity( i );
-                        finish();
-                        return;
-                    } else {
-                        //showOneButtonErrorDialog( getString( R.string.oops ), getString( R.string.unknown_error ) );
-                        finish();
-                    }
-                }else {
-
-                    KwikMe.registerUser( mKwikButton, new RegisterUserListener() {
-                        @Override
-                        public void registerUserDone(KwikButtonDevice button) {
-                            if (mApp.getButton( button.getId() ) == null) {
-                                mApp.getButtons().add( button );
-                            } else {
-                                mApp.updateButton( button.getId(), button );
-                            }
-
-                            if (mKwikProject.isHasCatalog()) {
-                                getProductCatalog( button.getId(), orderButton );
-                            } else {
-                               // if (mKwikProject.isHasAddress()) {
-                               //     getUserAfterRegister( orderButton );
-                               // } else {
-                                    goToNextPage( mKwikDeviceButtonId );
-                               // }
-                            }
-
-                        }
-
-                        @Override
-                        public void registerUserError(KwikServerError error) {
-                            hideProgressBar();
-                            showTwoButtonErrorDialog( getString( R.string.oops ), error.getMessage(), "", getString( R.string.cancel ), null,
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            Intent i = new Intent( GoodJobActivity.this, ClientsActivity.class );
-                                            startActivity( i );
-                                            GoodJobActivity.this.finish();
-                                        }
-                                    });
-                            orderButton.setClickable( true );
-                        }
-                    } );
-                }
-            }
-        }
+        Intent i = new Intent(GoodJobActivity.this, ClientsActivity.class);
+        i.putExtra("sender", GoodJobActivity.class.getSimpleName());
+        startActivity(i);
+        finish();
+//
+//        if (mSender == null || !mSender.equals(ButtonSettingsActivity.class.getSimpleName())) {
+//
+//            if (mKwikProject != null && mKwikProject.getClient() != null && mKwikProject.getClient().getType().equals( KwikApplicationClient.WEB_APPLICATION )) {
+//                String newUserUrl = mKwikProject.getClient().getNewUserUrl();
+//                String redirectUrl = mKwikProject.getClient().getRedirectUrl();
+//                if (newUserUrl != null && redirectUrl != null) {
+//                    Intent i = new Intent( GoodJobActivity.this, ProductsWebviewActivity.class );
+//                    i.putExtra( ProductsWebviewActivity.LOADING_URL, newUserUrl );
+//                    i.putExtra( ProductsWebviewActivity.LOGIN_REDIRECT_URI, redirectUrl );
+//                    i.putExtra( "buttonId", mKwikButton.getId() );
+//                    i.putExtra( "sender", ClientsActivity.class.getSimpleName() );
+//                    startActivity( i );
+//                    finish();
+//                    return;
+//                } else {
+//                    //showOneButtonErrorDialog( getString( R.string.oops ), getString( R.string.unknown_error ) );
+//                    finish();
+//                }
+//            }
+//        }
+//
+//        Intent i = null;
+//        if (mKwikButton != null && mKwikButton.getStatus() != null && mKwikButton.getStatus().equals(KwikButtonDevice.STATUS_REGISTERED)) {
+//            if (mKwikButton.getUser().equals(KwikMe.USER_ID)) {
+//                i = new Intent(GoodJobActivity.this, ClientsActivity.class);
+//                i.putExtra("sender", GoodJobActivity.class.getSimpleName());
+//                startActivity(i);
+//                finish();
+//            } else {
+//                hideProgressBar();
+//                showOneButtonErrorDialog(getString(R.string.oops), "This button is registered to another user");
+//                orderButton.setClickable(true);
+//                return;
+//            }
+//
+//        }
+//
+//        if (mKwikButton != null && mKwikButton.getStatus() != null && mKwikButton.getStatus().equals(KwikButtonDevice.STATUS_REGISTERED)) {
+//            i = new Intent(GoodJobActivity.this, ButtonSettingsActivity.class);
+//            i.putExtra("sender", LoginActivity.class.getSimpleName());
+//            i.putExtra("buttonId", mKwikButton.getId());
+//            startActivity(i);
+//            GoodJobActivity.this.finish();
+//        } else {
+//            if (mKwikProject!= null && mKwikProject.getLoginUri() != null) {
+//                i = new Intent(GoodJobActivity.this, IpmLoginActivity.class);
+//                i.putExtra(WebviewActivity.LOADING_URL, mKwikProject.getLoginUri());
+//                i.putExtra(WebviewActivity.LOGIN_REDIRECT_URI, mKwikProject.getLoginRedirectUri());
+//                i.putExtra(WebviewActivity.PAGE_TITLE, "Register");
+//                i.putExtra("sender", LoginActivity.class.getSimpleName());
+//                i.putExtra("buttonId", mKwikButton.getId());
+//                i.putExtra("Authorization",false);
+//                startActivity(i);
+//                GoodJobActivity.this.finish();
+//            } else if(mKwikButton != null && mKwikButton.getStatus().equals(KwikButtonDevice.STATUS_ATTACHED)){
+//
+//                if (mKwikProject != null && mKwikProject.getClient() != null && mKwikProject.getClient().getType().equals( KwikApplicationClient.WEB_APPLICATION )) {
+//                    String newUserUrl = mKwikProject.getClient().getNewUserUrl();
+//                    String redirectUrl = mKwikProject.getClient().getRedirectUrl();
+//                    if (newUserUrl != null && redirectUrl != null) {
+//                        i = new Intent( GoodJobActivity.this, ProductsWebviewActivity.class );
+//                        i.putExtra( ProductsWebviewActivity.LOADING_URL, newUserUrl );
+//                        i.putExtra( ProductsWebviewActivity.LOGIN_REDIRECT_URI, redirectUrl );
+//                        i.putExtra( "buttonId", mKwikButton.getId() );
+//                        i.putExtra( "sender", ClientsActivity.class.getSimpleName() );
+//                        startActivity( i );
+//                        finish();
+//                        return;
+//                    } else {
+//                        //showOneButtonErrorDialog( getString( R.string.oops ), getString( R.string.unknown_error ) );
+//                        finish();
+//                    }
+//                }else {
+//
+//                    KwikMe.registerUser( mKwikButton, new RegisterUserListener() {
+//                        @Override
+//                        public void registerUserDone(KwikButtonDevice button) {
+//                            if (mApp.getButton( button.getId() ) == null) {
+//                                mApp.getButtons().add( button );
+//                            } else {
+//                                mApp.updateButton( button.getId(), button );
+//                            }
+//
+//                            if (mKwikProject.isHasCatalog()) {
+//                                getProductCatalog( button.getId(), orderButton );
+//                            } else {
+//                               // if (mKwikProject.isHasAddress()) {
+//                               //     getUserAfterRegister( orderButton );
+//                               // } else {
+//                                    goToNextPage( mKwikDeviceButtonId );
+//                               // }
+//                            }
+//
+//                        }
+//
+//                        @Override
+//                        public void registerUserError(KwikServerError error) {
+//                            hideProgressBar();
+//                            showTwoButtonErrorDialog( getString( R.string.oops ), error.getMessage(), "", getString( R.string.cancel ), null,
+//                                    new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialog, int which) {
+//                                            Intent i = new Intent( GoodJobActivity.this, ClientsActivity.class );
+//                                            startActivity( i );
+//                                            GoodJobActivity.this.finish();
+//                                        }
+//                                    });
+//                            orderButton.setClickable( true );
+//                        }
+//                    } );
+//                }
+//            }
+//        }
     }
 
     private void sendUpdateButton(KwikButtonDevice button, final View orderButton) {

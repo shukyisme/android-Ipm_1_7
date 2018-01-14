@@ -40,6 +40,7 @@ import java.util.List;
 
 import co.uk.rushorm.core.RushCore;
 import co.uk.rushorm.core.RushSearch;
+import me.kwik.bl.KwikDevice;
 import me.kwik.data.KwikNetwork;
 import me.kwik.utils.Logger;
 import me.kwik.utils.NetworkUtil;
@@ -61,6 +62,7 @@ public class NetworkPasswordActivity extends BaseActivity {
     private CheckBox mSavePasswordCheckBox;
     private RelativeLayout relativeLayout;
     private Button mNextButton;
+    private KwikDevice mButton;
 
 
     @Override
@@ -68,7 +70,6 @@ public class NetworkPasswordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_network_password);
 
-        //mNextImageView.setVisibility(View.INVISIBLE);
         relativeLayout = (RelativeLayout) findViewById(R.id.network_password_activity_main_layout);
 
         mWifiPasswordEditText = (EditText) findViewById(R.id.network_password_activity_password_edit_text);
@@ -121,6 +122,9 @@ public class NetworkPasswordActivity extends BaseActivity {
                 }
             }
         }
+
+        Intent i = getIntent();
+        mButton = (KwikDevice) i.getParcelableExtra("button");
     }
 
     private void buildAlertMessageNoGps() {
@@ -358,6 +362,7 @@ public class NetworkPasswordActivity extends BaseActivity {
         Intent i = new Intent(NetworkPasswordActivity.this, ButtonToApActivity.class);
         i.putExtra("selectedWiFiSsid", mWifiNetworkSsid);
         i.putExtra("password", mWifiPasswordEditText.getText().toString().trim());
+        i.putExtra("button",mButton);
         if (mSender != null) {
             i.putExtra("sender", mSender);
         }

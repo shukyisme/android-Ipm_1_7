@@ -46,16 +46,16 @@
                     android:layout_width="0dp"
                     android:layout_height="22dp"
                     android:layout_weight="1"
-                    android:background="#FFB5BBC5"
+                    android:background="#FF98C665"
                     android:elevation="0dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/slice" />
+                    android:src="@drawable/slice_wifi" />
 
                 <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="22dp"
                     android:layout_weight="0.8"
-                    android:background="#FFB5BBC5"
+                    android:background="#FF98C665"
                     android:scaleType="fitCenter"
                     android:src="@drawable/delete" />
             </LinearLayout>

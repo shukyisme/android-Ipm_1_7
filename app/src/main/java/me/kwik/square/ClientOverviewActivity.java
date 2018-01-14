@@ -134,11 +134,11 @@ public class ClientOverviewActivity extends BaseActivity {
                 lowBatteryImageView.setVisibility(View.VISIBLE);
             }
 
-            if(values.get(position).getBattery() > 5){
-                lowBatteryImageView.setVisibility(View.INVISIBLE);
-            }else{
-                lowBatteryImageView.setVisibility(View.VISIBLE);
-            }
+//            if(values.get(position).getBattery() > 5){
+//                lowBatteryImageView.setVisibility(View.INVISIBLE);
+//            }else{
+//                lowBatteryImageView.setVisibility(View.VISIBLE);
+//            }
 
 
             rowView.setOnClickListener(new View.OnClickListener() {

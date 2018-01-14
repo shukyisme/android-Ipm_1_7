@@ -56,7 +56,7 @@ public class SetupActivity extends BaseActivity {
                 if(sender != null && sender.equals( StartActivity.class.getSimpleName() )){
                     i = new Intent(SetupActivity.this,SignupActivity.class);
                 } else if(sender != null){
-                    i = new Intent(SetupActivity.this,WiFiSelectionActivity.class);
+                    i = new Intent(SetupActivity.this,AddNewTrapActivity.class);
                 }
                 startActivity(i);
                 finish();
