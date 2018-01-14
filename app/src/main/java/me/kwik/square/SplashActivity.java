@@ -1,7 +1,6 @@
 package me.kwik.square;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -11,7 +10,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -26,12 +24,11 @@ import me.kwik.rest.responses.InitialHandShakeResponse;
 import me.kwik.rest.responses.LoginResponse;
 import me.kwik.utils.Logger;
 
-public class SplashActivity extends BaseActivity implements
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class SplashActivity extends BaseActivity  {
 
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 03;
     private static final int REQUEST_ID_WRITE_EXTERNAL_STORAGE_PERMISSIONS = 04;
-    private GoogleApiClient mGoogleApiClient;
+    //private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
     private String TAG = SplashActivity.class.getSimpleName();
     private Application mApp;
@@ -42,32 +39,10 @@ public class SplashActivity extends BaseActivity implements
         setContentView(R.layout.activity_splash);
         mApp = (Application) getApplication();
         getSupportActionBar().hide();
-        askForStoragePermission();
-    }
-
-    private void askForStoragePermission() {
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(SplashActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    REQUEST_ID_WRITE_EXTERNAL_STORAGE_PERMISSIONS);
-
-        }else {
-            // Create an instance of GoogleAPIClient.
-            if (mGoogleApiClient == null) {
-                mGoogleApiClient = new GoogleApiClient.Builder( this )
-                        .addConnectionCallbacks( this )
-                        .addOnConnectionFailedListener( this )
-                        .addApi( LocationServices.API )
-                        .build();
-                mGoogleApiClient.connect();
-            }
-        }
+        init();
     }
 
     private void init() {
-        KwikLocation location = null;
-        if (mLastLocation != null) {
-            location = new KwikLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), mLastLocation.getAccuracy());
-        }
         String version="";
         PackageInfo pInfo = null;
         try {
@@ -218,127 +193,10 @@ public class SplashActivity extends BaseActivity implements
             }
         });
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
-        boolean showRationale = false;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            showRationale = shouldShowRequestPermissionRationale( permissions[0] );
-        }
-        switch (requestCode) {
-            case REQUEST_ID_MULTIPLE_PERMISSIONS: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
-                    mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                            mGoogleApiClient);
-                    if (mLastLocation != null) {
-                        Logger.d(TAG, "Location lat = %s", String.valueOf(mLastLocation.getLatitude()));
-                        Logger.d(TAG, "Location long = %s", String.valueOf(mLastLocation.getLongitude()));
-                        Logger.d(TAG, "Location acc = %s", String.valueOf(mLastLocation.getAccuracy()));
-
-                    }
-                    init();
-
-                } else {
-
-                    init();
-                }
-                return;
-            }
-            case REQUEST_ID_WRITE_EXTERNAL_STORAGE_PERMISSIONS: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if (mGoogleApiClient == null) {
-                        mGoogleApiClient = new GoogleApiClient.Builder( this )
-                                .addConnectionCallbacks( this )
-                                .addOnConnectionFailedListener( this )
-                                .addApi( LocationServices.API )
-                                .build();
-                        mGoogleApiClient.connect();
-                    }
-
-                }else{
-                    final boolean finalShowRationale = showRationale;
-                    if (!finalShowRationale) {
-                        if (mGoogleApiClient == null) {
-                            mGoogleApiClient = new GoogleApiClient.Builder( this )
-                                    .addConnectionCallbacks( this )
-                                    .addOnConnectionFailedListener( this )
-                                    .addApi( LocationServices.API )
-                                    .build();
-                            mGoogleApiClient.connect();
-                        }
-                        return;
-                    }
-                    showTwoButtonErrorDialog( getString( R.string.oops ), getString( R.string.ask_for_storage_permission_message), getString( R.string.kwik_continue), "", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            askForStoragePermission();
-                        }
-                    }, null );
-                }
-            }
-        }
-    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
 
-    @Override
-    protected void onStart() {
-        //   mGoogleApiClient.connect();
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        try {
-            mGoogleApiClient.disconnect();
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
-        super.onStop();
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(SplashActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,  Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    REQUEST_ID_MULTIPLE_PERMISSIONS);
-        }else{
-            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
-                    mGoogleApiClient);
-            if (mLastLocation != null) {
-                Logger.d(TAG,"Location lat = %s",String.valueOf(mLastLocation.getLatitude()));
-                Logger.d(TAG,"Location long = %s", String.valueOf(mLastLocation.getLongitude()));
-                Logger.d(TAG, "Location acc = %s", String.valueOf(mLastLocation.getAccuracy()));
-
-            }
-            init();
-        }
-
-
-    }
-
-    @Override
-    public void onConnectionSuspended(int i) {
-        init();
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        init();
-    }
 }

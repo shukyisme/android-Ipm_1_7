@@ -2,7 +2,6 @@ package me.kwik.square;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -30,10 +29,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,9 +41,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -62,11 +56,7 @@ import me.kwik.data.KwikProject;
 import me.kwik.data.KwikSelectedProduct;
 import me.kwik.data.MobileDevice;
 import me.kwik.listeners.GetClientsListener;
-import me.kwik.listeners.GetKwikButtonsListener;
-import me.kwik.listeners.GetMultipleOrderListener;
-import me.kwik.listeners.GetProjectListener;
 import me.kwik.rest.responses.GetClientsResponse;
-import me.kwik.rest.responses.GetMultipleOrderResponse;
 import me.kwik.utils.Logger;
 import me.kwk.utils.Utils;
 
@@ -74,18 +64,10 @@ import me.kwk.utils.Utils;
 public class ClientsActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ListView mButtonsListView;
-    private MyButtonsArrayAdapter mMyButtonsList;
-    private List<KwikButtonDevice> mButtons;
     private Application mApp;
     private String TAG = ClientsActivity.class.getSimpleName();
-    private ImageButton fab;
-    private ProgressBar mProgressBar;
     private NavigationView mNavigationView;
-    private List<String> buttonProjectsList = new ArrayList<String>();
-    private int numberOfBrandButtons = 0;
     private boolean registering = false;
-    private String mKwikOrderId;
     android.support.v7.app.ActionBar actionBar;
     int i = 0;
 
@@ -105,13 +87,6 @@ public class ClientsActivity extends BaseActivity
 
 
 
-        handleIntent(getIntent());
-
-        mButtonsListView = (ListView) findViewById( R.id.my_buttons_activity_buttons_list_view );
-        mProgressBar = (ProgressBar) findViewById( R.id.my_buttons_activity_progressBar );
-
-        mKwikOrderId = getIntent().getStringExtra( "order" );
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById( R.id.my_kwik_buttons_activity_drawer_layout );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -121,7 +96,6 @@ public class ClientsActivity extends BaseActivity
 
 
         mApp = (Application) getApplication();
-        mButtons = mApp.getButtons();
 
         mNavigationView = (NavigationView) findViewById( R.id.nav_view );
         mNavigationView.setItemIconTintList( null );
@@ -138,23 +112,6 @@ public class ClientsActivity extends BaseActivity
         TextView phone = (TextView) headerView.findViewById( R.id.nav_header_user_phone_text_view );
         phone.setText( mApp.getUser().getPhone() );
 
-        fab = (ImageButton) findViewById( R.id.fab );
-
-        fab.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (Utils.checkVolumeLevel( ClientsActivity.this ) != null) {
-                    return;
-                }
-                Intent i = new Intent( ClientsActivity.this, AddNewTrapActivity.class );
-                i.putExtra( "sender", ClientsActivity.class.getSimpleName() );
-                i.putExtra("name", mApp.getUser().getFirstName());
-                startActivity( i );
-            }
-        } );
-
-        View footerView = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
-        mButtonsListView.addFooterView(footerView);
 
         NavigationView navigationView = (NavigationView) findViewById( R.id.nav_view );
         customNavigationView( navigationView );
@@ -197,150 +154,6 @@ public class ClientsActivity extends BaseActivity
         //updateList();
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        handleIntent(intent);
-    }
-
-    private void updateList() {
-        try {
-            mButtons = mApp.getButtons();
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
-
-        if (mMyButtonsList != null) {
-            mMyButtonsList.notifyDataSetChanged();
-        }
-        KwikMe.getKwikButtons( null,new GetKwikButtonsListener() {
-            @Override
-            public void getKwikButtonsDone(final List<KwikButtonDevice> buttons) {
-
-
-                mButtons = buttons;
-                mApp.setButtons( buttons );
-                Logger.e(TAG,this.getClass().getSimpleName() + " "  + new Object(){}.getClass().getEnclosingMethod().getName() + " buttons.size() = " + buttons.size());
-                if (buttons.size() == 0) {
-                    Utils.playAudioFile( ClientsActivity.this, "add_first_button", 0, 5 );
-                    return;
-                }
-
-                KwikMe.getMultipleOrder(null, new GetMultipleOrderListener() {
-                    @Override
-                    public void getMultipleOrderDone(GetMultipleOrderResponse response) {
-                        List<KwikButtonDevice> redList = new ArrayList<KwikButtonDevice>();
-                        List<KwikButtonDevice> greenList = new ArrayList<KwikButtonDevice>();
-                        for(int i =0; i<mApp.getButtons().size();i++){
-                            mApp.getButtons().get(i).setTriggerType("click");
-                            for(int j =0; j < response.getOrders().size(); j++){
-                                if(response.getOrders().get(j).getButton().equals(mApp.getButtons().get(i).getId())){
-                                    mApp.getButtons().get(i).setTriggerType(response.getOrders().get(j).getTriggerType());
-                                    break;
-                                }
-                            }
-                        }
-
-                        for(KwikButtonDevice d:mApp.getButtons()){
-                            if(d.getTriggerType().equals("trigger1") ||d.getTriggerType().equals("click") ){
-                                greenList.add(d);
-                            }else{
-                                redList.add(d);
-                            }
-                        }
-                        Collections.sort(redList, new Comparator<KwikButtonDevice>() {
-                            public int compare(KwikButtonDevice v1, KwikButtonDevice v2) {
-                                return v1.getName().compareTo(v2.getName());
-                            }
-                        });
-                        Collections.sort(greenList, new Comparator<KwikButtonDevice>() {
-                            public int compare(KwikButtonDevice v1, KwikButtonDevice v2) {
-                                return v1.getName().compareTo(v2.getName());
-                            }
-                        });
-                        mApp.getButtons().clear();
-                        mApp.getButtons().addAll(redList);
-                        mApp.getButtons().addAll(greenList);
-
-                        if(mMyButtonsList == null) {
-                            mMyButtonsList = new MyButtonsArrayAdapter(ClientsActivity.this, mApp.getButtons());
-                            mButtonsListView.setAdapter(mMyButtonsList);
-                        }else{
-                            mMyButtonsList.setValues(mApp.getButtons());
-                            mMyButtonsList.notifyDataSetChanged();
-                        }
-
-                        for (KwikButtonDevice b : buttons) {
-                            getButtonProject( b );
-                        }
-                    }
-                     @Override
-                     public void getMultipleOrderError(KwikServerError error) {
-                         showOneButtonErrorDialog(getString(R.string.oops),error.getMessage());
-                     }
-                });
-
-            }
-
-            @Override
-            public void getKwikButtonsError(KwikServerError error) {
-            }
-        } );
-    }
-
-    private void handleIntent(Intent intent) {
-
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            doMySearch(query);
-        }
-    }
-
-    private void doMySearch(String query) {
-        getButtons(query);
-    }
-
-    private void getButtons(String query) {
-        KwikMe.getKwikButtons(query, new GetKwikButtonsListener() {
-            @Override
-            public void getKwikButtonsDone(final List<KwikButtonDevice> buttons) {
-
-                mButtons = buttons;
-                mApp.setButtons( buttons );
-                KwikMe.getMultipleOrder(null, new GetMultipleOrderListener() {
-                    @Override
-                    public void getMultipleOrderDone(GetMultipleOrderResponse response) {
-                        for(int i =0; i<mApp.getButtons().size();i++){
-                            for(int j =0; j < response.getOrders().size(); j++){
-                                if(response.getOrders().get(j).getButton().equals(mApp.getButtons().get(i).getId())){
-                                    mApp.getButtons().get(i).setTriggerType(response.getOrders().get(j).getTriggerType());
-                                    break;
-                                }
-
-                            }
-
-                        }
-
-                        if(mMyButtonsList == null) {
-                            mMyButtonsList = new MyButtonsArrayAdapter(ClientsActivity.this, mApp.getButtons());
-                            mButtonsListView.setAdapter(mMyButtonsList);
-                        }else{
-                            mMyButtonsList.notifyDataSetChanged();
-                        }
-                    }
-                    @Override
-                    public void getMultipleOrderError(KwikServerError error) {
-                        showOneButtonErrorDialog(getString(R.string.oops),error.getMessage());
-                    }
-                });
-            }
-
-            @Override
-            public void getKwikButtonsError(KwikServerError error) {
-                showOneButtonErrorDialog(getString(R.string.oops),error.getMessage());
-            }
-        } );
-    }
-
     private void customNavigationView(NavigationView navigationView) {
         final Menu menu = navigationView.getMenu();
         int i = 0;
@@ -358,67 +171,6 @@ public class ClientsActivity extends BaseActivity
     protected void onPause() {
         super.onPause();
         Utils.stopPlaying();
-    }
-
-    private void getButtonProject(final KwikButtonDevice b) {
-        final String buttonId = b.getId();
-        KwikMe.getProject( b.getProject(), new GetProjectListener() {
-            @Override
-            public void getProjectDone(KwikProject project) {
-                mApp.addProject( project );
-
-
-                for (KwikButtonDevice d : mApp.getButtons()) {
-                    if (!buttonProjectsList.contains( d.getProject() )) {
-                        buttonProjectsList.add( d.getProject() );
-                        numberOfBrandButtons++;
-                    }
-                }
-                if (mApp.getProjects().size() == numberOfBrandButtons) {
-                    mButtonsListView.setAdapter( mMyButtonsList );
-                }
-
-
-//                KwikMe.getProductCatalogWithListener( buttonId, null, null, null, new GetProductCatalogListener() {
-//                    @Override
-//                    public void getProductCatalogDone(List<KwikProduct> products) {
-//                        //Download products images
-//
-//                        mApp.getDefaultTracker().send( new HitBuilders.EventBuilder()
-//                                .setCategory( mApp.GOOGLE_ANALYTICS_CATEGORY_SERVER_ACTION )
-//                                .setAction( "response" )
-//                                .setLabel( "Get product catalog" )
-//                                .setValue( 0 )
-//                                .build() );
-//                        mApp.getProject( mApp.getButton( b.getId() ).getProject() ).setProducts( products );
-//                        if (Application.LAUNCH_MODE == Application.LAUNCH_MODE_EDIT) {
-//                            Intent i = new Intent( ClientsActivity.this, SelectProductActivity.class );
-//                            i.putExtra( "buttonId", b.getId() );
-//                            i.putExtra( "order", mKwikOrderId );
-//                            startActivity( i );
-//                            finish();
-//
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void getProductCatalogError(KwikServerError error) {
-//
-//                        mApp.getDefaultTracker().send( new HitBuilders.EventBuilder()
-//                                .setCategory( mApp.GOOGLE_ANALYTICS_CATEGORY_SERVER_ACTION )
-//                                .setAction( "response" )
-//                                .setLabel( "Get product catalog" )
-//                                .setValue( 1 )
-//                                .build() );
-//                    }
-//                } );
-            }
-
-            @Override
-            public void getProjectError(KwikServerError error) {
-
-            }
-        } );
     }
 
     @Override
