@@ -2,7 +2,9 @@ package me.kwik.square;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,31 +116,37 @@ public class ClientOverviewActivity extends BaseActivity {
             siteName.setText(values.get(position).getSiteName());
 
             try {
-                trapSerialNumber.setText(values.get(position).getId());
+                trapSerialNumber.setText("SN: " + values.get(position).getId());
             }catch (NullPointerException e){
                 e.printStackTrace();
             }
 
             try {
-                if (!values.get(position).getStatus().equals("alert")) {
-                    trapImageView.setImageDrawable(getResources().getDrawable(R.drawable.ipm_button_ready_icon));
+                Drawable dr = null;
+                if (values.get(position).getStatus().equals(KwikDevice.STATUS_ALERT)) {
+                     dr = ContextCompat.getDrawable(ClientOverviewActivity.this, R.drawable.kwik_orange);
+                }else if(values.get(position).getStatus().equals(KwikDevice.STATUS_READY)) {
+                    dr = ContextCompat.getDrawable(ClientOverviewActivity.this, R.drawable.ipm_button_ready_icon);
+                }else if(values.get(position).getStatus().equals(KwikDevice.STATUS_AVAILABLE)) {
+                    dr = ContextCompat.getDrawable(ClientOverviewActivity.this, R.drawable.ipm_button_ready_icon);
+                }else if(values.get(position).getStatus().equals(KwikDevice.STATUS_NOT_AVAILABLE)) {
+                    dr = ContextCompat.getDrawable(ClientOverviewActivity.this, R.drawable.grey_button);
+                }else if(values.get(position).getStatus().equals(KwikDevice.STATUS_DISABLED)) {
+                    dr = ContextCompat.getDrawable(ClientOverviewActivity.this, R.drawable.grey_button);
+                }
+
+                if(dr != null){
+                    trapImageView.setImageDrawable(dr);
                 }
             }catch (NullPointerException e){
                 e.printStackTrace();
             }
 
-            if(values.get(position).getBatteryStatus() != null && values.get(position).getBatteryStatus().equals("Good")){
-                lowBatteryImageView.setVisibility(View.INVISIBLE);
-            }else{
+            if(values.get(position).getBatteryStatus() != null && values.get(position).getBatteryStatus().equalsIgnoreCase("Replace")){
                 lowBatteryImageView.setVisibility(View.VISIBLE);
+            }else{
+                lowBatteryImageView.setVisibility(View.INVISIBLE);
             }
-
-//            if(values.get(position).getBattery() > 5){
-//                lowBatteryImageView.setVisibility(View.INVISIBLE);
-//            }else{
-//                lowBatteryImageView.setVisibility(View.VISIBLE);
-//            }
-
 
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -159,7 +167,7 @@ public class ClientOverviewActivity extends BaseActivity {
 
     private void updateList() {
         showProgressBar();
-        KwikMe.getKwikDevices(null,null, null, new GetKwikDevicesListener() {
+        KwikMe.getKwikDevices(null,mClientId, null, new GetKwikDevicesListener() {
             @Override
             public void getKwikDevicesListenerDone(List<KwikDevice> buttons) {
                 hideProgressBar();

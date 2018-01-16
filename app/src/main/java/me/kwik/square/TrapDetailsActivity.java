@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,8 +15,6 @@ import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
 import me.kwik.listeners.GetKwikDevicesListener;
-import me.kwik.utils.Logger;
-import me.kwk.utils.Utils;
 
 public class TrapDetailsActivity extends BaseActivity {
 
@@ -43,6 +42,23 @@ public class TrapDetailsActivity extends BaseActivity {
     @BindView(R.id.trap_details_activity_description_finish_editing_TextView)
     TextView mFinishEditingDescriptionTextView;
 
+    @BindView(R.id.trap_details_activity_status_value_TextView)
+    TextView mStatusValueTextView;
+
+    @BindView(R.id.trap_details_activity_alert_time_TextView)
+    TextView mAlertTimeTextView;
+
+    @BindView(R.id.trap_details_activity_last_communication_TextView)
+    TextView mLastCommunicationTextView;
+
+    @BindView(R.id.trap_details_activity_battery_level_TextView)
+    TextView mBatteryLevelTextView;
+
+    @BindView(R.id.trap_details_activity_setup_date_TextView)
+    TextView mSetupDateTextView;
+
+    @BindView(R.id.trap_details_activity_button_icon_ImageView)
+    ImageView mButtonIconImageView;
 
     private static final int EDITING_STATUS = 0;
     private static final int EDITED_STATUS  = 1;
@@ -65,11 +81,10 @@ public class TrapDetailsActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         mSerial = getIntent().getStringExtra("serial_number");
-        //TODO: remove comment after fixing the api
-//        if(mSerial == null){
-//            showOneButtonErrorDialog("","UnKnown error, Please go back and try again");
-//            return;
-//        }
+        if(mSerial == null){
+            showOneButtonErrorDialog("","UnKnown error, Please go back and try again");
+            return;
+        }
         showProgressBar();
         KwikMe.getKwikDevices(mSerial,null, null, new GetKwikDevicesListener() {
             @Override
@@ -78,7 +93,6 @@ public class TrapDetailsActivity extends BaseActivity {
                 mTrap = buttons.get(0);
                 if (buttons == null || buttons.size() == 0) {
                     showOneButtonErrorDialog("","Button was not found");
-                    //Utils.playAudioFile( ClientOverviewActivity.this, "add_first_button", 0, 5 );
                     return;
                 }
                 update();
@@ -94,9 +108,29 @@ public class TrapDetailsActivity extends BaseActivity {
 
     private void update() {
         mNameEditText.setText(mTrap.getName());
-        mNameTextView.setText(mTrap.getName());
+        mNameTextView.setText(mTrap.getName() + "\nSerial number: " + mTrap.getId());
 
-//        Logger.e("EEEEEE",mTrap.getName());
+        if(mTrap.getDescription() != null){
+            mDescriptionTextView.setText(mTrap.getDescription());
+            mDescriptionEditText.setText(mTrap.getDescription());
+        }
+        if(mTrap.getStatus().equals("na")){
+            String na = "Not Available";
+            mStatusValueTextView.setText(na);
+            mAlertTimeTextView.setText(na);
+            mLastCommunicationTextView.setText(na);
+            mBatteryLevelTextView.setText(na);
+            mSetupDateTextView.setText(na);
+            mButtonIconImageView.setImageResource(R.drawable.grey_button);
+        }else{
+            mStatusValueTextView.setText(mTrap.getStatus());
+            //TODO: Check why there is no getAlertTime(), getLastCommunication(), getSetUp() in KwikDevice
+            mAlertTimeTextView.setText("");
+            mLastCommunicationTextView.setText("");
+            mBatteryLevelTextView.setText(mTrap.getBatteryStatus());
+            mSetupDateTextView.setText("");
+        }
+
 
     }
 
@@ -105,7 +139,9 @@ public class TrapDetailsActivity extends BaseActivity {
             NAME_STATUS = EDITING_STATUS;
             mNameTextView.setVisibility(View.INVISIBLE);
             mNameEditText.setVisibility(View.VISIBLE);
-            mNameEditText.setText(mNameTextView.getText().toString());
+            if(mTrap != null && mTrap.getName() != null) {
+                mNameEditText.setText(mTrap.getName());
+            }
             mFinishEditingTextView.setVisibility(View.VISIBLE);
         }
     }
@@ -116,7 +152,9 @@ public class TrapDetailsActivity extends BaseActivity {
             NAME_STATUS = EDITED_STATUS;
             mNameTextView.setVisibility(View.VISIBLE);
             mNameEditText.setVisibility(View.INVISIBLE);
-            mNameTextView.setText(mNameEditText.getText().toString());
+            if(mTrap!= null && mTrap.getId() != null) {
+                mNameTextView.setText(mNameEditText.getText().toString() + "\nSerial number:" + mTrap.getId());
+            }
             mFinishEditingTextView.setVisibility(View.INVISIBLE);
         }
     }

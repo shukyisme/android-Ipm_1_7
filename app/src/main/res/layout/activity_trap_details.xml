@@ -81,12 +81,13 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/trap_details_activity_button_icon_ImageView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:padding="15dp"
-                android:src="@drawable/kwik_orange" />
+                 />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -103,7 +104,8 @@
                         android:id="@+id/trap_details_activity_name_TextView"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:text="" />
+                        android:paddingTop="19dp"
+                        android:text="fgs" />
 
                     <EditText
                         android:id="@+id/trap_details_activity_name_EditText"
@@ -173,6 +175,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/trap_details_activity_status_value_TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -213,6 +216,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/trap_details_activity_alert_time_TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -253,6 +257,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/trap_details_activity_last_communication_TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -293,6 +298,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/trap_details_activity_battery_level_TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -333,6 +339,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/trap_details_activity_setup_date_TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -406,7 +413,7 @@
                         android:id="@+id/trap_details_activity_edit_description_TextView"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:text="ttttttt" />
+                        android:text="" />
 
                     <EditText
                         android:id="@+id/trap_details_activity_edit_description_EditText"

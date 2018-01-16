@@ -46,6 +46,11 @@ public class AddNewTrapActivity extends BaseActivity {
     @BindView(R.id.add_new_trap_activity_trap_name_EditText)
     EditText mTrapNameEditText;
 
+    @BindView(R.id.add_new_trap_activity_trap_description_EditText)
+    EditText mTrapDescriptionEditText;
+
+
+
 
     private IpmClient       mSelectedClient;
     private IpmClientSite   mSelectedSite;
@@ -184,6 +189,25 @@ public class AddNewTrapActivity extends BaseActivity {
                 mTrapNameString = s.toString();
             }
         });
+
+        mTrapDescriptionEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mTrapDescriptionString = s.toString().trim();
+            }
+        });
+
+
     }
 
     private void changeAddNewSiteTextView(Boolean active){
@@ -241,8 +265,13 @@ public class AddNewTrapActivity extends BaseActivity {
 
         KwikDevice button = new KwikDevice();
         button.setClient(mSelectedClient.getId());
-        button.setSite(mSelectedSite.getId());
         button.setName(mTrapNameString);
+        if(mSelectedSite != null){
+            button.setSite(mSelectedSite.getId());
+        }
+        if(mTrapDescriptionString != null){
+            button.setDescription(mTrapDescriptionString);
+        }
 
 
 

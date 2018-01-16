@@ -236,7 +236,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/trap_description_editText"
+                    android:id="@+id/add_new_trap_activity_trap_description_EditText"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:background="@drawable/rectangle_2_vd"
