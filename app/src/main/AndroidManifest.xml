@@ -208,7 +208,10 @@
         <activity
             android:name=".CreateClientActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ClientDetailsActivity"
+        <activity
+            android:name=".ClientDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".TroubleshootingActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

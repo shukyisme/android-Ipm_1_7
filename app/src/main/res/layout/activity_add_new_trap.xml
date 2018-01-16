@@ -286,9 +286,10 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/need_help_"
+                android:onClick="needHelpClick"
                 android:textColor="#B1B4B9"
                 android:textSize="18sp"
-                android:padding="5dp"
+                android:padding="10dp"
                 />
         </LinearLayout>
 

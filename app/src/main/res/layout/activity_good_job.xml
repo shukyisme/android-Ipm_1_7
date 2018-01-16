@@ -98,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:onClick="needHelpClick"
             android:text="@string/need_help_"
             android:textColor="#B1B4B9"
             android:textSize="18sp"

@@ -274,6 +274,11 @@ public class AddNewTrapActivity extends BaseActivity {
         }
     }
 
+    public void needHelpClick(View view) {
+        Intent i = new Intent(AddNewTrapActivity.this,TroubleshootingActivity.class);
+        startActivity(i);
+    }
+
     public class NewSiteDialog extends Dialog{
 
         @BindView(R.id.new_site_pop_up_client_name_TextView)

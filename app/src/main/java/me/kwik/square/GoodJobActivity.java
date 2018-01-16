@@ -341,4 +341,9 @@ public class GoodJobActivity extends BaseActivity {
                 .setNegativeButton(android.R.string.no, null)
                 .show();
     }
+
+    public void needHelpClick(View view) {
+        Intent i = new Intent(GoodJobActivity.this,TroubleshootingActivity.class);
+        startActivity(i);
+    }
 }
