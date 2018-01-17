@@ -63,7 +63,7 @@
                 android:background="@drawable/rectangle_2_vd"
                 android:drawableLeft="@drawable/email_v2"
                 android:drawablePadding="10dp"
-                android:hint="Email"
+                android:hint="Email Address"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingStart="10dp"
