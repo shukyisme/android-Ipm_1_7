@@ -44,6 +44,11 @@ public class SignInActivity extends BaseActivity {
         mOnSignInClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mEmailString == null || mEmailString.length() == 0){
+                    mEmailEditText.setError("Please fill the required fields");
+                    return;
+                }
+
 
                 if(!Utils.isValidEmail(mEmailString)){
                     mEmailEditText.setError("Not Valid Email");
@@ -51,7 +56,11 @@ public class SignInActivity extends BaseActivity {
                 }
 
                 if(mPasswordString == null || mPasswordString.length() < PASSWORD_MIN_LENGTH){
-                    mPasswordEditText.setError("Not Valid Password");
+                    if(mPasswordString == null || mPasswordString.length() == 0){
+                        mPasswordEditText.setError("Please fill the required fields");
+                    }else {
+                        mPasswordEditText.setError("Not Valid Password");
+                    }
                     return;
                 }
                 showProgressBar();
