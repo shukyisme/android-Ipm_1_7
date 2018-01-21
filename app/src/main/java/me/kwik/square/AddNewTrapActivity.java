@@ -350,7 +350,7 @@ public class AddNewTrapActivity extends BaseActivity {
                         return;
                     }
                     showProgressBar();
-                    KwikMe.createNewClientSite(mSelectedClient.getId(), mSiteNameString, "The holy land -  alcohol alcohol alcohol", new CreateNewClientSiteListener() {
+                    KwikMe.createNewClientSite(mSelectedClient.getId(), mSiteNameString, "Without description", new CreateNewClientSiteListener() {
                     @Override
                     public void createNewClientSiteDone(IpmClientSite site) {
                         hideProgressBar();
