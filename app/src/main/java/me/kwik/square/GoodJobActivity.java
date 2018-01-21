@@ -85,9 +85,9 @@ public class GoodJobActivity extends BaseActivity {
             Logger.e(TAG, "%s", e.getMessage());
         }
 
-        if (mSender != null && mSender.equals(ButtonSettingsActivity.class.getSimpleName())) {
-            mOrderSetupButton.setText(R.string.finish);
-       }
+//        if (mSender != null && mSender.equals(ButtonSettingsActivity.class.getSimpleName())) {
+//            mOrderSetupButton.setText(R.string.finish);
+//       }
 
         if(mApp != null) {
             mKwikButton = mApp.getButton( mKwikDeviceButtonId );
@@ -252,17 +252,17 @@ public class GoodJobActivity extends BaseActivity {
         Intent i = null;
         List<KwikProject.AdditionalDataItem> additionalData = mKwikProject.getAdditionalData();
         if (mKwikProject.getProducts() != null && mKwikProject.getProducts().size() > 0) {
-            i = new Intent(GoodJobActivity.this, SelectProductActivity.class);
+           // i = new Intent(GoodJobActivity.this, SelectProductActivity.class);
         } else if (mKwikProject.getForm() != null) {
-            i = new Intent(GoodJobActivity.this, PersonalDetailsActivity.class);
+           // i = new Intent(GoodJobActivity.this, PersonalDetailsActivity.class);
         } else if(additionalData != null && additionalData.size() >0){
-            i = new Intent(GoodJobActivity.this, IpmLoginActivity.class);
-            String url = mKwikProject.getAdditionalData().get(0).getUri().replace("{{button.id}}", id);
-            Logger.e(TAG, "Url = ", url);
-            i.putExtra(WebviewActivity.LOADING_URL, url);
-            i.putExtra(WebviewActivity.LOGIN_REDIRECT_URI, mKwikProject.getAdditionalData().get(0).getRedirectUri());
-            i.putExtra(WebviewActivity.PAGE_TITLE, mKwikProject.getAdditionalData().get(0).getTitle());
-            i.putExtra("buttonId", id);
+//            i = new Intent(GoodJobActivity.this, IpmLoginActivity.class);
+//            String url = mKwikProject.getAdditionalData().get(0).getUri().replace("{{button.id}}", id);
+//            Logger.e(TAG, "Url = ", url);
+//            i.putExtra(WebviewActivity.LOADING_URL, url);
+//            i.putExtra(WebviewActivity.LOGIN_REDIRECT_URI, mKwikProject.getAdditionalData().get(0).getRedirectUri());
+//            i.putExtra(WebviewActivity.PAGE_TITLE, mKwikProject.getAdditionalData().get(0).getTitle());
+//            i.putExtra("buttonId", id);
         }else {
             i = new Intent(GoodJobActivity.this, AllSetUpActivity.class);
         }
@@ -272,41 +272,7 @@ public class GoodJobActivity extends BaseActivity {
         finish();
     }
 
-    private void alertDialogView(final View orderButton) {
-        final CharSequence[] items = addressList.toArray(new CharSequence[addressList.size()]);
 
-
-        AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        } else {
-            builder = new AlertDialog.Builder(this);
-        }
-        builder.setTitle(R.string.please_select_address);
-        builder.setSingleChoiceItems(items, -1,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int item) {
-                        mKwikButton.setAddress(mApp.getUser().getAddresses().get(item).getId());
-                    }
-                });
-
-        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                sendUpdateButton(mKwikButton, orderButton);
-            }
-        });
-
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                hideProgressBar();
-                orderButton.setClickable(true);
-            }
-        });
-
-        AlertDialog alert = builder.create();
-        alert.setCancelable(false);
-        alert.show();
-    }
 
     @Override
     protected void showProgressBar() {

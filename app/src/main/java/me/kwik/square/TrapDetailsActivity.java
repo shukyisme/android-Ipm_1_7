@@ -15,8 +15,12 @@ import butterknife.ButterKnife;
 import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
+import me.kwik.data.IpmEvent;
+import me.kwik.listeners.GetIpmEventsListener;
 import me.kwik.listeners.GetKwikDevicesListener;
+import me.kwik.rest.responses.GetIpmEventsResponse;
 import me.kwik.rest.responses.GetKwikDevicesResponse;
+import me.kwik.utils.Logger;
 
 public class TrapDetailsActivity extends BaseActivity {
 
@@ -63,6 +67,8 @@ public class TrapDetailsActivity extends BaseActivity {
 
     private String mSerial;
     private KwikDevice mTrap;
+
+    private final String TAG = this.getClass().getSimpleName();
 
 
     @Override
@@ -127,6 +133,7 @@ public class TrapDetailsActivity extends BaseActivity {
                 mStatusValueTextView.setText(status);
                 if(status.equals(KwikDevice.STATUS_ALERT)){
                     mButtonIconImageView.setImageResource(R.drawable.kwik_orange);
+                    getEventFromServer();
                 }else if(status.equals(KwikDevice.STATUS_READY) ||
                         status.equals(KwikDevice.STATUS_AVAILABLE)){
                     mButtonIconImageView.setImageResource(R.drawable.ipm_button_ready_icon);
@@ -163,6 +170,23 @@ public class TrapDetailsActivity extends BaseActivity {
             mSetupDateTextView.setText(na);
         }
 
+    }
+
+    private void getEventFromServer() {
+        if(mTrap != null && mTrap.getClient() != null) {
+            KwikMe.getIpmEvents(IpmEvent.Status.ACTIVE, mTrap.getClient(), new GetIpmEventsListener() {
+                @Override
+                public void getIpmEventsDone(GetIpmEventsResponse res) {
+                    Logger.e(TAG,res.getEvents().toString());
+
+                }
+
+                @Override
+                public void getIpmEventsError(KwikServerError error) {
+                    showOneButtonErrorDialog("",error.getMessage());
+                }
+            });
+        }
     }
 
     public void editClicked(View view) {
