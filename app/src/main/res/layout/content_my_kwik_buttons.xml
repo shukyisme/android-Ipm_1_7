@@ -42,6 +42,7 @@
                 android:gravity="center_vertical|start" />
 
             <TextView
+                android:id="@+id/clients_activity_overview_total_traps_TextView"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -53,12 +54,13 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/clients_activity_alert_traps_TextView"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_below="@+id/clients_activity_overview_header_LinearLayout"
             android:background="@drawable/clients_listview_background"
             android:gravity="center"
-            android:text="3 Trap Alerts"
+            android:text="0 Trap Alerts"
             android:textSize="22sp"
             android:textColor="#8C9496"
             />
@@ -88,7 +90,7 @@
                 android:layout_height="40dp"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp"
-                android:text="Active clients: (82)"
+                android:text="Active clients: ()"
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/clients"
                 android:gravity="center_vertical|start" />

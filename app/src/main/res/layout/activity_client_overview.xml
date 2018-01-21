@@ -42,23 +42,25 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/client_overview_activity_total_traps_TextView"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical|end"
-                android:text="Total Traps: (7)"
+                android:text="Total Traps: "
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp" />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/client_overview_activity_trap_alerts_TextView"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_below="@+id/client_overview_activity_overview_header_LinearLayout"
             android:background="@drawable/clients_listview_background"
             android:gravity="center"
-            android:text="3 Trap Alerts"
+            android:text="0 Trap Alerts"
             android:textColor="#8C9496"
             android:textSize="22sp" />
 
