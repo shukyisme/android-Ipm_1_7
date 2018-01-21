@@ -23,6 +23,7 @@ import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
 import me.kwik.listeners.GetKwikDevicesListener;
+import me.kwik.rest.responses.GetKwikDevicesResponse;
 import me.kwik.utils.Logger;
 import me.kwk.utils.Utils;
 
@@ -34,11 +35,15 @@ public class ClientOverviewActivity extends BaseActivity {
     @BindView(R.id.client_overview_activity_add_new_trap_LinearLayout)
     LinearLayout mAddNewTrapLinearLayout;
 
-//    @BindView(R.id.fab)
-//    ImageButton mFab;
-
     @BindView(R.id.client_overview_activity_client_details_three_dots_TextView)
     TextView mClientDetailsThreeDotsTextView;
+
+    @BindView(R.id.client_overview_activity_total_traps_TextView)
+    TextView mTotalTrapsTextView;
+
+    @BindView(R.id.client_overview_activity_trap_alerts_TextView)
+    TextView mTotalAlertTrapsTextView;
+
 
     private Application             mApp;
     private String                  mClientName;
@@ -90,6 +95,28 @@ public class ClientOverviewActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         updateList();
+    }
+
+    private void updateTrapAlertsValue() {
+            KwikMe.getKwikDevices(null, mClientId, null, KwikDevice.STATUS_ALERT, new GetKwikDevicesListener() {
+                @Override
+                public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
+                    hideProgressBar();
+                    int totalTraps = 0;
+                    try {
+                        totalTraps = response.getPaging().getTotal();
+                    }catch (NullPointerException e){
+                        e.printStackTrace();
+                    }
+                    mTotalAlertTrapsTextView.setText(totalTraps + " Trap Alerts");
+                }
+
+                @Override
+                public void getKwikDevicesListenerError(KwikServerError error) {
+                    hideProgressBar();
+                    showOneButtonErrorDialog("",error.getMessage());
+                }
+            });
     }
 
     public class TrapsArrayAdapter extends ArrayAdapter<KwikDevice> {
@@ -167,17 +194,25 @@ public class ClientOverviewActivity extends BaseActivity {
 
     private void updateList() {
         showProgressBar();
-        KwikMe.getKwikDevices(null,mClientId, null, new GetKwikDevicesListener() {
+        KwikMe.getKwikDevices(null,mClientId, null,null, new GetKwikDevicesListener() {
             @Override
-            public void getKwikDevicesListenerDone(List<KwikDevice> buttons) {
+            public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
                 hideProgressBar();
-                mTraps = buttons;
-                if (buttons == null || buttons.size() == 0) {
+                mTraps = response.getButtons();
+                if (mTraps == null || mTraps.size() == 0) {
                     Utils.playAudioFile( ClientOverviewActivity.this, "add_first_button", 0, 5 );
                     return;
                 }
+                int totalTraps = 0;
+                try {
+                    totalTraps = response.getPaging().getTotal();
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+                mTotalTrapsTextView.setText("Total Traps: (" + totalTraps + ")");
                 mTrapsAdapter = new TrapsArrayAdapter(ClientOverviewActivity.this,mTraps );
                 mTrapsList.setAdapter(mTrapsAdapter);
+                updateTrapAlertsValue();
             }
 
             @Override
