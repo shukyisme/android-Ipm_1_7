@@ -47,6 +47,7 @@ import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
 import me.kwik.data.IpmClient;
@@ -56,7 +57,9 @@ import me.kwik.data.KwikProject;
 import me.kwik.data.KwikSelectedProduct;
 import me.kwik.data.MobileDevice;
 import me.kwik.listeners.GetClientsListener;
+import me.kwik.listeners.GetKwikDevicesListener;
 import me.kwik.rest.responses.GetClientsResponse;
+import me.kwik.rest.responses.GetKwikDevicesResponse;
 import me.kwik.utils.Logger;
 import me.kwk.utils.Utils;
 
@@ -72,7 +75,10 @@ public class ClientsActivity extends BaseActivity
     int i = 0;
 
     @BindView(R.id.clients_activity_clients_ListView) ListView mClientsList;
-    @BindView(R.id.clients_activity_clients_list_header_TextView) TextView mclientsHeaderTextView;
+    @BindView(R.id.clients_activity_clients_list_header_TextView) TextView mClientsHeaderTextView;
+    @BindView(R.id.clients_activity_overview_total_traps_TextView) TextView mTotalTrapsTextView;
+    @BindView(R.id.clients_activity_alert_traps_TextView) TextView mTotalAlertTrapsTextView;
+
 
     private ArrayAdapter<IpmClient> mClientsAdapter;
 
@@ -130,18 +136,80 @@ public class ClientsActivity extends BaseActivity
     @Override
     protected void onResume() {
         super.onResume();
+
+        updateClientsList();
+
+        updateOverView();
+
+
+        //updateList();
+    }
+
+    private void updateOverView() {
+        updateTotalTrapsHeader();
+        updateTrapsAlertValue();
+    }
+
+    private void updateTrapsAlertValue() {
+
+        KwikMe.getKwikDevices(null, null, null, KwikDevice.STATUS_ALERT, new GetKwikDevicesListener() {
+            @Override
+            public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
+                hideProgressBar();
+                int totalTraps = 0;
+                try {
+                    totalTraps = response.getPaging().getTotal();
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+                mTotalAlertTrapsTextView.setText(totalTraps + " Trap Alerts");
+            }
+
+            @Override
+            public void getKwikDevicesListenerError(KwikServerError error) {
+                hideProgressBar();
+                showOneButtonErrorDialog("",error.getMessage());
+            }
+        });
+    }
+
+    private void updateTotalTrapsHeader() {
+        KwikMe.getKwikDevices(null, null, null,null, new GetKwikDevicesListener() {
+            @Override
+            public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
+                hideProgressBar();
+                int totalTraps = 0;
+                try {
+                    totalTraps = response.getPaging().getTotal();
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+                mTotalTrapsTextView.setText("Total Traps: (" + totalTraps + ")");
+            }
+
+            @Override
+            public void getKwikDevicesListenerError(KwikServerError error) {
+                hideProgressBar();
+                showOneButtonErrorDialog("",error.getMessage());
+            }
+        });
+    }
+
+    private void updateClientsList() {
         showProgressBar();
         KwikMe.getClients(null, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
+
+                if(res == null || res.getClients() == null){
+                    return;
+                }
                 mApp.setmClients(res.getClients());
 
-                mclientsHeaderTextView.setText("Active clients: (" + res.getClients().size() + ")");
+                mClientsHeaderTextView.setText("Active clients: (" + res.getClients().size() + ")");
                 mClientsAdapter = new ClientsArrayAdapter(ClientsActivity.this,res.getClients() );
 
-                // Assign adapter to ListView
                 mClientsList.setAdapter(mClientsAdapter);
-                hideProgressBar();
             }
 
             @Override
@@ -151,7 +219,6 @@ public class ClientsActivity extends BaseActivity
 
             }
         });
-        //updateList();
     }
 
     private void customNavigationView(NavigationView navigationView) {
