@@ -261,33 +261,14 @@ public class ButtonToApActivity extends BaseActivity  {
 
             closeDialog();
             stopGoToSettingsPlaying();
+            if(networkName.contains("kwik_button")){
+                mKwikButtonSerial = networkName.substring(12,networkName.length());
+            }else{
+                mKwikButtonSerial = networkName.substring(11,networkName.length());
+            }
             mTeachWifiCredentials = new TeachWifiCredentials(ButtonToApActivity.this, ssid, password);
             mTeachWifiCredentials.startManualMode();
             mConnectingMessageTextView.setText(getString(R.string.button_to_ap_activity_connecting_your_button));
-
-//            String serialNumber = null;
-//            if(networkName.startsWith("kwik")){
-//                serialNumber = networkName.substring(12,networkName.length());
-//            }else {
-//                serialNumber = networkName.substring(11,networkName.length());
-//            }
-//
-//            mButton.setId(serialNumber);
-//            mButton.setSerial(serialNumber);
-//
-//            KwikMe.createClientButton(mButton.getClient(), mButton, new CreateClientButtonListener() {
-//                @Override
-//                public void createClientButtonListenerDone(KwikDevice device) {
-//                    mTeachWifiCredentials = new TeachWifiCredentials(ButtonToApActivity.this, ssid, password);
-//                    mTeachWifiCredentials.startManualMode();
-//                    mConnectingMessageTextView.setText(getString(R.string.button_to_ap_activity_connecting_your_button));
-//                }
-//                @Override
-//                public void createClientButtonListenerError(KwikServerError error) {
-//                    showOneButtonErrorDialog("",error.getMessage());
-//                }
-//            });
-
         }
 
     }
@@ -338,12 +319,6 @@ public class ButtonToApActivity extends BaseActivity  {
 
         public void onReceive(Context c, Intent intent) {
             boolean teach = intent.getBooleanExtra(KwikMe.WIFI_TEACH_COMPLETED_INTENT_SUCCESS_EXTRA,false);
-            mKwikButtonSerial = intent.getStringExtra(KwikMe.WIFI_TEACH_COMPLETED_INTENT_SUCCESS_KWIK_ID_EXTRA);
-            String projectId = intent.getStringExtra(KwikMe.WIFI_TEACH_COMPLETED_PROJECT_ID);
-
-            if(projectId != null) {
-                mApp.addProject(projectId);
-            }
             Logger.d(TAG, "Teach wifi response = %s", teach);
 
             if(teach){
@@ -354,36 +329,12 @@ public class ButtonToApActivity extends BaseActivity  {
                 KwikMe.createClientButton(mButton.getClient(), mButton, new CreateClientButtonListener() {
                     @Override
                     public void createClientButtonListenerDone(KwikDevice device) {
+                        Intent i = new Intent(ButtonToApActivity.this,GoodJobActivity.class);
+                        i.putExtra("sender",mSender);
+                        i.putExtra("buttonId",mKwikButtonSerial);
+                        startActivity(i);
+                        finish();
 
-                        if(mSender!= null && mSender.equals(ButtonSettingsActivity.class.getSimpleName())){
-                            Intent i = new Intent(ButtonToApActivity.this,GoodJobActivity.class);
-                            i.putExtra("sender",mSender);
-                            i.putExtra("buttonId",mKwikButtonSerial);
-                            startActivity(i);
-                            finish();
-                            return;
-                        }
-
-                        KwikButtonDevice button = new KwikButtonDevice();
-
-                        if(mKwikButtonSerial.startsWith("kwik_")) {
-                            button.setId(mKwikButtonSerial.substring(5));
-                        }else if(mKwikButtonSerial.startsWith("ipm_")) {
-                            button.setId(mKwikButtonSerial.substring(4));
-                        }else{
-                            button.setId(mKwikButtonSerial);
-                        }
-                        button.setUser(KwikMe.USER_ID);
-
-
-                        if(mApp.getButton(mKwikButtonSerial) != null) {
-                            Intent i = new Intent(ButtonToApActivity.this, GoodJobActivity.class);
-                            i.putExtra("buttonId",mKwikButtonSerial);
-                            startActivity(i);
-                            finish();
-                            return;
-                        }
-                        mConnectingMessageTextView.setText(getString(R.string.button_to_ap_activity_connecting_button_to_user));
                     }
                     @Override
                     public void createClientButtonListenerError(KwikServerError error) {
