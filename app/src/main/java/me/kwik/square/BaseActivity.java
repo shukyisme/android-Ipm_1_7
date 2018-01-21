@@ -79,7 +79,7 @@ public class BaseActivity extends AppCompatActivity{
             mNextImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickNext();
+                   // clickNext();
                 }
             });
         }
