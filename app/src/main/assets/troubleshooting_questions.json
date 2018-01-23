@@ -1,0 +1,86 @@
+{
+	"questions": [{
+			"question": "Can't connect the phone to the internet",
+			"posible_cases": [{
+					"posible_case": "Your phone's wi-fi is turned off",
+					"what_to_do": ["Turn on your phone's wi-fi. make sure you can connect o the router"]
+				},
+				{
+					"posible_case": "The router you are connected to has no internet",
+					"what_to_do": ["Reset the router (and cellular dongle, if applicable) and try again"]
+
+
+				}
+			]
+		},
+
+		{
+			"question": "Trap button was pressed, but no light appears",
+			"posible_cases": [{
+				"posible_case": "Square is not powered on",
+				"what_to_do": ["press a short click on the Square's button and check that the LED light is spinning", "Use a pin, paper clip, or thumbtack to press and hold the reset button in the back of the Square for about 5 seconds and then press a short click on the Square's button ", "if the lights didn't turn on, change the Square's battery (see battery replacement in the FAQ)"
+
+				]
+			}]
+		},
+		{
+			"question": "Can't find the IPM Square network in the phone's wi-fi settings",
+			"posible_cases": [{
+				"posible_case": "Your phone's wi-fi is turned off",
+				"what_to_do": ["Turn on your phone's wi-fi. make sure you can connect to the router"
+				]
+			},
+			{
+				"posible_case": "The IPM Square is not transmitting a wi-fi network",
+				"what_to_do": [" press and hold the trap's button until it starts blinking and makes a sound. If the Square doesn't make a sound and the lights don't flash - see item 2 above ",
+				" Go to the wi-fi settings of your phone and wait until the Square's network appears in the phones wi-fi settings. It may take up to 20 seconds for the network to appear, depends on the model of your phone"
+				]
+			},
+			{
+				"posible_case": "You are too far from the IPM Square's antenna",
+				"what_to_do": ["Place the trap on a steady place in front of you and try again"
+				]
+			}
+			
+			]
+		},
+		{
+			"question": "Can't see the notification in the header during wi-fi teach",
+			"posible_cases": [{
+					"posible_case": "Notifications are turned off for the app",
+					"what_to_do": ["Turn on notifications for the IPM Square app"]
+				},
+				{
+					"posible_case": "Your phone's operating system is not updated",
+					"what_to_do": ["Update your phone's operating system to the latest version"]
+
+
+				}
+			]
+		},
+			{
+			"question": "During trap installation, after returning to the app from the wi-fi settings, the app is stuck on 100% (android) or Registering trap (iOS) ",
+			"posible_cases": [{
+					"posible_case": "The trap is not able to communicate with the IPM Square server",
+					"what_to_do": ["Make sure the wi-fi pssword you use is the correct password
+          ","Make sure that your router's wi-fi network is working. Verify you can surf the web with your phone while connected to the router.",
+          "Note that the Square will not be able to connect to the server in the following cases:\n\t - the wi-fi network is transmitted in 5GHz\n\t - the wi-fi network uses WEP encryption\n\t - the wi-fi network has a landing page (where you need to enter a user name and password or agree to conditions on a dedicated internet page)","Change the installation location to a spot closer to the router"]
+				}
+			]
+		},
+			{
+			"question": "A client can't be found in the client's list in the clients screen",
+			"posible_cases": [{
+					"posible_case": "You don't have permissions to see this client's activity",
+					"what_to_do": ["Contact your system administrator to get the requried permissions"]
+				},
+				{
+					"posible_case": "The client you are looking for doesn't exist in the data base",
+					"what_to_do": ["Create a new client from the 'Add a new trap' screen"]
+
+
+				}
+			]
+		}
+	]
+}
