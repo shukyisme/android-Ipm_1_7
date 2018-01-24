@@ -4,6 +4,7 @@
     android:id="@+id/activity_ipm_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/kwik_me_white"
     android:fillViewport="true">
 
     <RelativeLayout
@@ -32,7 +33,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingStart="10dp"
-                    android:text="@string/ipm_login_activity_client_name" />
+                    android:text="@string/ipm_login_activity_client_name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -50,7 +52,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="10dp"
@@ -61,15 +64,29 @@
                     android:textColor="#FFF62C44"
                     android:textSize="20sp" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/client_name_AutoCompleteTextView"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/rectangle_2_vd"
-                    android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/user_name"
-                    android:hint="@string/ipm_login_activity_search"
-                    android:paddingStart="2dp" />
+                    android:layout_height="wrap_content">
+                    <AutoCompleteTextView
+                        android:id="@+id/client_name_AutoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_2_vd"
+                        android:drawablePadding="10dp"
+                        android:drawableStart="@drawable/user_name"
+                        android:hint="@string/ipm_login_activity_search"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingStart="10dp" />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/dropdown"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"/>
+                </RelativeLayout>
+
             </LinearLayout>
         </LinearLayout>
 
@@ -93,7 +110,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingStart="10dp"
-                    android:text="@string/ipm_login_activity_site" />
+                    android:text="@string/ipm_login_activity_site"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
 
                 <TextView
                     android:id="@+id/add_new_trap_activity_new_site_TextView"
@@ -111,7 +129,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="10dp"
@@ -122,6 +141,9 @@
                     android:textColor="#FFF62C44"
                     android:textSize="20sp" />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <AutoCompleteTextView
                     android:id="@+id/add_new_trap_activity_new_site_AutoCompleteTextView"
                     android:layout_width="match_parent"
@@ -130,7 +152,17 @@
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/rectangle_51"
                     android:hint="@string/ipm_login_activity_search"
-                    android:paddingStart="2dp" />
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="10dp" />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/dropdown"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"/>
+                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
 
@@ -153,7 +185,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingStart="10dp"
-                    android:text="@string/ipm_login_activity_trap_name" />
+                    android:text="@string/ipm_login_activity_trap_name"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -167,7 +200,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="10dp"
@@ -186,7 +220,9 @@
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/rectangle_5"
                     android:hint="Trap - "
-                    android:paddingStart="2dp" />
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="10dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -210,7 +246,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingStart="10dp"
-                    android:text="@string/ipm_login_activity_trap_description" />
+                    android:text="@string/ipm_login_activity_trap_description"
+                   />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -224,7 +261,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:layout_width="10dp"
@@ -235,15 +273,31 @@
                     android:textColor="#FFF62C44"
                     android:textSize="20sp" />
 
-                <EditText
-                    android:id="@+id/add_new_trap_activity_trap_description_EditText"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/rectangle_2_vd"
-                    android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/rectangle_4"
-                    android:hint="Enter description"
-                    android:paddingStart="2dp" />
+                    android:padding="10dp">
+
+                    <EditText
+                        android:id="@+id/add_new_trap_activity_trap_description_EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:hint="Enter description"
+                        android:paddingStart="25dp"
+                        android:background="@android:color/transparent"
+                        android:gravity="start" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/rectangle_4"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="2dp"/>
+
+                </RelativeLayout>
+
+
             </LinearLayout>
 
         </LinearLayout>

@@ -24,5 +24,4 @@
         app:itemBackground="@android:color/transparent"
         app:menu="@menu/activity_my_kwik_buttons_drawer"
         />
-
 </android.support.v4.widget.DrawerLayout>

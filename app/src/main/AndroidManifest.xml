@@ -121,38 +121,13 @@
             android:name=".GoodJobActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SelectProductActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".PersonalDetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".AllSetUpActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ReorderSettingsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".DeliveryActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity
-            android:name=".UpdatePersonalDetailsActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden" />
-        <activity
-            android:name=".WebviewActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".PaymentWebViewActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ProductsWebviewActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SetupActivity"
             android:screenOrientation="portrait" />
@@ -173,16 +148,7 @@
                 android:name="android.app.default_searchable"
                 android:value=".MyKwikButtonsActivity" />
         </activity>
-        <activity
-            android:name=".ButtonSettingsActivity"
-            android:label="@string/title_activity_button_settings"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AddressActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+
         <activity
             android:name=".WiFiSelectionActivity"
             android:screenOrientation="portrait" />
@@ -190,11 +156,9 @@
             android:name=".AddSerialNumberManuallyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".IpmLoginActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".SignInActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".ClientOverviewActivity"
             android:launchMode="singleTop"

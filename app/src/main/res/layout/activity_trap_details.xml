@@ -45,7 +45,7 @@
                 <ImageButton
                     android:layout_width="0dp"
                     android:layout_height="22dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.8"
                     android:background="#FF98C665"
                     android:elevation="0dp"
                     android:scaleType="fitCenter"
@@ -161,7 +161,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Status: "
-                android:textColor="#FFB5BBC5"
+                android:textColor="#8C9496"
                 android:textSize="16sp" />
 
             <TextView
@@ -173,6 +173,17 @@
                 android:text="Trap alert"
                 android:textColor="#FFF62C44"
                 android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/trap_details_activity_resolve_Button"
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_marginStart="20dp"
+                android:layout_height="match_parent"
+                android:text="Resolve"
+                android:textColor="@color/kwik_me_white"
+                android:background="@drawable/rounder_corner_blue_background"
+                android:visibility="gone"/>
 
         </LinearLayout>
         <!-- Separator -->
@@ -202,7 +213,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Alert Time: "
-                android:textColor="#FFB5BBC5"
+                android:textColor="#8C9496"
                 android:textSize="16sp" />
 
             <TextView
@@ -243,7 +254,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Last communication: "
-                android:textColor="#FFB5BBC5"
+                android:textColor="#8C9496"
                 android:textSize="16sp" />
 
             <TextView
@@ -284,7 +295,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Battery level: "
-                android:textColor="#FFB5BBC5"
+                android:textColor="#8C9496"
                 android:textSize="16sp" />
 
             <TextView
@@ -325,7 +336,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:text="Setup date: "
-                android:textColor="#FFB5BBC5"
+                android:textColor="#8C9496"
                 android:textSize="16sp" />
 
             <TextView
@@ -373,7 +384,7 @@
                     android:layout_weight="1"
                     android:gravity="start"
                     android:text="Description: "
-                    android:textColor="#FFB5BBC5"
+                    android:textColor="#8C9496"
                     android:textSize="16sp" />
 
                 <ImageButton

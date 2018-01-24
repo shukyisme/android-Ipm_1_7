@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -78,6 +79,7 @@ public class ClientsActivity extends BaseActivity
     @BindView(R.id.clients_activity_clients_list_header_TextView) TextView mClientsHeaderTextView;
     @BindView(R.id.clients_activity_overview_total_traps_TextView) TextView mTotalTrapsTextView;
     @BindView(R.id.clients_activity_alert_traps_TextView) TextView mTotalAlertTrapsTextView;
+    @BindView(R.id.client_activity_clients_listView_bottom_background_View) View mListViewBottomBackgroundView;
 
 
     private ArrayAdapter<IpmClient> mClientsAdapter;
@@ -109,6 +111,7 @@ public class ClientsActivity extends BaseActivity
 
         actionBar = getSupportActionBar();
         actionBar.setTitle( getResources().getString( R.string.clients_activity_title) );
+
         actionBar.show();
 
         View headerView = mNavigationView.getHeaderView( 0 );
@@ -539,9 +542,6 @@ public class ClientsActivity extends BaseActivity
     }
 
 
-
-
-
     public class ClientsArrayAdapter extends ArrayAdapter<IpmClient> {
         private final Context context;
         private  List<IpmClient> values;
@@ -550,6 +550,11 @@ public class ClientsActivity extends BaseActivity
             super( context, -1, values );
             this.context = context;
             this.values = values;
+            if(this.values.size() > 5){
+                mListViewBottomBackgroundView.setVisibility(View.VISIBLE);
+            }else{
+                mListViewBottomBackgroundView.setVisibility(View.GONE);
+            }
         }
 
         public View getView(final int position, View convertView, ViewGroup parent) {

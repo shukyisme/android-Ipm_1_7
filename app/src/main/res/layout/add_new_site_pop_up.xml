@@ -23,7 +23,8 @@
         android:textSize="18sp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/new_site_pop_up_client_name_TextView"
@@ -43,16 +44,18 @@
         android:textColor="@color/lavendergray"
         android:textSize="18sp"
         android:paddingStart="10dp"
-        android:paddingTop="10dp"/>
+        android:paddingTop="10dp"
+        android:textStyle="normal|bold" />
 
     <EditText
         android:id="@+id/new_site_pop_up_site_name_EditText"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:background="@drawable/rectangle_2_vd"
         android:layout_margin="10dp"
         android:hint="Enter the name of the site"
-        android:paddingStart="2dp" />
+        android:padding="10dp"
+        android:gravity="top" />
 
     <LinearLayout
         android:layout_width="match_parent"
