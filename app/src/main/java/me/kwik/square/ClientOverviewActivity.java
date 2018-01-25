@@ -89,6 +89,13 @@ public class ClientOverviewActivity extends BaseActivity {
                 startActivity(i);
             }
         });
+        mPrevTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ClientOverviewActivity.this,ClientsActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

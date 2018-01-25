@@ -65,8 +65,6 @@ public class GoodJobActivity extends BaseActivity {
         mActionBarTitle.setText(R.string.good_job_activity_title);
         mApp = (Application) getApplication();
 
-        Utils.playAudioFile(this, "great_job",0,5);
-
         try {
             mSender = getIntent().getStringExtra("sender");
         } catch (NullPointerException e) {
@@ -107,8 +105,9 @@ public class GoodJobActivity extends BaseActivity {
 
     public void orderSetUpClick(final View orderButton) {
         orderButton.setClickable(false);
-        Intent i = new Intent(GoodJobActivity.this, ClientsActivity.class);
-        i.putExtra("sender", GoodJobActivity.class.getSimpleName());
+        Intent i = new Intent(GoodJobActivity.this, TrapDetailsActivity.class);
+        i.putExtra("serial_number",mKwikDeviceButtonId);
+       // i.putExtra("sender", GoodJobActivity.class.getSimpleName());
         startActivity(i);
         finish();
 //

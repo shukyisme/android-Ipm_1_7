@@ -1,5 +1,6 @@
 package me.kwik.square;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -109,6 +110,16 @@ public class TrapDetailsActivity extends BaseActivity {
                         showOneButtonErrorDialog("",error.getMessage());
                     }
                 });
+            }
+        });
+
+
+        mPrevTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(TrapDetailsActivity.this,ClientOverviewActivity.class);
+                i.putExtra("client",mTrap.getClient());
+                startActivity(i);
             }
         });
     }

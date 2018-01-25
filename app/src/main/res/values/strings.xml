@@ -250,7 +250,7 @@
     <string name="enter_serial_number_error_cancel_button">CANCEL</string>
 
     <!-- Good job activity -->
-    <string name="good_job_activity_title">Trap Connected!</string>
+    <string name="good_job_activity_title">Great job</string>
     <string name="good_job_activity_finish_button">Finish setup</string>
 
     <!-- IPM Login Activity -->
