@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.EditText;
 
@@ -45,6 +46,7 @@ public class AddSerialNumberManuallyActivity extends BaseActivity {
     public void enterSerialNumberClicked(View enterSerialNumber){
         AlertDialog.Builder alert = new AlertDialog.Builder(this,android.R.style.Theme_Material_Light_Dialog_Alert);
         final EditText edittext = new EditText(this);
+        edittext.setKeyListener(new DigitsKeyListener());
         edittext.setHint(R.string.enter_serial_number_dialog_edit_text_hint);
 
         alert.setTitle(R.string.enter_serial_number_dialog_title);
