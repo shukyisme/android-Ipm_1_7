@@ -240,6 +240,11 @@ public class AddNewTrapActivity extends BaseActivity {
                     mSelectedClient = mApp.getClient(client);
                     mClientNameAutoCompleteTextView.setText(mSelectedClient.getName());
                     mClientNameAutoCompleteTextView.dismissDropDown();
+                    IpmClientSite[] sitesArray = mSelectedClient.getSites();
+                    if(sitesArray != null && sitesArray.length >0) {
+                        ArrayAdapter<IpmClientSite> clientSitesAdapter = new ArrayAdapter<IpmClientSite>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, sitesArray);
+                        mSiteAutoCompleteTextView.setAdapter(clientSitesAdapter);
+                    }
                     changeAddNewSiteTextView(true);
                 }
             }
