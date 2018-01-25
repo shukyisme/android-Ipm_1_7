@@ -391,7 +391,9 @@ public class ClientsActivity extends BaseActivity
                         public void onClick(DialogInterface dialog, int which) {
                             mApp.clearApplicationData();
                             mApp.setButtons( null );
-                            finishAffinity();
+                            finish();
+                            Intent i= new Intent(ClientsActivity.this,SignInActivity.class);
+                            startActivity(i);
 
                         }
 
