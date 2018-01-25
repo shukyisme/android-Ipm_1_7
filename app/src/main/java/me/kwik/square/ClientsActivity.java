@@ -150,7 +150,7 @@ public class ClientsActivity extends BaseActivity
 
     private void updateOverView() {
         updateTotalTrapsHeader();
-        updateTrapsAlertValue();
+
     }
 
     private void updateTrapsAlertValue() {
@@ -188,6 +188,7 @@ public class ClientsActivity extends BaseActivity
                     e.printStackTrace();
                 }
                 mTotalTrapsTextView.setText("Total Traps: (" + totalTraps + ")");
+                updateTrapsAlertValue();
             }
 
             @Override

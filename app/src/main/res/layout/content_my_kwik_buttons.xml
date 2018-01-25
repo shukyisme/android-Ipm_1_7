@@ -48,7 +48,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp"
-                android:text="Total Traps: (7)"
+                android:text="Total Traps:"
                 android:gravity="center_vertical|end"/>
 
         </LinearLayout>
