@@ -73,7 +73,6 @@ public class NetworkPasswordActivity extends BaseActivity {
         relativeLayout = (RelativeLayout) findViewById(R.id.network_password_activity_main_layout);
 
         mWifiPasswordEditText = (EditText) findViewById(R.id.network_password_activity_password_edit_text);
-        mPrevTextView.setVisibility(View.INVISIBLE);
         mSavePasswordCheckBox = (CheckBox) findViewById(R.id.network_password_activity_save_password_check_box);
         mNeedHelpTextView = (TextView) findViewById(R.id.network_password_activity_help_link_text_view);
         mWifiNetworkSsidEditText = (EditText) findViewById(R.id.network_password_activity_ssid_edit_text);
