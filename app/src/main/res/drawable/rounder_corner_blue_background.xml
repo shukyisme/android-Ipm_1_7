@@ -5,11 +5,11 @@
 
     >
 
-<solid android:color="@color/kwik_me_button_background_color"></solid>
+<solid android:color="#FF256BA7"></solid>
     <padding android:left="5dp" android:top="5dp"
         android:right="5dp" android:bottom="5dp" />
 
     <stroke android:width="0.0dp" android:color="#D9D9D9"/>
-    <corners android:radius="20dp" />
+    <corners android:radius="5dp" />
 
 </shape>
