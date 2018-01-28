@@ -155,7 +155,7 @@ public class ClientsActivity extends BaseActivity
 
     private void updateTrapsAlertValue() {
 
-        KwikMe.getKwikDevices(null, null, null, KwikDevice.STATUS_ALERT, new GetKwikDevicesListener() {
+        KwikMe.getKwikDevices(null, null, null, KwikDevice.STATUS_ALERT,"status",1, new GetKwikDevicesListener() {
             @Override
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
                 hideProgressBar();
@@ -177,7 +177,7 @@ public class ClientsActivity extends BaseActivity
     }
 
     private void updateTotalTrapsHeader() {
-        KwikMe.getKwikDevices(null, null, null,null, new GetKwikDevicesListener() {
+        KwikMe.getKwikDevices(null, null, null,null, "status",1,new GetKwikDevicesListener() {
             @Override
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
                 hideProgressBar();

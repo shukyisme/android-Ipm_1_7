@@ -133,7 +133,7 @@ public class TrapDetailsActivity extends BaseActivity {
             return;
         }
         showProgressBar();
-        KwikMe.getKwikDevices(mSerial,null, null,null, new GetKwikDevicesListener() {
+        KwikMe.getKwikDevices(mSerial,null, null,null, "status",1,new GetKwikDevicesListener() {
             @Override
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
                 hideProgressBar();
