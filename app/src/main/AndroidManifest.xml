@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.kwik.square">
+    package="me.kwik.appsquare">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -17,7 +17,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".Application"
+        android:name="me.kwik.appsquare.Application"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -69,14 +69,14 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <service android:name=".FireService">
+        <service android:name="me.kwik.appsquare.FireService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
         <activity xmlns:android="http://schemas.android.com/apk/res/android"
-            android:name=".SplashActivity"
+            android:name="me.kwik.appsquare.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -101,27 +101,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartActivity"
+            android:name="me.kwik.appsquare.StartActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".BaseActivity" />
+        <activity android:name="me.kwik.appsquare.BaseActivity" />
         <activity
-            android:name=".SignupActivity"
+            android:name="me.kwik.appsquare.SignupActivity"
             android:windowSoftInputMode="stateVisible" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name="me.kwik.appsquare.LoginActivity" />
         <activity
-            android:name=".VerifyPhoneActivity"
+            android:name="me.kwik.appsquare.VerifyPhoneActivity"
             android:windowSoftInputMode="stateVisible" />
         <activity
-            android:name=".NetworkPasswordActivity"
+            android:name="me.kwik.appsquare.NetworkPasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ButtonToApActivity"
+            android:name="me.kwik.appsquare.ButtonToApActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".GoodJobActivity"
+            android:name="me.kwik.appsquare.GoodJobActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AllSetUpActivity"
+            android:name="me.kwik.appsquare.AllSetUpActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -129,10 +129,10 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".SetupActivity"
+            android:name="me.kwik.appsquare.SetupActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ClientsActivity"
+            android:name="me.kwik.appsquare.ClientsActivity"
             android:label="@string/my_buttons_activity_main_label"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -150,32 +150,32 @@
         </activity>
 
         <activity
-            android:name=".WiFiSelectionActivity"
+            android:name="me.kwik.appsquare.WiFiSelectionActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddSerialNumberManuallyActivity"
+            android:name="me.kwik.appsquare.AddSerialNumberManuallyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignInActivity"
+            android:name="me.kwik.appsquare.SignInActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".ClientOverviewActivity"
+            android:name="me.kwik.appsquare.ClientOverviewActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".AddNewTrapActivity"
+            android:name="me.kwik.appsquare.AddNewTrapActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".TrapDetailsActivity"
+            android:name="me.kwik.appsquare.TrapDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateClientActivity"
+            android:name="me.kwik.appsquare.CreateClientActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ClientDetailsActivity"
+            android:name="me.kwik.appsquare.ClientDetailsActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".TroubleshootingActivity"
+        <activity android:name="me.kwik.appsquare.TroubleshootingActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

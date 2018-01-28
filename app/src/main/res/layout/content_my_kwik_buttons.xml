@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/kwik_me_screen_background_color"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="me.kwik.square.ClientsActivity"
+    tools:context="me.kwik.appsquare.ClientsActivity"
     tools:showIn="@layout/app_bar_my_kwik_buttons"
     android:orientation="vertical">
 

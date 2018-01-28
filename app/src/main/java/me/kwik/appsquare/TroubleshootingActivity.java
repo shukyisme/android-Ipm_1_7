@@ -1,4 +1,4 @@
-package me.kwik.square;
+package me.kwik.appsquare;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -20,7 +20,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.kwik.bl.KwikServerError;
 import me.kwik.data.Troubleshooting;
 import me.kwik.data.TroubleshootingItem;
 import me.kwik.utils.Logger;

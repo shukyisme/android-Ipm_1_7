@@ -1,11 +1,10 @@
-package me.kwik.square;
+package me.kwik.appsquare;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import me.kwik.bl.KwikDevice;
-import me.kwik.utils.Logger;
 import me.kwk.utils.Utils;
 
 public class WiFiSelectionActivity extends BaseActivity {

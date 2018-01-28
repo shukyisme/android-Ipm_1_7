@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/kwik_me_white"
-    tools:context="me.kwik.square.AddressActivity"
+    tools:context="me.kwik.appsquare.AddressActivity"
     tools:showIn="@layout/activity_address">
 
     <!-- Add Address -->

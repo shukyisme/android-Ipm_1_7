@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="me.kwik.square.AddressActivity">
+    tools:context="me.kwik.appsquare.AddressActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

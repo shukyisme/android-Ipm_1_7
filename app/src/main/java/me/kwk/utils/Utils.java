@@ -34,8 +34,8 @@ import java.util.Map;
 import java.util.Set;
 
 import me.kwik.bl.KwikMe;
-import me.kwik.square.Application;
-import me.kwik.square.SetupActivity;
+import me.kwik.appsquare.Application;
+import me.kwik.appsquare.SetupActivity;
 import me.kwik.utils.Logger;
 
 /**

@@ -14,7 +14,7 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="me.kwik.square.IpmLoginActivity">
+        tools:context="me.kwik.appsquare.IpmLoginActivity">
 
         <!-- Client name Layout -->
         <LinearLayout

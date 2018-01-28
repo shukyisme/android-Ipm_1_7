@@ -1,4 +1,4 @@
-package me.kwik.square;
+package me.kwik.appsquare;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -1,4 +1,4 @@
-package me.kwik.square;
+package me.kwik.appsquare;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,16 +8,10 @@ import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.EditText;
 
-import java.util.ArrayList;
-
 import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
-import me.kwik.data.KwikButtonDevice;
-import me.kwik.data.KwikProject;
-import me.kwik.listeners.AttachUserListener;
 import me.kwik.listeners.CreateClientButtonListener;
-import me.kwik.listeners.GetProjectListener;
 import me.kwk.utils.Utils;
 
 public class AddSerialNumberManuallyActivity extends BaseActivity {

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
-import me.kwik.square.R;
+import me.kwik.appsquare.R;
 
 /**
  * Created by Farid Abu Salih on 31/01/17.

@@ -1,4 +1,4 @@
-package me.kwik.square;
+package me.kwik.appsquare;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;

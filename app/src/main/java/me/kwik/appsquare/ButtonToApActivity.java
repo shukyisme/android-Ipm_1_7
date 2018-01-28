@@ -1,4 +1,4 @@
-package me.kwik.square;
+package me.kwik.appsquare;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -28,21 +28,15 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
-import me.kwik.data.KwikButtonDevice;
-import me.kwik.data.KwikProject;
-import me.kwik.listeners.AttachUserListener;
 import me.kwik.listeners.CreateClientButtonListener;
-import me.kwik.listeners.GetProjectListener;
 import me.kwik.utils.Logger;
 import me.kwik.utils.NetworkUtil;
 import me.kwik.wifi.TeachWifiCredentials;

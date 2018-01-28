@@ -27,7 +27,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.kwik.square.R;
+import me.kwik.appsquare.R;
 
 /**
  * Created by Farid Abu Salih on 23/02/16.

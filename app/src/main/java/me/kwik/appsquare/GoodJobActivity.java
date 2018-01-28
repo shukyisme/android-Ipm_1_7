@@ -1,42 +1,27 @@
-package me.kwik.square;
+package me.kwik.appsquare;
 
-import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.MediaController;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
-
-import com.google.android.gms.analytics.HitBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
-import me.kwik.data.KwikApplicationClient;
 import me.kwik.data.KwikButtonDevice;
-import me.kwik.data.KwikProduct;
 import me.kwik.data.KwikProject;
-import me.kwik.data.MobileDevice;
-import me.kwik.listeners.GetProductCatalogListener;
-import me.kwik.listeners.RegisterUserListener;
 import me.kwik.listeners.UpdateKwikButtonListener;
 import me.kwik.utils.Logger;
-import me.kwk.utils.DownloadImageTask;
 import me.kwk.utils.Utils;
-
-import static me.kwik.square.R.id.video_player_view;
 
 public class GoodJobActivity extends BaseActivity {
 

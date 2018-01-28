@@ -4,7 +4,7 @@
     android:id="@+id/rlBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.kwik.square.ButtonToApActivity"
+    tools:context="me.kwik.appsquare.ButtonToApActivity"
     android:background="@color/kwik_me_gray_back_ground">
 
     <TextView

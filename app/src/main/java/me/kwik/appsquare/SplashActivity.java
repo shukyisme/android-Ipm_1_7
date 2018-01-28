@@ -1,17 +1,12 @@
-package me.kwik.square;
+package me.kwik.appsquare;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 
 import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import me.kwik.bl.KwikMe;
@@ -22,7 +17,6 @@ import me.kwik.listeners.InitialHandShakeListener;
 import me.kwik.listeners.LoginListener;
 import me.kwik.rest.responses.InitialHandShakeResponse;
 import me.kwik.rest.responses.LoginResponse;
-import me.kwik.utils.Logger;
 
 public class SplashActivity extends BaseActivity  {
 

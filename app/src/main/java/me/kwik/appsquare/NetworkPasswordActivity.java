@@ -1,12 +1,6 @@
-package me.kwik.square;
-
-import static android.os.Build.VERSION.SDK_INT;
-import static android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1;
-import static android.os.Build.VERSION_CODES.JELLY_BEAN_MR1;
+package me.kwik.appsquare;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,11 +15,8 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -35,7 +26,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 import co.uk.rushorm.core.RushCore;
@@ -44,7 +34,6 @@ import me.kwik.bl.KwikDevice;
 import me.kwik.data.KwikNetwork;
 import me.kwik.utils.Logger;
 import me.kwik.utils.NetworkUtil;
-import me.kwk.utils.PhoneUtils;
 import me.kwk.utils.Utils;
 
 public class NetworkPasswordActivity extends BaseActivity {
