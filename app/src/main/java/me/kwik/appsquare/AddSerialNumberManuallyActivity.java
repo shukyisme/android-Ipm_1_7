@@ -1,23 +1,42 @@
 package me.kwik.appsquare;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
+import me.kwik.data.KwikLocation;
 import me.kwik.listeners.CreateClientButtonListener;
+import me.kwik.utils.Logger;
 import me.kwk.utils.Utils;
 
-public class AddSerialNumberManuallyActivity extends BaseActivity {
+public class AddSerialNumberManuallyActivity extends BaseActivity  implements
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
     private Application mApp;
     private KwikDevice mButton;
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 03;
+    private Location mLastLocation;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +48,51 @@ public class AddSerialNumberManuallyActivity extends BaseActivity {
 
         Intent i = getIntent();
         mButton = (KwikDevice) i.getParcelableExtra("button");
+
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        try {
+            mGoogleApiClient.disconnect();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_ID_MULTIPLE_PERMISSIONS: {
+                if (grantResults.length == 1
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                            mGoogleApiClient);
+                }
+                return;
+            }
+        }
     }
 
     @Override
@@ -68,6 +132,11 @@ public class AddSerialNumberManuallyActivity extends BaseActivity {
                 mButton.setId(serialNumber);
                 mButton.setSerial(serialNumber);
 
+                if(mLastLocation != null) {
+                    KwikLocation location = new KwikLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), mLastLocation.getAccuracy());
+                    mButton.setCoordinate(location);
+                }
+
                 KwikMe.createClientButton(mButton.getClient(), mButton, new CreateClientButtonListener() {
                     @Override
                     public void createClientButtonListenerDone(KwikDevice device) {
@@ -99,5 +168,27 @@ public class AddSerialNumberManuallyActivity extends BaseActivity {
                                   });
 
         dialog.show();
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(AddSerialNumberManuallyActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_ID_MULTIPLE_PERMISSIONS);
+        }else{
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+        }
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }

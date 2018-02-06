@@ -4,17 +4,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.Tracker;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,7 +39,6 @@ import me.kwk.utils.Utils;
 public final class Application extends android.app.Application {
 
     public static final String SUPPORT_EMAIL = "service@kwik.me";
-    private CallbackManager callbackManager;
     public static String SERVER_URL;
     public static final String DEV_SERVER_URL = "https://devinternal.kwik.me";
     public static final String INTEGRATION_SERVER_URL = "https://integration.kwik.me";
@@ -96,22 +84,6 @@ public final class Application extends android.app.Application {
     public static final String IMAGES_FOLDER_NAME = "kwikImages";
 
 
-    private Tracker mTracker;
-
-    /**
-     * Gets the default {@link Tracker} for this {@link Application}.
-     *
-     * @return tracker
-     */
-    synchronized public Tracker getDefaultTracker() {
-        if (mTracker == null) {
-            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
-            mTracker = analytics.newTracker(R.xml.app_tracker);
-        }
-        return mTracker;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -120,25 +92,6 @@ public final class Application extends android.app.Application {
         SERVER_URL = PRODUCTION_SERVER_URL;
 
         mMobileDevice = new MobileDevice(getApplicationContext());
-
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-
-            }
-
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-
-            }
-        });
 
 
         KwikApp.LifeCyclePhase = KwikMe.LifeCyclePhase.DEBUG;
@@ -166,8 +119,6 @@ public final class Application extends android.app.Application {
             KwikMe.LOCAL = LOCAL_HE_IL;
         }
 
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
-        ImageLoader.getInstance().init(config);
 
         List<Class<? extends Rush>> classes = new ArrayList<>();
 

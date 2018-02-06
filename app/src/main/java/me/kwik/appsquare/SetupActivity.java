@@ -46,22 +46,22 @@ public class SetupActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mClickedThatOpenedThisPage = getIntent().getStringExtra(StartActivity.BUTTON_CLICKED);
+        //mClickedThatOpenedThisPage = getIntent().getStringExtra(StartActivity.BUTTON_CLICKED);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        final String sender =  getIntent().getStringExtra("sender");
-        mNextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = null;
-                if(sender != null && sender.equals( StartActivity.class.getSimpleName() )){
-                    i = new Intent(SetupActivity.this,SignupActivity.class);
-                } else if(sender != null){
-                    i = new Intent(SetupActivity.this,AddNewTrapActivity.class);
-                }
-                startActivity(i);
-                finish();
-            }
-        });
+//        final String sender =  getIntent().getStringExtra("sender");
+//        mNextButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = null;
+//                if(sender != null && sender.equals( StartActivity.class.getSimpleName() )){
+//                    i = new Intent(SetupActivity.this,SignupActivity.class);
+//                } else if(sender != null){
+//                    i = new Intent(SetupActivity.this,AddNewTrapActivity.class);
+//                }
+//                startActivity(i);
+//                finish();
+//            }
+//        });
 
         mVolumeLevel = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         mPrevProgress = mVolumeLevel;

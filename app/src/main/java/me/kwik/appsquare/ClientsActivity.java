@@ -32,7 +32,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -410,10 +409,6 @@ public class ClientsActivity extends BaseActivity
             toast.show();
         }
 
-        mApp.getDefaultTracker().send( new HitBuilders.EventBuilder()
-                .setCategory( mApp.GOOGLE_ANALYTICS_CATEGORY_USER_ACTION )
-                .setAction( googleAnalyticsUserAction )
-                .build() );
         return true;
     }
 
@@ -455,10 +450,6 @@ public class ClientsActivity extends BaseActivity
      * @param message error message
      */
     protected void showOneButtonErrorDialog(String header, String message) {
-        mApp.getDefaultTracker().send( new HitBuilders.EventBuilder()
-                .setCategory( mApp.GOOGLE_ANALYTICS_CATEGORY_POPUP_FOR_USER )
-                .setAction( message )
-                .build() );
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             builder = new AlertDialog.Builder( this, android.R.style.Theme_Material_Light_Dialog_Alert );

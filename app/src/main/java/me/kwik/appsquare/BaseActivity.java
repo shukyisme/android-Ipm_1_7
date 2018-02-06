@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.analytics.HitBuilders;
 
 import me.kwk.utils.Utils;
 
@@ -231,10 +230,6 @@ public class BaseActivity extends AppCompatActivity{
                                             String cancelString,
                                             DialogInterface.OnClickListener okClicked,
                                             DialogInterface.OnClickListener cancelClicked){
-        mApp.getDefaultTracker().send(new HitBuilders.EventBuilder()
-                .setCategory(mApp.GOOGLE_ANALYTICS_CATEGORY_POPUP_FOR_USER)
-                .setAction(message)
-                .build());
 
         Utils.stopPlaying();
 

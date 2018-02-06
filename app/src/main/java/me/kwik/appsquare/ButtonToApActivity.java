@@ -1,5 +1,6 @@
 package me.kwik.appsquare;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
@@ -17,6 +19,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -31,11 +36,16 @@ import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
 import java.io.IOException;
 
 import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
+import me.kwik.data.KwikLocation;
 import me.kwik.listeners.CreateClientButtonListener;
 import me.kwik.utils.Logger;
 import me.kwik.utils.NetworkUtil;
@@ -43,7 +53,7 @@ import me.kwik.wifi.TeachWifiCredentials;
 import me.kwk.utils.Utils;
 
 
-public class ButtonToApActivity extends BaseActivity  {
+public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener{
 
     private String TAG = ButtonToApActivity.class.getSimpleName();
     private TeachButtonWifiReceiver mTeachButtonWifiReceiver;
@@ -75,6 +85,9 @@ public class ButtonToApActivity extends BaseActivity  {
     final Handler mPlaySecondAudiohandler = new Handler();
 
     private KwikDevice mButton;
+    private Location mLastLocation;
+    private GoogleApiClient mGoogleApiClient;
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 03;
 
 
     private Runnable playClickNextAudio = new Runnable() {
@@ -129,6 +142,13 @@ public class ButtonToApActivity extends BaseActivity  {
             }
         });
 
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
 
         if(!NetworkUtil.getWifiName(this).contains("kwik_button_") && !NetworkUtil.getWifiName(this).contains("ipm_button_")) {
             Utils.playAudioFile(this,"press_and_hold",0,5);
@@ -289,6 +309,16 @@ public class ButtonToApActivity extends BaseActivity  {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            mGoogleApiClient.disconnect();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+    }
+
     public void showAdvancedWifiIfAvailable(Context ctx)  {
         final Intent i = new Intent(Settings.ACTION_WIFI_SETTINGS);
         if (activityExists(ctx, i)) {
@@ -309,6 +339,36 @@ public class ButtonToApActivity extends BaseActivity  {
         ButtonToApActivity.this.finish();
     }
 
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ButtonToApActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_ID_MULTIPLE_PERMISSIONS);
+        }else{
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+        }
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+
+    }
+
+
     class TeachButtonWifiReceiver extends BroadcastReceiver {
 
         public void onReceive(Context c, Intent intent) {
@@ -320,6 +380,10 @@ public class ButtonToApActivity extends BaseActivity  {
                 noError = true;
                 mButton.setSerial(mKwikButtonSerial);
                 mButton.setId(mKwikButtonSerial);
+                if(mLastLocation != null) {
+                    KwikLocation location = new KwikLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), mLastLocation.getAccuracy());
+                    mButton.setCoordinate(location);
+                }
                 KwikMe.createClientButton(mButton.getClient(), mButton, new CreateClientButtonListener() {
                     @Override
                     public void createClientButtonListenerDone(KwikDevice device) {
@@ -381,6 +445,24 @@ public class ButtonToApActivity extends BaseActivity  {
                 mGoToSettingsAudioInstructionPlayer.release();
             }catch (IllegalStateException e){
                 e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_ID_MULTIPLE_PERMISSIONS: {
+                if (grantResults.length == 1
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                            mGoogleApiClient);
+                }
+                return;
             }
         }
     }

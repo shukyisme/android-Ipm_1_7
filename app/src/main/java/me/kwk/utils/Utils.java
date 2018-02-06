@@ -9,29 +9,19 @@ import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.ListAdapter;
-
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 import me.kwik.bl.KwikMe;
 import me.kwik.appsquare.Application;
@@ -54,77 +44,6 @@ public class Utils {
     private static MediaPlayer mediaPlayer;
     private int playbackPosition=0;
 
-    public static AutoCompleteTextView setAutoCompleteTextViewAdapter(AutoCompleteTextView phoneNumberPrefix, final Context context){
-        final AutoCompleteTextView t = phoneNumberPrefix;
-        ArrayList<String> sortList = new ArrayList<String>();
-
-        Set<String> countriesCodeSet = PhoneNumberUtil.getInstance().getSupportedRegions();
-        Set<String> countryPhoneCodesSet = new HashSet<>();
-        Iterator it = countriesCodeSet.iterator();
-        String defaultCode = null;
-
-        String[] arr = countriesCodeSet.toArray(new String[countriesCodeSet.size()]);
-
-        TelephonyManager tm = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-        String countryCode = tm.getSimCountryIso();
-
-        for (int i = 0; i < countriesCodeSet.size(); i++) {
-            if(countryCode != null) {
-                if (arr[i].equals(countryCode.toUpperCase())) {
-                    defaultCode = "+" + PhoneNumberUtil.getInstance().getCountryCodeForRegion(arr[i]);
-                }
-            }else{
-                if (Locale.getDefault().getCountry().equals(arr[i])) {
-                    defaultCode = "+" + PhoneNumberUtil.getInstance().getCountryCodeForRegion(arr[i]);
-                }
-            }
-
-        }
-
-        while(it.hasNext()) {
-            countryPhoneCodesSet.add("+" + PhoneNumberUtil.getInstance().getCountryCodeForRegion((String)it.next()));
-        }
-
-        it = countryPhoneCodesSet.iterator();
-
-        while(it.hasNext()){
-            sortList.add((String)it.next());
-        }
-
-
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,sortList);
-        t.setAdapter(adapter);
-        t.setText(defaultCode);
-        t.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-            if(!b) {
-            // on focus off
-            String str = t.getText().toString();
-
-            ListAdapter listAdapter = t.getAdapter();
-            for(int i = 0; i < listAdapter.getCount(); i++) {
-                String temp = listAdapter.getItem(i).toString();
-                if(str.compareTo(temp) == 0) {
-                    return;
-                }
-            }
-
-                try {
-                    if (!t.getText().toString().startsWith( "+" )) {
-                        t.setText( "+" + t.getText().toString() );
-                    }
-                }catch (NullPointerException e){
-                    //Do nothing
-                }
-
-
-        }
-    }
-});
-        return t;
-    }
 
 
     /**

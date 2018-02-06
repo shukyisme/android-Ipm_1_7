@@ -6,8 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.firebase.iid.FirebaseInstanceId;
+
 
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
@@ -82,7 +81,7 @@ public class SplashActivity extends BaseActivity  {
     }
 
     private void initialHandShake(KwikLocation location, String version) {
-        KwikMe.initialHandShake(version, FirebaseInstanceId.getInstance().getToken(), location, getPackageName() , new InitialHandShakeListener() {
+        KwikMe.initialHandShake(version, null, location, getPackageName() , new InitialHandShakeListener() {
             @Override
             public void initialHandShakeDone(InitialHandShakeResponse.Message message) {
                 if (message != null) {
@@ -123,70 +122,40 @@ public class SplashActivity extends BaseActivity  {
         });
     }
 
-    private void handShake(KwikLocation location, String version) {
-        KwikMe.handShake(version, FirebaseInstanceId.getInstance().getToken() , getPackageName(), location, new HandShakeListener() {
-            @Override
-            public void handShakeDone(InitialHandShakeResponse.Message message) {
-                if (message != null) {
-                    showOneButtonErrorDialog(message.getTitle(), message.getMessage());
-                } else {
-                    if (KwikMe.USER_TOKEN != null || KwikMe.USER_ID != null) {
-                        Intent i = new Intent(SplashActivity.this,ClientsActivity.class);
-                        startActivity(i);
-                        finish();
-//                        KwikMe.getKwikUser(KwikMe.USER_ID, new GetKwikUserListener() {
-//                            @Override
-//                            public void getKwikUserDone(KwikUser user) {
-//                                Intent i = new Intent(SplashActivity.this, ClientsActivity.class);
-//                                ((Application) getApplication()).setUser(user);
-//                                startActivity(i);
-//                                finish();
-//                                return;
-//                            }
+//    private void handShake(KwikLocation location, String version) {
+//        KwikMe.handShake(version, null , getPackageName(), location, new HandShakeListener() {
+//            @Override
+//            public void handShakeDone(InitialHandShakeResponse.Message message) {
+//                if (message != null) {
+//                    showOneButtonErrorDialog(message.getTitle(), message.getMessage());
+//                } else {
+//                    if (KwikMe.USER_TOKEN != null || KwikMe.USER_ID != null) {
+//                        Intent i = new Intent(SplashActivity.this,ClientsActivity.class);
+//                        startActivity(i);
+//                        finish();
 //
-//                            @Override
-//                            public void getKwikUserError(KwikServerError error) {
-//                                //If user token was expired or user deleted from the server
-//                                mApp.getDefaultTracker().send(new HitBuilders.EventBuilder()
-//                                        .setCategory(mApp.GOOGLE_ANALYTICS_CATEGORY_SERVER_ACTION)
-//                                        .setAction("response")
-//                                        .setLabel("Get kwik user")
-//                                        .setValue(1)
-//                                        .build());
-//                                Intent i = new Intent(SplashActivity.this, StartActivity.class);
-//                                startActivity(i);
-//                                finish();
-//                            }
-//                        });
-
-                    } else {
-                        Intent i = new Intent(SplashActivity.this, StartActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                }
-            }
-
-            @Override
-            public void handShakeError(KwikServerError error) {
-                mApp.getDefaultTracker().send(new HitBuilders.EventBuilder()
-                        .setCategory(mApp.GOOGLE_ANALYTICS_CATEGORY_SERVER_ACTION)
-                        .setAction("response")
-                        .setLabel("Initial handShake")
-                        .setValue(1)
-                        .build());
-                if (error != null) {
-                    if(error.getValue() == 401){
-                        Intent i = new Intent(SplashActivity.this, StartActivity.class);
-                        startActivity(i);
-                        finish();
-                    }else {
-                        showOneButtonErrorDialog(getString(R.string.oops), error.getMessage());
-                    }
-                }
-            }
-        });
-    }
+//                    } else {
+//                        Intent i = new Intent(SplashActivity.this, StartActivity.class);
+//                        startActivity(i);
+//                        finish();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void handShakeError(KwikServerError error) {
+//                if (error != null) {
+//                    if(error.getValue() == 401){
+//                        Intent i = new Intent(SplashActivity.this, StartActivity.class);
+//                        startActivity(i);
+//                        finish();
+//                    }else {
+//                        showOneButtonErrorDialog(getString(R.string.oops), error.getMessage());
+//                    }
+//                }
+//            }
+//        });
+//    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
