@@ -49,7 +49,8 @@
                     android:background="#FF98C665"
                     android:elevation="0dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/slice_wifi" />
+                    android:src="@drawable/slice_wifi"
+                    android:visibility="invisible"/>
 
                 <ImageButton
                     android:layout_width="0dp"
@@ -57,7 +58,8 @@
                     android:layout_weight="0.8"
                     android:background="#FF98C665"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/delete" />
+                    android:src="@drawable/delete"
+                    android:visibility="invisible"/>
             </LinearLayout>
 
 
