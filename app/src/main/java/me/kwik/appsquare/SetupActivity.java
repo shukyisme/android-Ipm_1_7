@@ -46,13 +46,11 @@ public class SetupActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //mClickedThatOpenedThisPage = getIntent().getStringExtra(StartActivity.BUTTON_CLICKED);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-//        final String sender =  getIntent().getStringExtra("sender");
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =  new Intent(SetupActivity.this,WiFiSelectionActivity.class);
+                Intent i =  new Intent(SetupActivity.this,AddNewTrapActivity.class);
                 startActivity(i);
                 finish();
             }
