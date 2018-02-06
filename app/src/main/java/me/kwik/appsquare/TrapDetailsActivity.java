@@ -88,28 +88,9 @@ public class TrapDetailsActivity extends BaseActivity {
         mResolveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mEvent == null){
-                    showOneButtonErrorDialog("","Sorry, no event was founded");
-                    return;
-                }
-
-                mEvent.setStatus(IpmEvent.Status.RESOLVED.toString());
-                KwikMe.updateEvent(mEvent, new UpdateEventListener() {
-                    @Override
-                    public void updateEventDone(UpdateEventResponse res) {
-                        if(res != null && res.getEventObject() != null){
-                            if(res.getEventObject().getStatus().equals(IpmEvent.Status.RESOLVED.toString())){
-                                finish();
-                                startActivity(getIntent());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void updateEventError(KwikServerError error) {
-                        showOneButtonErrorDialog("",error.getMessage());
-                    }
-                });
+                Intent i = new Intent(TrapDetailsActivity.this,CloseTrapActivity.class);
+                i.putExtra("serial_number",mSerial);
+                startActivity(i);
             }
         });
 
