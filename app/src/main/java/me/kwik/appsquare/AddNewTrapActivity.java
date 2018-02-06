@@ -71,15 +71,24 @@ public class AddNewTrapActivity extends BaseActivity {
         mClientNameAutoCompleteTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mClientNameAutoCompleteTextView.setError(null);
-                ((AutoCompleteTextView)v).showDropDown();
+                try {
+                    mClientNameAutoCompleteTextView.setError(null);
+                    ((AutoCompleteTextView) v).showDropDown();
+                }catch (NullPointerException e){
+
+                }
             }
         });
 
         mSiteAutoCompleteTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AutoCompleteTextView)v).showDropDown();
+                try {
+                    ((AutoCompleteTextView)v).showDropDown();
+                }catch (NullPointerException e){
+
+                }
+
             }
         });
 
@@ -95,11 +104,15 @@ public class AddNewTrapActivity extends BaseActivity {
                     ListAdapter listAdapter = mClientNameAutoCompleteTextView.getAdapter();
                     if(listAdapter != null) {
 
-                        for (int i = 0; i < listAdapter.getCount(); i++) {
-                            String temp = listAdapter.getItem(i).toString();
-                            if (str.compareTo(temp) == 0) {
-                                return;
+                        try {
+                            for (int i = 0; i < listAdapter.getCount(); i++) {
+                                String temp = listAdapter.getItem(i).toString();
+                                if (str.compareTo(temp) == 0) {
+                                    return;
+                                }
                             }
+                        }catch (NullPointerException e){
+
                         }
                     }
 
@@ -119,12 +132,17 @@ public class AddNewTrapActivity extends BaseActivity {
 
                     ListAdapter listAdapter = mSiteAutoCompleteTextView.getAdapter();
                     if(listAdapter != null) {
+                        try {
 
-                        for (int i = 0; i < listAdapter.getCount(); i++) {
-                            String temp = listAdapter.getItem(i).toString();
-                            if (str.compareTo(temp) == 0) {
-                                return;
+
+                            for (int i = 0; i < listAdapter.getCount(); i++) {
+                                String temp = listAdapter.getItem(i).toString();
+                                if (str.compareTo(temp) == 0) {
+                                    return;
+                                }
                             }
+                        }catch (NullPointerException e){
+
                         }
                     }
                     mSiteAutoCompleteTextView.setText("");
