@@ -376,10 +376,26 @@ public class AddNewTrapActivity extends BaseActivity {
                     KwikMe.createNewClientSite(mSelectedClient.getId(), mSiteNameString, "Without description", new CreateNewClientSiteListener() {
                     @Override
                     public void createNewClientSiteDone(IpmClientSite site) {
-                        hideProgressBar();
+
                         mSelectedSite = site;
                         mSiteAutoCompleteTextView.setText(mSelectedSite.getName());
-                        NewSiteDialog.this.dismiss();
+                        KwikMe.getClients(null, new GetClientsListener() {
+                            @Override
+                            public void getClientsDone(GetClientsResponse res) {
+                                hideProgressBar();
+                                ArrayAdapter<IpmClient> clientsAdapter = new ArrayAdapter<IpmClient>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, res.getClients());
+                                mClientNameAutoCompleteTextView.setAdapter(clientsAdapter);
+                                hideProgressBar();
+                                NewSiteDialog.this.dismiss();
+                            }
+
+                            @Override
+                            public void getClientsError(KwikServerError error) {
+                                hideProgressBar();
+                                showOneButtonErrorDialog("",error.getMessage());
+                            }
+                        });
+
 
                     }
 
