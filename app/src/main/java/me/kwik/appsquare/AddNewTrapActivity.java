@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -107,7 +108,19 @@ public class AddNewTrapActivity extends BaseActivity {
                         try {
                             for (int i = 0; i < listAdapter.getCount(); i++) {
                                 String temp = listAdapter.getItem(i).toString();
+
                                 if (str.compareTo(temp) == 0) {
+                                    mSelectedClient = (IpmClient)listAdapter.getItem(i);
+                                    IpmClientSite[] sitesArray = mSelectedClient.getSites();
+                                    if(sitesArray != null && sitesArray.length >0) {
+                                        mSiteAutoCompleteTextView.setText("");
+                                        mSiteAutoCompleteTextView.setAdapter(null);
+                                        ArrayAdapter<IpmClientSite> clientSitesAdapter = new ArrayAdapter<IpmClientSite>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, sitesArray);
+                                        mSiteAutoCompleteTextView.setAdapter(clientSitesAdapter);
+                                    }else{
+                                        mSiteAutoCompleteTextView.setText("");
+                                        mSiteAutoCompleteTextView.setAdapter(null);
+                                    }
                                     return;
                                 }
                             }
@@ -118,6 +131,8 @@ public class AddNewTrapActivity extends BaseActivity {
 
                     mClientNameAutoCompleteTextView.setText("");
                     mSiteAutoCompleteTextView.setText("");
+                    mSiteAutoCompleteTextView.setAdapter(null);
+                    mSelectedClient = null;
                     changeAddNewSiteTextView(false);
                 }
             }
@@ -133,8 +148,6 @@ public class AddNewTrapActivity extends BaseActivity {
                     ListAdapter listAdapter = mSiteAutoCompleteTextView.getAdapter();
                     if(listAdapter != null) {
                         try {
-
-
                             for (int i = 0; i < listAdapter.getCount(); i++) {
                                 String temp = listAdapter.getItem(i).toString();
                                 if (str.compareTo(temp) == 0) {
@@ -253,7 +266,9 @@ public class AddNewTrapActivity extends BaseActivity {
                 ArrayAdapter<IpmClient> clientsAdapter = new ArrayAdapter<IpmClient>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, res.getClients());
                 mClientNameAutoCompleteTextView.setAdapter(clientsAdapter);
                 hideProgressBar();
+                mApp.setmClients(res.getClients());
                 String client = getIntent().getStringExtra("client");
+
                 if( client != null){
                     mSelectedClient = mApp.getClient(client);
                     mClientNameAutoCompleteTextView.setText(mSelectedClient.getName());
@@ -263,6 +278,19 @@ public class AddNewTrapActivity extends BaseActivity {
                         ArrayAdapter<IpmClientSite> clientSitesAdapter = new ArrayAdapter<IpmClientSite>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, sitesArray);
                         mSiteAutoCompleteTextView.setAdapter(clientSitesAdapter);
                     }
+
+                    String site = getIntent().getStringExtra("site");
+                    if(site != null){
+                        for(IpmClientSite s: sitesArray ){
+                            if(s.getId().equals(site)){
+                                mSelectedSite = s;
+                                mSiteAutoCompleteTextView.setText(mSelectedSite.getName());
+                                mSiteAutoCompleteTextView.dismissDropDown();
+                            }
+                        }
+
+                    }
+
                     changeAddNewSiteTextView(true);
                 }
             }
@@ -310,10 +338,10 @@ public class AddNewTrapActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        getIntent().removeExtra("client");
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
-                String result=data.getStringExtra("result");
+                String result=data.getStringExtra("client");
                 mSelectedClient = mApp.getClient(result);
                 String name=data.getStringExtra("name");
                 mClientNameAutoCompleteTextView.setText(name);
@@ -347,7 +375,7 @@ public class AddNewTrapActivity extends BaseActivity {
 
         private String mSiteNameString;
 
-        public NewSiteDialog(Context context) {
+        public NewSiteDialog(final Context context) {
             super(context);
             this.setContentView(R.layout.add_new_site_pop_up);
             ButterKnife.bind(this);
@@ -379,23 +407,14 @@ public class AddNewTrapActivity extends BaseActivity {
 
                         mSelectedSite = site;
                         mSiteAutoCompleteTextView.setText(mSelectedSite.getName());
-                        KwikMe.getClients(null, new GetClientsListener() {
-                            @Override
-                            public void getClientsDone(GetClientsResponse res) {
-                                hideProgressBar();
-                                ArrayAdapter<IpmClient> clientsAdapter = new ArrayAdapter<IpmClient>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, res.getClients());
-                                mClientNameAutoCompleteTextView.setAdapter(clientsAdapter);
-                                hideProgressBar();
-                                NewSiteDialog.this.dismiss();
-                            }
 
-                            @Override
-                            public void getClientsError(KwikServerError error) {
-                                hideProgressBar();
-                                showOneButtonErrorDialog("",error.getMessage());
-                            }
-                        });
-
+                        hideProgressBar();
+                        NewSiteDialog.this.dismiss();
+                        Intent refresh = new Intent(context, AddNewTrapActivity.class);
+                        refresh.putExtra("client",mSelectedClient.getId());
+                        refresh.putExtra("site",site.getId());
+                        startActivity(refresh);
+                        ((Activity)context).finish();
 
                     }
 

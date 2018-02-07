@@ -149,8 +149,9 @@ public class CreateClientActivity extends BaseActivity {
                         hideProgressBar();
                         mApp.getmClients().add(client);
                         Intent returnIntent = new Intent();
-                        returnIntent.putExtra("result",client.getId());
+                        returnIntent.putExtra("client",client.getId());
                         returnIntent.putExtra("name",mClientNameString);
+
                         setResult(Activity.RESULT_OK,returnIntent);
                         finish();
                     }
