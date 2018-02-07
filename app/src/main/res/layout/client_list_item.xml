@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/client_name_TextView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="2"
         android:layout_height="match_parent"
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
@@ -14,5 +15,15 @@
         android:text="Client number 444444"
         android:textSize="20sp"
         android:textColor="#FF256BA7"/>
+    <ImageView
+        android:id="@+id/client_status_ImageView"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+
+        />
 
 </LinearLayout>

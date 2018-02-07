@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -203,7 +204,7 @@ public class ClientsActivity extends BaseActivity
                 }
                 mApp.setmClients(res.getClients());
 
-                mClientsHeaderTextView.setText("Active clients: (" + res.getClients().size() + ")");
+                mClientsHeaderTextView.setText("Active clients: (" + res.getPaging().getTotal() + ")");
                 mClientsAdapter = new ClientsArrayAdapter(ClientsActivity.this,res.getClients() );
 
                 mClientsList.setAdapter(mClientsAdapter);
@@ -545,13 +546,28 @@ public class ClientsActivity extends BaseActivity
             }
         }
 
+
+
         public View getView(final int position, View convertView, ViewGroup parent) {
             Logger.e(TAG,this.getClass().getSimpleName() + " "  + new Object(){}.getClass().getEnclosingMethod().getName());
             LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService( Context.LAYOUT_INFLATER_SERVICE );
             final View rowView = inflater.inflate( R.layout.client_list_item, parent, false );
             TextView clientName = (TextView)rowView.findViewById(R.id.client_name_TextView);
+            ImageView statusImageView = (ImageView)rowView.findViewById(R.id.client_status_ImageView);
             clientName.setText(values.get(position).getName());
+            try {
+                if (values.get(position).getStatus().equalsIgnoreCase("alert")) {
+                    statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this, R.drawable.client_red_alert));
+                } else if (values.get(position).getStatus().equalsIgnoreCase("ready")) {
+                    statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this, R.drawable.client_green_alert));
+                } else {
+                    statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this, R.drawable.client_grey_alert));
+                }
+            }catch (NullPointerException e){
+                e.printStackTrace();
+            }
+
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
