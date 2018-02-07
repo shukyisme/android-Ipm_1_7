@@ -2,7 +2,9 @@ package me.kwik.appsquare;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -38,6 +40,11 @@ public class CloseTrapActivity extends BaseActivity {
     @BindView(R.id.close_trap_activity_time_and_date_TextView)
     TextView mDateAndTimeTextView;
 
+    @BindView(R.id.close_trap_activity_description_EditText)
+    TextView mCloseTrapEditText;
+
+    @BindView(R.id.close_trap_activity_rodent_Spinner)
+    Spinner mRodentTrapedSpinner;
 
 
     private IpmEvent mEvent;
@@ -54,6 +61,11 @@ public class CloseTrapActivity extends BaseActivity {
 
         ButterKnife.bind(this);
 
+
+        Integer[] items = new Integer[]{0,1,2,3,4};
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item, items);
+        mRodentTrapedSpinner.setAdapter(adapter);
+
         mResolveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +75,24 @@ public class CloseTrapActivity extends BaseActivity {
                  }
 
                 mEvent.setStatus(IpmEvent.Status.RESOLVED.toString());
+
+                String description = null;
+
+                try {
+                    description = mCloseTrapEditText.getText().toString();
+                }catch (NullPointerException e){
+
+                }
+
+                if(description != null){
+                    mEvent.setMessage((description));
+                }
+
+
+                int rodentNumber = Integer.valueOf(mRodentTrapedSpinner.getSelectedItem().toString());
+                mEvent.setRodentCount(rodentNumber);
+
+
                 KwikMe.updateEvent(mEvent, new UpdateEventListener() {
                     @Override
                     public void updateEventDone(UpdateEventResponse res) {
@@ -124,8 +154,6 @@ public class CloseTrapActivity extends BaseActivity {
 
 
         mTechnicianNameTextView.setText(mApp.getUser().getFirstName() + " " + mApp.getUser().getLastName());
-      //  Date currentTime = Calendar.getInstance().getTime();
-        //DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(getApplicationContext());
         mDateAndTimeTextView.setText(DateToStr);
 
     }
