@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -369,7 +370,8 @@ public class ClientsActivity extends BaseActivity
         } else if (id == R.id.nav_need_help) {
             googleAnalyticsUserAction += "Need Help";
            // Utils.showHelp( this );
-            selectedOption = "Need help";
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ipm-square.com/faq"));
+            startActivity(browserIntent);
         } else if (id == R.id.nav_logout) {
             AlertDialog.Builder builder;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
