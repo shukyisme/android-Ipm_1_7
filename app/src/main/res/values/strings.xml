@@ -240,8 +240,8 @@
     <string name="wifi_selection_activity_question">Do you have a dedicated\nrouter device, or do you use the\nclient WiFi network?</string>
     <string name="add_serial_manually_activity_title">Connect the trap</string>
     <string name="add_serial_manually_enter_number_request">In order to connect the trap, Please enter the square id number located on the back of the square</string>
-    <string name="add_serial_manually_activity_open_dialog_button">Enter id number</string>
-    <string name="enter_serial_number_dialog_edit_text_hint">Type here the id number</string>
+    <string name="add_serial_manually_activity_open_dialog_button">Enter serial number</string>
+    <string name="enter_serial_number_dialog_edit_text_hint">Type here the serial number</string>
     <string name="enter_serial_number_dialog_title">Enter Square number</string>
     <string name="enter_serial_number_dialog_submit_button">SUBMIT</string>
     <string name="enter_serial_number_dialog_error_header">Serial Number Error</string>
