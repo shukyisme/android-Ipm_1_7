@@ -1,6 +1,14 @@
 package me.kwik.appsquare;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,6 +54,10 @@ public class CloseTrapActivity extends BaseActivity {
     @BindView(R.id.close_trap_activity_rodent_Spinner)
     Spinner mRodentTrapedSpinner;
 
+    @BindView(R.id.close_trap_activity_rodent_trapped)
+    TextView mRodentTrappedTextView;
+
+
 
     private IpmEvent mEvent;
     private String mSerial;
@@ -60,6 +72,20 @@ public class CloseTrapActivity extends BaseActivity {
         mApp = (Application) getApplication();
 
         ButterKnife.bind(this);
+
+        SpannableStringBuilder builder = new SpannableStringBuilder();
+
+        String red = "*";
+        SpannableString redSpannable= new SpannableString(red);
+        redSpannable.setSpan(new ForegroundColorSpan(Color.RED), 0, red.length(), 0);
+        builder.append(redSpannable);
+
+        String white = " Rodent trapped";
+        SpannableString whiteSpannable= new SpannableString(white);
+        whiteSpannable.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this,R.color.manatee_2)), 0, white.length(), 0);
+        builder.append(whiteSpannable);
+
+        mRodentTrappedTextView.setText(builder, TextView.BufferType.SPANNABLE);
 
 
         Integer[] items = new Integer[]{0,1,2,3,4};
@@ -111,6 +137,8 @@ public class CloseTrapActivity extends BaseActivity {
             }
         });
     }
+
+
 
     @Override
     protected void onResume() {
