@@ -113,7 +113,6 @@ public class AddNewTrapActivity extends BaseActivity {
                                     mSelectedClient = (IpmClient)listAdapter.getItem(i);
                                     IpmClientSite[] sitesArray = mSelectedClient.getSites();
                                     if(sitesArray != null && sitesArray.length >0) {
-                                        mSiteAutoCompleteTextView.setText("");
                                         mSiteAutoCompleteTextView.setAdapter(null);
                                         ArrayAdapter<IpmClientSite> clientSitesAdapter = new ArrayAdapter<IpmClientSite>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, sitesArray);
                                         mSiteAutoCompleteTextView.setAdapter(clientSitesAdapter);
@@ -176,6 +175,7 @@ public class AddNewTrapActivity extends BaseActivity {
                 }
 
                 IpmClientSite[] sitesArray = mSelectedClient.getSites();
+                mSiteAutoCompleteTextView.setText("");
                 if(sitesArray != null && sitesArray.length >0) {
                     ArrayAdapter<IpmClientSite> clientSitesAdapter = new ArrayAdapter<IpmClientSite>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, sitesArray);
                     mSiteAutoCompleteTextView.setAdapter(clientSitesAdapter);
