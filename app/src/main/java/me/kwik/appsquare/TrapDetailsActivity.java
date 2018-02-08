@@ -1,6 +1,9 @@
 package me.kwik.appsquare;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -18,6 +21,7 @@ import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
 import me.kwik.data.IpmEvent;
+import me.kwik.listeners.DeleteButtonListener;
 import me.kwik.listeners.GetIpmEventsListener;
 import me.kwik.listeners.GetKwikDevicesListener;
 import me.kwik.listeners.UpdateEventListener;
@@ -256,5 +260,48 @@ public class TrapDetailsActivity extends BaseActivity {
             mDescriptionEditText.setVisibility(View.INVISIBLE);
             mDescriptionTextView.setText(mDescriptionEditText.getText().toString());
         }
+    }
+
+    public void addWifiClicked(View view) {
+    }
+
+    private void deleteButton() {
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder( TrapDetailsActivity.this, R.style.KwikMeDialogTheme );
+        } else {
+            builder = new AlertDialog.Builder( TrapDetailsActivity.this );
+        }
+        builder.setTitle( R.string.remove_kwik_button )
+                .setMessage( R.string.remove_kwik_button_message )
+                .setNegativeButton( getString( R.string.yes ), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        KwikMe.deleteButton(mTrap.getId(), new DeleteButtonListener() {
+                            @Override
+                            public void deleteButtonDone() {
+                                finish();
+                            }
+
+                            @Override
+                            public void deleteButtonError(KwikServerError error) {
+                                showOneButtonErrorDialog("",error.getMessage());
+                            }
+                        });
+                    }
+
+                } )
+                .setPositiveButton( getString( R.string.no ) + "!", null )
+                .show();
+    }
+
+    public void deleteButtonClicked(View view) {
+        if(mTrap.getStatus().equalsIgnoreCase("alert")){
+            showOneButtonErrorDialog("","The trap you are trying to remove has an active alert. Resolve the alert before removing the trap");
+            return;
+        }
+
+        deleteButton();
+
     }
 }

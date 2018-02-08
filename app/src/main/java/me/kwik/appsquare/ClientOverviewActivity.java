@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -64,8 +65,6 @@ public class ClientOverviewActivity extends BaseActivity {
         mClientName = mApp.getClient(mClientId).getName();
 
         mActionBarTitle.setText(mClientName);
-
-
 
         mOnAddNewTrapClick = new View.OnClickListener() {
             @Override
@@ -205,9 +204,8 @@ public class ClientOverviewActivity extends BaseActivity {
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
                 hideProgressBar();
                 mTraps = response.getButtons();
-                if (mTraps == null || mTraps.size() == 0) {
-                    Utils.playAudioFile( ClientOverviewActivity.this, "add_first_button", 0, 5 );
-                    return;
+                if (mTraps == null ) {
+                    mTraps = new ArrayList<KwikDevice>();
                 }
                 int totalTraps = 0;
                 try {
@@ -216,8 +214,9 @@ public class ClientOverviewActivity extends BaseActivity {
                     e.printStackTrace();
                 }
                 mTotalTrapsTextView.setText("Total Traps: (" + totalTraps + ")");
-                mTrapsAdapter = new TrapsArrayAdapter(ClientOverviewActivity.this,mTraps );
+                mTrapsAdapter = new TrapsArrayAdapter(ClientOverviewActivity.this, mTraps);
                 mTrapsList.setAdapter(mTrapsAdapter);
+
                 updateTrapAlertsValue();
             }
 
