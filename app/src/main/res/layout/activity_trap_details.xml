@@ -59,7 +59,8 @@
                     android:background="#FF98C665"
                     android:scaleType="fitCenter"
                     android:src="@drawable/delete"
-                    android:visibility="invisible"/>
+                    android:onClick="deleteButtonClicked"
+                    />
             </LinearLayout>
 
 

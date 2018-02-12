@@ -272,14 +272,8 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
         String networkName = NetworkUtil.getWifiName(this);
 
         if( networkName.contains("kwik_button") || networkName.contains("ipm_button")){
-
             closeDialog();
             stopGoToSettingsPlaying();
-            if(networkName.contains("kwik_button")){
-                mKwikButtonSerial = networkName.substring(12,networkName.length());
-            }else{
-                mKwikButtonSerial = networkName.substring(11,networkName.length());
-            }
             mTeachWifiCredentials = new TeachWifiCredentials(ButtonToApActivity.this, ssid, password);
             mTeachWifiCredentials.startManualMode();
             mConnectingMessageTextView.setText(getString(R.string.button_to_ap_activity_connecting_your_button));
@@ -373,6 +367,7 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
 
         public void onReceive(Context c, Intent intent) {
             boolean teach = intent.getBooleanExtra(KwikMe.WIFI_TEACH_COMPLETED_INTENT_SUCCESS_EXTRA,false);
+            mKwikButtonSerial = intent.getStringExtra(KwikMe.WIFI_TEACH_COMPLETED_INTENT_SUCCESS_KWIK_ID_EXTRA);
             Logger.d(TAG, "Teach wifi response = %s", teach);
 
             if(teach){
