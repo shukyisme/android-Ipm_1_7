@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -200,15 +199,22 @@ public class ClientsActivity extends BaseActivity
             @Override
             public void getClientsDone(GetClientsResponse res) {
 
-                if(res == null || res.getClients() == null){
+
+                if(res == null){
                     return;
                 }
-                mApp.setmClients(res.getClients());
 
-                mClientsHeaderTextView.setText("Active clients: (" + res.getPaging().getTotal() + ")");
-                mClientsAdapter = new ClientsArrayAdapter(ClientsActivity.this,res.getClients() );
+                if(res.getClients() != null) {
+                    mClientsAdapter = new ClientsArrayAdapter(ClientsActivity.this, res.getClients());
+                    mApp.setmClients(res.getClients());
+                    mClientsList.setAdapter(mClientsAdapter);
+                }
 
-                mClientsList.setAdapter(mClientsAdapter);
+                int activeClientsNumber = 0;
+                if(res.getPaging() != null){
+                    activeClientsNumber = res.getPaging().getTotal();
+                }
+                mClientsHeaderTextView.setText("Active clients: (" + activeClientsNumber + ")");
             }
 
             @Override
@@ -370,8 +376,7 @@ public class ClientsActivity extends BaseActivity
         } else if (id == R.id.nav_need_help) {
             googleAnalyticsUserAction += "Need Help";
            // Utils.showHelp( this );
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ipm-square.com/faq"));
-            startActivity(browserIntent);
+            selectedOption = "Need help";
         } else if (id == R.id.nav_logout) {
             AlertDialog.Builder builder;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -559,12 +564,12 @@ public class ClientsActivity extends BaseActivity
             ImageView statusImageView = (ImageView)rowView.findViewById(R.id.client_status_ImageView);
             clientName.setText(values.get(position).getName());
             try {
-                if (values.get(position).getStatus().equalsIgnoreCase("alert")) {
-                    statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this, R.drawable.client_red_alert));
-                } else if (values.get(position).getStatus().equalsIgnoreCase("ready")) {
-                    statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this, R.drawable.client_green_alert));
-                } else {
-                    statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this, R.drawable.client_grey_alert));
+            if(values.get(position).getStatus().equalsIgnoreCase("alert")){
+                statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this,R.drawable.client_red_alert));
+            }else if(values.get(position).getStatus().equalsIgnoreCase("ready")){
+                statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this,R.drawable.client_green_alert));
+            }else{
+                statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this,R.drawable.client_grey_alert));
                 }
             }catch (NullPointerException e){
                 e.printStackTrace();

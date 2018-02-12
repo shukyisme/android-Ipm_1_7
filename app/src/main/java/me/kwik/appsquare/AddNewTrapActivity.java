@@ -266,7 +266,9 @@ public class AddNewTrapActivity extends BaseActivity {
                 ArrayAdapter<IpmClient> clientsAdapter = new ArrayAdapter<IpmClient>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, res.getClients());
                 mClientNameAutoCompleteTextView.setAdapter(clientsAdapter);
                 hideProgressBar();
-                mApp.setmClients(res.getClients());
+                if(res.getClients() != null) {
+                    mApp.setmClients(res.getClients());
+                }
                 String client = getIntent().getStringExtra("client");
 
                 if( client != null){
