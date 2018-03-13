@@ -35,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:textSize="@dimen/action_bar_title_text_size"
-        android:text="fdafa fda fdafdaf fdaf fa fdafaf fdaf d afa fadfafda fdaf fdad"
+        android:text=""
         android:maxLines="2"
         android:gravity="center"
         android:textColor="@color/kwik_me_text_white"
