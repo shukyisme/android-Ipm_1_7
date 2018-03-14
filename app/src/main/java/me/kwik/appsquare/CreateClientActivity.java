@@ -19,7 +19,7 @@ import me.kwk.utils.Utils;
 
 public class CreateClientActivity extends BaseActivity {
 
-    private static int PASSWORD_MIN_LENGTH = 6;
+    private static int CLIENT_NAME_MIN_LENGTH = 2;
 
     private String mClientNameString;
     private String mEmailString;
@@ -138,7 +138,7 @@ public class CreateClientActivity extends BaseActivity {
                     return;
                 }
 
-                if(mClientNameString == null || mClientNameString.length() < PASSWORD_MIN_LENGTH){
+                if(mClientNameString == null || mClientNameString.length() < CLIENT_NAME_MIN_LENGTH){
                     mClientNameEditText.setError("Invalid client name");
                     return;
                 }
