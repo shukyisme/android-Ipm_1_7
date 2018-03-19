@@ -97,6 +97,8 @@
     <string name="my_buttons_activity_exit_dialog_message">Are you sure you want to exit?</string>
     <string name="my_buttons_activity_serial_number">Square id Number :</string>
     <string name="my_buttons_activity_click_to_add_button">Press to add a trap</string>
+    <string name="my_buttons_nav_menu_faq">F.A.Q</string>
+    <string name="my_buttons_nav_menu_faq_url">https://www.ipm-square.com/faq</string>
     <string name="my_buttons_nav_menu_send_feedback">Send FeedBack</string>
     <string name="my_buttons_activity_nav_menu_communicate">Communicate</string>
     <string name="my_buttons_activity_nav_menu_settings">Settings</string>
