@@ -69,6 +69,7 @@ public class ClientsActivity extends BaseActivity
     private boolean registering = false;
     android.support.v7.app.ActionBar actionBar;
     int i = 0;
+    private boolean hasError;
 
     @BindView(R.id.clients_activity_clients_ListView) ListView mClientsList;
     @BindView(R.id.clients_activity_clients_list_header_TextView) TextView mClientsHeaderTextView;
@@ -135,10 +136,10 @@ public class ClientsActivity extends BaseActivity
     protected void onResume() {
         super.onResume();
 
+        hasError = false;
         updateClientsList();
 
         updateOverView();
-
 
         //updateList();
     }
@@ -166,7 +167,10 @@ public class ClientsActivity extends BaseActivity
             @Override
             public void getKwikDevicesListenerError(KwikServerError error) {
                 hideProgressBar();
-                showOneButtonErrorDialog("",error.getMessage());
+                if(!hasError) {
+                    showOneButtonErrorDialog("", error.getMessage());
+                }
+                hasError = true;
             }
         });
     }
@@ -189,7 +193,10 @@ public class ClientsActivity extends BaseActivity
             @Override
             public void getKwikDevicesListenerError(KwikServerError error) {
                 hideProgressBar();
-                showOneButtonErrorDialog("",error.getMessage());
+                if(!hasError) {
+                    showOneButtonErrorDialog("", error.getMessage());
+                }
+                hasError = true;
             }
         });
     }
@@ -220,6 +227,7 @@ public class ClientsActivity extends BaseActivity
 
             @Override
             public void getClientsError(KwikServerError error) {
+                hasError = true;
                 hideProgressBar();
                 showOneButtonErrorDialog("",error.getMessage());
 
@@ -391,7 +399,7 @@ public class ClientsActivity extends BaseActivity
         alertDialog.setButton( AlertDialog.BUTTON_NEUTRAL, getString( android.R.string.ok ),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        ClientsActivity.this.onResume();
+                        //ClientsActivity.this.onResume();
                         dialog.dismiss();
                     }
                 } );
