@@ -150,9 +150,7 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
                     .build();
         }
 
-        if(!NetworkUtil.getWifiName(this).contains("kwik_button_") && !NetworkUtil.getWifiName(this).contains("ipm_button_")) {
-            Utils.playAudioFile(this,"press_and_hold",0,5);
-        }
+
     }
 
     private void pause() {
@@ -339,6 +337,9 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
             ActivityCompat.requestPermissions(ButtonToApActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_ID_MULTIPLE_PERMISSIONS);
         }else{
+            if(!NetworkUtil.getWifiName(this).contains("kwik_button_") && !NetworkUtil.getWifiName(this).contains("ipm_button_")) {
+                Utils.playAudioFile(this,"press_and_hold",0,5);
+            }
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
         }
@@ -447,6 +448,11 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
+
+        if(!NetworkUtil.getWifiName(this).contains("kwik_button_") && !NetworkUtil.getWifiName(this).contains("ipm_button_")) {
+            Utils.playAudioFile(this,"press_and_hold",0,5);
+        }
+
         switch (requestCode) {
             case REQUEST_ID_MULTIPLE_PERMISSIONS: {
                 if (grantResults.length == 1
