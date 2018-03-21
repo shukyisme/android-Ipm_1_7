@@ -7,7 +7,7 @@
             android:title="@string/need_help" />
         <item
             android:id="@+id/nav_faq"
-            android:icon="@drawable/help_drawer_icon"
+            android:icon="@drawable/faq_side_menu_icon"
             android:title="@string/my_buttons_nav_menu_faq" />
         <item
             android:id="@+id/nav_send"
