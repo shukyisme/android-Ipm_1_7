@@ -76,6 +76,7 @@ public class TrapDetailsActivity extends BaseActivity {
     private static int DESCRIPTION_STATUS = EDITED_STATUS;
 
     private String mSerial;
+    private String mClientId;
     private KwikDevice mTrap;
     private IpmEvent    mEvent;
 
@@ -103,7 +104,7 @@ public class TrapDetailsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(TrapDetailsActivity.this,ClientOverviewActivity.class);
-                i.putExtra("client",mTrap.getClient());
+                i.putExtra("client",mClientId);
                 startActivity(i);
             }
         });
@@ -113,27 +114,31 @@ public class TrapDetailsActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         mSerial = getIntent().getStringExtra("serial_number");
+        mClientId = getIntent().getStringExtra("client");
         if(mSerial == null){
             showOneButtonErrorDialog("","UnKnown error, Please go back and try again");
             return;
         }
+
         showProgressBar();
         KwikMe.getKwikDevices(mSerial,null, null,null, "status",1,new GetKwikDevicesListener() {
             @Override
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
                 hideProgressBar();
                 List<KwikDevice> buttons = response.getButtons();
-                mTrap = buttons.get(0);
                 if (buttons == null || buttons.size() == 0) {
+                    updateNoData();
                     showOneButtonErrorDialog("","Button was not found");
                     return;
                 }
+                mTrap = buttons.get(0);
                 update();
             }
 
             @Override
             public void getKwikDevicesListenerError(KwikServerError error) {
                 hideProgressBar();
+                updateNoData();
                 showOneButtonErrorDialog("",error.getMessage());
             }
         });
@@ -143,6 +148,9 @@ public class TrapDetailsActivity extends BaseActivity {
         if(mTrap == null) {
             return;
         }
+
+        changeButtonsClickable(true);
+
         if(mTrap.getName() != null) {
             mNameEditText.setText(mTrap.getName());
             mNameTextView.setText(mTrap.getName() + "\nSerial number: " + mTrap.getId());
@@ -177,9 +185,6 @@ public class TrapDetailsActivity extends BaseActivity {
                 }
             }
         }
-
-
-
 
 
         if(mTrap.getPingAt() != null){
@@ -296,6 +301,9 @@ public class TrapDetailsActivity extends BaseActivity {
     }
 
     public void deleteButtonClicked(View view) {
+        if(mTrap == null) {
+            return;
+        }
         if(mTrap.getStatus().equalsIgnoreCase("alert")){
             showOneButtonErrorDialog("","The trap you are trying to remove has an active alert. Resolve the alert before removing the trap");
             return;
@@ -303,5 +311,26 @@ public class TrapDetailsActivity extends BaseActivity {
 
         deleteButton();
 
+    }
+
+    private void updateNoData() {
+        String na = "-";
+        mNameTextView.setText(na);
+        mNameEditText.setText(na);
+        mDescriptionEditText.setText(na);
+        mStatusValueTextView.setText(na);
+        mStatusValueTextView.setTextColor(ContextCompat.getColor(this,R.color.outerspace));
+        mAlertTimeTextView.setText(na);
+        mLastCommunicationTextView.setText(na);
+        mBatteryLevelTextView.setText(na);
+        mSetupDateTextView.setText(na);
+        mDescriptionTextView.setText(na);
+
+        changeButtonsClickable(false);
+    }
+
+    private void changeButtonsClickable(boolean clickable) {
+        mEditImageButton.setClickable(clickable);
+        mEditDescriptionImageButton.setClickable(clickable);
     }
 }
