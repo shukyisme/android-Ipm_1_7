@@ -24,10 +24,10 @@ import me.kwik.data.IpmEvent;
 import me.kwik.listeners.DeleteButtonListener;
 import me.kwik.listeners.GetIpmEventsListener;
 import me.kwik.listeners.GetKwikDevicesListener;
-import me.kwik.listeners.UpdateEventListener;
+import me.kwik.listeners.UpdateKwikDeviceListener;
 import me.kwik.rest.responses.GetIpmEventsResponse;
 import me.kwik.rest.responses.GetKwikDevicesResponse;
-import me.kwik.rest.responses.UpdateEventResponse;
+import me.kwik.rest.responses.UpdateKwikDeviceResponse;
 
 public class TrapDetailsActivity extends BaseActivity {
 
@@ -108,6 +108,7 @@ public class TrapDetailsActivity extends BaseActivity {
                 startActivity(i);
             }
         });
+
     }
 
     @Override
@@ -244,12 +245,27 @@ public class TrapDetailsActivity extends BaseActivity {
                 mNameEditText.setText(mTrap.getName());
             }
         }else if(NAME_STATUS == EDITING_STATUS){
-            NAME_STATUS = EDITED_STATUS;
-            mNameTextView.setVisibility(View.VISIBLE);
-            mNameEditText.setVisibility(View.INVISIBLE);
-            if(mTrap!= null && mTrap.getId() != null) {
-                mNameTextView.setText(mNameEditText.getText().toString() + "\nSerial number:" + mTrap.getId());
-            }
+            showProgressBar();
+            mTrap.setName(mNameEditText.getText().toString());
+            KwikMe.updateButton(mTrap, new UpdateKwikDeviceListener() {
+                @Override
+                public void updateButtonDone(UpdateKwikDeviceResponse res) {
+                    hideProgressBar();
+                    NAME_STATUS = EDITED_STATUS;
+                    mNameTextView.setVisibility(View.VISIBLE);
+                    mNameEditText.setVisibility(View.INVISIBLE);
+                    mTrap = res.getButtonObject();
+                    if(mTrap!= null && mTrap.getId() != null) {
+                        mNameTextView.setText(mTrap.getName() + "\nSerial number:" + mTrap.getId());
+                    }
+                }
+
+                @Override
+                public void updateButtonError(KwikServerError error) {
+                    hideProgressBar();
+                    showOneButtonErrorDialog("",error.getMessage());
+                }
+            });
         }
     }
 
@@ -260,10 +276,26 @@ public class TrapDetailsActivity extends BaseActivity {
             mDescriptionEditText.setVisibility(View.VISIBLE);
             mDescriptionEditText.setText(mDescriptionTextView.getText().toString());
         }else if(DESCRIPTION_STATUS == EDITING_STATUS){
-            DESCRIPTION_STATUS = EDITED_STATUS;
-            mDescriptionTextView.setVisibility(View.VISIBLE);
-            mDescriptionEditText.setVisibility(View.INVISIBLE);
-            mDescriptionTextView.setText(mDescriptionEditText.getText().toString());
+            showProgressBar();
+            mTrap.setDescription(mDescriptionEditText.getText().toString());
+            KwikMe.updateButton(mTrap, new UpdateKwikDeviceListener() {
+                @Override
+                public void updateButtonDone(UpdateKwikDeviceResponse res) {
+                    hideProgressBar();
+                    DESCRIPTION_STATUS = EDITED_STATUS;
+                    mDescriptionTextView.setVisibility(View.VISIBLE);
+                    mDescriptionEditText.setVisibility(View.INVISIBLE);
+                    mDescriptionTextView.setText(mDescriptionEditText.getText().toString());
+                    mTrap = res.getButtonObject();
+                }
+
+                @Override
+                public void updateButtonError(KwikServerError error) {
+                    hideProgressBar();
+                    showOneButtonErrorDialog("",error.getMessage());
+                }
+            });
+
         }
     }
 
