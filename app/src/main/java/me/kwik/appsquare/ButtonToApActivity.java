@@ -392,7 +392,7 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
                     }
                     @Override
                     public void createClientButtonListenerError(KwikServerError error) {
-                        showOneButtonErrorDialog("",error.getMessage());
+                        showErrorDialog(error);
                     }
                 });
 

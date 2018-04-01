@@ -4,10 +4,12 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.os.Bundle;
 
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spannable;
@@ -20,10 +22,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
+import me.kwik.bl.KwikServerError;
 import me.kwk.utils.Utils;
 
 
 public class BaseActivity extends AppCompatActivity{
+
+    protected static final int ERROR_DIALOG_DEFAULT = 0;
+    protected static final int ERROR_DIALOG_NO_CONNECTIVITY = 1;
+    protected static final int ERROR_CODE_NO_CONNECTIVITY = 5000;
 
     protected TextView mActionBarTitle;
     protected TextView mPrevTextView;
@@ -225,7 +232,8 @@ public class BaseActivity extends AppCompatActivity{
      * @param okClicked
      * @param cancelClicked
      */
-    protected void showTwoButtonErrorDialog(String header,String message,
+    protected void showTwoButtonErrorDialog(int type,
+                                            String header,String message,
                                             String okString,
                                             String cancelString,
                                             DialogInterface.OnClickListener okClicked,
@@ -240,7 +248,16 @@ public class BaseActivity extends AppCompatActivity{
             mPrevTextView.setClickable( true );
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder;
+        switch (type) {
+            case ERROR_DIALOG_NO_CONNECTIVITY:
+                builder = new AlertDialog.Builder(this, R.style.IPMErrorDialogNoConnectivityStyle);
+                break;
+
+            default:
+                builder = new AlertDialog.Builder(this);
+                break;
+        }
 
 
         builder.setCancelable(false);
@@ -267,5 +284,57 @@ public class BaseActivity extends AppCompatActivity{
             alertDialog.show();
         }
 
+    }
+
+    /**
+     * Show error dialog with two buttons
+     * @param header
+     * @param message
+     * @param okClicked
+     * @param cancelClicked
+     */
+    protected void showTwoButtonErrorDialog(String header,String message,
+                                            String okString,
+                                            String cancelString,
+                                            DialogInterface.OnClickListener okClicked,
+                                            DialogInterface.OnClickListener cancelClicked){
+        showTwoButtonErrorDialog(ERROR_DIALOG_DEFAULT, header, message, okString, cancelString, okClicked, cancelClicked);
+
+    }
+
+    /**
+     * Show error dialog for No Connectivity
+     *
+     */
+    protected void showNoConnectivityErrorDialog(){
+        showTwoButtonErrorDialog(ERROR_DIALOG_NO_CONNECTIVITY,
+                getString(R.string.err_dialog_no_connectivity_title),
+                getString(R.string.err_dialog_no_connectivity_body),
+                getString(R.string.err_dialog_no_connectivity_try_again),
+                getString(R.string.err_dialog_no_connectivity_wifi_settings),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onResume();
+
+                    }
+                },
+
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+
+                    }
+                });
+
+    }
+
+    protected void showErrorDialog(KwikServerError error) {
+        if(error.getValue() == ERROR_CODE_NO_CONNECTIVITY) {
+            showNoConnectivityErrorDialog();
+        } else {
+            showOneButtonErrorDialog("", error.getMessage());
+        }
     }
 }

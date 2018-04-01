@@ -147,7 +147,7 @@ public class AddSerialNumberManuallyActivity extends BaseActivity  implements
                     }
                     @Override
                     public void createClientButtonListenerError(KwikServerError error) {
-                        showOneButtonErrorDialog("",error.getMessage());
+                        showErrorDialog(error);
                     }
                 });
 

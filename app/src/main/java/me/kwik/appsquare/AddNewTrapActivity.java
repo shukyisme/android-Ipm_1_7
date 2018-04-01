@@ -300,7 +300,7 @@ public class AddNewTrapActivity extends BaseActivity {
             @Override
             public void getClientsError(KwikServerError error) {
                 hideProgressBar();
-                showOneButtonErrorDialog("",error.getMessage());
+                showErrorDialog(error);
             }
         });
     }
@@ -423,7 +423,7 @@ public class AddNewTrapActivity extends BaseActivity {
                     @Override
                     public void createNewClientSiteError(KwikServerError error) {
                         hideProgressBar();
-                        showOneButtonErrorDialog("",error.getMessage());
+                        showErrorDialog(error);
                     }
                 });
                 }

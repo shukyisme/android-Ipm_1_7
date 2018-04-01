@@ -78,7 +78,7 @@ public class SignInActivity extends BaseActivity {
                     @Override
                     public void onLoginError(KwikServerError error) {
                         hideProgressBar();
-                        showOneButtonErrorDialog("",error.getMessage());
+                        showErrorDialog(error);
                     }
                 });
 

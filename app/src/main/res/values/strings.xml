@@ -280,5 +280,11 @@
     <string name="title_activity_trap_details">TrapDetailsActivity</string>
     <string name="need_help_"><u>Need help?</u></string>
 
+    <!-- No connectivity error dialog -->
+    <string name="err_dialog_no_connectivity_title">Oops..</string>
+    <string name="err_dialog_no_connectivity_body">No internet connection, please check if your device is connected to connection and try again</string>
+    <string name="err_dialog_no_connectivity_try_again">try again</string>
+    <string name="err_dialog_no_connectivity_wifi_settings">Wifi Settings</string>
+
 
 </resources>

@@ -158,9 +158,8 @@ public class CreateClientActivity extends BaseActivity {
 
                     @Override
                     public void createNewClientError(KwikServerError error) {
-                        showOneButtonErrorDialog("",error.getMessage());
                         hideProgressBar();
-
+                        showErrorDialog(error);
                     }
                 });
 

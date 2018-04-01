@@ -168,7 +168,7 @@ public class ClientsActivity extends BaseActivity
             public void getKwikDevicesListenerError(KwikServerError error) {
                 hideProgressBar();
                 if(!hasError) {
-                    showOneButtonErrorDialog("", error.getMessage());
+                    showErrorDialog(error);
                 }
                 hasError = true;
             }
@@ -194,7 +194,7 @@ public class ClientsActivity extends BaseActivity
             public void getKwikDevicesListenerError(KwikServerError error) {
                 hideProgressBar();
                 if(!hasError) {
-                    showOneButtonErrorDialog("", error.getMessage());
+                    showErrorDialog(error);
                 }
                 hasError = true;
             }
@@ -229,8 +229,7 @@ public class ClientsActivity extends BaseActivity
             public void getClientsError(KwikServerError error) {
                 hasError = true;
                 hideProgressBar();
-                showOneButtonErrorDialog("",error.getMessage());
-
+                showErrorDialog(error);
             }
         });
     }

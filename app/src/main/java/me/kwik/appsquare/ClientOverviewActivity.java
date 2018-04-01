@@ -119,7 +119,7 @@ public class ClientOverviewActivity extends BaseActivity {
                 @Override
                 public void getKwikDevicesListenerError(KwikServerError error) {
                     hideProgressBar();
-                    showOneButtonErrorDialog("",error.getMessage());
+                    showErrorDialog(error);
                 }
             });
     }
@@ -224,7 +224,7 @@ public class ClientOverviewActivity extends BaseActivity {
             @Override
             public void getKwikDevicesListenerError(KwikServerError error) {
                 hideProgressBar();
-                showOneButtonErrorDialog("",error.getMessage());
+                showErrorDialog(error);
             }
         });
     }

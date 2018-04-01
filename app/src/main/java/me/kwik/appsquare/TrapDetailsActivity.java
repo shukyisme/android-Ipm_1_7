@@ -140,7 +140,7 @@ public class TrapDetailsActivity extends BaseActivity {
             public void getKwikDevicesListenerError(KwikServerError error) {
                 hideProgressBar();
                 updateNoData();
-                showOneButtonErrorDialog("",error.getMessage());
+                showErrorDialog(error);
             }
         });
     }
@@ -230,7 +230,7 @@ public class TrapDetailsActivity extends BaseActivity {
 
                 @Override
                 public void getIpmEventsError(KwikServerError error) {
-                    showOneButtonErrorDialog("",error.getMessage());
+                    showErrorDialog(error);
                 }
             });
         }
@@ -263,7 +263,7 @@ public class TrapDetailsActivity extends BaseActivity {
                 @Override
                 public void updateButtonError(KwikServerError error) {
                     hideProgressBar();
-                    showOneButtonErrorDialog("",error.getMessage());
+                    showErrorDialog(error);
                 }
             });
         }
@@ -292,7 +292,7 @@ public class TrapDetailsActivity extends BaseActivity {
                 @Override
                 public void updateButtonError(KwikServerError error) {
                     hideProgressBar();
-                    showOneButtonErrorDialog("",error.getMessage());
+                    showErrorDialog(error);
                 }
             });
 
@@ -322,7 +322,7 @@ public class TrapDetailsActivity extends BaseActivity {
 
                             @Override
                             public void deleteButtonError(KwikServerError error) {
-                                showOneButtonErrorDialog("",error.getMessage());
+                                showErrorDialog(error);
                             }
                         });
                     }

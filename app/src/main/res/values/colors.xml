@@ -35,6 +35,9 @@
   <color name="kwik_me_menu_group_item_text_color">#6d6d6d6d</color>
   <color name="kwik_me_error_message_black_text">#4A4A4A</color>
   <color name="kwik_me_button_non_clickable_background">#C8C8C8</color>
+  <color name="kwik_me_color_alert_err_no_connectivity_title">#0288D1</color>
+  <color name="kwik_me_color_alert_err_no_connectivity_body">#808080</color>
+  <color name="kwik_me_color_alert_err_no_connectivity_button">#FFFFBF00</color>
   <color name="manatee_1">#929292</color>
   <color name="manatee_2">#8c9496</color>
   <color name="mayablue">#58b2ff</color>

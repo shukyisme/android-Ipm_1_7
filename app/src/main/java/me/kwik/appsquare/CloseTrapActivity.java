@@ -131,7 +131,7 @@ public class CloseTrapActivity extends BaseActivity {
 
                     @Override
                     public void updateEventError(KwikServerError error) {
-                        showOneButtonErrorDialog("",error.getMessage());
+                        showErrorDialog(error);
                     }
                 });
             }
@@ -168,7 +168,7 @@ public class CloseTrapActivity extends BaseActivity {
             @Override
             public void getKwikDevicesListenerError(KwikServerError error) {
                 hideProgressBar();
-                showOneButtonErrorDialog("",error.getMessage());
+                showErrorDialog(error);
             }
         });
 
@@ -202,7 +202,7 @@ public class CloseTrapActivity extends BaseActivity {
 
                 @Override
                 public void getIpmEventsError(KwikServerError error) {
-                    showOneButtonErrorDialog("",error.getMessage());
+                    showErrorDialog(error);
                 }
             });
         }
