@@ -31,7 +31,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="2.5"
                 android:gravity="center_vertical|start"
-                android:text="Trap details"
+                android:text="@string/trap_details_activity_trap_details"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp" />
 
@@ -109,14 +109,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:paddingTop="19dp"
-                        android:text="fgs" />
+                        android:text="" />
 
                     <EditText
                         android:id="@+id/trap_details_activity_name_EditText"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:background="@drawable/rectangle_2_vd"
-                        android:hint="Enter description"
+                        android:hint="@string/trap_details_activity_enter_description"
                         android:paddingStart="2dp"
                         android:visibility="invisible" />
                 </RelativeLayout>
@@ -173,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="Trap alert"
+                android:text="@string/trap_details_activity_trap_alert"
                 android:textColor="#FFF62C44"
                 android:textSize="20sp" />
 
@@ -183,7 +183,7 @@
                 android:layout_weight="0.6"
                 android:layout_marginStart="20dp"
                 android:layout_height="match_parent"
-                android:text="Resolve"
+                android:text="@string/trap_details_activity_resolve"
                 android:textColor="@color/kwik_me_white"
                 android:background="@drawable/rounder_corner_blue_background"
                 android:visibility="gone"/>
@@ -215,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="Alert Time: "
+                android:text="@string/trap_details_activity_alert_time"
                 android:textColor="#8C9496"
                 android:textSize="16sp" />
 
@@ -225,7 +225,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="Sep 23, 2017 5pm"
+                android:text=""
                 android:textColor="#4A4A4A"
                 android:textSize="20sp" />
 
@@ -256,7 +256,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="Last communication: "
+                android:text="@string/trap_details_activity_last_communication"
                 android:textColor="#8C9496"
                 android:textSize="16sp" />
 
@@ -266,7 +266,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="16:23 hours ago"
+                android:text=""
                 android:textColor="#4A4A4A"
                 android:textSize="20sp" />
 
@@ -307,7 +307,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="Good"
+                android:text="@string/good"
                 android:textColor="#4A4A4A"
                 android:textSize="20sp" />
 
@@ -338,7 +338,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="Setup date: "
+                android:text="@string/trap_details_activity_setup_date"
                 android:textColor="#8C9496"
                 android:textSize="16sp" />
 
@@ -348,7 +348,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="Sep 7, 2017"
+                android:text=""
                 android:textColor="#4A4A4A"
                 android:textSize="20sp" />
 
@@ -386,7 +386,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="start"
-                    android:text="Description: "
+                    android:text="@string/trap_details_activity_description"
                     android:textColor="#8C9496"
                     android:textSize="16sp" />
 
@@ -424,7 +424,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:background="@drawable/rectangle_2_vd"
-                        android:hint="Enter description"
+                        android:hint="@string/trap_details_activity_enter_description"
                         android:paddingStart="2dp"
                         android:visibility="invisible" />
                 </RelativeLayout>

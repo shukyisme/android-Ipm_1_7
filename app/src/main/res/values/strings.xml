@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">IPM Square</string>
-    <string name="action_settings">Settings</string>
+
+
+    <!-- General -->
     <string name="need_help">Need Help?</string>
     <string name="oops">Oops!</string>
     <string name="name">Name</string>
@@ -9,55 +11,40 @@
     <string name="finish">Finish</string>
     <string name="no">NO</string>
     <string name="yes">YES</string>
-    <string name="english">English</string>
-    <string name="hebrew">עברית</string>
-    <string name="russian">русский</string>
-    <string name="french">français</string>
-    <string name="japanese">日本語</string>
-    <string name="portuguese">Português</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="client_name">Client name</string>
+    <string name="site">Site</string>
+    <string name="search">Search</string>
+    <string name="trap_name">Trap name</string>
+    <string name="coordinator">Coordinator</string>
+    <string name="trap_description">Trap description</string>
+    <string name="need_help_"><u>Need help?</u></string>
+    <string name="e_mail">E-mail</string>
+    <string name="phone_number">Phone number</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="good">Good</string>
+    <string name="clients">Clients</string>
+    <string name="overview">Overview</string>
+    <string name="total_traps">Total Traps:</string>
+    <string name="_0_trap_alerts">0 Trap Alerts</string>
+    <string name="active_clients">Active clients: ()</string>
+    <string name="add_new_trap">Add new trap</string>
 
-    <string name="facebook_app_id" translatable="false">100423810382468</string>
+
+    <!-- Add new trap Activity -->
+    <string name="add_new_trap_activity_new_client">New client</string>
+    <string name="add_new_trap_activity_new_site">New site</string>
+    <string name="add_new_trap_activity_trap_name_hint">Trap -</string>
+    <string name="add_new_trap_activity_enter_description">Enter description</string>
+    <string name="add_new_trap_activity_fields_marked_in_red_are_required">* Fields marked in red are required</string>
+
     <!-- Application -->
     <string name="kwik_me_locale_id_key">kwik_me_locale_id_key</string>
-    <string name="kwik_me_first_button_in_the_app">kwik_me_first_button_in_the_app</string>
 
     <!-- Base Activity -->
     <string name="base_activity_back">Back</string>
     <string name="base_activity_next">Next</string>
-
-    <!-- Start Activity -->
-    <string name="start_activity_sign_up">Get Started</string>
-    <string name="start_activity_terms_and_conditions">&lt;font color=#a1a1a1&gt; By signing in you are agreeing to the&lt;//font&gt;&lt;b&gt; Terms \u0026 Conditions &lt;//b&gt;</string>
-    <string name="start_activity_sign_up_with_facebook">Sign Up with Facebook</string>
-    <string name="start_activity_already_registered">Already Registered?&lt;//font&gt;&lt;b&gt; Log In&lt;//b&gt;</string>
-    <string name="sign_up_with_facebook_not_supported_yet">Sign Up with Facebook not supported yet.</string>
-
-    <!-- Signup Activity -->
-    <string name="signup_activity_sign_up">Sign up</string>
-    <string name="sign_up_activity_title">SIGN UP</string>
-    <string name="sign_up_activity_phone_hint">Phone</string>
-    <string name="sign_up_activity_name_hint">First Name</string>
-    <string name="sign_up_activity_lase_name_hint">Last Name</string>
-    <string name="sign_up_activity_login">Login</string>
-    <string name="sign_up_activity_change">Change</string>
-    <string name="sign_up_activity_name_is_empty">Name is empty</string>
-    <string name="phone_is_empty">Phone is empty</string>
-    <string name="sign_up_activity_invalid_email">Invalid E-Mail</string>
-    <string name="last_name_is_empty">Last name is empty</string>
-    <string name="email_is_empty">Email is empty</string>
-
-    <!-- Login Activity -->
-    <string name="log_in_activity_title">LOG IN</string>
-    <string name="log_in_activity_log_in_button_label">Log in</string>
-    <string name="log_in_activity_phone_hint">Phone</string>
-    <string name="log_in_activity_phone_number_edit_text_invalid_error">Invalid number</string>
-
-    <!-- Verify phone activity -->
-    <string name="verify_phone_activity_enter_the_code_we_sent_to">Enter the code we sent to</string>
-    <string name="verify_phone_activity_resend_sms">Resend SMS</string>
-    <string name="verify_phone_activity_change_phone_number">Change Phone Number</string>
-    <string name="verify_phone_activity_title">SMS Validation</string>
-    <string name="verify_phone_activity_please_enter_the_code">Please enter the code</string>
 
     <!-- Network Password Activity -->
     <string name="network_password_activity_title">WiFi Connection</string>
@@ -76,7 +63,7 @@
     <string name="continue_without_password">Continue without password</string>
     <string name="type_a_password">Type a password</string>
     <string name="change_network">Change network</string>
-
+    <string name="network_password_activity_help_message">Please make sure that this is a 2.4 GHz network</string>
 
     <!-- Button to Ap Activity -->
     <string name="button_to_ap_activity_title">Connect The Trap</string>
@@ -90,57 +77,30 @@
     <string name="button_to_ap_activity_connecting_button_to_user">Adding square button to user...</string>
     <string name="button_to_ap_activity_go_to_manual_title">Connect to kwik</string>
     <string name="button_to_ap_activity_go_to_manual_message">To continue please:\n\n1- Click \"Open WiFi settings\" below\n2- Connect to WiFi kwik_button\n3- Return back to the app</string>
+    <string name="button_to_ap_activity_welcome_back">Welcome Back!\nDid you hear the Success Tone?</string>
+    <string name="button_to_ap_activity_looking_for_your_button_this_may_take_few_seconds">Looking for your button, this may take few seconds</string>
+    <string name="wifi_settings_manual_mode_android_7_instructions">1.  Press the \"Go To Settings\" below\n\n2.  Connect to the network that ends with the name button_xxxxxx in WiFi settings\n\n3.  Press on the \"WiFi has No internet\" notification and select Yes to stay connected</string>
+    <string name="wifi_settings_manual_mode_android_7_instructions_1">4. Return back here to complete the setup</string>
+    <string name="wifi_settings_manual_mode_header">Now let’s connect your square\n to your Wi-Fi</string>
 
 
-    <!-- My Buttons Activity -->
+    <!-- Clients Activity -->
+    <string name="clients_activity_title">Clients</string>
     <string name="my_buttons_activity_exit_dialog_title">Closing</string>
     <string name="my_buttons_activity_exit_dialog_message">Are you sure you want to exit?</string>
-    <string name="my_buttons_activity_serial_number">Square id Number :</string>
-    <string name="my_buttons_activity_click_to_add_button">Press to add a trap</string>
-    <string name="my_buttons_nav_menu_faq">F.A.Q</string>
-    <string name="my_buttons_nav_menu_faq_url">https://www.ipm-square.com/faq</string>
-    <string name="my_buttons_nav_menu_send_feedback">Send FeedBack</string>
-    <string name="my_buttons_activity_nav_menu_communicate">Communicate</string>
-    <string name="my_buttons_activity_nav_menu_settings">Settings</string>
-    <string name="my_buttons_activity_nav_menu_order_history">Order History</string>
-    <string name="my_buttons_activity_nav_menu_personal_details">Personal Details</string>
-    <string name="my_buttons_activity_nav_menu_my_buttons">My Buttons</string>
-    <string name="my_buttons_activity_main_label">My Buttons</string>
     <string name="my_buttons_nav_not_supported_yet_message">not supported yet</string>
-    <string name="my_buttons_activity_settings_select_language">Select language</string>
-    <string name="my_buttons_activity_nav_menu_settings_dialog_title">Personal Details</string>
-    <string name="my_buttons_activity_add_wifi_network">Add Network</string>
-    <string name="my_buttons_activity_click_to_edit_button">For update, Press the logo</string>
-    <string name="log_out">Logout</string>
+    <string name="my_buttons_feedback_header">Feedback from</string>
+    <string name="my_buttons_activity_main_label">Clients</string>
+    <string name="select_email_client">Select an Email Client:</string>
+
+
+
+    <!-- Trap Details Activity -->
+    <string name="title_activity_trap_details">TrapDetailsActivity</string>
     <string name="remove_kwik_button">Delete Square</string>
     <string name="remove_kwik_button_message">Are you sure you want to delete this square?</string>
-    <string name="address">Address</string>
-    <string name="entrance">Entrance</string>
-    <string name="apartment">Apartment</string>
-    <string name="change_address">Change address</string>
-
-    <!-- My Kwik Buttons Activity -->
-    <string name="my_kwik_buttons_nav_menu_send_feedback">Send FeedBack</string>
-    <string name="my_kwik_buttons_activity_nav_menu_communicate">Communicate</string>
-    <string name="my_kwik_buttons_activity_nav_menu_change_language">Change Language</string>
-    <string name="my_kwik_buttons_activity_nav_menu_order_history">Order History</string>
-    <string name="my_kwik_buttons_activity_nav_menu_personal_details">Personal Details</string>
-    <string name="clients_activity_title">Clients</string>
     <string name="edit_reorder">Edit reorder</string>
     <string name="button_settings">Trap settings</string>
-
-
-    <!-- Reorder Settings Activity -->
-    <string name="reorder_settings_activity_screen_title">Reorder Summary</string>
-    <string name="reorder_settings_activity_list_title">Selected Products</string>
-    <string name="edit">Edit</string>
-    <string name="reorder_settings_activity_add_new_product">Add new</string>
-    <string name="reorder_settings_activity_current_wifi">Your WiFi : </string>
-    <string name="reorder_settings_activity_total_price">Total price : </string>
-    <string name="reorder_settings_activity_general">General</string>
-    <string name="reorder_settings_activity_send_to_kwik">Add network</string>
-    <string name="quantity">Quantity: </string>
-    <string name="price">Price: </string>
 
 
     <!-- Good Job Activity -->
@@ -149,38 +109,9 @@
     <string name="good_job_activity_button_serial_number">Serial number:</string>
     <string name="good_job_activity_now">The Trap is now connected to network successfully and will operate on this network only</string>
     <string name="good_job_activity_kwik_order">Next</string>
-
-    <!-- Select Products Activity -->
-    <string name="select_products_activity_title">Product Selection</string>
-    <string name="select_products_activity_choose">Choose your preferences for reorder</string>
-    <string name="select_products_activity_no_productd_choosen">No product selected, please select product</string>
-    <string name="select_products_activity_minimum_price_prefix">"Minimum order is "</string>
-    <string name="select_products_activity_minimum_price_suffix">, Please add products.</string>
-    <string name="select_products_activity_edit_title">Order Update</string>
-    <string name="select_products_activity_update_popup">&lt;b&gt;Update&lt;//b&gt; the products in this order and press \"Order\" on the top of the screen</string>
-    <string name="order">Order</string>
-
-    <!-- Personal Details Activity -->
-    <string name="personal_details_activity_title">Personal Details</string>
-
-    <!-- Delivery Activity -->
-    <string name="delivery_activity_title">Delivery Details</string>
-    <string name="delivery_activity_time_slots_title">Preffered time for deliveries</string>
-    <string name="delivery_activity_left_by_door_check_box">May be left by the door</string>
-    <string name="delivery_activity_delivery_notes_edit_text">Delivery Notes</string>
-
-    <!-- All Set Up Activity -->
-    <string name="all_set_up_activity_title">Great Job</string>
-    <string name="all_set_up_activity_you_are_all_set_up">You Are All Set Up!</string>
-    <string name="all_set_up_activity_click">From now, A click on a button will order the products you have selected.</string>
-    <string name="all_set_up_activity_you_can_always">You can always edit the order\nfrom the confirmation SMS</string>
-    <string name="all_set_up_activity_done">Done</string>
-    <string name="delivery_activity_address_edit_text">Address for deliveries</string>
-    <string name="my_buttons_feedback_header">Feedback from</string>
-    <string name="select_email_client">Select an Email Client:</string>
-    <string name="network_password_activity_help_message">Please make sure that this is a 2.4 GHz network</string>
-    <string name="select_products_activity_save_changes">Save changes for my next button orders.</string>
-
+    <string name="good_job_activity_title">Great job</string>
+    <string name="good_job_activity_finish_button">Finish setup</string>
+    <string name="good_job_activity_serial_number_1090000">Serial number: 1090000</string>
 
     <!-- SmartNetwork dialog -->
     <string name="smart_network_dialog_title">Smart network switch</string>
@@ -188,58 +119,14 @@
     <string name="wifi_settings">Go To Settings</string>
     <string name="wifi_settings_manual_mode_instructions">1.  Press the \"Go To Settings\" below\n\n2.  Connect to the network that ends with the name button_xxxxxx in WiFi settings\n\n3.  Return back to the app</string>
 
-
-    <!-- Update Personal Details Activity -->
-    <string name="update_personal_details_title">Update Details</string>
-    <string name="update_personal_details_activity_email_hint">E-mail</string>
-    <string name="update_personal_details_activity_buttons_hint">Buttons</string>
-    <string name="addresses">Addresses</string>
-    <string name="save">Save</string>
-    <string name="please_select_address">Please select address:</string>
-    <string name="button_not_registered_click_here_to_register_this_button">Button not registered, Click here to register</string>
-    <string name="default_address">Used by button</string>
-    <string name="register_later">Register Later</string>
-    <string name="please_enter_country_code">Pleae enter country code</string>
-    <string name="log_in_activity_country_code_hint">Country</string>
-    <string name="title_activity_one_button">OneButtonActivity</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <!-- One Button Activtiy -->
-    <string name="on_button_activity_title">For update, Press the logo</string>
-    <string name="payment_method">Name</string>
+    <!-- Setup Activity -->
     <string name="setup_activity_title">Setup</string>
     <string name="setup_activity_please_turn_up">Please turn up your phone volume so we can walk you through the set up</string>
     <string name="setup_activity_increase_volume_comment">Increase volume to continue</string>
-    <string name="sign_up_activity_email_hint">E-Mail</string>
-    <string name="signup_activity_easy_text_view">Easy Registration</string>
     <string name="setup_activity_great_your_volume_is_set">Great! Your volume is set</string>
-    <string name="button_to_ap_activity_welcome_back">Welcome Back!\nDid you hear the Success Tone?</string>
-    <string name="unknown_error">Unknown Error</string>
-    <string name="sereal_number">S.N :</string>
-    <string name="button_settings_activity_main_label">Trap Settings</string>
-    <string name="title_activity_button_settings">ButtonSettingsActivity</string>
-    <string name="add_wi_fi_network">Add Wi-Fi network</string>
-    <string name="reorder_address">Reorder address</string>
-    <string name="preferred_time_for_deliveries">Preferred time for deliveries</string>
-    <string name="additional_data">Additional data</string>
-    <string name="delete_button">Delete trap</string>
-    <string name="long_press_to_delete_the_button">Long press to delete the trap</string>
-    <string name="ask_for_storage_permission_message">In order to use Ipm square app you will need to allow access to media and files. We are committed\nto providing the best and fastest experience to our costumers and therefore we will need your approval to continue.\nPlease click allow in the next screen</string>
-    <string name="kwik_continue">Continue</string>
-    <string name="wifi_settings_manual_mode_android_7_instructions">1.  Press the \"Go To Settings\" below\n\n2.  Connect to the network that ends with the name button_xxxxxx in WiFi settings\n\n3.  Press on the \"WiFi has No internet\" notification and select Yes to stay connected</string>
-    <string name="wifi_settings_manual_mode_android_7_instructions_1">4. Return back here to complete the setup</string>
-    <string name="wifi_settings_manual_mode_header">Now let’s connect your square\n to your Wi-Fi</string>
-    <string name="update_order_message">Update the products you want to order then click on the “Modify Order” button in the bottom of the screen to submit the changes</string>
-    <string name="modify_order">Modify Order</string>
-    <string name="modifying">Modifying...</string>
-    <string name="see_full_reorder_summary">See full reorder summary</string>
-    <string name="reorder_summary">" - Reorder summary"</string>
-    <string name="kwik_order">Kwik order</string>
+
+    <!-- Add serial number manualy -->
     <string name="title_activity_add_serial_number_manualy">AddSerialNumberManualyActivity</string>
-    <string name="wifi_selection_activity_title">Wi-Fi Selection</string>
-    <string name="wifi_selection_activity_question">Do you have a dedicated\nrouter device, or do you use the\nclient WiFi network?</string>
     <string name="add_serial_manually_activity_title">Connect the trap</string>
     <string name="add_serial_manually_enter_number_request">In order to connect the trap, Please enter the square id number located on the back of the square</string>
     <string name="add_serial_manually_activity_open_dialog_button">Enter serial number</string>
@@ -251,34 +138,13 @@
     <string name="enter_serial_number_error_numbers_only_error">Serial number is content numbers only</string>
     <string name="enter_serial_number_error_cancel_button">CANCEL</string>
 
-    <!-- Good job activity -->
-    <string name="good_job_activity_title">Great job</string>
-    <string name="good_job_activity_finish_button">Finish setup</string>
-
-    <!-- IPM Login Activity -->
-    <string name="ipm_login_activity_title">Additional details</string>
-    <string name="ipm_login_activity_client_name">Client name</string>
-    <string name="ipm_login_activity_site">Site</string>
-    <string name="ipm_login_activity_search">Search</string>
-    <string name="ipm_login_activity_coordinator">Coordinator</string>
-    <string name="ipm_login_activity_trap_name">Trap name</string>
-    <string name="ipm_login_activity_trap_description">Trap description</string>
-    <string name="ipm_login_activity_error_enter_name">Please select client name</string>
-    <string name="ipm_login_activity_trap_name_error">Trap name is mandatory</string>
-    <string name="ipm_login_activity_site_error">Please select site name</string>
-    <string name="ipm_login_activity_coordinator_error">Please select coordinator</string>
-    <string name="ipm_login_activity_error_get_ipm_clients">Failed to get to IPM square clients list, please make sure you are registered with your system administrator and then try again</string>
-    <string name="button_settings_activity_edit_name_dialog">Enter new name here</string>
-    <string name="button_settings_activity_description_dialog">Enter new description here</string>
-    <string name="login_activity_phone_number_is_empty">phone is empty</string>
-    <string name="connected_notification_message">Click to return to IPM Square</string>
-    <string name="tap_to_setup_your_tap">Tap to setup your tap</string>
-    <string name="no_actions">No actions</string>
-    <string name="please_click_the_square_s_button_once_to_activate_the_trap">Please click the square\'s button once to activate the trap</string>
+    <!-- WiFi Selection Activity -->
+    <string name="wifi_selection_activity_title">Wi-Fi Selection</string>
+    <string name="wifi_selection_activity_question">Do you have a dedicated\nrouter device, or do you use the\nclient WiFi network?</string>
     <string name="i_have_client_wifi_network">I have client wifi network</string>
     <string name="i_have_a_dedicated_router">I have a dedicated router</string>
-    <string name="title_activity_trap_details">TrapDetailsActivity</string>
-    <string name="need_help_"><u>Need help?</u></string>
+
+
     <string name="ipm_login_contact_administrator">Wrong email or password.\nContact your administrator for more information.</string>
 
     <!-- No connectivity error dialog -->
@@ -286,6 +152,56 @@
     <string name="err_dialog_no_connectivity_body">No internet connection, please check if your device is connected to connection and try again</string>
     <string name="err_dialog_no_connectivity_try_again">try again</string>
     <string name="err_dialog_no_connectivity_wifi_settings">Wifi Settings</string>
+
+
+    <!-- Notification Message -->
+    <string name="connected_notification_message">Click to return to IPM Square</string>
+
+    <!-- Side menu -->
+    <string name="my_buttons_nav_menu_send_feedback">Send Feedback</string>
+    <string name="log_out">Logout</string>
+    <string name="my_buttons_nav_menu_faq">F.A.Q</string>
+    <string name="my_buttons_nav_menu_faq_url">https://www.ipm-square.com/faq</string>
+
+    <!-- Client overview Activity -->
+    <string name="client_overview_activity_client_s_overview">Client\'s Overview</string>
+    <string name="client_overview_activity_total_traps">Total Traps:</string>
+    <string name="client_overview_activity__0_trap_alerts">0 Trap Alerts</string>
+    <string name="client_overview_activity_client_s_traps">Client\'s Traps:</string>
+    <string name="client_overview_activity_add_new_trap">Add new trap</string>
+
+    <!-- Close trap activity -->
+    <string name="close_trap_activity_alert_u0026_time"><![CDATA[Alert & Time]]></string>
+    <string name="close_trap_activity_technician">Technician :</string>
+    <string name="close_trap_activity_description">Description :</string>
+    <string name="close_trap_activity_enter_description">Enter description</string>
+    <string name="close_trap_activity_save_u0026_close_alert"><![CDATA[Save & close alert]]></string>
+
+    <!-- Create client activity -->
+    <string name="create_client_activity_client_address">Client address</string>
+    <string name="create_client_activity_contact_person">Contact Person</string>
+
+    <!-- Sign in Activity -->
+    <string name="sign_in_activity_sign_in">Sign in</string>
+    <string name="sign_in_activity_sign_in_to_your_account">Sign in to your account</string>
+
+    <!-- Trap details Activity -->
+    <string name="trap_details_activity_trap_details">Trap details</string>
+    <string name="trap_details_activity_enter_description">Enter description</string>
+    <string name="trap_details_activity_trap_alert">Trap alert</string>
+    <string name="trap_details_activity_resolve">Resolve</string>
+    <string name="trap_details_activity_alert_time">Alert Time:</string>
+    <string name="trap_details_activity_last_communication">Last communication:</string>
+    <string name="trap_details_activity_setup_date">Setup date:</string>
+    <string name="trap_details_activity_description">Description:</string>
+
+    <!-- Add new site popup --> 
+    <string name="add_new_site_popup_add_a_new_site">Add a new site</string>
+    <string name="add_new_site_popup_add_a_new_site_to">Add a new site to:</string>
+    <string name="add_new_site_popup_site_name">Site name:</string>
+    <string name="add_new_site_popup_enter_the_name_of_the_site">Enter the name of the site</string>
+    <string name="add_new_site_popup_add_new_site">ADD NEW SITE</string>
+
 
 
 </resources>

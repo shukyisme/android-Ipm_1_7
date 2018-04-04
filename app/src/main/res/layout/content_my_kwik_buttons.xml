@@ -36,7 +36,7 @@
                 android:layout_height="40dp"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp"
-                android:text="Overview"
+                android:text="@string/overview"
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/overview_icon"
                 android:gravity="center_vertical|start" />
@@ -48,7 +48,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp"
-                android:text="Total Traps:"
+                android:text="@string/total_traps"
                 android:gravity="center_vertical|end"/>
 
         </LinearLayout>
@@ -60,7 +60,7 @@
             android:layout_below="@+id/clients_activity_overview_header_LinearLayout"
             android:background="@drawable/clients_listview_background"
             android:gravity="center"
-            android:text="0 Trap Alerts"
+            android:text="@string/_0_trap_alerts"
             android:textSize="22sp"
             android:textColor="#8C9496"
             />
@@ -89,7 +89,7 @@
                 android:layout_height="40dp"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp"
-                android:text="Active clients: ()"
+                android:text="@string/active_clients"
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/clients"
                 android:gravity="center_vertical|start" />
@@ -136,6 +136,6 @@
             android:drawablePadding="5dp"
             android:textSize="20sp"
             android:drawableLeft="@drawable/add_trap"
-            android:text="Add new trap"/>
+            android:text="@string/add_new_trap"/>
     </LinearLayout>
 </LinearLayout>

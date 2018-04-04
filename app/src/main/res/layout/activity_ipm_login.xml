@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ipm_login_activity_client_name"
+            android:text="@string/client_name"
             android:drawableStart="@drawable/user_id"
             android:drawablePadding="10dp"/>
         <AutoCompleteTextView
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:hint="@string/ipm_login_activity_search"/>
+        android:hint="@string/search"/>
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ipm_login_activity_site"
+            android:text="@string/site"
             android:drawableStart="@drawable/address_icon"
             android:drawablePadding="10dp"/>
         <AutoCompleteTextView
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:hint="@string/ipm_login_activity_search"/>
+            android:hint="@string/search"/>
     </LinearLayout>
 
     <LinearLayout
@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ipm_login_activity_coordinator"
+            android:text="@string/coordinator"
             android:drawableStart="@drawable/user_id"
             android:drawablePadding="10dp"/>
         <AutoCompleteTextView
@@ -74,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:hint="@string/ipm_login_activity_search"/>
+            android:hint="@string/search"/>
     </LinearLayout>
 
     <LinearLayout
@@ -87,7 +87,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ipm_login_activity_trap_name"
+            android:text="@string/trap_name"
             android:drawableStart="@drawable/wifi_setup_small"
             android:drawablePadding="10dp"/>
         <EditText
@@ -108,7 +108,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ipm_login_activity_trap_description"
+            android:text="@string/trap_description"
             android:drawableStart="@drawable/wifi_setup_small"
             android:drawablePadding="10dp"/>
         <EditText

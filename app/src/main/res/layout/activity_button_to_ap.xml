@@ -71,7 +71,7 @@
         android:id="@+id/button_to_ap_activity_looking_for_button_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Looking for your button, this may take few seconds"
+        android:text="@string/button_to_ap_activity_looking_for_your_button_this_may_take_few_seconds"
         android:layout_centerHorizontal="true"
         android:textSize="16sp"
         android:textStyle="bold"

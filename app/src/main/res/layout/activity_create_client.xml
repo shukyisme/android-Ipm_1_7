@@ -46,7 +46,7 @@
                     android:background="@drawable/rectangle_2_vd"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/client_name"
-                    android:hint="Client name"
+                    android:hint="@string/client_name"
                     android:paddingStart="10dp" />
             </LinearLayout>
         </LinearLayout>
@@ -81,7 +81,7 @@
                     android:background="@drawable/rectangle_2_vd"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/email_v2"
-                    android:hint="E-mail"
+                    android:hint="@string/e_mail"
                     android:paddingStart="10dp" />
             </LinearLayout>
         </LinearLayout>
@@ -116,7 +116,7 @@
                     android:background="@drawable/rectangle_2_vd"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/client_address"
-                    android:hint="Client address "
+                    android:hint="@string/create_client_activity_client_address"
                     android:paddingStart="10dp" />
             </LinearLayout>
 
@@ -152,7 +152,7 @@
                     android:background="@drawable/rectangle_2_vd"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/contact_person"
-                    android:hint="Contact Person "
+                    android:hint="@string/create_client_activity_contact_person"
                     android:paddingStart="10dp" />
             </LinearLayout>
 
@@ -188,7 +188,7 @@
                     android:background="@drawable/rectangle_2_vd"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/phone_number"
-                    android:hint="Phone number "
+                    android:hint="@string/phone_number"
                     android:paddingStart="10dp" />
             </LinearLayout>
 

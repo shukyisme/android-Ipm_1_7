@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add a new site"
+        android:text="@string/add_new_site_popup_add_a_new_site"
         android:paddingTop="20dp"
         android:textStyle="bold"
         android:textColor="@color/lapislazuli"
@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add a new site to:"
+        android:text="@string/add_new_site_popup_add_a_new_site_to"
         android:textColor="@color/lavendergray"
         android:textSize="18sp"
         android:paddingStart="10dp"
@@ -30,7 +30,7 @@
         android:id="@+id/new_site_pop_up_client_name_TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="McDonald's Turnpike"
+        android:text=""
         android:textColor="@color/outerspace"
         android:textSize="20sp"
         android:paddingStart="10dp"
@@ -40,7 +40,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Site name:"
+        android:text="@string/add_new_site_popup_site_name"
         android:textColor="@color/lavendergray"
         android:textSize="18sp"
         android:paddingStart="10dp"
@@ -53,7 +53,7 @@
         android:layout_height="120dp"
         android:background="@drawable/rectangle_2_vd"
         android:layout_margin="10dp"
-        android:hint="Enter the name of the site"
+        android:hint="@string/add_new_site_popup_enter_the_name_of_the_site"
         android:padding="10dp"
         android:gravity="top" />
 
@@ -68,7 +68,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="CANCEL"
+            android:text="@string/cancel"
             android:textColor="@color/pumpkin"
             android:gravity="end"
             android:textStyle="bold"
@@ -80,7 +80,7 @@
             android:layout_weight="1"
             android:gravity="end"
             android:layout_height="wrap_content"
-            android:text="ADD NEW SITE"
+            android:text="@string/add_new_site_popup_add_new_site"
             android:textStyle="bold"
             android:textColor="@color/pumpkin"
             android:textSize="18sp"/>

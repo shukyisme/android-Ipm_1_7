@@ -116,10 +116,6 @@ public class ClientsActivity extends BaseActivity
 
         TextView phone = (TextView) headerView.findViewById( R.id.nav_header_user_phone_text_view );
         phone.setText( mApp.getUser().getPhone() );
-
-
-        NavigationView navigationView = (NavigationView) findViewById( R.id.nav_view );
-        customNavigationView( navigationView );
     }
 
     public void  addNewTrapClick(View v){
@@ -234,18 +230,18 @@ public class ClientsActivity extends BaseActivity
         });
     }
 
-    private void customNavigationView(NavigationView navigationView) {
-        final Menu menu = navigationView.getMenu();
-        int i = 0;
-        for (; i < menu.size(); i++) {
-            if (menu.getItem( i ).getTitle().equals( getString( R.string.my_buttons_activity_nav_menu_communicate ) )) {
-                SpannableString spanString = new SpannableString( menu.getItem( i ).getTitle().toString() );
-                spanString.setSpan( new ForegroundColorSpan( getResources().getColor( R.color.kwik_me_menu_group_item_text_color ) ), 0, spanString.length(), 0 );
-                menu.getItem( i ).setTitle( spanString );
-                break;
-            }
-        }
-    }
+//    private void customNavigationView(NavigationView navigationView) {
+//        final Menu menu = navigationView.getMenu();
+//        int i = 0;
+//        for (; i < menu.size(); i++) {
+//            if (menu.getItem( i ).getTitle().equals( getString( R.string.my_buttons_activity_nav_menu_communicate ) )) {
+//                SpannableString spanString = new SpannableString( menu.getItem( i ).getTitle().toString() );
+//                spanString.setSpan( new ForegroundColorSpan( getResources().getColor( R.color.kwik_me_menu_group_item_text_color ) ), 0, spanString.length(), 0 );
+//                menu.getItem( i ).setTitle( spanString );
+//                break;
+//            }
+//        }
+//    }
 
     @Override
     protected void onPause() {

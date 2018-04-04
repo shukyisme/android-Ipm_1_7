@@ -67,7 +67,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Serial number: 1090000"
+                android:text="@string/good_job_activity_serial_number_1090000"
                 android:textSize="20sp"
                 android:textColor="@color/outerspace"
                 android:layout_below="@+id/video_player_view"/>

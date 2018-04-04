@@ -16,14 +16,14 @@
             android:id="@+id/trap_item_site_name_TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dinning Room"
+            android:text=""
             android:textColor="#B5BBC5"
             android:gravity="center_vertical"/>
         <TextView
             android:id="@+id/trap_item_name_TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Trap: #2"
+            android:text=""
             android:textSize="18sp"
             android:textColor="#256BA7"
             android:gravity="center_vertical"/>
@@ -66,7 +66,7 @@
                 android:id="@+id/trap_item_sn_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="SN: 105809"/>
+                android:text=""/>
 
         </LinearLayout>
     </LinearLayout>

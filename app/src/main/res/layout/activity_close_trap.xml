@@ -55,7 +55,7 @@
                         android:id="@+id/close_trap_activity_name_TextView"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:text="fgs" />
+                        android:text="" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:text="Alert \u0026 Time"
+                android:text="@string/close_trap_activity_alert_u0026_time"
                 android:textColor="#8C9496"
                 android:textSize="16sp" />
 
@@ -145,7 +145,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:text="Technician :"
+                android:text="@string/close_trap_activity_technician"
                 android:textColor="#8C9496"
                 android:textSize="16sp" />
 
@@ -183,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="start"
-                    android:text="Description :"
+                    android:text="@string/close_trap_activity_description"
                     android:textColor="#8C9496"
                     android:textSize="16sp" />
 
@@ -206,7 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:background="@drawable/rectangle_2_vd"
-                        android:hint="Enter description"
+                        android:hint="@string/close_trap_activity_enter_description"
                         android:paddingStart="2dp" />
                 </RelativeLayout>
 
@@ -220,7 +220,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
             android:background="@drawable/start_button_selector"
-            android:text="Save \u0026 close alert"
+            android:text="@string/close_trap_activity_save_u0026_close_alert"
             android:textSize="24sp" />
 
     </RelativeLayout>

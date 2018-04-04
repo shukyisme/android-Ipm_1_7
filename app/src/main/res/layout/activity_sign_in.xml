@@ -44,7 +44,7 @@
                 android:layout_below="@+id/login_logo"
                 android:layout_marginTop="47dp"
                 android:gravity="center"
-                android:text="Sign in to your account" />
+                android:text="@string/sign_in_activity_sign_in_to_your_account" />
         </LinearLayout>
 
         <LinearLayout
@@ -64,7 +64,7 @@
                 android:background="@drawable/rectangle_2_vd"
                 android:drawableLeft="@drawable/email_v2"
                 android:drawablePadding="10dp"
-                android:hint="Email Address"
+                android:hint="@string/email_address"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingStart="10dp"
@@ -84,7 +84,7 @@
                 android:background="@drawable/rectangle_2_vd"
                 android:drawableLeft="@drawable/password"
                 android:drawablePadding="10dp"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingStart="10dp"
@@ -106,7 +106,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:textSize="20sp"
-                android:text="Sign in"
+                android:text="@string/sign_in_activity_sign_in"
                 android:textColor="@color/kwik_me_white" />
 
             <TextView

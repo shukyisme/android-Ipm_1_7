@@ -12,7 +12,7 @@
         android:paddingBottom="20dp"
         android:paddingStart="10dp"
         android:gravity="center_vertical"
-        android:text="Client number 444444"
+        android:text=""
         android:textSize="20sp"
         android:textColor="#FF256BA7"/>
     <ImageView

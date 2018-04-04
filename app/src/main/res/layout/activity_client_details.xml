@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ipm_login_activity_client_name"
+                android:text="@string/client_name"
                 android:textColor="@color/manatee"
                 android:textSize="@dimen/client_details_labels_text_size"
                 android:drawableStart="@drawable/client_name"
@@ -37,7 +37,7 @@
                 android:textSize="@dimen/client_details_values_text_size"
                 android:paddingTop="10dp"
                 android:layout_marginStart="20dp"
-                android:text="McDonald's Turnpike"/>
+                android:text=""/>
         </LinearLayout>
 
         <LinearLayout
@@ -50,7 +50,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="E-mail"
+                android:text="@string/e_mail"
                 android:textSize="@dimen/client_details_labels_text_size"
                 android:textColor="@color/manatee"
                 android:drawableStart="@drawable/email_v2"

@@ -163,7 +163,6 @@
         android:id="@+id/button_settings_tap_to_setup_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tap_to_setup_your_tap"
         android:textColor="@color/kwik_me_orange"
         android:layout_below="@+id/title"
         android:layout_toEndOf="@+id/thumbnail"/>
@@ -202,7 +201,7 @@
             android:drawablePadding="5dp"
             android:layout_gravity="center_horizontal"
             android:drawableStart="@drawable/summary_icon"
-            android:text="@string/see_full_reorder_summary"
+
             android:textColor="@color/kwik_me_blue_back_ground"/>
 
 

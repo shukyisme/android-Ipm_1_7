@@ -258,9 +258,7 @@ public final class Application extends android.app.Application {
             case LOCALE:
                 e.putString(getBaseContext().getString(R.string.kwik_me_locale_id_key), value);
                 break;
-            case FIRST_BUTTON_IN_THE_APP:
-                e.putBoolean(getBaseContext().getString(R.string.kwik_me_first_button_in_the_app), value.contains("true") ? true : false);
-                break;
+
             default:
                 break;
         }
@@ -286,17 +284,15 @@ public final class Application extends android.app.Application {
 
     public boolean getBooleanPref(PrefType type) {
         boolean ans = false;
-        SharedPreferences pref = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        switch (type) {
-
-            case FIRST_BUTTON_IN_THE_APP:
-                ans = pref.getBoolean(getBaseContext().getString(R.string.kwik_me_first_button_in_the_app), true);
-                break;
-
-            default:
-                break;
-        }
+//        SharedPreferences pref = PreferenceManager
+//                .getDefaultSharedPreferences(getBaseContext());
+//        switch (type) {
+//
+//
+//
+//            default:
+//                break;
+//        }
 
         return ans;
     }

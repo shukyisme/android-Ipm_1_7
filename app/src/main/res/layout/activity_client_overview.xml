@@ -37,7 +37,7 @@
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/clients"
                 android:gravity="center_vertical|start"
-                android:text="Client's Overview"
+                android:text="@string/client_overview_activity_client_s_overview"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp" />
 
@@ -47,7 +47,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical|end"
-                android:text="Total Traps: "
+                android:text="@string/client_overview_activity_total_traps"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp" />
 
@@ -60,7 +60,7 @@
             android:layout_below="@+id/client_overview_activity_overview_header_LinearLayout"
             android:background="@drawable/clients_listview_background"
             android:gravity="center"
-            android:text="0 Trap Alerts"
+            android:text="@string/client_overview_activity__0_trap_alerts"
             android:textColor="#8C9496"
             android:textSize="22sp" />
 
@@ -93,7 +93,7 @@
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/traps"
                 android:gravity="center_vertical|start"
-                android:text="Client's Traps:"
+                android:text="@string/client_overview_activity_client_s_traps"
                 android:textColor="@color/kwik_me_white"
                 android:textSize="20sp" />
 
@@ -142,7 +142,7 @@
             android:gravity="center"
             android:drawablePadding="5sp"
             android:drawableLeft="@drawable/add_trap"
-            android:text="Add new trap"
+            android:text="@string/client_overview_activity_add_new_trap"
             android:textColor="#FF256BA7"
             android:textSize="24sp" />
     </LinearLayout>
