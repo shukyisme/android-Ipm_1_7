@@ -279,6 +279,7 @@
     <string name="i_have_a_dedicated_router">I have a dedicated router</string>
     <string name="title_activity_trap_details">TrapDetailsActivity</string>
     <string name="need_help_"><u>Need help?</u></string>
+    <string name="ipm_login_contact_administrator">Wrong email or password.\nContact your administrator for more information.</string>
 
     <!-- No connectivity error dialog -->
     <string name="err_dialog_no_connectivity_title">Oops..</string>

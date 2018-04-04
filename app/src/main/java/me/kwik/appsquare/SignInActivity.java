@@ -7,6 +7,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,9 +28,10 @@ public class SignInActivity extends BaseActivity {
     @BindView(R.id.signin_user_name_edit_text)EditText mEmailEditText;
     @BindView(R.id.signin_password_edit_text) EditText mPasswordEditText;
     @BindView(R.id.sigin_sign_in_button)Button mLoginButton;
+    @BindView(R.id.sign_in_contact_administrator_textview)TextView mContactAdministrator;
 
     private Application mApp;
-
+    private int mCountLoginErrors;
 
 
 
@@ -40,26 +43,33 @@ public class SignInActivity extends BaseActivity {
         mApp = (Application) getApplication();
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        mCountLoginErrors = 0;
 
         mOnSignInClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mEmailEditText.setBackgroundResource(R.drawable.rectangle_2_vd);
+                mPasswordEditText.setBackgroundResource(R.drawable.rectangle_2_vd);
                 if(mEmailString == null || mEmailString.length() == 0){
                     mEmailEditText.setError("Please fill the required fields");
+                    mEmailEditText.setBackgroundResource(R.drawable.textview_error_border);
                     return;
                 }
 
 
                 if(!Utils.isValidEmail(mEmailString)){
                     mEmailEditText.setError("Not Valid Email");
+                    mEmailEditText.setBackgroundResource(R.drawable.textview_error_border);
                     return;
                 }
 
                 if(mPasswordString == null || mPasswordString.length() < PASSWORD_MIN_LENGTH){
                     if(mPasswordString == null || mPasswordString.length() == 0){
                         mPasswordEditText.setError("Please fill the required fields");
+                        mPasswordEditText.setBackgroundResource(R.drawable.textview_error_border);
                     }else {
                         mPasswordEditText.setError("Not Valid Password");
+                        mPasswordEditText.setBackgroundResource(R.drawable.textview_error_border);
                     }
                     return;
                 }
@@ -78,6 +88,17 @@ public class SignInActivity extends BaseActivity {
                     @Override
                     public void onLoginError(KwikServerError error) {
                         hideProgressBar();
+                        mCountLoginErrors++;
+                        if(mCountLoginErrors == 2) {
+                            mContactAdministrator.setVisibility(View.VISIBLE);
+                            final ScrollView scrollview = ((ScrollView) findViewById(R.id.sign_in_scrollview));
+                            scrollview.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    scrollview.fullScroll(ScrollView.FOCUS_DOWN);
+                                }
+                            });
+                        }
                         showErrorDialog(error);
                     }
                 });
