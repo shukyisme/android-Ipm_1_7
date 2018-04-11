@@ -163,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="Status: "
+                android:text="@string/trap_details_activity_status"
                 android:textColor="#8C9496"
                 android:textSize="16sp" />
 
@@ -297,7 +297,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:text="Battery level: "
+                android:text="@string/trap_details_activity_battery_level"
                 android:textColor="#8C9496"
                 android:textSize="16sp" />
 

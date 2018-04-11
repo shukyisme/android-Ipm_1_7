@@ -337,7 +337,7 @@ public class TrapDetailsActivity extends BaseActivity {
             return;
         }
         if(mTrap.getStatus().equalsIgnoreCase("alert")){
-            showOneButtonErrorDialog("","The trap you are trying to remove has an active alert. Resolve the alert before removing the trap");
+            showOneButtonErrorDialog("",getString(R.string.trap_details_activity_active_alert_message));
             return;
         }
 

@@ -67,7 +67,7 @@ public class CloseTrapActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_close_trap);
-        mActionBarTitle.setText("Close trap alert");
+        mActionBarTitle.setText(R.string.close_trap_activity_close_trap_alert);
 
         mApp = (Application) getApplication();
 
@@ -80,7 +80,7 @@ public class CloseTrapActivity extends BaseActivity {
         redSpannable.setSpan(new ForegroundColorSpan(Color.RED), 0, red.length(), 0);
         builder.append(redSpannable);
 
-        String white = " Rodent trapped";
+        String white = getString(R.string.close_trap_activity_rodent_trapped);
         SpannableString whiteSpannable= new SpannableString(white);
         whiteSpannable.setSpan(new ForegroundColorSpan(ContextCompat.getColor(this,R.color.manatee_2)), 0, white.length(), 0);
         builder.append(whiteSpannable);
@@ -96,7 +96,7 @@ public class CloseTrapActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                   if(mEvent == null){
-                      showOneButtonErrorDialog("","Sorry, no event was founded");
+                      showOneButtonErrorDialog("",getString(R.string.close_trap_activity_sorry_no_event_was_founded));
                      return;
                  }
 
@@ -145,7 +145,7 @@ public class CloseTrapActivity extends BaseActivity {
         super.onResume();
         mSerial = getIntent().getStringExtra("serial_number");
         if(mSerial == null){
-            showOneButtonErrorDialog("","UnKnown error, Please go back and try again");
+            showOneButtonErrorDialog("",getString(R.string.close_trap_activity_unkown_error));
             return;
         }
         showProgressBar();
@@ -156,10 +156,10 @@ public class CloseTrapActivity extends BaseActivity {
                 List<KwikDevice> buttons = response.getButtons();
                 mTrap = buttons.get(0);
                 if(mTrap.getName() != null) {
-                    mNameTextView.setText(mTrap.getName() + "\nSerial number: " + mTrap.getId());
+                    mNameTextView.setText(mTrap.getName() + "\n" + getString(R.string.close_trap_activity_serial_number) + mTrap.getId());
                 }
                 if (buttons == null || buttons.size() == 0) {
-                    showOneButtonErrorDialog("","Button was not found");
+                    showOneButtonErrorDialog("",getString(R.string.close_trap_activity_button_was_not_found));
                     return;
                 }
                 getEventFromServer();

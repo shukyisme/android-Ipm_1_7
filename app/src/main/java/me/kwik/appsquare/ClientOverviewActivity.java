@@ -148,7 +148,7 @@ public class ClientOverviewActivity extends BaseActivity {
             siteName.setText(values.get(position).getSiteName());
 
             try {
-                trapSerialNumber.setText("SN: " + values.get(position).getId());
+                trapSerialNumber.setText(getString(R.string.SN) + values.get(position).getId());
             }catch (NullPointerException e){
                 e.printStackTrace();
             }

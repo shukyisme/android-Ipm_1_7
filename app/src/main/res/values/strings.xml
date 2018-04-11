@@ -30,6 +30,8 @@
     <string name="_0_trap_alerts">0 Trap Alerts</string>
     <string name="active_clients">Active clients: ()</string>
     <string name="add_new_trap">Add new trap</string>
+    <string name="SN">"SN: "</string>
+    <string name="create_client">Create Client</string>
 
 
     <!-- Add new trap Activity -->
@@ -176,6 +178,12 @@
     <string name="close_trap_activity_description">Description :</string>
     <string name="close_trap_activity_enter_description">Enter description</string>
     <string name="close_trap_activity_save_u0026_close_alert"><![CDATA[Save & close alert]]></string>
+    <string name="close_trap_activity_close_trap_alert">Close trap alert</string>
+    <string name="close_trap_activity_rodent_trapped">" Rodent trapped"</string>
+    <string name="close_trap_activity_sorry_no_event_was_founded">Sorry, no event was founded</string>
+    <string name="close_trap_activity_unkown_error">UnKnown error, Please go back and try again</string>
+    <string name="close_trap_activity_serial_number">"\nSerial number: "</string>
+    <string name="close_trap_activity_button_was_not_found">Button was not found</string>
 
     <!-- Create client activity -->
     <string name="create_client_activity_client_address">Client address</string>
@@ -194,6 +202,9 @@
     <string name="trap_details_activity_last_communication">Last communication:</string>
     <string name="trap_details_activity_setup_date">Setup date:</string>
     <string name="trap_details_activity_description">Description:</string>
+    <string name="trap_details_activity_active_alert_message">The trap you are trying to remove has an active alert. Resolve the alert before removing the trap</string>
+    <string name="trap_details_activity_status">Status:</string>
+    <string name="trap_details_activity_battery_level">Battery level:</string>
 
     <!-- Add new site popup --> 
     <string name="add_new_site_popup_add_a_new_site">Add a new site</string>
@@ -201,7 +212,6 @@
     <string name="add_new_site_popup_site_name">Site name:</string>
     <string name="add_new_site_popup_enter_the_name_of_the_site">Enter the name of the site</string>
     <string name="add_new_site_popup_add_new_site">ADD NEW SITE</string>
-
 
 
 </resources>

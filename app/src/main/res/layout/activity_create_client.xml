@@ -258,7 +258,7 @@
                 android:layout_marginLeft="9dp"
                 android:layout_marginRight="9dp"
                 android:background="@drawable/start_button_selector"
-                android:text="Create Client"
+                android:text="@string/create_client"
                 android:textSize="24sp" />
         </LinearLayout>
 
