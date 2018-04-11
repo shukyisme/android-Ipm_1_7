@@ -54,8 +54,20 @@ public class SplashActivity extends BaseActivity implements GoogleApiClient.Conn
     @Override
     protected void onStart() {
         super.onStart();
-        mGoogleApiClient.connect();
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (KwikMe.USER_EMAIL != null || KwikMe.USER_PASSWROD != null) {
+            mGoogleApiClient.connect();
+        } else {
+            Intent i = new Intent(SplashActivity.this, SignInActivity.class);
+            startActivity(i);
+            finish();
+        }
     }
 
     @Override
@@ -81,34 +93,6 @@ public class SplashActivity extends BaseActivity implements GoogleApiClient.Conn
             e.printStackTrace();
         }
 
-
-        if (KwikMe.USER_EMAIL != null || KwikMe.USER_PASSWROD != null) {
-            KwikLocation location = null;
-            if(mLastLocation != null) {
-                location = new KwikLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), mLastLocation.getAccuracy());
-            }
-            KwikMe.login(KwikMe.USER_EMAIL, KwikMe.USER_PASSWROD, location, new LoginListener() {
-                @Override
-                public void onLoginCompleted(LoginResponse response) {
-                    mApp.setUser(response.getUser());
-                    Intent i = new Intent(SplashActivity.this,ClientsActivity.class);
-                    startActivity(i);
-                    finish();
-                }
-
-                @Override
-                public void onLoginError(KwikServerError error) {
-                    Intent i = new Intent(SplashActivity.this, SignInActivity.class);
-                    startActivity(i);
-                    finish();
-                }
-            });
-
-        } else {
-            Intent i = new Intent(SplashActivity.this, SignInActivity.class);
-            startActivity(i);
-            finish();
-        }
 
 //        if (KwikMe.USER_TOKEN != null && KwikMe.USER_ID != null){
 //            handShake(location, version);
@@ -209,6 +193,7 @@ public class SplashActivity extends BaseActivity implements GoogleApiClient.Conn
                     REQUEST_ID_MULTIPLE_PERMISSIONS);
         }else{
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+            loginUser();
         }
 
     }
@@ -220,23 +205,53 @@ public class SplashActivity extends BaseActivity implements GoogleApiClient.Conn
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        loginUser();
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case REQUEST_ID_MULTIPLE_PERMISSIONS: {
                 if (grantResults.length == 1
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                        return;
+                    } else {
+                        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
                     }
-                    mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
                 }
-                return;
             }
+        }
+        loginUser();
+
+    }
+
+    private void loginUser() {
+        if (KwikMe.USER_EMAIL != null || KwikMe.USER_PASSWROD != null) {
+            KwikLocation location = null;
+            if(mLastLocation != null) {
+                location = new KwikLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), mLastLocation.getAccuracy());
+            }
+            KwikMe.login(KwikMe.USER_EMAIL, KwikMe.USER_PASSWROD, location, new LoginListener() {
+                @Override
+                public void onLoginCompleted(LoginResponse response) {
+                    mApp.setUser(response.getUser());
+                    Intent i = new Intent(SplashActivity.this,ClientsActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+
+                @Override
+                public void onLoginError(KwikServerError error) {
+                    Intent i = new Intent(SplashActivity.this, SignInActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            });
+
+        } else {
+            Intent i = new Intent(SplashActivity.this, SignInActivity.class);
+            startActivity(i);
+            finish();
         }
     }
 
