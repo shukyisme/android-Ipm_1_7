@@ -32,6 +32,10 @@ public class BaseActivity extends AppCompatActivity{
     protected static final int ERROR_DIALOG_NO_CONNECTIVITY = 1;
     protected static final int ERROR_CODE_NO_CONNECTIVITY = 5000;
 
+    protected static final int TRAP_ADD_OK = 1000;
+    protected static final int TRAP_ADD_NOK = 2000;
+    protected static final int TRAP_ADD_RETRY = 3000;
+
     protected TextView mActionBarTitle;
     protected TextView mPrevTextView;
     //TODO: Should remove this field after changing select products to web views

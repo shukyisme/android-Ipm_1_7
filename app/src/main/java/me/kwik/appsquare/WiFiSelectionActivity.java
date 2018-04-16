@@ -45,7 +45,7 @@ public class WiFiSelectionActivity extends BaseActivity {
         Intent i = new Intent(WiFiSelectionActivity.this, NetworkPasswordActivity.class);
         i.putExtra("name", mName);
         i.putExtra("button",mButton);
-        startActivity(i);
+        startActivityForResult(i, TRAP_ADD_OK);
 
     }
 }

@@ -72,7 +72,7 @@
     <string name="button_to_ap_activity_go_to_settings">Go To Settings</string>
     <string name="button_to_ap_activity_press_6_seconds">Press and hold the square for 5 seconds until it blinks and you hear a tone</string>
     <string name="button_to_ap_activity_press_start">Press ‘Next’ when your square blinks</string>
-    <string name="button_to_ap_activity_teach_fail_message">Looks like we couldn’t connect the trap to the Wi-Fi network. Please check the following and try again:\n- Make sure that the Wi-Fi network is working\n- Make sure the Wi-Fi name and password you entered are correct</string>
+    <string name="button_to_ap_activity_teach_fail_message">Looks like we couldn’t connect the trap to the Wi-Fi network. Please check the following and try again:\n 1. Make sure that the Wi-Fi network is working\n 2. Make sure the Wi-Fi name and password you entered are correct</string>
     <string name="button_to_ap_activity_almost_there">Almost there...</string>
     <string name="button_to_ap_activity_connecting_your_button">Connecting to square...</string>
     <string name="button_to_ap_activity_connecting_to_server">Connecting to server...</string>
@@ -152,7 +152,7 @@
     <!-- No connectivity error dialog -->
     <string name="err_dialog_no_connectivity_title">Oops..</string>
     <string name="err_dialog_no_connectivity_body">No internet connection, please check if your device is connected to connection and try again</string>
-    <string name="err_dialog_no_connectivity_try_again">try again</string>
+    <string name="err_dialog_no_connectivity_try_again">Try again</string>
     <string name="err_dialog_no_connectivity_wifi_settings">Wifi Settings</string>
 
 

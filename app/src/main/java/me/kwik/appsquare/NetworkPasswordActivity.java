@@ -361,7 +361,7 @@ public class NetworkPasswordActivity extends BaseActivity {
             RushCore.getInstance().deleteAll(KwikNetwork.class);
         }
 
-        startActivity(i);
+        startActivityForResult(i, TRAP_ADD_OK);
     }
 
     private static void showAdvancedWifiIfAvailable(Context ctx) {
@@ -382,4 +382,12 @@ public class NetworkPasswordActivity extends BaseActivity {
         Utils.showHelp(this);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == TRAP_ADD_RETRY){
+            setResult(resultCode);
+            finish();
+        }
+    }
 }

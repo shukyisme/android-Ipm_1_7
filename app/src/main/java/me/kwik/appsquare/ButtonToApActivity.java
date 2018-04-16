@@ -239,7 +239,7 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
         if (KwikMe.LOCAL.equals(Application.LOCAL_HE_IL) || KwikMe.LOCAL.equals(Application.LOCAL_IW_IL)) {
             playGoToSettingsAudioFile(this,"kwik_button_network_he.mp3",0,5);
         } else if (KwikMe.LOCAL.startsWith( "en" )){
-            playGoToSettingsAudioFile(this,"kwik_button_network_en.wav",0,5);
+            playGoToSettingsAudioFile(this,"kwik_button_network_en.aac",0,5);
         }
         showAdvancedWifiIfAvailable(this);
     }
@@ -399,11 +399,12 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
             }else{
                 pause();
                 noError = false;
-                showTwoButtonErrorDialog( getString( R.string.oops ), getString( R.string.button_to_ap_activity_teach_fail_message ), getString( android.R.string.ok ),
+                showTwoButtonErrorDialog(ERROR_DIALOG_NO_CONNECTIVITY, getString( R.string.oops ), getString( R.string.button_to_ap_activity_teach_fail_message ), getString( R.string.err_dialog_no_connectivity_try_again ),
                         "",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                ButtonToApActivity.this.setResult(TRAP_ADD_RETRY);
                                 ButtonToApActivity.this.finish();
                             }
                         }, null);
@@ -467,4 +468,6 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
             }
         }
     }
+
+
 }
