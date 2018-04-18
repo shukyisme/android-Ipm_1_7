@@ -33,13 +33,13 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="1.3"
+                android:layout_weight="1.1"
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/clients"
                 android:gravity="center_vertical|start"
                 android:text="@string/client_overview_activity_client_s_overview"
                 android:textColor="@color/kwik_me_white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/client_overview_activity_total_traps_TextView"
@@ -49,7 +49,7 @@
                 android:gravity="center_vertical|end"
                 android:text="@string/client_overview_activity_total_traps"
                 android:textColor="@color/kwik_me_white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -95,7 +95,7 @@
                 android:gravity="center_vertical|start"
                 android:text="@string/client_overview_activity_client_s_traps"
                 android:textColor="@color/kwik_me_white"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/client_overview_activity_client_details_three_dots_TextView"
