@@ -188,6 +188,9 @@
     <!-- Create client activity -->
     <string name="create_client_activity_client_address">Client address</string>
     <string name="create_client_activity_contact_person">Contact Person</string>
+    <string name="create_client_activity_msg_required">Please fill in all the mandatory details</string>
+    <string name="create_client_activity_msg_name_invalid">Client name must have at least 2 characters</string>
+    <string name="create_client_activity_msg_email_invalid">The email address you entered isn\'t valid</string>
 
     <!-- Sign in Activity -->
     <string name="sign_in_activity_sign_in">Sign in</string>

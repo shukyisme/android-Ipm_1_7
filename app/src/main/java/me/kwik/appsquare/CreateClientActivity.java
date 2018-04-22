@@ -133,15 +133,41 @@ public class CreateClientActivity extends BaseActivity {
         mCreateClientButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!Utils.isValidEmail(mEmailString)){
-                    mClientEmailEditText.setError("Invalid E-mail");
+                mClientNameEditText.setBackgroundResource(R.drawable.rectangle_2_vd);
+                mClientEmailEditText.setBackgroundResource(R.drawable.rectangle_2_vd);
+                boolean hasErrors = false;
+                if(mClientNameString == null || mClientNameString.length() == 0){
+                    mClientNameEditText.setError(getString(R.string.create_client_activity_msg_required));
+                    mClientNameEditText.setBackgroundResource(R.drawable.rectangle_2_vd_red);
+                    mClientNameEditText.requestFocus();
+                    hasErrors = true;
+                } else if(mClientNameString.length() < CLIENT_NAME_MIN_LENGTH) {
+                    mClientNameEditText.setError(getString(R.string.create_client_activity_msg_name_invalid));
+                    mClientNameEditText.setBackgroundResource(R.drawable.rectangle_2_vd_red);
+                    mClientNameEditText.requestFocus();
+                    hasErrors = true;
+                }
+
+                if(mEmailString == null || mEmailString.length() == 0){
+                    mClientEmailEditText.setError(getString(R.string.create_client_activity_msg_required));
+                    mClientEmailEditText.setBackgroundResource(R.drawable.rectangle_2_vd_red);
+                    if(!hasErrors) {
+                        mClientEmailEditText.requestFocus();
+                    }
+                    hasErrors = true;
+                } else if(!Utils.isValidEmail(mEmailString)){
+                    mClientEmailEditText.setError(getString(R.string.create_client_activity_msg_email_invalid));
+                    mClientEmailEditText.setBackgroundResource(R.drawable.rectangle_2_vd_red);
+                    if(!hasErrors) {
+                        mClientEmailEditText.requestFocus();
+                    }
+                    hasErrors = true;
+                }
+
+                if(hasErrors) {
                     return;
                 }
 
-                if(mClientNameString == null || mClientNameString.length() < CLIENT_NAME_MIN_LENGTH){
-                    mClientNameEditText.setError("Invalid client name");
-                    return;
-                }
                 showProgressBar();
                 KwikMe.createNewClient(mApp.getUser().getCompany(), mClientNameString, mEmailString,mClientAddress,mContactPerson,mPhoneNumber,mDescription, new CreateNewClientListener() {
                     @Override
