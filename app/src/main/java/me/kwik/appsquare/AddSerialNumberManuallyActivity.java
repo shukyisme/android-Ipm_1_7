@@ -34,6 +34,7 @@ public class AddSerialNumberManuallyActivity extends BaseActivity  implements
 
     private Application mApp;
     private KwikDevice mButton;
+    private String mClientId;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 03;
     private Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
@@ -55,6 +56,12 @@ public class AddSerialNumberManuallyActivity extends BaseActivity  implements
                     .addOnConnectionFailedListener(this)
                     .addApi(LocationServices.API)
                     .build();
+        }
+
+        try {
+            mClientId = getIntent().getExtras().getString("client");
+        }catch (NullPointerException e){
+            e.printStackTrace();
         }
 
     }
@@ -142,6 +149,7 @@ public class AddSerialNumberManuallyActivity extends BaseActivity  implements
                     public void createClientButtonListenerDone(KwikDevice device) {
                         Intent i = new Intent(AddSerialNumberManuallyActivity.this, GoodJobActivity.class);
                         i.putExtra("buttonId",serialNumber);
+                        i.putExtra("client",mClientId);
                         startActivity(i);
                         finish();
                     }

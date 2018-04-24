@@ -37,6 +37,7 @@ public class GoodJobActivity extends BaseActivity {
     private VideoView video_player_view;
     private MediaController media_Controller;
     private DisplayMetrics dm;
+    private String mClientId;
 
 
     @Override
@@ -60,6 +61,12 @@ public class GoodJobActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        try {
+            mClientId = getIntent().getExtras().getString("client");
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
 
         try {
             mKwikDeviceButtonId = getIntent().getStringExtra("buttonId");
@@ -92,6 +99,7 @@ public class GoodJobActivity extends BaseActivity {
         orderButton.setClickable(false);
         Intent i = new Intent(GoodJobActivity.this, TrapDetailsActivity.class);
         i.putExtra("serial_number",mKwikDeviceButtonId);
+        i.putExtra("client",mClientId);
        // i.putExtra("sender", GoodJobActivity.class.getSimpleName());
         startActivity(i);
         finish();

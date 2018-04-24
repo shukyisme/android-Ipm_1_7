@@ -9,7 +9,8 @@ import me.kwk.utils.Utils;
 
 public class WiFiSelectionActivity extends BaseActivity {
 
-    String mName = null;
+    String mName;
+    String mClientId;
     String TAG = this.getClass().getSimpleName();
     KwikDevice mButton;
     @Override
@@ -19,6 +20,12 @@ public class WiFiSelectionActivity extends BaseActivity {
         mActionBarTitle.setText(R.string.wifi_selection_activity_title);
         try {
             mName = getIntent().getExtras().getString("name");
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
+        try {
+            mClientId = getIntent().getExtras().getString("client");
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -38,6 +45,7 @@ public class WiFiSelectionActivity extends BaseActivity {
         Intent i = new Intent(WiFiSelectionActivity.this, AddSerialNumberManuallyActivity.class);
         i.putExtra("name", mName);
         i.putExtra("button",mButton);
+        i.putExtra("client",mClientId);
         startActivity(i);
     }
 
@@ -45,6 +53,7 @@ public class WiFiSelectionActivity extends BaseActivity {
         Intent i = new Intent(WiFiSelectionActivity.this, NetworkPasswordActivity.class);
         i.putExtra("name", mName);
         i.putExtra("button",mButton);
+        i.putExtra("client",mClientId);
         startActivityForResult(i, TRAP_ADD_OK);
 
     }

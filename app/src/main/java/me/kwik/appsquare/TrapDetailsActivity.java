@@ -99,6 +99,12 @@ public class TrapDetailsActivity extends BaseActivity {
             }
         });
 
+        try {
+            mClientId = getIntent().getExtras().getString("client");
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
 
         mPrevTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,10 +121,15 @@ public class TrapDetailsActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         mSerial = getIntent().getStringExtra("serial_number");
-        mClientId = getIntent().getStringExtra("client");
         if(mSerial == null){
             showOneButtonErrorDialog("","UnKnown error, Please go back and try again");
             return;
+        }
+
+        try {
+            mClientId = getIntent().getExtras().getString("client");
+        }catch (NullPointerException e){
+            e.printStackTrace();
         }
 
         showProgressBar();

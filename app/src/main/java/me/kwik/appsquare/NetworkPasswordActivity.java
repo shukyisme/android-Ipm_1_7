@@ -52,6 +52,7 @@ public class NetworkPasswordActivity extends BaseActivity {
     private RelativeLayout relativeLayout;
     private Button mNextButton;
     private KwikDevice mButton;
+    private String mClientId;
 
 
     @Override
@@ -113,6 +114,12 @@ public class NetworkPasswordActivity extends BaseActivity {
 
         Intent i = getIntent();
         mButton = (KwikDevice) i.getParcelableExtra("button");
+
+        try {
+            mClientId = getIntent().getExtras().getString("client");
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
     }
 
     private void buildAlertMessageNoGps() {
@@ -351,6 +358,7 @@ public class NetworkPasswordActivity extends BaseActivity {
         i.putExtra("selectedWiFiSsid", mWifiNetworkSsid);
         i.putExtra("password", mWifiPasswordEditText.getText().toString().trim());
         i.putExtra("button",mButton);
+        i.putExtra("client",mClientId);
         if (mSender != null) {
             i.putExtra("sender", mSender);
         }

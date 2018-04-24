@@ -330,6 +330,7 @@ public class AddNewTrapActivity extends BaseActivity {
 
         Intent i = new Intent(AddNewTrapActivity.this,WiFiSelectionActivity.class);
         i.putExtra("button",button);
+        i.putExtra("client",mSelectedClient.getId());
         startActivity(i);
     }
 

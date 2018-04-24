@@ -88,6 +88,7 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
     private Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 03;
+    private String mClientId;
 
 
     private Runnable playClickNextAudio = new Runnable() {
@@ -148,6 +149,12 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
                     .addOnConnectionFailedListener(this)
                     .addApi(LocationServices.API)
                     .build();
+        }
+
+        try {
+            mClientId = getIntent().getExtras().getString("client");
+        }catch (NullPointerException e){
+            e.printStackTrace();
         }
 
 
@@ -253,7 +260,6 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
             mPlaySecondAudiohandler.postDelayed(playClickNextAudio, 10000);
         }
 
-        //mNextTextView.setVisibility(View.INVISIBLE);
         if(mVideoPlayerView.isPlaying()){
             View placeholder =  findViewById(R.id.placeholder);
 
@@ -386,6 +392,7 @@ public class ButtonToApActivity extends BaseActivity  implements GoogleApiClient
                         Intent i = new Intent(ButtonToApActivity.this,GoodJobActivity.class);
                         i.putExtra("sender",mSender);
                         i.putExtra("buttonId",mKwikButtonSerial);
+                        i.putExtra("client",mClientId);
                         startActivity(i);
                         finish();
 
