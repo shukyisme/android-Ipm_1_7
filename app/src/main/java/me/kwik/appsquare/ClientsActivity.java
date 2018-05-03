@@ -116,6 +116,15 @@ public class ClientsActivity extends BaseActivity
 
         TextView phone = (TextView) headerView.findViewById( R.id.nav_header_user_phone_text_view );
         phone.setText( mApp.getUser().getPhone() );
+
+        mClientsHeaderTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ClientsActivity.this,TrapsActivity.class);
+                i.putExtra("client",(String)null);
+                startActivity(i);
+            }
+        });
     }
 
     public void  addNewTrapClick(View v){

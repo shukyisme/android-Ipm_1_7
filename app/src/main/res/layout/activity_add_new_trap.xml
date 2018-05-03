@@ -78,13 +78,14 @@
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:paddingStart="10dp" />
+
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/dropdown"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginEnd="10dp"/>
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/dropdown" />
                 </RelativeLayout>
 
             </LinearLayout>

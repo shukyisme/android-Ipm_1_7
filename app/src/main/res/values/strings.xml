@@ -216,5 +216,10 @@
     <string name="add_new_site_popup_enter_the_name_of_the_site">Enter the name of the site</string>
     <string name="add_new_site_popup_add_new_site">ADD NEW SITE</string>
 
+    <!-- Traps Activity -->
+    <string name="traps_alert_title">Trap alert list</string>
+    <string name="traps_filter_by">Filter By:</string>
+    <string name="traps_filter_all_clients">All clients</string>
+
 
 </resources>

@@ -89,7 +89,7 @@
                 android:id="@+id/client_overview_activity_clients_list_header_TextView"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="1"
+                android:layout_weight="4"
                 android:drawablePadding="5dp"
                 android:drawableStart="@drawable/traps"
                 android:gravity="center_vertical|start"

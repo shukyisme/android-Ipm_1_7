@@ -35,6 +35,9 @@ public class ClientOverviewActivity extends BaseActivity {
     @BindView(R.id.client_overview_activity_add_new_trap_LinearLayout)
     LinearLayout mAddNewTrapLinearLayout;
 
+    @BindView(R.id.client_overview_activity_clients_list_header_TextView)
+    TextView mClientDetailsListHeaderTextView;
+
     @BindView(R.id.client_overview_activity_client_details_three_dots_TextView)
     TextView mClientDetailsThreeDotsTextView;
 
@@ -78,6 +81,15 @@ public class ClientOverviewActivity extends BaseActivity {
         };
 
         mAddNewTrapLinearLayout.setOnClickListener( mOnAddNewTrapClick);
+
+        mClientDetailsListHeaderTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ClientOverviewActivity.this,TrapsActivity.class);
+                i.putExtra("client",mClientId);
+                startActivity(i);
+            }
+        });
 
         mClientDetailsThreeDotsTextView.setOnClickListener(new View.OnClickListener() {
             @Override

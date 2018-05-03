@@ -142,6 +142,10 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".TrapsActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".AddNewTrapActivity"
             android:screenOrientation="portrait" />
         <activity

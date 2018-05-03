@@ -106,14 +106,14 @@ public class TrapDetailsActivity extends BaseActivity {
         }
 
 
-        mPrevTextView.setOnClickListener(new View.OnClickListener() {
+        /*mPrevTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(TrapDetailsActivity.this,ClientOverviewActivity.class);
                 i.putExtra("client",mClientId);
                 startActivity(i);
             }
-        });
+        });*/
 
     }
 
