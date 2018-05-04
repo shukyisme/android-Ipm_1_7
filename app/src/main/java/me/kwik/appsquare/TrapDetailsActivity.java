@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
+import me.kwik.data.IpmClient;
 import me.kwik.data.IpmEvent;
 import me.kwik.listeners.DeleteButtonListener;
 import me.kwik.listeners.GetIpmEventsListener;
@@ -28,6 +29,7 @@ import me.kwik.listeners.UpdateKwikDeviceListener;
 import me.kwik.rest.responses.GetIpmEventsResponse;
 import me.kwik.rest.responses.GetKwikDevicesResponse;
 import me.kwik.rest.responses.UpdateKwikDeviceResponse;
+import me.kwk.utils.DateUtils;
 
 public class TrapDetailsActivity extends BaseActivity {
 
@@ -75,10 +77,12 @@ public class TrapDetailsActivity extends BaseActivity {
     private static int NAME_STATUS = EDITED_STATUS;
     private static int DESCRIPTION_STATUS = EDITED_STATUS;
 
+    private Application mApp;
     private String mSerial;
     private String mClientId;
     private KwikDevice mTrap;
     private IpmEvent    mEvent;
+    private IpmClient mClient;
 
     private final String TAG = this.getClass().getSimpleName();
 
@@ -89,6 +93,8 @@ public class TrapDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_trap_details);
         mActionBarTitle.setText("Trap details");
         ButterKnife.bind(this);
+
+        mApp = (Application)getApplication();
 
         mResolveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +107,7 @@ public class TrapDetailsActivity extends BaseActivity {
 
         try {
             mClientId = getIntent().getExtras().getString("client");
+            mClient = mApp.getClient(mClientId);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -200,7 +207,8 @@ public class TrapDetailsActivity extends BaseActivity {
 
 
         if(mTrap.getPingAt() != null){
-            mLastCommunicationTextView.setText(mTrap.getPingAt());
+            //mLastCommunicationTextView.setText(mTrap.getPingAt());
+            mLastCommunicationTextView.setText(DateUtils.convertToClientTimezone(mTrap.getPingAt(), mClient.getTimezone()));
         }else {
             mLastCommunicationTextView.setText(na);
         }
@@ -217,7 +225,8 @@ public class TrapDetailsActivity extends BaseActivity {
         }
 
         if(mTrap.getManufacturedAt() != null){
-            mSetupDateTextView.setText(mTrap.getManufacturedAt());
+            //mSetupDateTextView.setText(mTrap.getManufacturedAt());
+            mSetupDateTextView.setText(DateUtils.convertToClientTimezone(mTrap.getManufacturedAt(), mClient.getTimezone()));
         }else {
             mSetupDateTextView.setText(na);
         }
@@ -233,7 +242,8 @@ public class TrapDetailsActivity extends BaseActivity {
                         for (IpmEvent event : res.getEvents()) {
                             if (event.getButton().equals(mTrap.getId())) {
                                 mEvent = event;
-                                mAlertTimeTextView.setText(mEvent.getTriggerAt());
+                                //mAlertTimeTextView.setText(mEvent.getTriggerAt());
+                                mAlertTimeTextView.setText(DateUtils.convertToClientTimezone(mEvent.getTriggerAt(), mClient.getTimezone()));
                             }
                         }
                     }
@@ -376,4 +386,5 @@ public class TrapDetailsActivity extends BaseActivity {
         mEditImageButton.setClickable(clickable);
         mEditDescriptionImageButton.setClickable(clickable);
     }
+
 }
