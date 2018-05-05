@@ -208,7 +208,7 @@ public class TrapDetailsActivity extends BaseActivity {
 
         if(mTrap.getPingAt() != null){
             //mLastCommunicationTextView.setText(mTrap.getPingAt());
-            mLastCommunicationTextView.setText(DateUtils.convertToClientTimezone(mTrap.getPingAt(), mClient.getTimezone()));
+            mLastCommunicationTextView.setText(String.format(getString(R.string.trap_details_time_passed), DateUtils.getTimePassed(mTrap.getPingAt())));
         }else {
             mLastCommunicationTextView.setText(na);
         }
@@ -226,7 +226,7 @@ public class TrapDetailsActivity extends BaseActivity {
 
         if(mTrap.getManufacturedAt() != null){
             //mSetupDateTextView.setText(mTrap.getManufacturedAt());
-            mSetupDateTextView.setText(DateUtils.convertToClientTimezone(mTrap.getManufacturedAt(), mClient.getTimezone()));
+            mSetupDateTextView.setText(DateUtils.convertToClientTimezone(mTrap.getManufacturedAt(), "MMM d, yyyy", mClient.getTimezone()));
         }else {
             mSetupDateTextView.setText(na);
         }
@@ -243,7 +243,7 @@ public class TrapDetailsActivity extends BaseActivity {
                             if (event.getButton().equals(mTrap.getId())) {
                                 mEvent = event;
                                 //mAlertTimeTextView.setText(mEvent.getTriggerAt());
-                                mAlertTimeTextView.setText(DateUtils.convertToClientTimezone(mEvent.getTriggerAt(), mClient.getTimezone()));
+                                mAlertTimeTextView.setText(DateUtils.convertToClientTimezone(mEvent.getTriggerAt(), "MMM d, yyyy ha", mClient.getTimezone()));
                             }
                         }
                     }

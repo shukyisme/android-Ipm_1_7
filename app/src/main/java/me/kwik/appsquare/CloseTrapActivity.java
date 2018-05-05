@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
+import me.kwik.data.IpmClient;
 import me.kwik.data.IpmEvent;
 import me.kwik.listeners.GetIpmEventsListener;
 import me.kwik.listeners.GetKwikDevicesListener;
@@ -33,6 +34,7 @@ import me.kwik.listeners.UpdateEventListener;
 import me.kwik.rest.responses.GetIpmEventsResponse;
 import me.kwik.rest.responses.GetKwikDevicesResponse;
 import me.kwik.rest.responses.UpdateEventResponse;
+import me.kwk.utils.DateUtils;
 
 public class CloseTrapActivity extends BaseActivity {
 
@@ -63,15 +65,17 @@ public class CloseTrapActivity extends BaseActivity {
     private String mSerial;
     private KwikDevice mTrap;
     private Application mApp;
+    private IpmClient mClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_close_trap);
         mActionBarTitle.setText(R.string.close_trap_activity_close_trap_alert);
 
-        mApp = (Application) getApplication();
-
         ButterKnife.bind(this);
+
+        mApp = (Application) getApplication();
 
         SpannableStringBuilder builder = new SpannableStringBuilder();
 
@@ -154,15 +158,17 @@ public class CloseTrapActivity extends BaseActivity {
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
                 hideProgressBar();
                 List<KwikDevice> buttons = response.getButtons();
-                mTrap = buttons.get(0);
-                if(mTrap.getName() != null) {
-                    mNameTextView.setText(mTrap.getName() + "\n" + getString(R.string.close_trap_activity_serial_number) + mTrap.getId());
-                }
                 if (buttons == null || buttons.size() == 0) {
                     showOneButtonErrorDialog("",getString(R.string.close_trap_activity_button_was_not_found));
                     return;
                 }
+                mTrap = buttons.get(0);
+                if(mTrap.getName() != null) {
+                    mNameTextView.setText(mTrap.getName() + "\n" + getString(R.string.close_trap_activity_serial_number) + mTrap.getId());
+                }
                 getEventFromServer();
+                mClient = mApp.getClient(mTrap.getClient());
+                mDateAndTimeTextView.setText(DateUtils.formatDate(new Date(), "MM/dd/yyyy, h:mm a", mClient.getTimezone()));
             }
 
             @Override
@@ -172,17 +178,8 @@ public class CloseTrapActivity extends BaseActivity {
             }
         });
 
-        Date curDate = new Date();
-       // String DateToStr = DateFormat.getInstance().format(curDate);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-
-
-        format = new SimpleDateFormat("E, dd MMM yyyy HH:mm");
-        String DateToStr = format.format(curDate);
-
-
         mTechnicianNameTextView.setText(mApp.getUser().getFirstName() + " " + mApp.getUser().getLastName());
-        mDateAndTimeTextView.setText(DateToStr);
+        mDateAndTimeTextView.setText(DateUtils.formatDate(new Date(), "MM/dd/yyyy, h:mm a", null));
 
     }
 

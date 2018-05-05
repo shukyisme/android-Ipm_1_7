@@ -208,6 +208,7 @@
     <string name="trap_details_activity_active_alert_message">The trap you are trying to remove has an active alert. Resolve the alert before removing the trap</string>
     <string name="trap_details_activity_status">Status:</string>
     <string name="trap_details_activity_battery_level">Battery level:</string>
+    <string name="trap_details_time_passed">%s hours ago</string>
 
     <!-- Add new site popup --> 
     <string name="add_new_site_popup_add_a_new_site">Add a new site</string>
