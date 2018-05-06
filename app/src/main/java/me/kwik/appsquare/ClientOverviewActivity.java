@@ -82,7 +82,7 @@ public class ClientOverviewActivity extends BaseActivity {
 
         mAddNewTrapLinearLayout.setOnClickListener( mOnAddNewTrapClick);
 
-        mClientDetailsListHeaderTextView.setOnClickListener(new View.OnClickListener() {
+        mTotalAlertTrapsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ClientOverviewActivity.this,TrapsActivity.class);
