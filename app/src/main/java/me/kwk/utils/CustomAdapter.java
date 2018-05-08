@@ -182,16 +182,18 @@ public class CustomAdapter extends BaseAdapter {
                 }
             });
         }else if(rowType == TYPE_HEADER){
-            ListViewItemSection section = (ListViewItemSection)this.getItem(position);
-            String clientId = section.getName();
-            String clientName = "NA";
-            for(CustomArrayAdapterItem client: this.mClients){
-                if(clientId.equals(client.getId())){
-                    clientName = client.getLabel();
-                    break;
+            if(this.mClients != null) {
+                ListViewItemSection section = (ListViewItemSection) this.getItem(position);
+                String clientId = section.getName();
+                String clientName = "NA";
+                for (CustomArrayAdapterItem client : this.mClients) {
+                    if (clientId.equals(client.getId())) {
+                        clientName = client.getLabel();
+                        break;
+                    }
                 }
+                holder.sectionName.setText(clientName);
             }
-            holder.sectionName.setText(clientName);
         }
 
 
