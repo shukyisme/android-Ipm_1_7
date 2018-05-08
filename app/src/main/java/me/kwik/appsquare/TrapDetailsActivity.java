@@ -243,7 +243,7 @@ public class TrapDetailsActivity extends BaseActivity {
                             if (event.getButton().equals(mTrap.getId())) {
                                 mEvent = event;
                                 //mAlertTimeTextView.setText(mEvent.getTriggerAt());
-                                mAlertTimeTextView.setText(DateUtils.convertToClientTimezone(mEvent.getTriggerAt(), "MMM d, yyyy ha", mClient.getTimezone()));
+                                mAlertTimeTextView.setText(DateUtils.convertToClientTimezone(mEvent.getTriggerAt(), "MMM d, yyyy HH:mm", mClient.getTimezone()));
                             }
                         }
                     }

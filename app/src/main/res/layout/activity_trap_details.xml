@@ -227,7 +227,7 @@
                 android:gravity="end"
                 android:text=""
                 android:textColor="#4A4A4A"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
         <!-- Separator -->
@@ -268,7 +268,7 @@
                 android:gravity="end"
                 android:text=""
                 android:textColor="#4A4A4A"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
         <!-- Separator -->
@@ -309,7 +309,7 @@
                 android:gravity="end"
                 android:text="@string/good"
                 android:textColor="#4A4A4A"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
         <!-- Separator -->
@@ -350,7 +350,7 @@
                 android:gravity="end"
                 android:text=""
                 android:textColor="#4A4A4A"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
         <!-- Separator -->
