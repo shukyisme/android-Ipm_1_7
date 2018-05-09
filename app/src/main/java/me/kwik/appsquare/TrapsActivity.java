@@ -92,7 +92,7 @@ public class TrapsActivity extends BaseActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         updateClientList();
-        updateTrapList();
+        //updateTrapList();
     }
 
     private void updateClientList() {
@@ -118,6 +118,8 @@ public class TrapsActivity extends BaseActivity {
 
                 mClientNameAutoCompleteTextView.setText(selectedItem.getLabel());
                 mClientNameAutoCompleteTextView.dismissDropDown();
+
+                updateTrapList();
             }
 
             @Override
