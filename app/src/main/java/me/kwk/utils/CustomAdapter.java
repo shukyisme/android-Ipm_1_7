@@ -187,7 +187,7 @@ public class CustomAdapter extends BaseAdapter {
                 String clientId = section.getName();
                 String clientName = "NA";
                 for (CustomArrayAdapterItem client : this.mClients) {
-                    if (clientId.equals(client.getId())) {
+                    if (clientId != null && clientId.equals(client.getId())) {
                         clientName = client.getLabel();
                         break;
                     }

@@ -260,7 +260,7 @@ public class AddNewTrapActivity extends BaseActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         showProgressBar();
 
-        KwikMe.getClients(null, new GetClientsListener() {
+        KwikMe.getClients(null, null, null, "name", 1, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
                 ArrayAdapter<IpmClient> clientsAdapter = new ArrayAdapter<IpmClient>(AddNewTrapActivity.this, android.R.layout.simple_dropdown_item_1line, res.getClients());

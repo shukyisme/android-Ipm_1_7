@@ -122,6 +122,7 @@ public class ClientsActivity extends BaseActivity
             public void onClick(View v) {
                 Intent i = new Intent(ClientsActivity.this,TrapsActivity.class);
                 i.putExtra("client",(String)null);
+                i.putExtra("type", TrapsActivity.DISPLAY_TRAPS_ALERTS);//DISPLAY_TRAPS_NOT_READY
                 startActivity(i);
             }
         });
@@ -208,7 +209,7 @@ public class ClientsActivity extends BaseActivity
 
     private void updateClientsList() {
         showProgressBar();
-        KwikMe.getClients(null, new GetClientsListener() {
+        KwikMe.getClients(null, null, null, "status", 1, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
 

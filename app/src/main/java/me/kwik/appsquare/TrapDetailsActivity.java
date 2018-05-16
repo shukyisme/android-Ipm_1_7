@@ -107,7 +107,10 @@ public class TrapDetailsActivity extends BaseActivity {
 
         try {
             mClientId = getIntent().getExtras().getString("client");
-            mClient = mApp.getClient(mClientId);
+            if(mClientId == null)
+                mClient = null;
+            else
+                mClient = mApp.getClient(mClientId);
         }catch (NullPointerException e){
             e.printStackTrace();
         }
@@ -226,7 +229,7 @@ public class TrapDetailsActivity extends BaseActivity {
 
         if(mTrap.getManufacturedAt() != null){
             //mSetupDateTextView.setText(mTrap.getManufacturedAt());
-            mSetupDateTextView.setText(DateUtils.convertToClientTimezone(mTrap.getManufacturedAt(), "MMM d, yyyy", mClient.getTimezone()));
+            mSetupDateTextView.setText(DateUtils.convertToClientTimezone(mTrap.getManufacturedAt(), "MMM d, yyyy", mClient != null ? mClient.getTimezone() : null));
         }else {
             mSetupDateTextView.setText(na);
         }
@@ -243,7 +246,7 @@ public class TrapDetailsActivity extends BaseActivity {
                             if (event.getButton().equals(mTrap.getId())) {
                                 mEvent = event;
                                 //mAlertTimeTextView.setText(mEvent.getTriggerAt());
-                                mAlertTimeTextView.setText(DateUtils.convertToClientTimezone(mEvent.getTriggerAt(), "MMM d, yyyy HH:mm", mClient.getTimezone()));
+                                mAlertTimeTextView.setText(DateUtils.convertToClientTimezone(mEvent.getTriggerAt(), "MMM d, yyyy HH:mm", mClient != null ? mClient.getTimezone() : null));
                             }
                         }
                     }

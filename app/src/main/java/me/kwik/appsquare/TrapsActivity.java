@@ -38,6 +38,9 @@ import me.kwk.utils.CustomArrayAdapterItem;
 
 public class TrapsActivity extends BaseActivity {
 
+    public static final int DISPLAY_TRAPS_ALERTS = 1;
+    public static final int DISPLAY_TRAPS_NOT_READY = 2;
+
     @BindView(R.id.traps_activity_traps_ListView)
     ListView mTrapsList;
 
@@ -49,6 +52,7 @@ public class TrapsActivity extends BaseActivity {
     private Application             mApp;
     private String                  mClientId;
     private List<CustomArrayAdapterItem> mClients;
+    private int mType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +63,12 @@ public class TrapsActivity extends BaseActivity {
         mApp = (Application)getApplication();
         mClientId = getIntent().getStringExtra("client");
 
-        mActionBarTitle.setText(R.string.traps_alert_title);
+        mType = getIntent().getIntExtra("type", DISPLAY_TRAPS_ALERTS);
+
+        if(mType == DISPLAY_TRAPS_ALERTS)
+            mActionBarTitle.setText(R.string.traps_alert_title);
+        else
+            mActionBarTitle.setText(R.string.traps_not_ready_title);
 
         mClientNameAutoCompleteTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +106,7 @@ public class TrapsActivity extends BaseActivity {
 
     private void updateClientList() {
         showProgressBar();
-        KwikMe.getClients(null, new GetClientsListener() {
+        KwikMe.getClients(null, null, null, "name", 1, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
                 mClients = new ArrayList<>();
@@ -133,7 +142,13 @@ public class TrapsActivity extends BaseActivity {
 
     private void updateTrapList() {
         showProgressBar();
-        KwikMe.getKwikDevices(null,mClientId, null,"alert","status",1, new GetKwikDevicesListener() {
+        String status;
+        if(mType == DISPLAY_TRAPS_ALERTS) {
+            status = "alert";
+        } else {
+            status = "na";
+        }
+        KwikMe.getKwikDevices(null,mClientId, null, status,"status",1, new GetKwikDevicesListener() {
             @Override
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
                 hideProgressBar();

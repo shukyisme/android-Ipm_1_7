@@ -87,6 +87,7 @@ public class ClientOverviewActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ClientOverviewActivity.this,TrapsActivity.class);
                 i.putExtra("client",mClientId);
+                i.putExtra("type", TrapsActivity.DISPLAY_TRAPS_ALERTS);
                 startActivity(i);
             }
         });
