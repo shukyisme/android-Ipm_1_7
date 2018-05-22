@@ -28,6 +28,9 @@
     <string name="overview">Overview</string>
     <string name="total_traps">Total Traps:</string>
     <string name="_0_trap_alerts">0 Trap Alerts</string>
+    <string name="trap_alerts">Trap Alerts</string>
+    <string name="_0_notifications">0 Notifications</string>
+    <string name="notifications">Notifications</string>
     <string name="active_clients">Active clients: ()</string>
     <string name="add_new_trap">Add new trap</string>
     <string name="SN">"SN: "</string>
@@ -169,6 +172,7 @@
     <string name="client_overview_activity_client_s_overview">Client\'s Overview</string>
     <string name="client_overview_activity_total_traps">Total Traps:</string>
     <string name="client_overview_activity__0_trap_alerts">0 Trap Alerts</string>
+    <string name="client_overview_activity__0_notifications">0 Notifications</string>
     <string name="client_overview_activity_client_s_traps">Client\'s Traps:</string>
     <string name="client_overview_activity_add_new_trap">Add new trap</string>
 

@@ -75,8 +75,8 @@ public class ClientsActivity extends BaseActivity
     @BindView(R.id.clients_activity_clients_list_header_TextView) TextView mClientsHeaderTextView;
     @BindView(R.id.clients_activity_overview_total_traps_TextView) TextView mTotalTrapsTextView;
     @BindView(R.id.clients_activity_alert_traps_TextView) TextView mTotalAlertTrapsTextView;
+    @BindView(R.id.clients_activity_notification_traps_TextView) TextView mTotalNotificationsTrapsTextView;
     @BindView(R.id.client_activity_clients_listView_bottom_background_View) View mListViewBottomBackgroundView;
-
 
     private ArrayAdapter<IpmClient> mClientsAdapter;
 
@@ -89,15 +89,11 @@ public class ClientsActivity extends BaseActivity
         setSupportActionBar( toolbar );
         ButterKnife.bind(this);
 
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById( R.id.my_kwik_buttons_activity_drawer_layout );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.add, R.string.add );
         drawer.setDrawerListener( toggle );
         toggle.syncState();
-
 
         mApp = (Application) getApplication();
 
@@ -122,7 +118,17 @@ public class ClientsActivity extends BaseActivity
             public void onClick(View v) {
                 Intent i = new Intent(ClientsActivity.this,TrapsActivity.class);
                 i.putExtra("client",(String)null);
-                i.putExtra("type", TrapsActivity.DISPLAY_TRAPS_ALERTS);//DISPLAY_TRAPS_NOT_READY
+                i.putExtra("type", TrapsActivity.DISPLAY_TRAPS_ALERTS);
+                startActivity(i);
+            }
+        });
+
+        mTotalNotificationsTrapsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ClientsActivity.this,TrapsActivity.class);
+                i.putExtra("client",(String)null);
+                i.putExtra("type", TrapsActivity.DISPLAY_TRAPS_NOT_READY);
                 startActivity(i);
             }
         });
@@ -143,20 +149,17 @@ public class ClientsActivity extends BaseActivity
         super.onResume();
 
         hasError = false;
+        resetCounters();
         updateClientsList();
-
         updateOverView();
-
-        //updateList();
     }
 
     private void updateOverView() {
         updateTotalTrapsHeader();
-
     }
 
     private void updateTrapsAlertValue() {
-
+        showProgressBar();
         KwikMe.getKwikDevices(null, null, null, KwikDevice.STATUS_ALERT,"status",1, new GetKwikDevicesListener() {
             @Override
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
@@ -167,7 +170,44 @@ public class ClientsActivity extends BaseActivity
                 }catch (NullPointerException e){
                     e.printStackTrace();
                 }
-                mTotalAlertTrapsTextView.setText(totalTraps + " Trap Alerts");
+
+                int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+                int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
+                String textAlerts = "<font color=" + colorOuterspace + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.trap_alerts)+" </font>";
+                mTotalAlertTrapsTextView.setText(Html.fromHtml(textAlerts));
+
+                updateTrapsNotReadyValue();
+            }
+
+            @Override
+            public void getKwikDevicesListenerError(KwikServerError error) {
+                hideProgressBar();
+                if(!hasError) {
+                    showErrorDialog(error);
+                }
+                hasError = true;
+            }
+        });
+    }
+
+    private void updateTrapsNotReadyValue() {
+
+        KwikMe.getKwikDevices(null, null, null, KwikDevice.STATUS_NOT_AVAILABLE,"status",1, new GetKwikDevicesListener() {
+            @Override
+            public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
+                hideProgressBar();
+                int totalTraps = 0;
+                try {
+                    totalTraps = response.getPaging().getTotal();
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+
+                int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+                int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
+                String textNotifications = "<font color=" + colorOuterspace + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.notifications)+" </font>";
+                mTotalNotificationsTrapsTextView.setText(Html.fromHtml(textNotifications));
+
             }
 
             @Override
@@ -182,6 +222,7 @@ public class ClientsActivity extends BaseActivity
     }
 
     private void updateTotalTrapsHeader() {
+        showProgressBar();
         KwikMe.getKwikDevices(null, null, null,null, "status",1,new GetKwikDevicesListener() {
             @Override
             public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
@@ -192,7 +233,10 @@ public class ClientsActivity extends BaseActivity
                 }catch (NullPointerException e){
                     e.printStackTrace();
                 }
-                mTotalTrapsTextView.setText("Total Traps: (" + totalTraps + ")");
+
+                String trapsStr = getString(R.string.total_traps);
+                mTotalTrapsTextView.setText(trapsStr + "(" + totalTraps + ")");
+
                 updateTrapsAlertValue();
             }
 
@@ -212,8 +256,6 @@ public class ClientsActivity extends BaseActivity
         KwikMe.getClients(null, null, null, "status", 1, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
-
-
                 if(res == null){
                     return;
                 }
@@ -519,6 +561,15 @@ public class ClientsActivity extends BaseActivity
             return rowView;
         }
 
+    }
+
+    private void resetCounters() {
+        int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+        int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
+        String textAlerts = "<font color=" + colorOuterspace + ">" + 0 + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.trap_alerts)+" </font>";
+        mTotalAlertTrapsTextView.setText(Html.fromHtml(textAlerts));
+        String textNotifications = "<font color=" + colorOuterspace + ">" + 0 + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.notifications)+" </font>";
+        mTotalNotificationsTrapsTextView.setText(Html.fromHtml(textNotifications));
     }
 
 }

@@ -144,9 +144,9 @@ public class TrapsActivity extends BaseActivity {
         showProgressBar();
         String status;
         if(mType == DISPLAY_TRAPS_ALERTS) {
-            status = "alert";
+            status = KwikDevice.STATUS_ALERT;
         } else {
-            status = "na";
+            status = KwikDevice.STATUS_NOT_AVAILABLE;
         }
         KwikMe.getKwikDevices(null,mClientId, null, status,"status",1, new GetKwikDevicesListener() {
             @Override

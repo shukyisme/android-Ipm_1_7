@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,9 @@ public class ClientOverviewActivity extends BaseActivity {
 
     @BindView(R.id.client_overview_activity_trap_alerts_TextView)
     TextView mTotalAlertTrapsTextView;
+
+    @BindView(R.id.client_overview_activity_notifications_TextView)
+    TextView mTotalNotificationsTrapsTextView;
 
 
     private Application             mApp;
@@ -92,6 +96,16 @@ public class ClientOverviewActivity extends BaseActivity {
             }
         });
 
+        mTotalNotificationsTrapsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ClientOverviewActivity.this,TrapsActivity.class);
+                i.putExtra("client",mClientId);
+                i.putExtra("type", TrapsActivity.DISPLAY_TRAPS_NOT_READY);
+                startActivity(i);
+            }
+        });
+
         mClientDetailsThreeDotsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +126,7 @@ public class ClientOverviewActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        resetCounters();
         updateList();
     }
 
@@ -126,7 +141,13 @@ public class ClientOverviewActivity extends BaseActivity {
                     }catch (NullPointerException e){
                         e.printStackTrace();
                     }
-                    mTotalAlertTrapsTextView.setText(totalTraps + " Trap Alerts");
+
+                    int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+                    int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
+                    String textAlerts = "<font color=" + colorOuterspace + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.trap_alerts)+" </font>";
+                    mTotalAlertTrapsTextView.setText(Html.fromHtml(textAlerts));
+
+                    updateTrapsNotReadyValue();
                 }
 
                 @Override
@@ -135,6 +156,32 @@ public class ClientOverviewActivity extends BaseActivity {
                     showErrorDialog(error);
                 }
             });
+    }
+
+    private void updateTrapsNotReadyValue() {
+        KwikMe.getKwikDevices(null, mClientId, null, KwikDevice.STATUS_NOT_AVAILABLE,"status",1, new GetKwikDevicesListener() {
+            @Override
+            public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
+                hideProgressBar();
+                int totalTraps = 0;
+                try {
+                    totalTraps = response.getPaging().getTotal();
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+
+                int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+                int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
+                String textNotifications = "<font color=" + colorOuterspace + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.notifications)+" </font>";
+                mTotalNotificationsTrapsTextView.setText(Html.fromHtml(textNotifications));
+            }
+
+            @Override
+            public void getKwikDevicesListenerError(KwikServerError error) {
+                hideProgressBar();
+                showErrorDialog(error);
+            }
+        });
     }
 
     public class TrapsArrayAdapter extends ArrayAdapter<KwikDevice> {
@@ -227,7 +274,9 @@ public class ClientOverviewActivity extends BaseActivity {
                 }catch (NullPointerException e){
                     e.printStackTrace();
                 }
-                mTotalTrapsTextView.setText("Total Traps: (" + totalTraps + ")");
+                String trapsStr = getString(R.string.total_traps);
+                mTotalTrapsTextView.setText(trapsStr + "(" + totalTraps + ")");
+
                 mTrapsAdapter = new TrapsArrayAdapter(ClientOverviewActivity.this, mTraps);
                 mTrapsList.setAdapter(mTrapsAdapter);
 
@@ -240,5 +289,14 @@ public class ClientOverviewActivity extends BaseActivity {
                 showErrorDialog(error);
             }
         });
+    }
+
+    private void resetCounters() {
+        int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+        int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
+        String textAlerts = "<font color=" + colorOuterspace + ">" + 0 + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.trap_alerts)+" </font>";
+        mTotalAlertTrapsTextView.setText(Html.fromHtml(textAlerts));
+        String textNotifications = "<font color=" + colorOuterspace + ">" + 0 + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.notifications)+" </font>";
+        mTotalNotificationsTrapsTextView.setText(Html.fromHtml(textNotifications));
     }
 }
