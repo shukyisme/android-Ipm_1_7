@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,6 +48,9 @@ public class TrapDetailsActivity extends BaseActivity {
 
     @BindView(R.id.trap_details_activity_edit_description_EditText)
     EditText mDescriptionEditText;
+
+    @BindView(R.id.trap_details_activity_edit_description_NestedScrollView)
+    NestedScrollView mDescriptionNestedScrollView;
 
     @BindView(R.id.trap_details_activity_edit_description_TextView)
     TextView mDescriptionTextView;
@@ -298,6 +302,7 @@ public class TrapDetailsActivity extends BaseActivity {
             DESCRIPTION_STATUS = EDITING_STATUS;
             mDescriptionTextView.setVisibility(View.INVISIBLE);
             mDescriptionEditText.setVisibility(View.VISIBLE);
+            mDescriptionNestedScrollView.setVisibility(View.VISIBLE);
             mDescriptionEditText.setText(mDescriptionTextView.getText().toString());
         }else if(DESCRIPTION_STATUS == EDITING_STATUS){
             showProgressBar();
@@ -309,6 +314,7 @@ public class TrapDetailsActivity extends BaseActivity {
                     DESCRIPTION_STATUS = EDITED_STATUS;
                     mDescriptionTextView.setVisibility(View.VISIBLE);
                     mDescriptionEditText.setVisibility(View.INVISIBLE);
+                    mDescriptionNestedScrollView.setVisibility(View.INVISIBLE);
                     mDescriptionTextView.setText(mDescriptionEditText.getText().toString());
                     mTrap = res.getButtonObject();
                 }
