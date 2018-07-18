@@ -201,11 +201,23 @@ public class ClientOverviewActivity extends BaseActivity {
             final View rowView = inflater.inflate( R.layout.traps_list_item, parent, false );
             TextView trapName = (TextView)rowView.findViewById(R.id.trap_item_name_TextView);
             TextView siteName = (TextView)rowView.findViewById(R.id.trap_item_site_name_TextView);
+            TextView description = (TextView)rowView.findViewById(R.id.trap_item_description_TextView);
             TextView trapSerialNumber = (TextView)rowView.findViewById(R.id.trap_item_sn_TextView);
             ImageView trapImageView = (ImageView)rowView.findViewById(R.id.trap_item_image_ImageView);
             ImageView lowBatteryImageView = (ImageView)rowView.findViewById(R.id.trap_item_low_battery_ImageView);
             trapName.setText(values.get(position).getName());
             siteName.setText(values.get(position).getSiteName());
+
+            try {
+                String descriptionText = values.get(position).getDescription();
+                if(descriptionText.length() > 60){
+                    description.setText(descriptionText.substring(0,59) + "...");
+                }else {
+                    description.setText(descriptionText);
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
             try {
                 trapSerialNumber.setText(getString(R.string.SN) + values.get(position).getId());
