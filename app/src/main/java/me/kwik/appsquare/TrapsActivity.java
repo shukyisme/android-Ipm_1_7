@@ -106,18 +106,26 @@ public class TrapsActivity extends BaseActivity {
 
     private void updateClientList() {
         showProgressBar();
-        KwikMe.getClients(null, null, null, "name", 1, new GetClientsListener() {
+        String status;
+        if(mType == DISPLAY_TRAPS_ALERTS) {
+            status = KwikDevice.STATUS_ALERT;
+        } else {
+            status = KwikDevice.STATUS_NOT_AVAILABLE;
+        }
+        KwikMe.getClients(status, null, null, "name", 1, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
                 mClients = new ArrayList<>();
                 CustomArrayAdapterItem item = new CustomArrayAdapterItem(null, getString(R.string.traps_filter_all_clients));
                 mClients.add(item);
                 CustomArrayAdapterItem selectedItem = item;
-                for (IpmClient ipmClient : res.getClients()) {
-                    item = new CustomArrayAdapterItem(ipmClient.getId(), ipmClient.getName());
-                    mClients.add(item);
-                    if(mClientId != null && mClientId.equals(ipmClient.getId())) {
-                        selectedItem = item;
+                if(res != null && res.getClients() != null) {
+                    for (IpmClient ipmClient : res.getClients()) {
+                        item = new CustomArrayAdapterItem(ipmClient.getId(), ipmClient.getName());
+                        mClients.add(item);
+                        if (mClientId != null && mClientId.equals(ipmClient.getId())) {
+                            selectedItem = item;
+                        }
                     }
                 }
 
