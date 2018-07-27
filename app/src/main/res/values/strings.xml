@@ -31,6 +31,7 @@
     <string name="trap_alerts">Trap Alerts</string>
     <string name="_0_notifications">0 Notifications</string>
     <string name="notifications">Notifications</string>
+    <string name="not_ready">Not ready</string>
     <string name="active_clients">Active clients: ()</string>
     <string name="add_new_trap">Add new trap</string>
     <string name="SN">"SN: "</string>
@@ -106,6 +107,7 @@
     <string name="remove_kwik_button_message">Are you sure you want to delete this square?</string>
     <string name="edit_reorder">Edit reorder</string>
     <string name="button_settings">Trap settings</string>
+    <string name="trap_details_status_not_ready">Not ready</string>
 
 
     <!-- Good Job Activity -->
