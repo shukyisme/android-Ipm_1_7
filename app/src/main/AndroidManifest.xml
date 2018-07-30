@@ -58,7 +58,7 @@
             android:value="false" />
         <meta-data
             android:name="Rush_classes_package"
-            android:value="me.kwik.me" />
+            android:value="me.kwik.appsquare" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAlLcMBpaKZFAfW7pg0uwgd8b8-60UOHKE" />
@@ -102,9 +102,6 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".GoodJobActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".AllSetUpActivity"
             android:screenOrientation="portrait" />
 
         <activity
