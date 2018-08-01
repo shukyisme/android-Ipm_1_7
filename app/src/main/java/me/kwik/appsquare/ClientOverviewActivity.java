@@ -131,58 +131,26 @@ public class ClientOverviewActivity extends BaseActivity {
     }
 
     private void updateTrapAlertsValue() {
-            KwikMe.getKwikDevices(null, mClientId, null, KwikDevice.STATUS_ALERT,"status",1, new GetKwikDevicesListener() {
-                @Override
-                public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
-                    hideProgressBar();
-                    int totalTraps = 0;
-                    try {
-                        totalTraps = response.getPaging().getTotal();
-                    }catch (NullPointerException e){
-                        e.printStackTrace();
-                    }
 
-                    int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
-                    int colorDeepcarminepink = ContextCompat.getColor(getApplicationContext(), R.color.deepcarminepink);
-                    int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
-                    String textAlerts = "<font color=" + (totalTraps == 0 ? colorOuterspace : colorDeepcarminepink) + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.trap_alerts)+" </font>";
-                    mTotalAlertTrapsTextView.setText(Html.fromHtml(textAlerts));
+        int totalTraps = 0;
+        totalTraps = mApp.getClient(mClientId).getAlertCount().getAlert();
+        int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+        int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
+        String textAlerts = "<font color=" + colorOuterspace + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.trap_alerts)+" </font>";
+        mTotalAlertTrapsTextView.setText(Html.fromHtml(textAlerts));
 
-                    updateTrapsNotReadyValue();
-                }
+        updateTrapsNotReadyValue();
 
-                @Override
-                public void getKwikDevicesListenerError(KwikServerError error) {
-                    hideProgressBar();
-                    showErrorDialog(error);
-                }
-            });
+
     }
 
     private void updateTrapsNotReadyValue() {
-        KwikMe.getKwikDevices(null, mClientId, null, KwikDevice.STATUS_NOT_AVAILABLE,"status",1, new GetKwikDevicesListener() {
-            @Override
-            public void getKwikDevicesListenerDone(GetKwikDevicesResponse response) {
-                hideProgressBar();
-                int totalTraps = 0;
-                try {
-                    totalTraps = response.getPaging().getTotal();
-                }catch (NullPointerException e){
-                    e.printStackTrace();
-                }
-
-                int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
-                int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
-                String textNotifications = "<font color=" + colorOuterspace + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.not_ready)+" </font>";
-                mTotalNotificationsTrapsTextView.setText(Html.fromHtml(textNotifications));
-            }
-
-            @Override
-            public void getKwikDevicesListenerError(KwikServerError error) {
-                hideProgressBar();
-                showErrorDialog(error);
-            }
-        });
+        int totalTraps = 0;
+        totalTraps = mApp.getClient(mClientId).getAlertCount().getNotReady();
+        int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+        int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
+        String textNotifications = "<font color=" + colorOuterspace + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.notifications)+" </font>";
+        mTotalNotificationsTrapsTextView.setText(Html.fromHtml(textNotifications));
     }
 
     public class TrapsArrayAdapter extends ArrayAdapter<KwikDevice> {

@@ -97,13 +97,16 @@ public class TrapsActivity extends BaseActivity {
 
     private void updateClientList() {
         showProgressBar();
+
         String status;
         if(mType == DISPLAY_TRAPS_ALERTS) {
             status = KwikDevice.STATUS_ALERT;
         } else {
             status = KwikDevice.STATUS_NOT_AVAILABLE;
         }
-        KwikMe.getClients(status, null, null, "name", 1, new GetClientsListener() {
+
+
+        KwikMe.getClients(null, null, null, "name", 1,false, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
                 mClients = new ArrayList<>();

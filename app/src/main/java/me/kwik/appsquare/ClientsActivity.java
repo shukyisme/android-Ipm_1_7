@@ -40,6 +40,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -254,7 +255,7 @@ public class ClientsActivity extends BaseActivity
 
     private void updateClientsList() {
         showProgressBar();
-        KwikMe.getClients(null, null, null, "status", 1, new GetClientsListener() {
+        KwikMe.getClients(null, null, null, "status", 1,true, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
                 if(res == null){
@@ -282,19 +283,6 @@ public class ClientsActivity extends BaseActivity
             }
         });
     }
-
-//    private void customNavigationView(NavigationView navigationView) {
-//        final Menu menu = navigationView.getMenu();
-//        int i = 0;
-//        for (; i < menu.size(); i++) {
-//            if (menu.getItem( i ).getTitle().equals( getString( R.string.my_buttons_activity_nav_menu_communicate ) )) {
-//                SpannableString spanString = new SpannableString( menu.getItem( i ).getTitle().toString() );
-//                spanString.setSpan( new ForegroundColorSpan( getResources().getColor( R.color.kwik_me_menu_group_item_text_color ) ), 0, spanString.length(), 0 );
-//                menu.getItem( i ).setTitle( spanString );
-//                break;
-//            }
-//        }
-//    }
 
     @Override
     protected void onPause() {
@@ -339,17 +327,12 @@ public class ClientsActivity extends BaseActivity
         int id = item.getItemId();
 
         String selectedOption = null;
-        String googleAnalyticsUserAction = "Side menu click ";
 
         if (id == R.id.nav_send) {
-            googleAnalyticsUserAction += "Feedback";
             openEmailApp();
         } else if (id == R.id.nav_need_help) {
-            googleAnalyticsUserAction += "Need Help";
-           // Utils.showHelp( this );
             selectedOption = "Need help";
         } else if (id == R.id.nav_faq) {
-            googleAnalyticsUserAction += "F.A.Q";
             String faqUrl = getString(R.string.my_buttons_nav_menu_faq_url);
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(faqUrl));
             startActivity(browserIntent);
@@ -377,7 +360,6 @@ public class ClientsActivity extends BaseActivity
                     } )
                     .setNegativeButton( android.R.string.no, null )
                     .show();
-
         }
 
 
@@ -415,18 +397,6 @@ public class ClientsActivity extends BaseActivity
         startActivity( Intent.createChooser( emailIntent, getString( R.string.select_email_client ) ) );
     }
 
-
-    private KwikProduct getKwikProductById(KwikProject project, String id) {
-        List<KwikProduct> projectProducts;
-        projectProducts = project.getProducts();
-        for (KwikProduct product : projectProducts) {
-            if (product.getId().equals( id )) {
-                return product;
-            }
-        }
-        return null;
-    }
-
     /**
      * Show error dialog with one button
      *
@@ -456,64 +426,6 @@ public class ClientsActivity extends BaseActivity
         }
     }
 
-    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-        KwikProject project;
-        boolean registered;
-
-        public DownloadImageTask(ImageView bmImage, KwikProject project, boolean registered) {
-            this.bmImage = bmImage;
-            this.project = project;
-            this.registered = registered;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-
-            try {
-                InputStream in = new java.net.URL( urldisplay ).openStream();
-                mIcon11 = BitmapFactory.decodeStream( in );
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            String pattern = Pattern.quote( System.getProperty( "file.separator" ) );
-            String[] splittedFileName = project.getLogosButton().get( MobileDevice.DENSITY ).split( pattern );
-
-            String fileName = Application.IMAGES_FOLDER_NAME + "/" + splittedFileName[splittedFileName.length - 1];
-            File sdCardDirectory = Environment.getExternalStorageDirectory();
-            File image = new File( sdCardDirectory, fileName );
-            FileOutputStream outStream;
-            try {
-
-                outStream = new FileOutputStream( image );
-                mIcon11.compress( Bitmap.CompressFormat.PNG, 100, outStream );
-
-                outStream.flush();
-                outStream.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return mIcon11;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            if (this.registered) {
-                bmImage.setImageBitmap( result );
-            } else {
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.setSaturation( 0 );
-
-                ColorMatrixColorFilter filter = new ColorMatrixColorFilter( matrix );
-                bmImage.setImageBitmap( result );
-                bmImage.setColorFilter( filter );
-            }
-        }
-    }
-
-
     public class ClientsArrayAdapter extends ArrayAdapter<IpmClient> {
         private final Context context;
         private  List<IpmClient> values;
@@ -538,7 +450,20 @@ public class ClientsActivity extends BaseActivity
             final View rowView = inflater.inflate( R.layout.client_list_item, parent, false );
             TextView clientName = (TextView)rowView.findViewById(R.id.client_name_TextView);
             ImageView statusImageView = (ImageView)rowView.findViewById(R.id.client_status_ImageView);
-            clientName.setText(values.get(position).getName());
+            String clientNameString ="";
+            try {
+                clientNameString = values.get(position).getName();
+            }catch (NullPointerException e){
+
+            }
+            try {
+                if (values.get(position).getAlertCount().getAlert() > 0){
+                    clientNameString += " (" + values.get(position).getAlertCount().getAlert() + ")";
+                }
+            }catch (NullPointerException e){
+
+            }
+            clientName.setText(clientNameString);
             try {
             if(values.get(position).getStatus().equalsIgnoreCase("alert")){
                 statusImageView.setImageDrawable(ContextCompat.getDrawable(ClientsActivity.this,R.drawable.client_red_alert));
