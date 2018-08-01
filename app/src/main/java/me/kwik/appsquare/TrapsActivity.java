@@ -1,25 +1,17 @@
 package me.kwik.appsquare;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,12 +19,10 @@ import me.kwik.bl.KwikDevice;
 import me.kwik.bl.KwikMe;
 import me.kwik.bl.KwikServerError;
 import me.kwik.data.IpmClient;
-import me.kwik.data.IpmClientSite;
 import me.kwik.listeners.GetClientsListener;
 import me.kwik.listeners.GetKwikDevicesListener;
 import me.kwik.rest.responses.GetClientsResponse;
 import me.kwik.rest.responses.GetKwikDevicesResponse;
-import me.kwik.utils.Logger;
 import me.kwk.utils.CustomAdapter;
 import me.kwk.utils.CustomArrayAdapterItem;
 
@@ -85,6 +75,7 @@ public class TrapsActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CustomArrayAdapterItem item = (CustomArrayAdapterItem)mClientNameAutoCompleteTextView.getAdapter().getItem(position);
                 mClientId = item.getId();
+                mClientNameAutoCompleteTextView.setText(item.getLabel());
                 updateTrapList();
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(mClientNameAutoCompleteTextView.getWindowToken(), 0);
