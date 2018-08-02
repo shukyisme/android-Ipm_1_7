@@ -3,6 +3,7 @@ package me.kwik.appsquare;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -80,6 +81,7 @@ public class TrapDetailsActivity extends BaseActivity {
     private static final int EDITED_STATUS  = 1;
     private static int NAME_STATUS = EDITED_STATUS;
     private static int DESCRIPTION_STATUS = EDITED_STATUS;
+    private static int PING_HOURS_RED = 24;
 
     private Application mApp;
     private String mSerial;
@@ -191,6 +193,9 @@ public class TrapDetailsActivity extends BaseActivity {
         String status = mTrap.getStatus();
         mAlertTimeTextView.setText(na);
         mStatusValueTextView.setTextColor(ContextCompat.getColor(this,R.color.outerspace));
+
+        long hours = DateUtils.getHoursPassed(mTrap.getPingAt());
+
         if(status != null) {
             mResolveButton.setVisibility(View.GONE);
             if (status.equals(KwikDevice.STATUS_NOT_AVAILABLE)) {
@@ -212,9 +217,13 @@ public class TrapDetailsActivity extends BaseActivity {
             }
         }
 
-
         if(mTrap.getPingAt() != null){
             //mLastCommunicationTextView.setText(mTrap.getPingAt());
+            if (hours >= PING_HOURS_RED){
+                mLastCommunicationTextView.setTextColor(Color.RED);
+            }else{
+                mLastCommunicationTextView.setTextColor(ContextCompat.getColor(this,R.color.outerspace));
+            }
             mLastCommunicationTextView.setText(String.format(getString(R.string.trap_details_time_passed), DateUtils.getTimePassed(mTrap.getPingAt())));
         }else {
             mLastCommunicationTextView.setText(na);

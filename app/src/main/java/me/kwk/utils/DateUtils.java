@@ -76,9 +76,27 @@ public class DateUtils {
             long hours = diff / (1000 * 60 * 60);
             long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
 
-            return hours + ":" + minutes;
+            return String.format("%d:%02d", hours, minutes);
         }
 
         return "";
+    }
+
+    public static long getHoursPassed(String dateString) {
+        if(dateString == null || dateString.trim().equals("")) {
+            return -1;
+        }
+
+        Date d = parseDate(dateString, SERVER_DATE_FORMAT, "UTC");
+        if(d != null) {
+            Date currentDate = new Date();
+            long diff = currentDate.getTime() - d.getTime();
+            long hours = diff / (1000 * 60 * 60);
+            long minutes = (diff - hours * (1000 * 60 * 60)) / (1000 * 60);
+
+            return hours;
+        }
+
+        return -1;
     }
 }
