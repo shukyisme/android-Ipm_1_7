@@ -135,8 +135,9 @@ public class ClientOverviewActivity extends BaseActivity {
         int totalTraps = 0;
         totalTraps = mApp.getClient(mClientId).getAlertCount().getAlert();
         int colorLapislazuli = ContextCompat.getColor(getApplicationContext(), R.color.lapislazuli);
+        int colorDeepcarminepink = ContextCompat.getColor(getApplicationContext(), R.color.deepcarminepink);
         int colorOuterspace = ContextCompat.getColor(getApplicationContext(), R.color.outerspace);
-        String textAlerts = "<font color=" + colorOuterspace + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.trap_alerts)+" </font>";
+        String textAlerts = "<font color=" + (totalTraps == 0 ? colorOuterspace : colorDeepcarminepink) + ">" + totalTraps + "</font><BR> <font color=" + colorLapislazuli + "> "+getString(R.string.trap_alerts)+" </font>";
         mTotalAlertTrapsTextView.setText(Html.fromHtml(textAlerts));
 
         updateTrapsNotReadyValue();
