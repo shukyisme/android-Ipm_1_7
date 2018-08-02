@@ -11,6 +11,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import butterknife.BindView;
@@ -106,7 +107,7 @@ public class TrapsActivity extends BaseActivity {
         }
 
 
-        KwikMe.getClients(null, null, null, "name", 1,false, new GetClientsListener() {
+        KwikMe.getClients(null, null, null, "name", 1,true, new GetClientsListener() {
             @Override
             public void getClientsDone(GetClientsResponse res) {
                 mClients = new ArrayList<>();
@@ -114,7 +115,8 @@ public class TrapsActivity extends BaseActivity {
                 mClients.add(item);
                 CustomArrayAdapterItem selectedItem = item;
                 if(res != null && res.getClients() != null) {
-                    for (IpmClient ipmClient : res.getClients()) {
+                    List<IpmClient> filteredClients = filterClients(res.getClients());
+                    for (IpmClient ipmClient : filteredClients) {
                         item = new CustomArrayAdapterItem(ipmClient.getId(), ipmClient.getName());
                         mClients.add(item);
                         if (mClientId != null && mClientId.equals(ipmClient.getId())) {
@@ -170,6 +172,36 @@ public class TrapsActivity extends BaseActivity {
                 showErrorDialog(error);
             }
         });
+    }
+
+    public interface Predicate<T> { boolean apply(T type); }
+
+    private static <T> Collection<T> filter(Collection<T> col, Predicate<T> predicate) {
+        Collection<T> result = new ArrayList<T>();
+        for (T element: col) {
+            if (predicate.apply(element)) {
+                result.add(element);
+            }
+        }
+        return result;
+    }
+
+    private List<IpmClient> filterClients(List<IpmClient> clients){
+
+        Predicate<IpmClient> clientWithAlertsPredicate = new Predicate<IpmClient>() {
+            public boolean apply(IpmClient client) {
+                IpmClient.AlertCount ac = client.getAlertCount();
+                if(mType == DISPLAY_TRAPS_ALERTS)
+                    return ac.getAlert() > 0;
+                else
+                    mActionBarTitle.setText(R.string.traps_not_ready_title);
+                return ac.getNotReady() > 0;
+            }
+        };
+
+        Collection<IpmClient> result = filter(clients, clientWithAlertsPredicate);
+
+        return new ArrayList<>(result);
     }
 
 
