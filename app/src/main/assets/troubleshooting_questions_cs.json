@@ -1,0 +1,85 @@
+{
+	"questions": [{
+			"question": "Telefon nelze připojit k internetu",
+			"posible_cases": [{
+					"posible_case": "Váš telefon má vypnuté připojení k Wifi",
+					"what_to_do": ["TNa telefonu zapněte wi-fi připojení, ujistěte se, že se můžete připojit k routeru."]
+				},
+				{
+					"posible_case": "Router, ke kterému jste připojeni, nemá přístup k internetu",
+					"what_to_do": ["Resetujte router (případně extender) a zkuste to znovu"]
+
+
+				}
+			]
+		},
+
+		{
+			"question": "Tlačítko pasti bylo stlačeno, ale nerozsvítí se žádné světélko",
+			"posible_cases": [{
+				"posible_case": "Past IPM není zapnutá",
+				"what_to_do": ["krátce stiskněte tlačítko na pasti a zkontrolujte, zda se rozsvítí LED světlo", "Pomocí sponky na papír nebo klíčenky stiskněte a podržte resetovací tlačítko v zadní části pasti IPM na cca 5 vteřin a následně krátce stiskněte tlačítko na pasti", "Pokud se světla nerozsvítila, vyměňte z pasti baterii (viz část týkající se výměny baterií ve FAQ)"
+
+				]
+			}]
+		},
+		{
+			"question": "V nastavení Wi-fi telefonu nelze najít IPM síť",
+			"posible_cases": [{
+				"posible_case": "Wi-fi na vašem telefonu je vypnutá",
+				"what_to_do": ["TZapněte wi-fi na vašem telefonu, ujistěte se, že se můžete připojit k routeru."
+				]
+			},
+			{
+				"posible_case": "IPM Square nepřenáší wi-fi síť",
+				"what_to_do": [" Stiskněte a držte tlačítko pasti, dokud nezačne blikat a vydávat zvuk. Pokud past IPM nevydává zvuk a světla neblikají - viz bod 2 výše ",
+				"Jděte do nastavení wi-fi na vašem telefonu a čekejte, až se IPM Square síť objeví v nastavení wi-fi telefonu. Než se síť objeví, může trvat až 20 vteřin, záleží na typu vašeho telefonu."
+				]
+			},
+			{
+				"posible_case": "Jste příliš daleko od antény IPM pasti",
+				"what_to_do": ["Umístěte past na stabilní místo před vámi a zkuste to znovu"
+				]
+			}
+			
+			]
+		},
+		{
+			"question": "Během určení wi-fi nelze v záhlaví vidět oznámení",
+			"posible_cases": [{
+					"posible_case": "Oznámení jsou vypnutá pro aplikaci",
+					"what_to_do": ["Zapněte oznámení pro aplikaci IPM Square"]
+				},
+				{
+					"posible_case": "Operační systém vašeho telefonu není aktualizován",
+					"what_to_do": ["Aktualizujte operační systém vašeho telefonu na poslední verzi"]
+
+
+				}
+			]
+		},
+			{
+			"question": "Během instalace pasti, po návratu do aplikace z nastavení wi-fi, se aplikace přeruší",
+			"posible_cases": [{
+					"posible_case": "Past není schopná komunikovat s routrem",
+					"what_to_do": ["Ujistěte se, zda heslo wi-fi, které používáte je správné","Ujistěte se, zda wi-fi síť routeru funguje. Ověřte, že můžete surfovat na internetu na telefonu, během toho, co je připojený k routeru.",
+          "Pozn.: past IPM nebude schopný připojit se k serveru v následujících případech:\n\t - wi-fi síť je přenášena ve frekvenci 5 GHz\n\t - wi-fi síť používá šifrování WEP\n\t - wi-fi síť má vstupní stránku (kde musíte zadat uživatelské jméno a heslo nebo souhlas s podmínkami na vyhrazené stránce)","Změňte umístění instalace, na místo blíže k routeru"]
+				}
+			]
+		},
+			{
+			"question": "Klient nenalezen v seznamu klientů na obrazovce klientů",
+			"posible_cases": [{
+					"posible_case": "Nemáte oprávnění k zobrazení aktivity tohoto klienta",
+					"what_to_do": ["Pro získání požadovaného povolení se obraťte na správce systému"]
+				},
+				{
+					"posible_case": "Klient, kterého hledáte, v databázi neexistuje",
+					"what_to_do": ["Vytvořit nového klienta pomocí "Přidat novou kartu"]
+
+
+				}
+			]
+		}
+	]
+}

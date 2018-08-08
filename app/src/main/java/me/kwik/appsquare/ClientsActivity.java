@@ -273,6 +273,8 @@ public class ClientsActivity extends BaseActivity
                     activeClientsNumber = res.getPaging().getTotal();
                 }
                 mClientsHeaderTextView.setText("Active clients: (" + activeClientsNumber + ")");
+
+                mClientsList.invalidateViews();
             }
 
             @Override

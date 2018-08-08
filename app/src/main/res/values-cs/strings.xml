@@ -1,0 +1,239 @@
+<resources>
+    <string name="app_name">IPM Square</string>
+
+
+    <!-- General -->
+    <string name="need_help">Potřebujete pomoc?</string>
+    <string name="oops">Chyba!</string>
+    <string name="name">Jméno</string>
+    <string name="phone">Telefon</string>
+    <string name="cancel">Zrušit</string>
+    <string name="finish">Dokončit</string>
+    <string name="no">NE</string>
+    <string name="yes">ANO</string>
+    <string name="unknown_error">Neznámá chyba</string>
+    <string name="client_name">Jméno klienta</string>
+    <string name="site">Umístění</string>
+    <string name="search">Vyhledávání</string>
+    <string name="trap_name">Název pasti</string>
+    <string name="coordinator">Koordinátor</string>
+    <string name="trap_description">Popis pasti</string>
+    <string name="need_help_"><u>Potřebujete pomoc?</u></string>
+    <string name="e_mail">E-mail</string>
+    <string name="phone_number">Telefonní číslo</string>
+    <string name="email_address">Emailová adresa</string>
+    <string name="password">Heslo</string>
+    <string name="good">Dobře</string>
+    <string name="clients">Klienti</string>
+    <string name="overview">Přehled</string>
+    <string name="total_traps">Pasti celkem:</string>
+    <string name="_0_trap_alerts">0 alarmů</string>
+    <string name="active_clients">Aktivní klienti: ()</string>
+    <string name="add_new_trap">Přidat novou past</string>
+    <string name="SN">"SN: "</string>
+    <string name="create_client">Vytvořit klienta</string>
+    <string name="trap_alerts">Trap Alerts</string>
+    <string name="_0_notifications">0 Notifications</string>
+    <string name="notifications">Notifications</string>
+    <string name="not_ready">Not ready</string>
+
+
+    <!-- Add new trap Activity -->
+    <string name="add_new_trap_activity_new_client">Nový klient</string>
+    <string name="add_new_trap_activity_new_site">Nové umístění</string>
+    <string name="add_new_trap_activity_trap_name_hint">Past -</string>
+    <string name="add_new_trap_activity_enter_description">Zadejte popis </string>
+    <string name="add_new_trap_activity_fields_marked_in_red_are_required">* Pole označená červeně jsou povinná</string>
+
+    <!-- Application -->
+    <string name="kwik_me_locale_id_key">sériové číslo pasti IPM</string>
+
+    <!-- Base Activity -->
+    <string name="base_activity_back">Zpět</string>
+    <string name="base_activity_next">Další</string>
+
+    <!-- Network Password Activity -->
+    <string name="network_password_activity_title">WiFi připojení</string>
+    <string name="network_password_enter_password_hint">Zadejte heslo</string>
+    <string name="network_password_activity_hide">Skrýt</string>
+    <string name="network_password_activity_show">Zobrazit</string>
+    <string name="network_password_activity_open_wifi_settings">Otevřít nastavení Wifi </string>
+    <string name="network_password_activity_continue">Pokračovat</string>
+    <string name="network_password_activity_no_wifi_error_message">Zdá se, že nejste připojeni k wifi\n Zapněte prosím Wifi,\n&lt;b&gt; Ujistěte se, že jste připojeni k Wifi síti o frekvenci 2,4 GHz &lt;//b&gt;</string>
+    <string name="network_password_activity_wifi_5_g_error">Zdá se, že jste připojeni k Wifi síti o frekvenci 5 GHz\n&lt;b&gt; Prosíme, připojte se k Wifi síti o frekvenci 2,4 GHz &lt;//b&gt;</string>
+    <string name="network_password_activity_enter_password_error_message">Zadejte prosím heslo</string>
+    <string name="network_password_activity_enter_password_tip">Zadejte podrobnosti o síti wifi\n která má být používána vaší pastí IPM</string>
+    <string name="network_password_save_password">Uložit heslo</string>
+    <string name="your_gps_seems_to_be_disabled">Zdá se, že máte vypnutou GPS, zapněte ji prosím pro kontrolu </string>
+    <string name="password_is_empty">Nezadali jste heslo pro vaši síť</string>
+    <string name="continue_without_password">Pokračování bez hesla</string>
+    <string name="type_a_password">Napište heslo</string>
+    <string name="change_network">Změnit síť</string>
+    <string name="network_password_activity_help_message">Prosím ujistěte se, že jde o Wifi síť o frekvenci 2,4 GHz</string>
+
+    <!-- Button to Ap Activity -->
+    <string name="button_to_ap_activity_title">Připojení k pasti</string>
+    <string name="button_to_ap_activity_go_to_settings">Přejít do nastavení</string>
+    <string name="button_to_ap_activity_press_6_seconds">Stiskněte a podržte tlačítko na pasti IPM dokud nezačne blikat a neuslyšíte tón (cca po dobu 5 vteřin)</string>
+    <string name="button_to_ap_activity_press_start">Stiskněte “Další” až začne tlačítko na pasti IPM blikat</string>
+    <string name="button_to_ap_activity_teach_fail_message">Zdá se, že se nepodařilo past spojit s Wifi sítí. Prosím zkontrolujte následující a zkuste to znovu: \n – Ujistěte se, že je síť Wi-fi funkční \n – Ujistěte se, že jste zadali správný název a heslo Wi-fi</string>
+    <string name="button_to_ap_activity_almost_there">Téměř hotovo...</string>
+    <string name="button_to_ap_activity_connecting_your_button">Připojování k IPM...</string>
+    <string name="button_to_ap_activity_connecting_to_server">Připojování k serveru...</string>
+    <string name="button_to_ap_activity_connecting_button_to_user">Přidání pasti IPM k uživateli...</string>
+    <string name="button_to_ap_activity_go_to_manual_title">Připojení k pasti IPM</string>
+    <string name="button_to_ap_activity_go_to_manual_message">Chcete-li pokračovat, prosím:\n\n 1- Níže stiskněte tlačítko “Otevřít nastavení Wifi”\n 2- Připojení k Wifi pomocí tlačítka pasti IPM\n 3- Vraťte se zpět do aplikace</string>
+    <string name="button_to_ap_activity_welcome_back">Vítejte zpět! \n Slyšeli jste úspěšný tón?</string>
+    <string name="button_to_ap_activity_looking_for_your_button_this_may_take_few_seconds">Hledání vašeho IPM, toto může trvat několik vteřin</string>
+    <string name="wifi_settings_manual_mode_android_7_instructions">1.  Níže stiskněte "Jít do nastavení"\n\n 2.  V nastavení Wifi se připojte k síti, která končí názvem pasti IPM_xxxxxx\n\n 3.  Stiskněte “Wifi nemá internet” a vyberte možnost ANO, abyste zůstali připojeni </string>
+    <string name="wifi_settings_manual_mode_android_7_instructions_1">4. Vraťte se zpět k dokončení nastavení</string>
+    <string name="wifi_settings_manual_mode_header">Nyní připojte svoje IPM k síti Wifi</string>
+
+
+    <!-- Clients Activity -->
+    <string name="clients_activity_title">Klienti</string>
+    <string name="my_buttons_activity_exit_dialog_title">Uzavření</string>
+    <string name="my_buttons_activity_exit_dialog_message">Opravdu chcete odejít?</string>
+    <string name="my_buttons_nav_not_supported_yet_message">Zatím nepodporováno</string>
+    <string name="my_buttons_feedback_header">Zpětná vazba</string>
+    <string name="my_buttons_activity_main_label">Klienti</string>
+    <string name="select_email_client">Vyberte klientův email</string>
+
+
+
+    <!-- Trap Details Activity -->
+    <string name="title_activity_trap_details">Podrobnosti o aktivitách pasti IPM</string>
+    <string name="remove_kwik_button">Vymazat past IPM</string>
+    <string name="remove_kwik_button_message">Opravdu chcete vymazat tuto past IPM</string>
+    <string name="edit_reorder">Upravit uspořádání</string>
+    <string name="button_settings">Nastavení pasti</string>
+
+
+    <!-- Good Job Activity -->
+    <string name="good_job_activity_good_job">Skvělá práce!</string>
+    <string name="good_job_activity_the_button_is_successfully_connected">Vše co nyní potřebujete udělat\n pro aktivaci pasti je \n stisknout tlačítko pasti \n a ujistit se, že dostanete \n potvrzovací zprávu \n do vašeho telefonu.</string>
+    <string name="good_job_activity_button_serial_number">Sériové číslo:</string>
+    <string name="good_job_activity_now">Nyní je past úspěšně připojena k síti a bude fungovat pouze v této síti.</string>
+    <string name="good_job_activity_kwik_order">Další</string>
+    <string name="good_job_activity_title">Skvělá práce</string>
+    <string name="good_job_activity_finish_button">Dokončení nastavení</string>
+    <string name="good_job_activity_serial_number_1090000">Sériové číslo: 1090000</string>
+
+    <!-- SmartNetwork dialog -->
+    <string name="smart_network_dialog_title">Inteligentní síťový přepínač</string>
+    <string name="smart_network_dialog_sub_title">Na obrazovce pro nastavení wifi na vašem telefonu prosím zrušte zaškrtnutí políčka (vypněte) inteligentní síťový přepínač a vraťte se zpět do aplikace</string>
+    <string name="wifi_settings">Jít na nastavení</string>
+    <string name="wifi_settings_manual_mode_instructions">1.  Níže stiskněte tlačítko “Přejít na nastavení” \n\n 2.  V nastavení Wifi se připojte k síti, která končí názvem pasti IPM_xxxxxx \n\n 3.  Vraťte se zpět do aplikace</string>
+
+    <!-- Setup Activity -->
+    <string name="setup_activity_title">Nastavení</string>
+    <string name="setup_activity_please_turn_up">Abychom vás mohli provést nastavením, zvyšte prosím hlasitost telefonu</string>
+    <string name="setup_activity_increase_volume_comment">Chcete-li pokračovat, zvyšujte hlasitost</string>
+    <string name="setup_activity_great_your_volume_is_set">Skvělé! Hlasitost je nastavena</string>
+
+    <!-- Add serial number manualy -->
+    <string name="title_activity_add_serial_number_manualy">Přidat sériové číslo pro ruční aktivitu</string>
+    <string name="add_serial_manually_activity_title">Připojení pasti</string>
+    <string name="add_serial_manually_enter_number_request">Chcete-li připojit past, zadejte prosím sériové číslo ze zadní části pasti IPM </string>
+    <string name="add_serial_manually_activity_open_dialog_button">Zadejte sériové číslo</string>
+    <string name="enter_serial_number_dialog_edit_text_hint">Zde zadejte sériové číslo</string>
+    <string name="enter_serial_number_dialog_title">Zadejte sériové číslo </string>
+    <string name="enter_serial_number_dialog_submit_button">POTVRDITt</string>
+    <string name="enter_serial_number_dialog_error_header">Chybné sériové číslo</string>
+    <string name="enter_serial_number_error_length_error">Délka sériového čísla by měla být 7 znaků</string>
+    <string name="enter_serial_number_error_numbers_only_error">Sériové číslo obsahuje pouze číslice</string>
+    <string name="enter_serial_number_error_cancel_button">ZRUŠIT</string>
+
+    <!-- WiFi Selection Activity -->
+    <string name="wifi_selection_activity_title">Výběr Wi-fi</string>
+    <string name="wifi_selection_activity_question">Máte vlastní \n router nebo používáte \n klientské Wifi sítě? </string>
+    <string name="i_have_client_wifi_network">Mám klientskou wifi síť</string>
+    <string name="i_have_a_dedicated_router">Mám vlastní router</string>
+
+
+    <string name="ipm_login_contact_administrator">Špatný email nebo heslo.\n Pro více informací kontaktujte vašeho administrátora.</string>
+
+    <!-- No connectivity error dialog -->
+    <string name="err_dialog_no_connectivity_title">Chyba!</string>
+    <string name="err_dialog_no_connectivity_body">Žádné internetové připojení, zkontrolujte prosím, jestli je vaše zařízení připojeno a zkuste to znovu. </string>
+    <string name="err_dialog_no_connectivity_try_again">zkusit znovu</string>
+    <string name="err_dialog_no_connectivity_wifi_settings">Nastavení Wifi</string>
+
+
+    <!-- Notification Message -->
+    <string name="connected_notification_message">Stiskněte pro návrat do IPM </string>
+
+    <!-- Side menu -->
+    <string name="my_buttons_nav_menu_send_feedback">Poslat zpětnou vazbu</string>
+    <string name="log_out">Odhlásit se</string>
+    <string name="my_buttons_nav_menu_faq">F.A.Q.</string>
+    <string name="my_buttons_nav_menu_faq_url">https://www.ipm-square.com/faq</string>
+
+    <!-- Client overview Activity -->
+    <string name="client_overview_activity_client_s_overview">Přehled klientů</string>
+    <string name="client_overview_activity_total_traps">Pasti celkem:</string>
+    <string name="client_overview_activity__0_trap_alerts">0 alarmů pasti IPM</string>
+    <string name="client_overview_activity_client_s_traps">Pasti klientů: </string>
+    <string name="client_overview_activity_add_new_trap">Přidat novou past</string>
+
+    <!-- Close trap activity -->
+    <string name="close_trap_activity_alert_u0026_time"><![CDATA[Datum & Čas]]></string>
+    <string name="close_trap_activity_technician">Technik :</string>
+    <string name="close_trap_activity_description">Popis :</string>
+    <string name="close_trap_activity_enter_description">Zadejte popis </string>
+    <string name="close_trap_activity_save_u0026_close_alert"><![CDATA[Uložit & zavřít alarm]]></string>
+    <string name="close_trap_activity_close_trap_alert">Zavřít alarm pasti </string>
+    <string name="close_trap_activity_rodent_trapped">"Chycený hlodavec"</string>
+    <string name="close_trap_activity_sorry_no_event_was_founded">Je nám líto, nebyla nalezena žádná událost</string>
+    <string name="close_trap_activity_unkown_error">Neznámá chyba, vraťte se a zkuste to znovu</string>
+    <string name="close_trap_activity_serial_number">"\n Sériové číslo: "</string> 
+    <string name="close_trap_activity_button_was_not_found">Tlačítko nebylo nalezeno</string>
+
+    <!-- Create client activity -->
+    <string name="create_client_activity_client_address">Adresa klienta</string>
+    <string name="create_client_activity_contact_person">Kontaktní osoba</string>
+    <string name="trap_details_status_not_ready">Not ready</string>
+
+
+    <!-- Sign in Activity -->
+    <string name="sign_in_activity_sign_in">Přihlásit se</string>
+    <string name="sign_in_activity_sign_in_to_your_account">Přihlašte se k vašemu účtu</string>
+
+    <!-- Trap details Activity -->
+    <string name="trap_details_activity_trap_details">Detaily pasti</string>
+    <string name="trap_details_activity_enter_description">Zadejte popis</string>
+    <string name="trap_details_activity_trap_alert">Alarm pasti</string>
+    <string name="trap_details_activity_resolve">Řešení</string>
+    <string name="trap_details_activity_alert_time">Čas alarmu:</string>
+    <string name="trap_details_activity_last_communication">Poslední komunikace:</string>
+    <string name="trap_details_activity_setup_date">Datum nastavení:</string>
+    <string name="trap_details_activity_description">Popis:</string>
+    <string name="trap_details_activity_active_alert_message">Past, kterou se snažíte přemístit, má aktivní alarm. Před přemístěním pasti vyřešte alarm. </string>
+    <string name="trap_details_activity_status">Stav:</string>
+    <string name="trap_details_activity_battery_level">Stav baterie:</string>
+
+    <!-- Add new site popup --> 
+    <string name="add_new_site_popup_add_a_new_site">Přidat nové umístění</string>
+    <string name="add_new_site_popup_add_a_new_site_to">Přidat nové umístění k:</string>
+    <string name="add_new_site_popup_site_name">Název umístění:</string>
+    <string name="add_new_site_popup_enter_the_name_of_the_site">Zadejte název umístění</string>
+    <string name="add_new_site_popup_add_new_site">PŘIDAT NOVÉ UMÍSTĚNÍ</string>
+
+    <string name="client_overview_activity__0_notifications">0 Notifications</string>
+
+    <string name="create_client_activity_msg_required">Please fill in all the mandatory details</string>
+    <string name="create_client_activity_msg_name_invalid">Client name must have at least 2 characters</string>
+    <string name="create_client_activity_msg_email_invalid">The email address you entered isn\'t valid</string>
+
+    <!-- Traps Activity -->
+    <string name="traps_alert_title">Trap alert list</string>
+    <string name="traps_not_ready_title">Traps - Not ready</string>
+    <string name="traps_filter_by">Filter By:</string>
+    <string name="traps_filter_all_clients">All clients</string>
+
+    <string name="trap_details_time_passed">%s hours ago</string>
+
+
+
+
+</resources>

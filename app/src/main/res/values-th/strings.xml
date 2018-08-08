@@ -1,0 +1,239 @@
+<resources>
+    <string name="app_name">IPM Square</string>
+
+
+    <!-- General -->
+    <string name="need_help">ต้องการความช่วยเหลือ?</string>
+    <string name="oops">ผิดพลาด!</string>
+    <string name="name">ชื่อ</string>
+    <string name="phone">เบอร์โทรศัพท์</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="finish">เสร็จสิ้น</string>
+    <string name="no">ไม่ใช่</string>
+    <string name="yes">ใช่</string>
+    <string name="unknown_error">ข้อผิดพลาดที่ไม่ทราบ</string>
+    <string name="client_name">ชื่อลูกค้า</string>
+    <string name="site">หน่วยงาน</string>
+    <string name="search">ค้นหา</string>
+    <string name="trap_name">ชื่อเรื่อง</string>
+    <string name="coordinator">ผู้ประสานงาน</string>
+    <string name="trap_description">การบรรยายเรื่อง</string>
+    <string name="need_help_"><u>ต้องการความช่วยเหลือ?</u></string>
+    <string name="e_mail">อีเมล</string>
+    <string name="phone_number">เบอร์โทรศัพท์</string>
+    <string name="email_address">ที่อยู่อีเมล</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="good">ดี</string>
+    <string name="clients">ลูกค้า</string>
+    <string name="overview">ภาพรวม</string>
+    <string name="total_traps">เรื่องทั้งหมด:</string>
+    <string name="_0_trap_alerts">0 แจ้งเตือนเรื่อง</string>
+    <string name="active_clients">ลูกค้าที่ใช้งานได้ : ()</string>
+    <string name="add_new_trap">เพิ่มชื่อเรื่องใหม่</string>
+    <string name="SN">"SN: "</string>
+    <string name="create_client">สร้างลูกค้า</string>
+    <string name="trap_alerts">Trap Alerts</string>
+    <string name="_0_notifications">0 Notifications</string>
+    <string name="notifications">Notifications</string>
+    <string name="not_ready">Not ready</string>
+
+
+    <!-- Add new trap Activity -->
+    <string name="add_new_trap_activity_new_client">ลูกค้าใหม่</string>
+    <string name="add_new_trap_activity_new_site">หน่วยงานใหม่</string>
+    <string name="add_new_trap_activity_trap_name_hint">ชื่อเรื่อง -</string>
+    <string name="add_new_trap_activity_enter_description">ป้อนข้อมูลคำบรรยาย</string>
+    <string name="add_new_trap_activity_fields_marked_in_red_are_required">* ต้องระบุช่องที่มีเครื่องหมายสีแดง</string>
+
+    <!-- Application -->
+    <string name="kwik_me_locale_id_key">kwik_me_locale_id_key</string>
+
+    <!-- Base Activity -->
+    <string name="base_activity_back">ย้อนกลับ</string>
+    <string name="base_activity_next">ถัดไป</string>
+
+    <!-- Network Password Activity -->
+    <string name="network_password_activity_title">การเชื่อมต่อ WiFi</string>
+    <string name="network_password_enter_password_hint">ป้อนข้อมูลรหัสผ่าน</string>
+    <string name="network_password_activity_hide">ซ่อนไว้</string>
+    <string name="network_password_activity_show">แสดง</string>
+    <string name="network_password_activity_open_wifi_settings">การตั้งค่าเปิด WiFi </string>
+    <string name="network_password_activity_continue">ต่อเนื่อง</string>
+    <string name="network_password_activity_no_wifi_error_message">ดูเหมือนว่าคุณจะไม่ได้เชื่อมต่อ WiFi,\n โปรดเปิด th WiFi,\n&lt;b&gt; แน่ใจว่าคุณได้เชื่อมต่อเครือข่าย a 2.4GHz &lt;//b&gt;</string>
+    <string name="network_password_activity_wifi_5_g_error"> เหมือนว่าคุณได้เชื่อมต่อเครือข่าย 5Ghz WiFi,\n&lt;b&gt; โปรดเชื่อมต่อเครือข่าย 2.4GHz&lt;//b&gt;</string>
+    <string name="network_password_activity_enter_password_error_message">โปรดป้อนข้อมูลรหัสผ่าน</string>
+    <string name="network_password_activity_enter_password_tip">ป้อนข้อมูลรายละเอียดเครือข่าย Wi-Fi ของคุณ\n ที่จะใช้โดยชื่อเรื่อง</string>
+    <string name="network_password_save_password">บันทึกรหัสผ่าน</string>
+    <string name="your_gps_seems_to_be_disabled"> GPS ของคุณน่าจะปิดใช้งานโปรดเปิดใช้งานเพื่อให้ได้ประสบการณ์ที่ดีที่สุด.</string>
+    <string name="password_is_empty">คุณไม่ได้พิมพ์รหัสผ่านสำหรับเครือข่ายของคุณ</string>
+    <string name="continue_without_password">ดำเนินการต่อโดยไม่มีรหัสผ่าน</string>
+    <string name="type_a_password">พิมพ์ รหัสผ่าน</string>
+    <string name="change_network">เปลี่ยนเครือข่าย</string>
+    <string name="network_password_activity_help_message">โปรดแน่ใจว่านี่คือเครือข่าย 2.4 GHz </string>
+
+    <!-- Button to Ap Activity -->
+    <string name="button_to_ap_activity_title">เชื่อมต่อ Trap</string>
+    <string name="button_to_ap_activity_go_to_settings">ไปยังการตั้งค่า</string>
+    <string name="button_to_ap_activity_press_6_seconds">กดค้างไว้ประมาณ 5 วินาทีจนกว่าจะกะพริบและคุณจะได้ยินเสียง</string>
+    <string name="button_to_ap_activity_press_start">กด \'next\' เมื่อปุ่มสี่เหลี่ยมของคุณกะพริบ</string>
+    <string name="button_to_ap_activity_teach_fail_message">ดูเหมือนว่าเราไม่สามารถเชื่อมต่อ trap กับเครือข่าย Wi-Fi โปรดตรวจสอบสิ่งต่อไปนี้และลองอีกครั้ง:\n - ตรวจสอบว่าเครือข่าย Wi-Fi กำลังทำงานอยู่\n - ตรวจสอบว่าชื่อและรหัสผ่าน Wi-Fi ที่คุณป้อนถูกต้อง</string>
+    <string name="button_to_ap_activity_almost_there">เกือบจะได้...</string>
+    <string name="button_to_ap_activity_connecting_your_button">การเชื่อมต่อสี่เหลี่ยม...</string>
+    <string name="button_to_ap_activity_connecting_to_server">การเชื่อมต่อกับServer...</string>
+    <string name="button_to_ap_activity_connecting_button_to_user">เพิ่มปุ่มสี่เหลี่ยมสำหรับผู้ใช้...</string>
+    <string name="button_to_ap_activity_go_to_manual_title">เชื่อมต่อกับ kwik</string>
+    <string name="button_to_ap_activity_go_to_manual_message">หากต้องการดำเนินการต่อ:\n\n 1- คลิก "เปิดการติดตั้ง WiFi" ด้านล่าง\n 2- เชื่อมกับปุ่ม WiFi kwik_ \n 3- กลับไปสู่ app</string>
+    <string name="button_to_ap_activity_welcome_back">ยินดีต้อนรับกลับ! \n คุณได้ยินเสียง Success หรือไม่?</string>
+    <string name="button_to_ap_activity_looking_for_your_button_this_may_take_few_seconds">กำลังมองหาปุ่มของคุณซึ่งอาจใช้เวลาสองสามวินาที</string>
+    <string name="wifi_settings_manual_mode_android_7_instructions">1.  กดปุ่ม "ไปที่การตั้งค่า" ด้านล่าง\n\n 2.  เชื่อมต่อกับเครือข่ายที่ลงท้ายด้วยปุ่มชื่อ_xxxxxx ในการตั้งค่า WiFi \n\n 3.  กดที่ "WiFi ไม่มีอินเตอร์เนท" และเลือก Yes เพื่อเชื่อมต่อ</string>
+    <string name="wifi_settings_manual_mode_android_7_instructions_1">4. กลับมาที่นี่เพื่อเสร็จสิ้นการตั้งค่า</string>
+    <string name="wifi_settings_manual_mode_header">ตอนนี้ ขอให้เราได้เชื่อมต่อสี่เหลี่ยมกับ Wi-Fi ของคุณแล้ว</string>
+
+
+    <!-- Clients Activity -->
+    <string name="clients_activity_title">ลูกค้า</string>
+    <string name="my_buttons_activity_exit_dialog_title">การปิด</string>
+    <string name="my_buttons_activity_exit_dialog_message">คุณแน่ใจใช่ไหมว่าคุณจะออกจาก</string>
+    <string name="my_buttons_nav_not_supported_yet_message">ยังไม่ได้รับการสนับสนุน</string>
+    <string name="my_buttons_feedback_header">ความคิดเห็นจาก</string>
+    <string name="my_buttons_activity_main_label">ลูกค้า</string>
+    <string name="select_email_client">เลือกอีเมลลูกค้า:</string>
+
+
+
+    <!-- Trap Details Activity -->
+    <string name="title_activity_trap_details">กิจกรรมรายละเอียดของ trap</string>
+    <string name="remove_kwik_button">ลบสี่เหลี่ยม</string>
+    <string name="remove_kwik_button_message">คุณแน่ใจหรือไม่ว่าต้องการลบสี่เหลี่ยมนี้?</string>
+    <string name="edit_reorder">แก้ไขลำดับใหม่</string>
+    <string name="button_settings">การตั้งค่า trap</string>
+
+
+    <!-- Good Job Activity -->
+    <string name="good_job_activity_good_job">ยอดเยี่ยม!</string>
+    <string name="good_job_activity_the_button_is_successfully_connected">ตอนนี้สิ่งที่คุณต้องทำก็คือ\n เพื่อเปิดใช้งาน trap โดย\n กดปุ่มดัก\n และให้แน่ใจว่าคุณได้รับ a \n ข้อความยืนยันไปที่ \n โทรศัพท์ของคุณ.</string>
+    <string name="good_job_activity_button_serial_number">หมายเลข Serial:</string>
+    <string name="good_job_activity_now">ตอนนี้ Trap เชื่อมต่อกับเครือข่ายเรียบร้อยแล้วและจะทำงานบนเครือข่ายนี้เท่านั้น</string>
+    <string name="good_job_activity_kwik_order">ถัดไป</string>
+    <string name="good_job_activity_title">ยอดเยี่ยม</string>
+    <string name="good_job_activity_finish_button">สิ้นสุดการตั้งค่า</string>
+    <string name="good_job_activity_serial_number_1090000">หมายเลข Serial: 1090000</string>
+
+    <!-- SmartNetwork dialog -->
+    <string name="smart_network_dialog_title">สลับเครือข่ายสมาร์ท</string>
+    <string name="smart_network_dialog_sub_title">โปรดยกเลิกการเลือกช่องทำเครื่องหมายสมาร์ทสวิตช์เครือข่ายในหน้าจอการตั้งค่า WiFiของโทรศัพท์จากนั้นให้กลับไปที่ app</string>
+    <string name="wifi_settings">ไปที่การตั้งค่า</string>
+    <string name="wifi_settings_manual_mode_instructions">1.  กดปุ่ม "ไปที่การตั้งค่า" ด้านล่าง \n\n 2.  เชื่อมต่อกับเครือข่ายที่ลงท้ายด้วย button_xxxxxx ชื่อในการตั้งค่า WiFi \n\n 3.  กลับไปที่ app</string>
+
+    <!-- Setup Activity -->
+    <string name="setup_activity_title">ติดตั้ง</string>
+    <string name="setup_activity_please_turn_up">โปรดเปิดโทรศัพท์เพื่อให้เราสามารถนำคุณไปสู่การตั้งค่าได้</string>
+    <string name="setup_activity_increase_volume_comment">เพิ่มปริมาณการผลิตเพื่อดำเนินการต่อ</string>
+    <string name="setup_activity_great_your_volume_is_set">ยอดเยี่ยม! มีการตั้งค่าปริมาณแล้ว</string>
+
+    <!-- Add serial number manualy -->
+    <string name="title_activity_add_serial_number_manualy">เพิ่มกิจกรรมหมายเลขผลิตภัณฑ์ด้วยตนเอง </string>
+    <string name="add_serial_manually_activity_title">เชื่อมต่อ trap</string>
+    <string name="add_serial_manually_enter_number_request">ในการเชื่อมต่อกับ trap โปรดป้อนหมายเลขรหัสสี่เหลี่ยมที่อยู่ด้านหลังของสี่เหลี่ยม</string>
+    <string name="add_serial_manually_activity_open_dialog_button">ป้อนหมายเลข serial </string>
+    <string name="enter_serial_number_dialog_edit_text_hint">พิมพ์หมายเลข serial ที่นี่</string>
+    <string name="enter_serial_number_dialog_title">ป้อนหมายเลขสี่เหลี่ยม</string>
+    <string name="enter_serial_number_dialog_submit_button">นำส่ง</string>
+    <string name="enter_serial_number_dialog_error_header">หมายเลข Serial ผิดพลาด</string>
+    <string name="enter_serial_number_error_length_error">ความยาวของหมายเลข Serial ควรจะมี 7 ตัว</string>
+    <string name="enter_serial_number_error_numbers_only_error">หมายเลขผลิตภัณฑ์คือหมายเลขเนื้อหาเท่านั้น</string>
+    <string name="enter_serial_number_error_cancel_button">ยกเลิก</string>
+
+    <!-- WiFi Selection Activity -->
+    <string name="wifi_selection_activity_title">การเลือก Wi-Fi </string>
+    <string name="wifi_selection_activity_question">คุณมีการสนับสนุนช่วยเหลือเรื่อง \n อุปกรณ์ router หรือคุณได้ใช้ \n เครือข่าย WiFi ของลูกค้าไหม?</string>
+    <string name="i_have_client_wifi_network">ฉันมีเครือข่าย wifi ลูกค้า</string>
+    <string name="i_have_a_dedicated_router">ฉันมี router เฉพาะ</string>
+
+
+    <string name="ipm_login_contact_administrator">อีเมลหรือรหัสผ่านไม่ถูกต้อง.\n ติดต่อผู้ดูแลระบบของคุณสำหรับข้อมูลเพิ่มเติม </string>
+
+    <!-- No connectivity error dialog -->
+    <string name="err_dialog_no_connectivity_title">ผิดพลาด..</string>
+    <string name="err_dialog_no_connectivity_body">ไม่มีการเชื่อมต่ออินเทอร์เน็ตโปรดตรวจสอบว่าอุปกรณ์ของคุณเชื่อมต่อกับการเชื่อมต่อหรือลองอีกครั้ง</string>
+    <string name="err_dialog_no_connectivity_try_again">ลองอีกครั้ง</string>
+    <string name="err_dialog_no_connectivity_wifi_settings">การติดตั้ง Wifi </string>
+
+
+    <!-- Notification Message -->
+    <string name="connected_notification_message">Click เพื่อกลับไปยัง IPM Square</string>
+
+    <!-- Side menu -->
+    <string name="my_buttons_nav_menu_send_feedback">ส่งความคิดเห็น</string>
+    <string name="log_out">ออกจากระบบ</string>
+    <string name="my_buttons_nav_menu_faq">คำถามที่พบได้บ่อย</string>
+    <string name="my_buttons_nav_menu_faq_url">https://www.ipm-square.com/faq</string>
+
+    <!-- Client overview Activity -->
+    <string name="client_overview_activity_client_s_overview">ภาพรวมของลูกค้า</string>
+    <string name="client_overview_activity_total_traps"> Traps ทั้งหมด:</string>
+    <string name="client_overview_activity__0_trap_alerts">0 การแจ้งเตือน Trap </string>
+    <string name="client_overview_activity_client_s_traps"> Traps ของลูกค้า :</string>
+    <string name="client_overview_activity_add_new_trap">เพิ่ม trap ใหม่</string>
+
+    <!-- Close trap activity -->
+    <string name="close_trap_activity_alert_u0026_time"><![CDATA[วันและเวลา]]></string>
+    <string name="close_trap_activity_technician">พนักงานเทคนิค :</string>
+    <string name="close_trap_activity_description">คำบรรยาย :</string>
+    <string name="close_trap_activity_enter_description">ป้อนข้อมูลคำบรรยาย</string>
+    <string name="close_trap_activity_save_u0026_close_alert"><![CDATA[บันทึกและปิดการแจ้งเตือน]]></string>
+    <string name="close_trap_activity_close_trap_alert">ปิดการแจ้งเตือน</string>
+    <string name="close_trap_activity_rodent_trapped">" trap  สัตว์มีฟันแทะ"</string>
+    <string name="close_trap_activity_sorry_no_event_was_founded">ขออภัยไม่มีเหตุการณ์ใดเกิดขึ้น</string>
+    <string name="close_trap_activity_unkown_error"> เกิดข้อผิดพลาดที่ไม่อาจทราบได้ โปรดกลับไปลองอีกครั้ง</string>
+    <string name="close_trap_activity_serial_number">"\n หมายเลข Serial: "</string> 
+    <string name="close_trap_activity_button_was_not_found">ไม่พบปุ่ม</string>
+
+    <!-- Create client activity -->
+    <string name="create_client_activity_client_address"> ที่อยู่ของลูกค้า</string>
+    <string name="create_client_activity_contact_person">บุคคลที่ติดต่อ</string>
+    <string name="trap_details_status_not_ready">Not ready</string>
+
+
+    <!-- Sign in Activity -->
+    <string name="sign_in_activity_sign_in">เข้าสู่ระบบ</string>
+    <string name="sign_in_activity_sign_in_to_your_account">เข้าสู่ระบบไปยังบัญชีผู้ใช้งาน</string>
+
+    <!-- Trap details Activity -->
+    <string name="trap_details_activity_trap_details">รายละเอียด Trap </string>
+    <string name="trap_details_activity_enter_description">ป้อนข้อมูลคำบรรยาย</string>
+    <string name="trap_details_activity_trap_alert"> แจ้งเตือน Trap </string>
+    <string name="trap_details_activity_resolve">แก้ปัญหา</string>
+    <string name="trap_details_activity_alert_time">เวลาแจ้งเตือน:</string>
+    <string name="trap_details_activity_last_communication">การติดต่อสื่อสารครั้งล่าสุด:</string>
+    <string name="trap_details_activity_setup_date">วันติดตั้ง:</string>
+    <string name="trap_details_activity_description">คำบรรยาย:</string>
+    <string name="trap_details_activity_active_alert_message">trap ที่คุณพยายามเอาออกมีการแจ้งเตือนที่ใช้งานอยู่ แก้ไขการแจ้งเตือนก่อนที่จะนำ trap ออก</string>
+    <string name="trap_details_activity_status">สถานะ:</string>
+    <string name="trap_details_activity_battery_level">ระดับแบทเตอร์รี่:</string>
+
+    <!-- Add new site popup --> 
+    <string name="add_new_site_popup_add_a_new_site">เพิ่มหน่วยงานใหม่</string>
+    <string name="add_new_site_popup_add_a_new_site_to">เพิ่มหน่วยงานใหม่ไปยัง:</string>
+    <string name="add_new_site_popup_site_name">ชื่อหน่วยงาน:</string>
+    <string name="add_new_site_popup_enter_the_name_of_the_site">ป้อนข้อมูลชื่อหน่วยงาน</string>
+    <string name="add_new_site_popup_add_new_site">เพิ่มหน่วยงานใหม่</string>
+
+    <string name="client_overview_activity__0_notifications">0 Notifications</string>
+
+    <string name="create_client_activity_msg_required">Please fill in all the mandatory details</string>
+    <string name="create_client_activity_msg_name_invalid">Client name must have at least 2 characters</string>
+    <string name="create_client_activity_msg_email_invalid">The email address you entered isn\'t valid</string>
+
+    <!-- Traps Activity -->
+    <string name="traps_alert_title">Trap alert list</string>
+    <string name="traps_not_ready_title">Traps - Not ready</string>
+    <string name="traps_filter_by">Filter By:</string>
+    <string name="traps_filter_all_clients">All clients</string>
+
+    <string name="trap_details_time_passed">%s hours ago</string>
+
+
+
+
+</resources>

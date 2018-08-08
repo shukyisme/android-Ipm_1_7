@@ -20,6 +20,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.kwik.bl.KwikMe;
 import me.kwik.data.Troubleshooting;
 import me.kwik.data.TroubleshootingItem;
 import me.kwik.utils.Logger;
@@ -42,6 +43,11 @@ public class TroubleshootingActivity extends BaseActivity {
 
         Troubleshooting t;
         String response = Utils.loadJSONFromAsset(this, "troubleshooting_questions");
+
+        if(KwikMe.LOCAL.equals("cs")){
+            response = Utils.loadJSONFromAsset(this, "troubleshooting_questions_cs");
+        }
+
         t = new Gson().fromJson(response,Troubleshooting.class);
         Logger.e(TAG,t.toString());
         mQuestionsListView.setAdapter(new QuestionsArrayAdapter(this,t.getQuestions()));
