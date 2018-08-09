@@ -44,7 +44,7 @@ public class TroubleshootingActivity extends BaseActivity {
         Troubleshooting t;
         String response = Utils.loadJSONFromAsset(this, "troubleshooting_questions");
 
-        if(KwikMe.LOCAL.equals("cs")){
+        if(KwikMe.LOCAL.startsWith("cs")){
             response = Utils.loadJSONFromAsset(this, "troubleshooting_questions_cs");
         }
 

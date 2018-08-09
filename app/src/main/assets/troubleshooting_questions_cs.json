@@ -75,7 +75,7 @@
 				},
 				{
 					"posible_case": "Klient, kterého hledáte, v databázi neexistuje",
-					"what_to_do": ["Vytvořit nového klienta pomocí "Přidat novou kartu"]
+					"what_to_do": ["Vytvořit nového klienta pomocí Přidat novou kartu"]
 
 
 				}
